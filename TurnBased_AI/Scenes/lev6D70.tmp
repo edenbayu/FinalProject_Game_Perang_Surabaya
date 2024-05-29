@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://patekpdib63w"]
+
+[ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="1_54tt6"]
+[ext_resource type="Script" path="res://Scenes/LevelManager.gd" id="1_hgg8q"]
+[ext_resource type="Texture2D" uid="uid://d0praiclsnvpr" path="res://Sprites/PathOverlay.png" id="1_ja282"]
+[ext_resource type="Resource" uid="uid://d32f7w6gvavmm" path="res://Resources/Grid.tres" id="2_0r2mq"]
+[ext_resource type="Script" path="res://Scripts/UnitPath.gd" id="2_w1kn0"]
+[ext_resource type="PackedScene" uid="uid://20i4en7e2fm7" path="res://Scenes/Unit.tscn" id="3_7kb1e"]
+[ext_resource type="Resource" uid="uid://cmqmk20vrujfa" path="res://Resources/SoerjoData.tres" id="4_nht5x"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0pe6"]
+texture = ExtResource("1_ja282")
+texture_region_size = Vector2i(160, 160)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 35)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 35)
+
+[sub_resource type="TileSet" id="TileSet_5x5x1"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(160, 80)
+sources/0 = SubResource("TileSetAtlasSource_q0pe6")
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_hgg8q")
+
+[node name="GameBoard" type="Node2D" parent="."]
+script = ExtResource("1_54tt6")
+grid = ExtResource("2_0r2mq")
+
+[node name="UnitPath" type="TileMap" parent="GameBoard"]
+y_sort_enabled = true
+position = Vector2(561, -153)
+tile_set = SubResource("TileSet_5x5x1")
+format = 2
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(393218, 0, 0, 458754, 0, 0, 458755, 0, 0, 393219, 0, 0, 524290, 0, 0, 524291, 0, 0, 393217, 0, 0, 458753, 0, 0, 524289, 0, 0, 393220, 0, 0, 458756, 0, 0, 524292, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589824, 0, 0, 524288, 0, 0, 458752, 0, 0, 393216, 0, 0, 458751, 0, 0, 524287, 0, 0, 589823, 0, 0, 655359, 0, 0, 720895, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 393221, 0, 0, 458757, 0, 0, 524293, 0, 0, 589829, 0, 0, 655365, 0, 0, 393222, 0, 0, 458758, 0, 0, 524294, 0, 0, 589830, 0, 0, 655366, 0, 0, 458750, 0, 0, 524286, 0, 0, 589822, 0, 0, 655358, 0, 0, 720894, 0, 0, 393223, 0, 0, 458759, 0, 0, 524295, 0, 0, 589831, 0, 0, 655367, 0, 0, 786430, 0, 0, 851966, 0, 0, 917502, 0, 0, 983038, 0, 0, 1048574, 0, 0, 1048575, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 0, 983043, 0, 0, 786435, 0, 0, 720899, 0, 0, 720898, 0, 0, 720897, 0, 0, 720896, 0, 0, 786431, 0, 0, 851967, 0, 0, 917503, 0, 0, 983039, 0, 0, 917504, 0, 0, 851968, 0, 0, 786432, 0, 0, 786433, 0, 0, 851969, 0, 0, 917505, 0, 0, 917506, 0, 0, 851970, 0, 0, 786434, 0, 0, 851971, 0, 0, 917507, 0, 0, 917508, 0, 0, 851972, 0, 0, 786436, 0, 0, 720900, 0, 0, 720901, 0, 0, 786437, 0, 0, 851973, 0, 0, 917509, 0, 0, 983045, 0, 0, 983044, 0, 0, 983046, 0, 0, 917510, 0, 0, 851974, 0, 0, 786438, 0, 0, 720902, 0, 0, 720903, 0, 0, 786439, 0, 0, 851975, 0, 0, 917511, 0, 0, 983047, 0, 0)
+script = ExtResource("2_w1kn0")
+grid = ExtResource("2_0r2mq")
+
+[node name="Player" type="Node2D" parent="GameBoard"]
+
+[node name="Soerjo" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
+position = Vector2(3, 239)
+Data = ExtResource("4_nht5x")
+
+[node name="Enemy" type="Node2D" parent="GameBoard"]
+
+[node name="Cursor" type="Node2D" parent="GameBoard"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 360)
+zoom = Vector2(0.75, 0.75)

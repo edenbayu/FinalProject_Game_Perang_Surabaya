@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://cmqmk20vrujfa"]
+
+[ext_resource type="Script" path="res://Scripts/UnitData.gd" id="1_x8r20"]
+[ext_resource type="Texture2D" uid="uid://ciqfa4thchwq" path="res://Sprites/Soerjo.png" id="2_2fiab"]
+
+[resource]
+script = ExtResource("1_x8r20")
+unit_name = "Soerjo"
+unit_health = 100
+move_speed = 500
+move_range = 3
+attack_range = 3
+skin = ExtResource("2_2fiab")
+unit_role = "ally"
