@@ -5,7 +5,7 @@ var _grid: Resource
 var _astar := AStarGrid2D.new()
 
 ##Init untuk AstartGrid2D's Grid 
-func _init(grid: Grid, walkable_cells: Array) -> void:
+func _init(grid: Grid, _walkable_cells: Array) -> void:
 	_grid = grid
 	var map_rect = Rect2i(_grid.start_rect, _grid.tilemap_size)
 	_astar.region = map_rect

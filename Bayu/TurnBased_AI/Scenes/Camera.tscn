@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb1s8fhbukv66"]
+
+[ext_resource type="Script" path="res://Scripts/Camera.gd" id="1_d61jt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cu5o1"]
+
+[node name="TacticsCamera" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_d61jt")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+zoom = Vector2(0.5, 0.5)
+limit_right = 2000
+limit_bottom = 2000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cu5o1")

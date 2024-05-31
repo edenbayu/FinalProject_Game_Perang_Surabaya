@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_3lygn")
-start_rect = Vector2(-1, -3)
-tilemap_size = Vector2(8, 8)
+start_rect = Vector2(-1, -5)
+tilemap_size = Vector2(16, 16)
 cell_size = Vector2(320, 160)

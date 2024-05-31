@@ -11,7 +11,7 @@ func initialize(walkable_cells: Array) -> void:
 func draw(cells: Array) -> void:
 	clear()
 	for cell in cells:
-		set_cell(0, cell, 0, Vector2i(1,0))
+		set_cell(0, cell, 0, Vector2i(0,0))
 
 func display_attack_range(cells: Array) -> void:
 	clear()
@@ -38,4 +38,4 @@ func clear_cells(grid_data: Grid) -> void:
 		for y in range(grid_data.start_rect.y, grid_data.start_rect.y + grid_data.tilemap_size.y):
 			cells.append(Vector2(x, y))
 	for cell in cells:
-		set_cell(0, cell, 0, Vector2i(0,0))
+		set_cell(0, cell, 0, Vector2i(2,0))

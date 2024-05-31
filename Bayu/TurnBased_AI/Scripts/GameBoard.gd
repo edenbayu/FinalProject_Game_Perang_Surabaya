@@ -183,7 +183,7 @@ func _move_active_unit(new_cell: Vector2) -> void:
 	_units.erase(_active_unit.cell)
 	_units[new_cell] = _active_unit
 	_deselect_active_unit()
-	_active_unit.walk(new_cell)
+	_active_unit.walk()
 	await _active_unit.walk_finished
 	_clear_active_unit()
 

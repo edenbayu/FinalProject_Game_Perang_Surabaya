@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://doupgc3wnll5r"]
+
+[ext_resource type="Script" path="res://Scripts/UnitData.gd" id="1_kp8u3"]
+[ext_resource type="Texture2D" uid="uid://ciqfa4thchwq" path="res://Sprites/Soerjo.png" id="2_5eejs"]
+
+[resource]
+script = ExtResource("1_kp8u3")
+unit_name = "Ling"
+unit_health = 80
+move_speed = 500
+move_range = 4
+attack_range = 5
+skin = ExtResource("2_5eejs")
+unit_role = "ally"

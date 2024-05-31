@@ -2,14 +2,14 @@ extends Node2D
 class_name LevelManager
 
 #var turnManager = TurnManager.new()
-@onready var UI_CONTROLLER = $Control/Button
+@onready var UI_CONTROLLER = $Control/TurnChanger
 @onready var ui_container = $Control/TurnBasedUI/TurnBasedIcons
 @onready var label = $Control/Label
 @onready var timer = $Timer
 @onready var player = $GameBoard/Player
 @onready var enemy = $GameBoard/Enemy
 @onready var gameboard = $GameBoard
-@onready var camera = $Camera2D
+@onready var tactics_camera : TacticsCamera = $TacticsCamera
 
 signal enemy_turn_started(icon: TextureRect)
 signal ally_turn_started
@@ -111,6 +111,7 @@ func _end_turn()-> void:
 
 func _active_icon() -> void:
 	_active_unit = _units[turn_index]
+	tactics_camera.target = _active_unit
 	_active_unit.is_selected = true
 	active_icon = _icons[turn_index]
 	active_icon.is_active = true
