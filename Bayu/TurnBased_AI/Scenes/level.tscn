@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://patekpdib63w"]
+[gd_scene load_steps=18 format=3 uid="uid://patekpdib63w"]
 
 [ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="1_54tt6"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_hgg8q"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://4gpl7egntgvn" path="res://UI/coba_dialogue.png" id="9_brwvi"]
 [ext_resource type="Resource" uid="uid://doupgc3wnll5r" path="res://Resources/Ling.tres" id="10_0nykt"]
 [ext_resource type="FontFile" uid="uid://bs41epct36unk" path="res://UI/I-pixel-u.ttf" id="11_jjinn"]
+[ext_resource type="Texture2D" uid="uid://c6uqkdvdwgqgn" path="res://Sprites/BG.png" id="13_srsit"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_otxub"]
 texture = ExtResource("1_ja282")
@@ -45,6 +46,10 @@ sources/0 = SubResource("TileSetAtlasSource_q0pe6")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_hgg8q")
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(191, 270)
+texture = ExtResource("13_srsit")
 
 [node name="TacticsCamera" parent="." instance=ExtResource("2_pxgfw")]
 
@@ -113,6 +118,7 @@ text = "CHANGE TURN
 [node name="Timer" type="Timer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 offset_left = -584.0
 offset_top = 514.0
 offset_right = 896.0
