@@ -10,9 +10,9 @@
 [ext_resource type="Resource" uid="uid://cmqmk20vrujfa" path="res://Resources/SoerjoData.tres" id="4_nht5x"]
 [ext_resource type="PackedScene" uid="uid://b1t8iyisfbe0v" path="res://Scenes/Cursor.tscn" id="8_4uheh"]
 [ext_resource type="Texture2D" uid="uid://4gpl7egntgvn" path="res://UI/coba_dialogue.png" id="9_brwvi"]
-[ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Soerjo_animation.res" id="11_601eb"]
+[ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="11_601eb"]
 [ext_resource type="FontFile" uid="uid://bs41epct36unk" path="res://UI/I-pixel-u.ttf" id="11_jjinn"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Soerjo_animation_tree.tres" id="12_e2jf1"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="12_e2jf1"]
 [ext_resource type="Texture2D" uid="uid://c6uqkdvdwgqgn" path="res://Sprites/BG.png" id="13_srsit"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_otxub"]

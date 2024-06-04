@@ -1,1 +1,33 @@
-berhasil!
+Referensi UI dan Animasi
+1. Menu and Settings:
+- https://www.youtube.com/watch?v=aFkRmtGiZCw
+- https://www.youtube.com/watch?v=QnEG01t2P9M&t=609s
+
+2. Finite State Machines:
+- https://www.youtube.com/watch?v=ow_Lum-Agbs
+- https://www.youtube.com/watch?v=qwOM3v8T33Q&t=1029s
+
+3. Animation Tree State Machine
+- https://www.youtube.com/watch?v=WrMORzl3g1U
+
+Referensi Load System dan Godot Resources
+1. Saving n Loading System
+- https://www.youtube.com/watch?v=j7p7cGj20jU
+- https://www.youtube.com/watch?v=mI4HfyBdV-k
+- https://www.youtube.com/watch?v=rDGyw9z6Le8
+
+2. Godot OOP and Resource
+- https://www.youtube.com/watch?v=y3faMdIb2II&t=190s
+- https://www.youtube.com/watch?v=vzRZjM9MTGw&t=213s
+- https://www.youtube.com/watch?v=jQvcTiVwUgw&t=107s (autoload / Singleton)
+
+3. Inventory System
+- https://www.youtube.com/watch?v=qLrj_HWA9CI
+
+Referensi AI, TurnBased, serta Astar Isometric
+1. Utility AI
+- https://www.youtube.com/watch?v=d63hbJYYqM8&t=1013s
+2. AstarGrid Pathfinding
+- https://www.youtube.com/watch?v=OMrDS0zlr-k
+3. TurnManager
+- https://www.youtube.com/watch?v=umC2i8jwUKM

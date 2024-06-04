@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Unit.gd" id="1_u70hk"]
 [ext_resource type="Texture2D" uid="uid://ciqfa4thchwq" path="res://Sprites/Soerjo.png" id="2_pequ7"]
-[ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Soerjo_animation.res" id="3_ox0gf"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Soerjo_animation_tree.tres" id="4_6vypo"]
+[ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="3_ox0gf"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="4_6vypo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwmta"]
 
@@ -15,7 +15,7 @@ position = Vector2(3, -47)
 texture = ExtResource("2_pequ7")
 hframes = 8
 vframes = 12
-frame = 16
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qwmta")
