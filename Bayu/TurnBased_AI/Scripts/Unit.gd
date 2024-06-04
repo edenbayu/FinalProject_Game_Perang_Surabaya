@@ -1,27 +1,21 @@
 class_name Unit
 extends CharacterBody2D
 
-#Declares direction for animation
-const direction = {
-	"down-left": Vector2(0, 1),
-	"down-right": Vector2(1, 0),
-	"up-right": Vector2(0, -1),
-	"up-left": Vector2(-1, 0)
-}
-
 ## Emitted when the unit reached the end of a path along which it was walking.
 signal walk_finished
 
 @export var Data : UnitData
 
 @onready var _sprite = $Sprite2D
-@onready var _animation = $AnimationPlayer
+@export var _animation_resource: AnimationLibrary
 @onready var path = $"../../UnitPath"
-@onready var _animationTree = $AnimationTree
+@export var _animation_state_machine: AnimationNodeStateMachine
+@onready var _animation := $AnimationPlayer
+@onready var _animationTree := $AnimationTree
 
 var attack_range : int
 var current_dir : String
-var direction_vector: Vector2i: set = check_direction
+var last_direction := Vector2.ZERO
 
 var _is_idle : bool
 
@@ -83,77 +77,42 @@ func _ready():
 	inactive_icon = Data.inactive_icon
 	unit_role = Data.unit_role
 	icon = Data.icon
-	_animation.play("Idle_FR")
-	#_animationTree.active = true
+	
+	#Configuring AnimationPlayer and AnimationTree
+	#_animation.add_animation_library(nama+"_animation", _animation_resource)
+	_animationTree.tree_root = _animation_state_machine
+	_animationTree.active = true
 
 func walk():
 	_is_walking = true
 	_is_idle = false
 
 func _process(delta: float):
-	#print("Is Idle :", _animationTree["parameters/conditions/is_idle"])
-	#print("Is Walking :",_animationTree["parameters/conditions/is_walking"])
-	_update_blend_position()
+	print(last_direction)
 	_update_animation_condition()
-	#_update_direction(current_dir)
-	#print(direction_vector)
-	#print(_animationTree["parameters/Idle/blend_position"], _animationTree["parameters/Walk/blend_position"])
+	_update_blend_position()
+
 	#Process unit walk code
 	if walk_coordinates.is_empty():
 		_is_walking = false
 		_is_idle = true
 		emit_signal("walk_finished")
+
 	if _is_walking:
-		var target_pos = walk_coordinates.front() 
-		cell = path.local_to_map(target_pos)
-		var dir = check_direction(cell)
-		direction_animator(dir)
+		var target_pos = walk_coordinates.front()
+		cell = path.local_to_map(target_pos) 
+		last_direction = check_direction(target_pos)
 		position = position.move_toward(target_pos, move_speed*delta)
 		if position == target_pos:
 			walk_coordinates.pop_front()
-	if _is_idle:
-		direction_idle_animator(current_dir)
 
-func direction_animator(dir):
-	if dir == "down-left":
-		_animation.play("Walk_FL")
-	if dir == "down-right":
-		_animation.play("Walk_FR")
-	if dir == "up-left":
-		_animation.play("Walk_BL")
-	if dir == "up-right":
-		_animation.play("Walk_BR")
-
-func direction_idle_animator(dir):
-	if dir == "down-left":
-		_animation.play("Idle_FL")
-	if dir == "down-right":
-		_animation.play("Idle_FR")
-	if dir == "up-left":
-		_animation.play("Idle_BL")
-	if dir == "up-right":
-		_animation.play("Idle_BR")
-
-func check_direction(next_tile) -> String:
-	var desired_output := Vector2.ZERO
-	var current_tile: Vector2 = path.local_to_map(global_position)
-	var direction_vector = next_tile - current_tile
-	print(direction_vector)
-	for dir in direction:
-		if direction_vector == direction[dir]:
-			current_dir = dir
-			return dir
-	return "Unknown direction"
-
-#This function to set up animation tree direction parameter
-#func _update_direction(current_direction: String) -> void:
-	#for dir in direction:
-		#if current_direction == dir:
-			#direction_vector = direction[dir]
+func check_direction(next_tile) -> Vector2:
+	var direction_vector = sign(next_tile - global_position)
+	return direction_vector
 
 func _update_blend_position() -> void:
-	_animationTree["parameters/Idle/blend_position"] = cell
-	_animationTree["parameters/Walk/blend_position"] = cell
+	_animationTree["parameters/Idle/blend_position"] = last_direction
+	_animationTree["parameters/Walk/blend_position"] = last_direction
 
 func _update_animation_condition() -> void:
 	_animationTree["parameters/conditions/is_idle"] = _is_idle
