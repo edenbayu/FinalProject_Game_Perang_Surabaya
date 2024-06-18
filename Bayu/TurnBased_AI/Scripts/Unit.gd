@@ -4,7 +4,7 @@ extends CharacterBody2D
 ## Emitted when the unit reached the end of a path along which it was walking.
 signal walk_finished
 
-@export var Data : UnitData
+@export var player_id := 1
 
 @onready var _sprite = $Sprite2D
 @export var _animation_resource: AnimationLibrary
@@ -13,6 +13,7 @@ signal walk_finished
 @onready var _animation := $AnimationPlayer
 @onready var _animationTree := $AnimationTree
 
+var database : SQLite
 var attack_range : int
 var current_dir : String
 var last_direction := Vector2.ZERO
@@ -35,6 +36,19 @@ var skin: Texture2D:
 		if not _sprite:
 			await ready
 		_sprite.texture = value
+
+var max_health: float:
+	set(value):
+		max_health = value * 1.0
+
+var level: int
+
+var curr_health: float:
+	get:
+		return max_health
+	set(value):
+		curr_health = clamp(value, 0, max_health)
+
 #setter getter
 var nama: String:
 	set(value):
@@ -68,18 +82,36 @@ var unit_role: String:
 	set(value):
 		unit_role = value
 
+func _configure() -> void:
+	database = SQLite.new()
+	database.path = "res://data.db"
+	database.open_db()
+	database.query("select nama, health, move_speed, move_range, attack_range, icon, inactive_icon, skin, role from Player where player_id = "+ str(player_id))
+	for data in database.query_result:
+		pass
+		nama = data.nama
+		max_health = data.health
+		move_speed = data.move_speed
+		move_range = data.move_range
+		attack_range = data.attack_range
+		var skin_image = Image.new()
+		skin_image.load_png_from_buffer(data.skin)
+		var texture = ImageTexture.create_from_image(skin_image)
+		var icon_image = Image.new()
+		icon_image.load_png_from_buffer(data.icon)
+		var icon_data = ImageTexture.create_from_image(icon_image)
+		var inactive_icon_image = Image.new()
+		inactive_icon_image.load_png_from_buffer(data.inactive_icon)
+		var inactive_icon_data = ImageTexture.create_from_image(inactive_icon_image)
+		icon = icon_data
+		inactive_icon = inactive_icon_data
+		skin = texture
+		unit_role = data.role
+
 func _ready():
-	nama = Data.unit_name
-	_sprite.texture = Data.skin
-	move_range = Data.move_range
-	attack_range = Data.attack_range
-	move_speed = Data.move_speed
-	inactive_icon = Data.inactive_icon
-	unit_role = Data.unit_role
-	icon = Data.icon
-	
+	_configure()
+	print(nama, attack_range, unit_role, move_speed, "Current Health: ", curr_health)
 	#Configuring AnimationPlayer and AnimationTree
-	#_animation.add_animation_library(nama+"_animation", _animation_resource)
 	_animationTree.tree_root = _animation_state_machine
 	_animationTree.active = true
 
@@ -88,7 +120,6 @@ func walk():
 	_is_idle = false
 
 func _process(delta: float):
-	print(last_direction)
 	_update_animation_condition()
 	_update_blend_position()
 
@@ -98,13 +129,14 @@ func _process(delta: float):
 		_is_idle = true
 		emit_signal("walk_finished")
 
-	if _is_walking:
-		var target_pos = walk_coordinates.front()
-		cell = path.local_to_map(target_pos) 
-		last_direction = check_direction(target_pos)
-		position = position.move_toward(target_pos, move_speed*delta)
-		if position == target_pos:
-			walk_coordinates.pop_front()
+func _physics_process(delta):
+		if _is_walking:
+			var target_pos = walk_coordinates.front()
+			cell = path.local_to_map(target_pos) 
+			last_direction = check_direction(target_pos)
+			position = position.move_toward(target_pos, move_speed*delta)
+			if position == target_pos:
+				walk_coordinates.pop_front()
 
 func check_direction(next_tile) -> Vector2:
 	var direction_vector = sign(next_tile - global_position)

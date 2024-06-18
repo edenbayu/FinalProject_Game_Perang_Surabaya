@@ -39,3 +39,8 @@ func clear_cells(grid_data: Grid) -> void:
 			cells.append(Vector2(x, y))
 	for cell in cells:
 		set_cell(0, cell, 0, Vector2i(2,0))
+
+func calculate_distance(start_pos: Vector2, target_pos: Vector2) -> int:
+	get_walk_path(start_pos, target_pos)
+	current_path.remove_at(0)
+	return current_path.size()

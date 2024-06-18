@@ -4,11 +4,12 @@ class_name LevelManager
 #var turnManager = TurnManager.new()
 @onready var UI_CONTROLLER = $Control/TurnChanger
 @onready var ui_container = $Control/TurnBasedUI/TurnBasedIcons
+@onready var turn_based = $Control/TurnBasedUI
 @onready var label = $Control/Label
-@onready var timer = $Timer
+@onready var timer: Timer = $Timer
 @onready var player = $GameBoard/Player
 @onready var enemy = $GameBoard/Enemy
-@onready var gameboard = $GameBoard
+@onready var gameboard : GameBoard = $GameBoard
 @onready var tactics_camera : TacticsCamera = $TacticsCamera
 
 signal enemy_turn_started(icon: TextureRect)
@@ -26,6 +27,8 @@ var wait_time_test := 1.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_reinitialize()
+	#Change this code later into a more proper way
+	turn_based.size.x += (len(ui_container.get_children()) - 1) * ui_container.size.x
 	gameboard._select_unit(_active_unit)
 	label.text = "It's your turn: " + str(_units[turn_index].nama)
 
@@ -83,8 +86,11 @@ func _on_ally_turn_started(unit: Unit) -> void:
 
 # Signal handler for enemy turn started
 func _on_enemy_turn_started(unit: Unit) -> void:
+	gameboard._select_unit(unit)
 	label.text = "It's your enemy turn: " + str(unit.nama)
 	UI_CONTROLLER.visible = false
+	gameboard.get_nearest_neighbor_unit()
+	gameboard.get_lowest_hp_unit()
 	timer.wait_time = wait_time_test
 	timer.start()
 
@@ -102,6 +108,7 @@ func _end_turn()-> void:
 	_units[turn_index].is_selected = false
 	_icons[turn_index].is_active = false
 	turn_index = (turn_index + 1) % _units.size()
+	gameboard.unitPath.clear()
 	emit_signal("turn_changed")
 	if turn_index == 0:
 		_reinitialize_icon()

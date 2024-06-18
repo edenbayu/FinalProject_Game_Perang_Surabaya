@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dundunh1uit66"]
+
+[ext_resource type="Script" path="res://Scripts/TurnBasedIcon.gd" id="1_qpen8"]
+
+[node name="TurnBasedIcon" type="TextureRect"]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_qpen8")

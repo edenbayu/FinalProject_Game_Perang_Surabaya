@@ -84,6 +84,9 @@ position = Vector2(402, 277)
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
 
+[node name="Unit" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
+player_id = 2
+
 [node name="Enemy" type="Node2D" parent="GameBoard"]
 script = ExtResource("12_bpvfk")
 
@@ -93,32 +96,24 @@ player_id = 6
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
 
-[node name="Unit2" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
-position = Vector2(401, 758)
-player_id = 6
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
-
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 
-[node name="TurnBasedUI" type="NinePatchRect" parent="Control"]
+[node name="TurnBasedUI" type="TextureRect" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = -1023.0
-offset_top = -713.0
-offset_right = -763.0
-offset_bottom = -453.0
+offset_top = -721.0
+offset_right = -3.0
+offset_bottom = -461.0
 texture = ExtResource("12_mny6s")
-patch_margin_left = 102
-patch_margin_right = 102
+stretch_mode = 2
 
 [node name="TurnBasedIcons" type="HBoxContainer" parent="Control/TurnBasedUI"]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 240.0
-offset_bottom = 250.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0

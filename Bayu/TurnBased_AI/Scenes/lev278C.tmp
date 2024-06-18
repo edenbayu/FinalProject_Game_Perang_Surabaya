@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://patekpdib63w"]
+[gd_scene load_steps=18 format=3 uid="uid://patekpdib63w"]
 
 [ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="1_54tt6"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_hgg8q"]
@@ -11,9 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://4gpl7egntgvn" path="res://UI/coba_dialogue.png" id="9_brwvi"]
 [ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="11_601eb"]
 [ext_resource type="FontFile" uid="uid://bs41epct36unk" path="res://UI/I-pixel-u.ttf" id="11_jjinn"]
-[ext_resource type="Script" path="res://Scenes/EnemyController.gd" id="12_bpvfk"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="12_e2jf1"]
-[ext_resource type="Texture2D" uid="uid://dxw5pycqhdikr" path="res://UI/TurnBasedBar.png" id="12_mny6s"]
 [ext_resource type="Texture2D" uid="uid://c6uqkdvdwgqgn" path="res://Sprites/BG.png" id="13_srsit"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_otxub"]
@@ -81,52 +79,30 @@ position = Vector2(400, 33)
 
 [node name="Soerjo" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
 position = Vector2(402, 277)
+player_id = null
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
 
 [node name="Enemy" type="Node2D" parent="GameBoard"]
-script = ExtResource("12_bpvfk")
-
-[node name="Unit" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
-position = Vector2(883, 519)
-player_id = 6
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
-
-[node name="Unit2" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
-position = Vector2(401, 758)
-player_id = 6
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 
-[node name="TurnBasedUI" type="NinePatchRect" parent="Control"]
+[node name="TurnBasedUI" type="TextureRect" parent="Control"]
 layout_mode = 0
-offset_left = -1023.0
-offset_top = -713.0
-offset_right = -763.0
-offset_bottom = -453.0
-texture = ExtResource("12_mny6s")
-patch_margin_left = 102
-patch_margin_right = 102
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="TurnBasedIcons" type="HBoxContainer" parent="Control/TurnBasedUI"]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 240.0
-offset_bottom = 250.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
-offset_top = -396.0
 offset_right = 40.0
-offset_bottom = -373.0
-theme_override_fonts/font = ExtResource("11_jjinn")
-theme_override_font_sizes/font_size = 32
+offset_bottom = 23.0
 
 [node name="TurnChanger" type="Button" parent="Control"]
 layout_mode = 0
@@ -154,4 +130,3 @@ texture = ExtResource("9_brwvi")
 [connection signal="accept_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_accept_pressed"]
 [connection signal="moved" from="GameBoard/Cursor" to="GameBoard" method="_check_hoverable_tiles"]
 [connection signal="pressed" from="Control/TurnChanger" to="." method="_on_button_pressed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

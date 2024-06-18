@@ -25,6 +25,7 @@ func _ready() -> void:
 	_reinitialize()
 	unitPath.clear_cells(grid)
 	_update()
+	get_weakest_unit()
 
 func _process(_delta):
 	_update()
@@ -151,8 +152,6 @@ func _flood_fill_attack(cell: Vector2, max_distance: int) -> Array:
 				continue
 			if coordinates in array:
 				continue
-			# Minor optimization: If this neighbor is already queued
-			#	to be checked, we don't need to queue it again
 			if coordinates in stack:
 				continue
 
@@ -217,7 +216,6 @@ func _update() -> void:
 		var unit = ordering[i]
 		# Assign Z index based on the index in the sorted list
 		unit.z_index = i
-		#print("Units order: " + str(unit.cell)  + " " + str(unit.z_index)+ " " + str(unit.nama))
 
 func _sort_index(a: Unit, b: Unit) -> bool:
 	if a.cell.y != b.cell.y:
@@ -233,3 +231,37 @@ func _on_attack():
 		#var unit := target as Unit
 		#if not unit:
 			#continue
+
+func get_weakest_unit():
+	var weakest : Unit = null
+	for unit in player.get_children():
+		var player = unit as Unit
+		if not player:
+			pass
+		if (!weakest or player.curr_health < weakest.curr_health) and player.curr_health > 0:
+			weakest = player
+	return weakest
+
+func get_nearest_neighbor_unit():
+	var nearest_unit :Unit = null
+	var min_distance: int = 100
+	for unit in player.get_children():
+		var player = unit as Unit
+		if not player:
+			pass
+		var  distance: int = unitPath.calculate_distance(_active_unit.cell, player.cell)
+		print("jarak ke ", player.nama, ": ", distance)
+		if distance < min_distance:
+			min_distance = distance
+			nearest_unit = player
+	return nearest_unit
+
+func get_lowest_hp_unit():
+	var lowest_hp_unit: Unit = null
+	var player_hp := {}
+	##Iterate through the player
+	for unit in player.get_children():
+		var player = unit as Unit
+		if not player: pass
+		player_hp[player.nama] = player.curr_health
+	print(player_hp.values().min())
