@@ -1,0 +1,12 @@
+Label
+Sprite2D
+AnimationPlayer
+VideoStreamPlayer
+AnimatedSprite2D
+Panel
+Button
+ProgressBar
+RichTextLabel
+CanvasLayer
+TextureRect
+ColorRect

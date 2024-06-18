@@ -1,0 +1,20 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1718721481
+CobaDialog.tscn::PackedScene::2816278028950222134::1718355040::0::1::::<><>::
+Control.gd::GDScript::-1::1718353095::0::1::::<>Control<>::
+control.tscn::PackedScene::8786479887528689579::1718353114::0::1::::<><>::res://Control.gd
+icon.svg::CompressedTexture2D::2618382564877339825::1718202442::1718202447::1::::<><>::
+loading_screen.tscn::PackedScene::6712872629918553320::1718355040::0::1::::<><>::res://world.gd
+LoadManager.gd::GDScript::-1::1718352443::0::1::::<>Node2D<>::
+Sequence 01.ogg::AudioStreamOggVorbis::2899661755381666855::1718351166::1718351166::1::::<><>::
+Sequence 01.ogv::VideoStreamTheora::-1::1718351187::0::1::::<><>::
+Soerjo.png::CompressedTexture2D::7267844086502168355::1718254634::1718254829::1::::<><>::
+world.gd::GDScript::-1::1718353185::0::1::::World<>Node2D<>::
+::res://Loading_screen/::1718356581
+LoadingScreen.gd::GDScript::-1::1718352364::0::1::::<>CanvasLayer<>::
+loading_screen.tscn::PackedScene::7846410335096258307::1718356581::0::1::::<><>::res://Loading_screen/LoadingScreen.gd<>uid://dbsulh1rq8xt0::::res://Soerjo.png
+::res://Loading_screen/level 1/::1718355040
+AnimatedSprite2D.gd::GDScript::-1::1718349614::0::1::::<>AnimatedSprite2D<>::
+AnimationPlayer.gd::GDScript::-1::1718351725::0::1::::<>AnimationPlayer<>::
+level_1.tscn::PackedScene::3574514903898345978::1718355040::0::1::::<><>::
+VideoStreamPlayer.gd::GDScript::-1::1718351219::0::1::::<>VideoStreamPlayer<>::
