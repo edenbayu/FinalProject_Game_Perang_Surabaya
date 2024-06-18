@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=4 format=3 uid="uid://db1um0mbe4pe6"]
+
+[ext_resource type="Texture2D" uid="uid://com5q6tgkrx3n" path="res://Sprite/Soerjo_icon.png" id="1_70u61"]
+[ext_resource type="Script" path="res://Scripts/UnitData.gd" id="2_1c3hy"]
+[ext_resource type="Texture2D" uid="uid://c2t48n5g18cp" path="res://Sprite/anton.png" id="3_lwvp0"]
+
+[resource]
+script = ExtResource("2_1c3hy")
+nama = "Soerjo"
+move_speed = 3.0
+unit_role = "ally"
+skin = ExtResource("3_lwvp0")
+icon = ExtResource("1_70u61")

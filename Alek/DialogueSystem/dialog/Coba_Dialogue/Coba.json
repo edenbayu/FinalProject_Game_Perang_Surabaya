@@ -1,0 +1,7 @@
+[
+ {"name": "Soerjo", "id": 1, "text": "Selamat Pagi tuan apakah ada jendral untuk diajak diskusi perihal serangan yang akan diluncurkan ada besok pagi di kediaman panglima", "Color": "white", "Keterangan": "Normal"},
+ {"name": "Tentara Jepang", "id": 2, "text": "Hah! Apa?? Jendral lagi sibuk dan tiidak bisa diskusi, coba kamu pergi ke benteng barangkali ada kapten sing jung sek disana", "Color": "white", "Keterangan": "Dramatis"},
+ {"name": "Soerjo", "id": 3, "text": "Baik tuan saya akan mendatangi ke sana!", "Color": "white", "Keterangan": "Normal"},
+ {"name": "Tentara Jepang", "id": 4, "text": "Baiklah hati hati selama perjalanan", "Color": "whiite", "Keterangan": "Normal"},
+ {"name": "Soerjo", "id": 5, "text": "Terimakasih tuan", "Color": "white", "Keterangan": "Normal"}
+] 

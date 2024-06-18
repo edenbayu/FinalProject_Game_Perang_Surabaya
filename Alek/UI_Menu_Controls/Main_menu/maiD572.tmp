@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://c37pm7mm8vkex"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_3xyrq"]
+[ext_resource type="FontFile" uid="uid://be1488wacuvuy" path="res://I-pixel-u.ttf" id="1_i2uaj"]
+
+[node name="Main Menu" type="Node2D"]
+script = ExtResource("1_3xyrq")
+
+[node name="Button Manage" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 650.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Button Manage"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -95.0
+offset_right = 216.0
+offset_bottom = 143.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Continue Game" type="Button" parent="Button Manage/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i2uaj")
+text = "CONTINUE GAME"
+
+[node name="Load Game" type="Button" parent="Button Manage/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i2uaj")
+text = "LOAD GAME"
+
+[node name="New Game" type="Button" parent="Button Manage/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i2uaj")
+text = "NEW GAME"
+
+[node name="Setting Game" type="Button" parent="Button Manage/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i2uaj")
+text = "OPTIONS"
+
+[node name="Exit" type="Button" parent="Button Manage/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i2uaj")
+text = "EXIT"
+
+[connection signal="pressed" from="Button Manage/VBoxContainer/Continue Game" to="." method="_on_continue_game_pressed"]
+[connection signal="pressed" from="Button Manage/VBoxContainer/Load Game" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="Button Manage/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Button Manage/VBoxContainer/Setting Game" to="." method="_on_setting_game_pressed"]
+[connection signal="pressed" from="Button Manage/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

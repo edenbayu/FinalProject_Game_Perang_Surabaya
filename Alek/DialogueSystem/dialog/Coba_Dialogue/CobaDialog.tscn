@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgehxm7k1l5w1"]
+
+[ext_resource type="Script" path="res://Coba_Dialogue/coba_dialog.gd" id="1_opu30"]
+[ext_resource type="Texture2D" uid="uid://cqun4mh1ftm7w" path="res://Sprite/Soerjo_Portrait.png" id="2_kdv3u"]
+[ext_resource type="Texture2D" uid="uid://evs77pev3kfh" path="res://Sprite/Jepang_Portrait.png" id="3_hhrvm"]
+[ext_resource type="Texture2D" uid="uid://bnwm6oxl1wh1l" path="res://Sprite/TextBox-export.png" id="4_mlvk0"]
+[ext_resource type="FontFile" uid="uid://c583mm1xbwni5" path="res://I-pixel-u.ttf" id="5_xku1p"]
+
+[node name="CanvasLayer" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_opu30")
+json_path = "res://Coba_Dialogue/Coba.json"
+character_portraits = Array[Texture2D]([ExtResource("2_kdv3u"), ExtResource("3_hhrvm")])
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -1245.0
+offset_top = -543.0
+offset_right = 1096.0
+offset_bottom = 577.0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -34.0
+offset_top = 55.0
+offset_right = 1463.0
+offset_bottom = 1063.0
+
+[node name="Potrait" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -1212.0
+offset_top = -566.0
+offset_right = -285.0
+offset_bottom = 419.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kdv3u")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_top = 364.0
+offset_right = 1148.0
+offset_bottom = 645.0
+
+[node name="DialogueBox" type="TextureRect" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="NameBox" type="TextureRect" parent="Control/MarginContainer/DialogueBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/DialogueBox/NameBox"]
+layout_mode = 0
+offset_left = -1325.0
+offset_top = -342.0
+offset_right = 1215.0
+offset_bottom = 328.0
+texture = ExtResource("4_mlvk0")
+
+[node name="NameTextBox" type="RichTextLabel" parent="Control/MarginContainer/DialogueBox/NameBox"]
+layout_mode = 0
+offset_left = 339.0
+offset_top = -166.0
+offset_right = 1010.0
+offset_bottom = -28.0
+theme_override_fonts/normal_font = ExtResource("5_xku1p")
+theme_override_font_sizes/normal_font_size = 100
+text = "Soerjo"
+autowrap_mode = 2
+
+[node name="TextBox" type="RichTextLabel" parent="Control/MarginContainer/DialogueBox"]
+layout_mode = 0
+offset_left = -1170.0
+offset_top = 12.0
+offset_right = 1067.0
+offset_bottom = 307.0
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_xku1p")
+theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/bold_font_size = 0
+text = "Selamat Pagi tuan apakah ada jendral untuk diajak diskusi perihal serangan yang akan diluncurkan ada besok pagi di kediaman panglima"
+selection_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)

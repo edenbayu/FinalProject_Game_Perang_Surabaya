@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bq6r0dnfmmy55"]
+
+[node name="Level 1" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 248.0
+offset_top = 32.0
+offset_right = 1486.0
+offset_bottom = 531.0
+theme_override_font_sizes/normal_font_size = 100
+text = "berhasil masuk level 1"
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=4 format=3 uid="uid://d1foxw3bau6mi"]
+
+[ext_resource type="Texture2D" uid="uid://dbp6u0bwjdhgm" path="res://Sprite/Jepang_icon.png" id="1_7hep2"]
+[ext_resource type="Script" path="res://Scripts/UnitData.gd" id="2_j24c4"]
+[ext_resource type="Texture2D" uid="uid://dqnw6tvubn8rc" path="res://Sprite/jepang.png" id="3_3cucj"]
+
+[resource]
+script = ExtResource("2_j24c4")
+nama = "Jepang"
+move_speed = 2.0
+unit_role = "enemy"
+skin = ExtResource("3_3cucj")
+icon = ExtResource("1_7hep2")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://5s4qfxnjosf4"]
+
+[ext_resource type="Script" path="res://Unit.gd" id="1_qt2fb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ax21q"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_qt2fb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ax21q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

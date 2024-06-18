@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://dv6ksmmo50sr4"]
+
+[ext_resource type="Script" path="res://Scripts/TurnManager.gd" id="1_c5kf1"]
+[ext_resource type="PackedScene" uid="uid://5s4qfxnjosf4" path="res://Scene/Unit.tscn" id="2_87g2w"]
+[ext_resource type="Resource" uid="uid://db1um0mbe4pe6" path="res://Resources/Player1.tres" id="3_ctnc5"]
+[ext_resource type="Resource" uid="uid://cccgx0o30etx7" path="res://Resources/Player2.tres" id="4_xwx41"]
+[ext_resource type="Resource" uid="uid://d1foxw3bau6mi" path="res://Resources/Enemy1.tres" id="5_4i2br"]
+[ext_resource type="FontFile" uid="uid://c583mm1xbwni5" path="res://I-pixel-u.ttf" id="6_bg42s"]
+
+[node name="TurnManager" type="Node2D"]
+script = ExtResource("1_c5kf1")
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Soerjo" parent="Player" instance=ExtResource("2_87g2w")]
+visible = false
+player_data = ExtResource("3_ctnc5")
+
+[node name="Ling" parent="Player" instance=ExtResource("2_87g2w")]
+visible = false
+player_data = ExtResource("4_xwx41")
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="Jepang A" parent="Enemy" instance=ExtResource("2_87g2w")]
+visible = false
+player_data = ExtResource("5_4i2br")
+
+[node name="Jepang B" parent="Enemy" instance=ExtResource("2_87g2w")]
+visible = false
+player_data = ExtResource("5_4i2br")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 647.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 519.0
+offset_top = 484.0
+offset_right = 626.0
+offset_bottom = 515.0
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_bg42s")
+theme_override_font_sizes/font_size = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 191.0
+offset_top = 202.0
+offset_right = 231.0
+offset_bottom = 242.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="ally_turn_started" from="." to="." method="_on_ally_turn_started"]
+[connection signal="enemy_turn_started" from="." to="." method="_on_enemy_turn_started"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

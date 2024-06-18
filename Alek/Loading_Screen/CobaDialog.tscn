@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://bgehxm7k1l5w1"]
+
+[node name="CanvasLayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -1245.0
+offset_top = -543.0
+offset_right = 1096.0
+offset_bottom = 577.0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -34.0
+offset_top = 55.0
+offset_right = 1463.0
+offset_bottom = 1063.0
+
+[node name="Potrait" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -1212.0
+offset_top = -566.0
+offset_right = -285.0
+offset_bottom = 419.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_top = 364.0
+offset_right = 1148.0
+offset_bottom = 645.0
+
+[node name="DialogueBox" type="TextureRect" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="NameBox" type="TextureRect" parent="Control/MarginContainer/DialogueBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/DialogueBox/NameBox"]
+layout_mode = 0
+offset_left = -1325.0
+offset_top = -342.0
+offset_right = 1215.0
+offset_bottom = 328.0
+
+[node name="NameTextBox" type="RichTextLabel" parent="Control/MarginContainer/DialogueBox/NameBox"]
+layout_mode = 0
+offset_left = 339.0
+offset_top = -166.0
+offset_right = 1010.0
+offset_bottom = -28.0
+theme_override_font_sizes/normal_font_size = 100
+text = "Soerjo"
+autowrap_mode = 2
+
+[node name="TextBox" type="RichTextLabel" parent="Control/MarginContainer/DialogueBox"]
+layout_mode = 0
+offset_left = -1170.0
+offset_top = 12.0
+offset_right = 1067.0
+offset_bottom = 307.0
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/bold_font_size = 0
+text = "Selamat Pagi tuan apakah ada jendral untuk diajak diskusi perihal serangan yang akan diluncurkan ada besok pagi di kediaman panglima"
+selection_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+zoom = Vector2(0.5, 0.5)

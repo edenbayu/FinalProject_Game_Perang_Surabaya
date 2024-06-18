@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ResourceDialogue" load_steps=3 format=3 uid="uid://doiqpx5urx3an"]
+
+[ext_resource type="Texture2D" uid="uid://dbp6u0bwjdhgm" path="res://Sprite/Jepang_icon.png" id="1_4x0ie"]
+[ext_resource type="Script" path="res://Scripts/ResourceDialogue.gd" id="2_dnaxq"]
+
+[resource]
+script = ExtResource("2_dnaxq")
+icon = ExtResource("1_4x0ie")

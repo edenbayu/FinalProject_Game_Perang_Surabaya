@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ResourceDialogue" load_steps=3 format=3 uid="uid://omsd8j0av08j"]
+
+[ext_resource type="Texture2D" uid="uid://com5q6tgkrx3n" path="res://Sprite/Soerjo_icon.png" id="1_s1oxc"]
+[ext_resource type="Script" path="res://Scripts/ResourceDialogue.gd" id="2_p14kw"]
+
+[resource]
+script = ExtResource("2_p14kw")
+icon = ExtResource("1_s1oxc")
