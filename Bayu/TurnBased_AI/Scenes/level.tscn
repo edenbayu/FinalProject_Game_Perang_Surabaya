@@ -1,19 +1,22 @@
-[gd_scene load_steps=20 format=3 uid="uid://patekpdib63w"]
+[gd_scene load_steps=23 format=3 uid="uid://patekpdib63w"]
 
 [ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="1_54tt6"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_hgg8q"]
 [ext_resource type="Texture2D" uid="uid://d0praiclsnvpr" path="res://Sprites/PathOverlay.png" id="1_ja282"]
 [ext_resource type="Resource" uid="uid://d32f7w6gvavmm" path="res://Resources/Grid.tres" id="2_0r2mq"]
+[ext_resource type="Texture2D" uid="uid://wrgk0ah3wagm" path="res://UI/TurnBar.png" id="2_c3kva"]
 [ext_resource type="PackedScene" uid="uid://bb1s8fhbukv66" path="res://Scenes/Camera.tscn" id="2_pxgfw"]
 [ext_resource type="Script" path="res://Scripts/UnitPath.gd" id="2_w1kn0"]
 [ext_resource type="PackedScene" uid="uid://20i4en7e2fm7" path="res://Scenes/Unit.tscn" id="3_7kb1e"]
+[ext_resource type="PackedScene" uid="uid://buy1bcvgkg2p4" path="res://Scenes/Cards.tscn" id="4_7vlpe"]
+[ext_resource type="Script" path="res://Scenes/Deck.gd" id="4_n4ffv"]
+[ext_resource type="Texture2D" uid="uid://yjy6ctv6yeog" path="res://UI/Cards/reload_innate.png" id="5_v6ljp"]
+[ext_resource type="Texture2D" uid="uid://dq68p2ptk1206" path="res://UI/Cards/katana_rare.png" id="6_ya1mx"]
 [ext_resource type="PackedScene" uid="uid://b1t8iyisfbe0v" path="res://Scenes/Cursor.tscn" id="8_4uheh"]
-[ext_resource type="Texture2D" uid="uid://4gpl7egntgvn" path="res://UI/coba_dialogue.png" id="9_brwvi"]
 [ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="11_601eb"]
 [ext_resource type="FontFile" uid="uid://bs41epct36unk" path="res://UI/I-pixel-u.ttf" id="11_jjinn"]
 [ext_resource type="Script" path="res://Scenes/EnemyController.gd" id="12_bpvfk"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="12_e2jf1"]
-[ext_resource type="Texture2D" uid="uid://dxw5pycqhdikr" path="res://UI/TurnBasedBar.png" id="12_mny6s"]
 [ext_resource type="Texture2D" uid="uid://c6uqkdvdwgqgn" path="res://Sprites/BG.png" id="13_srsit"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_otxub"]
@@ -49,12 +52,97 @@ sources/0 = SubResource("TileSetAtlasSource_q0pe6")
 [node name="Level" type="Node2D"]
 script = ExtResource("1_hgg8q")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TurnBasedUI" type="NinePatchRect" parent="CanvasLayer/UI"]
+layout_mode = 1
+offset_right = 100.0
+offset_bottom = 104.0
+texture = ExtResource("2_c3kva")
+patch_margin_left = 40
+patch_margin_right = 40
+
+[node name="TurnBasedIcons" type="HBoxContainer" parent="CanvasLayer/UI/TurnBasedUI"]
+layout_mode = 1
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 100.0
+offset_bottom = 96.0
+
+[node name="Label" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_top = -396.0
+offset_right = 40.0
+offset_bottom = -373.0
+theme_override_fonts/font = ExtResource("11_jjinn")
+theme_override_font_sizes/font_size = 32
+
+[node name="TurnChanger" type="Button" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 1548.0
+offset_top = 102.0
+offset_right = 1876.0
+offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("11_jjinn")
+theme_override_font_sizes/font_size = 40
+text = "CHANGE TURN
+"
+
+[node name="Deck" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("4_n4ffv")
+
+[node name="Hands" type="HBoxContainer" parent="CanvasLayer/Deck"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -280.0
+offset_right = 112.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Card" parent="CanvasLayer/Deck/Hands" instance=ExtResource("4_7vlpe")]
+layout_mode = 2
+
+[node name="Card2" parent="CanvasLayer/Deck/Hands" instance=ExtResource("4_7vlpe")]
+layout_mode = 2
+card_type = "Innate"
+card_texture = ExtResource("5_v6ljp")
+
+[node name="Card3" parent="CanvasLayer/Deck/Hands" instance=ExtResource("4_7vlpe")]
+layout_mode = 2
+card_type = "Attack"
+card_texture = ExtResource("6_ya1mx")
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Deck"]
+
 [node name="Bg" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(191, 270)
 texture = ExtResource("13_srsit")
-
-[node name="TacticsCamera" parent="." instance=ExtResource("2_pxgfw")]
 
 [node name="TileMap" type="TileMap" parent="."]
 visible = false
@@ -75,6 +163,7 @@ script = ExtResource("2_w1kn0")
 grid = ExtResource("2_0r2mq")
 
 [node name="Cursor" parent="GameBoard" instance=ExtResource("8_4uheh")]
+z_index = 1
 position = Vector2(400, 33)
 
 [node name="Player" type="Node2D" parent="GameBoard"]
@@ -99,59 +188,20 @@ player_id = 6
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-
-[node name="TurnBasedUI" type="NinePatchRect" parent="Control"]
-layout_mode = 0
-offset_left = -1023.0
-offset_top = -713.0
-offset_right = -763.0
-offset_bottom = -453.0
-texture = ExtResource("12_mny6s")
-patch_margin_left = 102
-patch_margin_right = 102
-
-[node name="TurnBasedIcons" type="HBoxContainer" parent="Control/TurnBasedUI"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 240.0
-offset_bottom = 250.0
-
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 0
-offset_top = -396.0
-offset_right = 40.0
-offset_bottom = -373.0
-theme_override_fonts/font = ExtResource("11_jjinn")
-theme_override_font_sizes/font_size = 32
-
-[node name="TurnChanger" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = -364.0
-offset_top = -416.0
-offset_right = -36.0
-offset_bottom = -358.0
-theme_override_fonts/font = ExtResource("11_jjinn")
-theme_override_font_sizes/font_size = 40
-text = "CHANGE TURN
-"
+[node name="Unit3" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
+position = Vector2(883, 519)
+player_id = 6
+_animation_resource = ExtResource("11_601eb")
+_animation_state_machine = ExtResource("12_e2jf1")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-offset_left = -584.0
-offset_top = 514.0
-offset_right = 896.0
-offset_bottom = 994.0
-texture = ExtResource("9_brwvi")
+[node name="TacticsCamera" parent="." instance=ExtResource("2_pxgfw")]
+position = Vector2(960, 540)
 
 [connection signal="ally_turn_started" from="." to="." method="_on_ally_turn_started"]
 [connection signal="enemy_turn_started" from="." to="." method="_on_enemy_turn_started"]
+[connection signal="pressed" from="CanvasLayer/UI/TurnChanger" to="." method="_on_button_pressed"]
 [connection signal="accept_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_accept_pressed"]
 [connection signal="moved" from="GameBoard/Cursor" to="GameBoard" method="_check_hoverable_tiles"]
-[connection signal="pressed" from="Control/TurnChanger" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

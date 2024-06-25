@@ -4,6 +4,7 @@
 
 [node name="TurnBasedIcon" type="TextureRect"]
 self_modulate = Color(0.5, 0.5, 0.5, 1)
+custom_minimum_size = Vector2(92, 96)
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_qpen8")

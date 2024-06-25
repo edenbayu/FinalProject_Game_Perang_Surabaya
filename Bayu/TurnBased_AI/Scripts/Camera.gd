@@ -5,6 +5,12 @@ const MOVE_SPEED = 16
 const ROT_SPEED = 10
 
 var target = null
+var direction = Vector2.ZERO
+const speed := 300
+var moveable := false
+
+func _ready():
+	moveable = true
 
 func follow() -> void:
 	if !target: return
@@ -17,4 +23,18 @@ func follow() -> void:
 	if from.distance_to(to) <= 0.25: target = null
 
 func _process(delta):
-	follow()
+	if not moveable:
+		follow()
+
+func _physics_process(delta):
+	if moveable:
+		_move_cam()
+
+func _move_cam() -> void:
+	direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
+	
+	if direction:
+		velocity = direction * speed
+	else:
+		velocity = Vector2.ZERO
+	move_and_slide()

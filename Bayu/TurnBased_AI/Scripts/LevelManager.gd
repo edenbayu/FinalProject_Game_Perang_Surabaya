@@ -2,10 +2,10 @@ extends Node2D
 class_name LevelManager
 
 #var turnManager = TurnManager.new()
-@onready var UI_CONTROLLER = $Control/TurnChanger
-@onready var ui_container = $Control/TurnBasedUI/TurnBasedIcons
-@onready var turn_based = $Control/TurnBasedUI
-@onready var label = $Control/Label
+@onready var UI_CONTROLLER = $CanvasLayer/UI/TurnChanger
+@onready var ui_container : HBoxContainer = $CanvasLayer/UI/TurnBasedUI/TurnBasedIcons
+@onready var turn_based = $CanvasLayer/UI/TurnBasedUI
+@onready var label = $CanvasLayer/UI/Label
 @onready var timer: Timer = $Timer
 @onready var player = $GameBoard/Player
 @onready var enemy = $GameBoard/Enemy
@@ -43,6 +43,7 @@ func set_turn():
 func _reinitialize() -> void:
 	_units.clear()
 	_icons.clear()
+	
 	##Getting the move_speed stats from player node
 	for child in player.get_children():
 		var unit := child as Unit
@@ -108,7 +109,6 @@ func _end_turn()-> void:
 	_units[turn_index].is_selected = false
 	_icons[turn_index].is_active = false
 	turn_index = (turn_index + 1) % _units.size()
-	gameboard.unitPath.clear()
 	emit_signal("turn_changed")
 	if turn_index == 0:
 		_reinitialize_icon()

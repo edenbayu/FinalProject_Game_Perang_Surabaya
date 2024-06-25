@@ -21,6 +21,7 @@ var _is_clickable := false:
 	
 
 func _ready() -> void:
+	pass
 	_initiallize_unit_pos()
 	_reinitialize()
 	unitPath.clear_cells(grid)
@@ -90,9 +91,6 @@ func _select_unit(unit: Unit) -> void:
 		#return
 	_active_unit = unit
 	_active_unit.is_selected = true
-	_walkable_cells = get_walkable_cells(_active_unit)
-	unitPath.draw(_walkable_cells)
-	unitPath.initialize(_walkable_cells)
 
 ## Returns an array of cells a given unit can walk using the flood fill algorithm.
 func get_walkable_cells(unit: Unit) -> Array:
@@ -265,3 +263,28 @@ func get_lowest_hp_unit():
 		if not player: pass
 		player_hp[player.nama] = player.curr_health
 	print(player_hp.values().min())
+
+func testing_card():
+	_walkable_cells = get_walkable_cells(_active_unit)
+	unitPath.draw(_walkable_cells)
+	unitPath.initialize(_walkable_cells)
+
+func walk():
+	print("Gooo!")
+
+func innate_reload():
+	print("show desc of reload")
+
+func reload():
+	print("buckle up! reloading..")
+
+func attack():
+	print("show desc of attack")
+
+func show_attack():
+	_attack_cells = get_attack_range_cells(_active_unit)
+	unitPath.display_attack_range(_attack_cells)
+	unitPath.initialize(_attack_cells)
+
+func delete_walk_tiles():
+	unitPath.clear()

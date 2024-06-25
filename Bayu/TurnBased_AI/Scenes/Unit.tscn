@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://20i4en7e2fm7"]
+[gd_scene load_steps=10 format=3 uid="uid://20i4en7e2fm7"]
 
 [ext_resource type="Script" path="res://Scripts/Unit.gd" id="1_u70hk"]
+[ext_resource type="Texture2D" uid="uid://ciqfa4thchwq" path="res://Sprites/Soerjo.png" id="2_kjqop"]
 [ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="3_ox0gf"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="4_6vypo"]
 
@@ -28,6 +29,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_m3qby"]
 length = 0.45
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -51,6 +53,7 @@ script = ExtResource("1_u70hk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, -47)
+texture = ExtResource("2_kjqop")
 hframes = 8
 vframes = 12
 frame = 3

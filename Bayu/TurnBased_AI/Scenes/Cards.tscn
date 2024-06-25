@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://buy1bcvgkg2p4"]
+
+[ext_resource type="Script" path="res://Scripts/Card.gd" id="1_1aaj4"]
+[ext_resource type="Shader" path="res://Scenes/fake3D.gdshader" id="2_fh62h"]
+[ext_resource type="Texture2D" uid="uid://bww4af4bnxvr6" path="res://UI/Cards/boots_movement_innate.png" id="2_nn5ui"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5e6xj"]
+resource_local_to_scene = true
+shader = ExtResource("2_fh62h")
+shader_parameter/rect_size = Vector2(224, 280)
+shader_parameter/fov = 90.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+
+[node name="Card" type="Button"]
+custom_minimum_size = Vector2(224, 280)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("1_1aaj4")
+
+[node name="CardTexture" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_5e6xj")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_nn5ui")
+
+[node name="Description" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_top = -80.0
+offset_right = 224.0
+offset_bottom = -10.0
+
+[node name="TextureRect" type="TextureRect" parent="Description"]
+layout_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
