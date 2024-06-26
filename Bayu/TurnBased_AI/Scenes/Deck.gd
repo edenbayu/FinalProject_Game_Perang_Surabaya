@@ -1,3 +1,4 @@
+class_name Deck
 extends Control
 
 @onready var timer = $Timer

@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://buy1bcvgkg2p4"]
+[gd_scene load_steps=7 format=3 uid="uid://buy1bcvgkg2p4"]
 
 [ext_resource type="Script" path="res://Scripts/Card.gd" id="1_1aaj4"]
 [ext_resource type="Shader" path="res://Scenes/fake3D.gdshader" id="2_fh62h"]
 [ext_resource type="Texture2D" uid="uid://bww4af4bnxvr6" path="res://UI/Cards/boots_movement_innate.png" id="2_nn5ui"]
+[ext_resource type="Texture2D" uid="uid://c25jxjr2sp87t" path="res://UI/CardDescription.png" id="4_lcvjh"]
+[ext_resource type="FontFile" uid="uid://ckcjaglh8r12d" path="res://UI/DePixelBreit.ttf" id="5_yvg24"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5e6xj"]
 resource_local_to_scene = true
@@ -32,6 +34,7 @@ offset_bottom = 40.0
 texture = ExtResource("2_nn5ui")
 
 [node name="Description" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_top = -80.0
 offset_right = 224.0
@@ -39,6 +42,15 @@ offset_bottom = -10.0
 
 [node name="TextureRect" type="TextureRect" parent="Description"]
 layout_mode = 2
+texture = ExtResource("4_lcvjh")
+expand_mode = 1
+
+[node name="DescriptionText" type="RichTextLabel" parent="Description"]
+custom_minimum_size = Vector2(210, 66)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_yvg24")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

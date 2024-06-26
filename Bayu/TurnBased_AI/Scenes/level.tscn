@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://patekpdib63w"]
+[gd_scene load_steps=25 format=3 uid="uid://patekpdib63w"]
 
 [ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="1_54tt6"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_hgg8q"]
@@ -10,14 +10,19 @@
 [ext_resource type="PackedScene" uid="uid://20i4en7e2fm7" path="res://Scenes/Unit.tscn" id="3_7kb1e"]
 [ext_resource type="PackedScene" uid="uid://buy1bcvgkg2p4" path="res://Scenes/Cards.tscn" id="4_7vlpe"]
 [ext_resource type="Script" path="res://Scenes/Deck.gd" id="4_n4ffv"]
+[ext_resource type="Texture2D" uid="uid://t6fvglavpu4g" path="res://UI/EndTurn.png" id="4_qw0um"]
 [ext_resource type="Texture2D" uid="uid://yjy6ctv6yeog" path="res://UI/Cards/reload_innate.png" id="5_v6ljp"]
-[ext_resource type="Texture2D" uid="uid://dq68p2ptk1206" path="res://UI/Cards/katana_rare.png" id="6_ya1mx"]
+[ext_resource type="Texture2D" uid="uid://dnjlyhbchq5x8" path="res://UI/Cards/pistol_epic.png" id="7_h7on0"]
 [ext_resource type="PackedScene" uid="uid://b1t8iyisfbe0v" path="res://Scenes/Cursor.tscn" id="8_4uheh"]
 [ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="11_601eb"]
 [ext_resource type="FontFile" uid="uid://bs41epct36unk" path="res://UI/I-pixel-u.ttf" id="11_jjinn"]
 [ext_resource type="Script" path="res://Scenes/EnemyController.gd" id="12_bpvfk"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="12_e2jf1"]
 [ext_resource type="Texture2D" uid="uid://c6uqkdvdwgqgn" path="res://Sprites/BG.png" id="13_srsit"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t2hkw"]
+content_margin_bottom = 10.0
+texture = ExtResource("4_qw0um")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_otxub"]
 texture = ExtResource("1_ja282")
@@ -60,15 +65,16 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
 [node name="TurnBasedUI" type="NinePatchRect" parent="CanvasLayer/UI"]
 layout_mode = 1
-offset_right = 100.0
-offset_bottom = 104.0
+offset_left = 13.0
+offset_top = 15.0
+offset_right = 113.0
+offset_bottom = 119.0
 texture = ExtResource("2_c3kva")
 patch_margin_left = 40
 patch_margin_right = 40
@@ -89,14 +95,22 @@ theme_override_fonts/font = ExtResource("11_jjinn")
 theme_override_font_sizes/font_size = 32
 
 [node name="TurnChanger" type="Button" parent="CanvasLayer/UI"]
-layout_mode = 0
-offset_left = 1548.0
-offset_top = 102.0
-offset_right = 1876.0
-offset_bottom = 160.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -405.0
+offset_top = -166.0
+offset_right = -77.0
+offset_bottom = -106.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("11_jjinn")
 theme_override_font_sizes/font_size = 40
-text = "CHANGE TURN
+theme_override_styles/normal = SubResource("StyleBoxTexture_t2hkw")
+text = "END TURN
 "
 
 [node name="Deck" type="Control" parent="CanvasLayer"]
@@ -126,16 +140,19 @@ alignment = 1
 
 [node name="Card" parent="CanvasLayer/Deck/Hands" instance=ExtResource("4_7vlpe")]
 layout_mode = 2
+card_description = "[p][b][center]Walk[/center][/b][/p][p][center]move your unit in range[/center][/p]"
 
 [node name="Card2" parent="CanvasLayer/Deck/Hands" instance=ExtResource("4_7vlpe")]
 layout_mode = 2
 card_type = "Innate"
 card_texture = ExtResource("5_v6ljp")
+card_description = "[p][b][center]Reload[/center][/b][/p][p][center]Fully reffill the magazine[/center][/p]"
 
 [node name="Card3" parent="CanvasLayer/Deck/Hands" instance=ExtResource("4_7vlpe")]
 layout_mode = 2
 card_type = "Attack"
-card_texture = ExtResource("6_ya1mx")
+card_texture = ExtResource("7_h7on0")
+card_description = "[p][b][i][center]Nambu[/center][/i][/b][/p][p][center]Damage: 3[/center][/p][p][center]Range: 3[/center][/p]"
 
 [node name="Timer" type="Timer" parent="CanvasLayer/Deck"]
 
@@ -177,7 +194,7 @@ _animation_state_machine = ExtResource("12_e2jf1")
 script = ExtResource("12_bpvfk")
 
 [node name="Unit" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
-position = Vector2(883, 519)
+position = Vector2(1360, 519)
 player_id = 6
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")

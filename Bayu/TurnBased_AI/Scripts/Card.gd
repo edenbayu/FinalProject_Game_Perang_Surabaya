@@ -11,6 +11,12 @@ extends Button
 		if not _texture:
 			await ready
 		_texture.texture = value
+@export var card_description : String:
+	set(value):
+		card_description = value
+		if not _description:
+			await ready
+		_description.text = value
 
 var tween_rot: Tween
 var tween_hover: Tween
@@ -20,6 +26,7 @@ var tween_handle: Tween
 signal card_chose
 
 @onready var _texture := $CardTexture
+@onready var _description := $Description/DescriptionText
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	angle_x_max = deg_to_rad(angle_x_max)

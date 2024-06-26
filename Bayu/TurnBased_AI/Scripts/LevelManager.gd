@@ -11,6 +11,7 @@ class_name LevelManager
 @onready var enemy = $GameBoard/Enemy
 @onready var gameboard : GameBoard = $GameBoard
 @onready var tactics_camera : TacticsCamera = $TacticsCamera
+@onready var deck : Deck = $CanvasLayer/Deck
 
 signal enemy_turn_started(icon: TextureRect)
 signal ally_turn_started
@@ -105,6 +106,7 @@ func _on_timer_timeout():
 	_end_turn()
 
 func _end_turn()-> void:
+	deck.on_card_chosen()
 	active_icon.texture = _active_unit.inactive_icon
 	_units[turn_index].is_selected = false
 	_icons[turn_index].is_active = false
