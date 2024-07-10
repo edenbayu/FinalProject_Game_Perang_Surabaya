@@ -13,6 +13,8 @@ var is_within_map: bool
 var _walkable_cells := []
 var _attack_cells := []
 var _units := {}
+var selected_ability = null
+var selected_type = null
 
 var _is_clickable := false:
 	set(value):
@@ -73,18 +75,25 @@ func _check_hoverable_tiles(cell: Vector2) -> void:
 	elif !unitPath.local_to_map(cell) in unitPath.get_walkable_cells():
 		cursor.visible = false
 	is_within_map = cursor.visible
-	_is_clickable = cursor.visible 
+	#_is_clickable = cursor.visible 
 
 func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 	var mapped_cell: Vector2 = unitPath.local_to_map(cell)
-	_move_active_unit(mapped_cell)
-	#if _is_clickable:
-		#if not LevelManager.active_unit:
-			##_select_unit(mapped_cell)
-			#pass
-		#elif LevelManager.active_unit.is_selected:
-			#_move_active_unit(mapped_cell)
+	if selected_ability == null:
+		print("choose your ability first!")
+		return
+	match selected_ability:
+		"walk":
+			_move_active_unit(mapped_cell)
 
+func on_card_clicked(card_type, card_ability) -> void:
+	match card_type:
+		"innate":
+			selected_ability = card_ability
+			selected_type = card_type
+			print("WOI", selected_ability)
+		"modular":
+			print("iki yo bener modular rek!")
 ## Returns an array of cells a given unit can walk using the flood fill algorithm.
 func get_walkable_cells(unit: Unit) -> Array:
 	return _flood_fill(unit.cell, unit.move_range)
@@ -257,9 +266,11 @@ func get_lowest_hp_unit():
 	print(player_hp.values().min())
 
 func testing_card():
-	_walkable_cells = get_walkable_cells(LevelManager.active_unit)
-	unitPath.draw(_walkable_cells)
-	unitPath.initialize(_walkable_cells)
+	print("kondisi innate: ", LevelManager.active_unit.innate_card)
+	if LevelManager.active_unit.innate_card:
+		_walkable_cells = get_walkable_cells(LevelManager.active_unit)
+		unitPath.draw(_walkable_cells)
+		unitPath.initialize(_walkable_cells)
 
 func walk():
 	print("Gooo!")
@@ -274,9 +285,11 @@ func attack():
 	print("show desc of attack")
 
 func show_attack():
-	_attack_cells = get_attack_range_cells(LevelManager.active_unit)
-	unitPath.display_attack_range(_attack_cells)
-	unitPath.initialize(_attack_cells)
+	print(LevelManager.active_unit.modular_card)
+	if LevelManager.active_unit.modular_card:
+		_attack_cells = get_attack_range_cells(LevelManager.active_unit)
+		unitPath.display_attack_range(_attack_cells)
+		unitPath.initialize(_attack_cells)
 
 func delete_walk_tiles():
 	unitPath.clear()

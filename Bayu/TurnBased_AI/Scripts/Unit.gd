@@ -157,13 +157,13 @@ func _process(delta: float):
 		emit_signal("walk_finished")
 
 func _physics_process(delta):
-		if _is_walking:
-			var target_pos = walk_coordinates.front()
-			cell = path.local_to_map(target_pos) 
-			last_direction = check_direction(target_pos)
-			position = position.move_toward(target_pos, move_speed*delta)
-			if position == target_pos:
-				walk_coordinates.pop_front()
+	if _is_walking:
+		var target_pos = walk_coordinates.front()
+		cell = path.local_to_map(target_pos) 
+		last_direction = check_direction(target_pos)
+		position = position.move_toward(target_pos, move_speed*delta)
+		if position == target_pos:
+			walk_coordinates.pop_front()
 
 func check_direction(next_tile) -> Vector2:
 	var direction_vector = sign(next_tile - global_position)

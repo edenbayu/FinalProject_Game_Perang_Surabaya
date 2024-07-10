@@ -75,6 +75,7 @@ func match_card_functionalities():
 					kartu.card_chose.connect(inactive_innate_ability)
 					kartu.card_chose.connect(disable_innate_card)
 					kartu.card_chose.connect(on_card_chosen)
+					kartu.on_card_selected.connect(gameboard.on_card_clicked)
 					#kartu.pressed.connect(spawn_new_card)
 					#kartu.mouse_exited.connect(gameboard.delete_walk_tiles)
 				'Innate':
@@ -82,9 +83,9 @@ func match_card_functionalities():
 					kartu.card_chose.connect(gameboard.reload)
 				'Attack':
 					kartu.mouse_entered.connect(gameboard.show_attack)
-					kartu.card_chose.connect(gameboard.attack)
-					kartu.card_chose.connect(on_card_chosen)
+					kartu.card_chose.connect(inactive_modular_ability)
 					kartu.card_chose.connect(disable_modular_card)
+					kartu.card_chose.connect(on_card_chosen)
 
 		match kartu.card_attribute:
 			'innate':
@@ -94,6 +95,9 @@ func match_card_functionalities():
 
 func inactive_innate_ability() ->void:
 	LevelManager.active_unit.innate_card = false
+
+func inactive_modular_ability() ->void:
+	LevelManager.active_unit.modular_card = false
 
 func disable_innate_card() -> void:
 	for card in hands.get_children():

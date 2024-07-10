@@ -316,6 +316,13 @@ _animation_state_machine = ExtResource("12_e2jf1")
 hframe = 7
 vframe = 4
 
+[node name="Soerjo2" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
+position = Vector2(594, 190)
+_animation_resource = ExtResource("11_601eb")
+_animation_state_machine = ExtResource("12_e2jf1")
+hframe = 7
+vframe = 4
+
 [node name="Enemy" type="Node2D" parent="GameBoard"]
 script = ExtResource("12_bpvfk")
 

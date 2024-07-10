@@ -33,6 +33,7 @@ var tween_handle: Tween
 var tween_steady: Tween
 
 signal card_chose
+signal on_card_selected(tipe_kartu, ability_kartu)
 
 @onready var _texture := $CardTexture
 @onready var _back_texture := $BackCardTexture
@@ -81,7 +82,8 @@ func handle_mouse_click(event: InputEvent) -> void:
 	
 	if event.is_pressed() and not disabled:
 		disabled = true
-		emit_signal("card_chose")
+		card_chose.emit()
+		on_card_selected.emit(card_attribute, card_type)
 
 		
 func _on_mouse_entered() -> void:
