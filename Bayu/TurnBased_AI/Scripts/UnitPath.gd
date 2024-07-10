@@ -11,12 +11,12 @@ func initialize(walkable_cells: Array) -> void:
 func draw(cells: Array) -> void:
 	clear()
 	for cell in cells:
-		set_cell(0, cell, 0, Vector2i(0,0))
+		set_cell(0, cell, 0, Vector2i(0,0), 0)
 
 func display_attack_range(cells: Array) -> void:
 	clear()
 	for cell in cells:
-		set_cell(0, cell, 0, Vector2i(2,0))
+		set_cell(0, cell, 0, Vector2i(2,0), 0)
 
 ## Finds and draws the path between `cell_start` and `cell_end`
 func get_walk_path(cell_start: Vector2, cell_end: Vector2) -> void:
@@ -38,7 +38,7 @@ func clear_cells(grid_data: Grid) -> void:
 		for y in range(grid_data.start_rect.y, grid_data.start_rect.y + grid_data.tilemap_size.y):
 			cells.append(Vector2(x, y))
 	for cell in cells:
-		set_cell(0, cell, 0, Vector2i(2,0))
+		set_cell(0, cell, 0, Vector2i(1, 0), 0)
 
 func calculate_distance(start_pos: Vector2, target_pos: Vector2) -> int:
 	get_walk_path(start_pos, target_pos)

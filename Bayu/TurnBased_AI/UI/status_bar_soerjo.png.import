@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp5owcpdffn22"
-path="res://.godot/imported/cursor.png-97af3808e5ea1d52e364c821589a41df.ctex"
+uid="uid://co5cxs0cea2ob"
+path="res://.godot/imported/status_bar_soerjo.png-723820b5746b27d81668fc25e6ad62cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/cursor.png"
-dest_files=["res://.godot/imported/cursor.png-97af3808e5ea1d52e364c821589a41df.ctex"]
+source_file="res://UI/status_bar_soerjo.png"
+dest_files=["res://.godot/imported/status_bar_soerjo.png-723820b5746b27d81668fc25e6ad62cc.ctex"]
 
 [params]
 

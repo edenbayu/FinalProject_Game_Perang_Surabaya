@@ -1,14 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://buy1bcvgkg2p4"]
+[gd_scene load_steps=12 format=3 uid="uid://buy1bcvgkg2p4"]
 
 [ext_resource type="Script" path="res://Scripts/Card.gd" id="1_1aaj4"]
-[ext_resource type="Shader" path="res://Scenes/fake3D.gdshader" id="2_fh62h"]
-[ext_resource type="Texture2D" uid="uid://bww4af4bnxvr6" path="res://UI/Cards/boots_movement_innate.png" id="2_nn5ui"]
+[ext_resource type="Shader" path="res://Resources/fake3D.gdshader" id="2_2epsc"]
+[ext_resource type="Texture2D" uid="uid://2rywicw1yf6v" path="res://UI/Cards/nimbu.png" id="3_rgwn2"]
 [ext_resource type="Texture2D" uid="uid://c25jxjr2sp87t" path="res://UI/CardDescription.png" id="4_lcvjh"]
+[ext_resource type="Texture2D" uid="uid://b2iv24q76rkvt" path="res://UI/Cards/back.png" id="4_nnsi5"]
 [ext_resource type="FontFile" uid="uid://ckcjaglh8r12d" path="res://UI/DePixelBreit.ttf" id="5_yvg24"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5e6xj"]
 resource_local_to_scene = true
-shader = ExtResource("2_fh62h")
+shader = ExtResource("2_2epsc")
+shader_parameter/rect_size = Vector2(224, 280)
+shader_parameter/fov = 45.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = -90.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aln5h"]
+resource_local_to_scene = true
+shader = ExtResource("2_2epsc")
 shader_parameter/rect_size = Vector2(224, 280)
 shader_parameter/fov = 90.0
 shader_parameter/cull_back = true
@@ -16,22 +27,103 @@ shader_parameter/y_rot = 0.0
 shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
 
+[sub_resource type="Animation" id="Animation_druu0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackCardTexture:material:shader_parameter/y_rot")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardTexture:material:shader_parameter/y_rot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-90.0]
+}
+
+[sub_resource type="Animation" id="Animation_igxft"]
+resource_name = "card_enter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackCardTexture:material:shader_parameter/y_rot")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -90.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardTexture:material:shader_parameter/y_rot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [90.0, 1.71e-05]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_igspg"]
+_data = {
+"RESET": SubResource("Animation_druu0"),
+"card_enter": SubResource("Animation_igxft")
+}
+
 [node name="Card" type="Button"]
 custom_minimum_size = Vector2(224, 280)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -1696.0
+offset_bottom = -800.0
 grow_horizontal = 2
 grow_vertical = 2
 flat = true
 script = ExtResource("1_1aaj4")
 
 [node name="CardTexture" type="TextureRect" parent="."]
+z_index = -1
 material = SubResource("ShaderMaterial_5e6xj")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -140.0
+offset_right = 112.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_rgwn2")
+
+[node name="BackCardTexture" type="TextureRect" parent="."]
+clip_children = 2
+material = SubResource("ShaderMaterial_aln5h")
+custom_minimum_size = Vector2(224, 280)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_nn5ui")
+texture = ExtResource("4_nnsi5")
 
 [node name="Description" type="MarginContainer" parent="."]
 visible = false
@@ -51,6 +143,12 @@ layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("5_yvg24")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_igspg")
+}
+autoplay = "card_enter"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

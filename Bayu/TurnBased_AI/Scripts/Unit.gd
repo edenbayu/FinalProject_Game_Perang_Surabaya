@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 ## Emitted when the unit reached the end of a path along which it was walking.
 signal walk_finished
+signal data_configured
 
 @export var player_id := 1
 
@@ -12,6 +13,23 @@ signal walk_finished
 @export var _animation_state_machine: AnimationNodeStateMachine
 @onready var _animation := $AnimationPlayer
 @onready var _animationTree := $AnimationTree
+@onready var fsm : FiniteStateMachine = $FiniteStateMachine
+@onready var idle_state: IdleState = $FiniteStateMachine/IdleState
+
+## Cuma untuk debugging sementara, nanti benerin njih ##
+@export var hframe: int:
+	set(value):
+		hframe = value
+		if not _sprite:
+			await ready
+		_sprite.hframes = value
+
+@export var vframe: int:
+	set(value):
+		vframe = value
+		if not _sprite:
+			await ready
+		_sprite.vframes = value
 
 var database : SQLite
 var attack_range : int
@@ -19,6 +37,10 @@ var current_dir : String
 var last_direction := Vector2.ZERO
 
 var _is_idle : bool
+#Flag that indicates wheter card has been used or not
+var innate_card := false
+var modular_card := false
+
 
 ## Coordinates of the current cell the cursor moved to.
 var cell := Vector2.ZERO:
@@ -107,6 +129,7 @@ func _configure() -> void:
 		inactive_icon = inactive_icon_data
 		skin = texture
 		unit_role = data.role
+	emit_signal("data_configured")
 
 func _ready():
 	_configure()
@@ -118,6 +141,10 @@ func _ready():
 func walk():
 	_is_walking = true
 	_is_idle = false
+
+func activate_ability_cards() -> void:
+	innate_card = true
+	modular_card = true
 
 func _process(delta: float):
 	_update_animation_condition()

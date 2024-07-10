@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://patekpdib63w"]
+[gd_scene load_steps=29 format=3 uid="uid://patekpdib63w"]
 
 [ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="1_54tt6"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_hgg8q"]
@@ -7,16 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://bb1s8fhbukv66" path="res://Scenes/Camera.tscn" id="2_pxgfw"]
 [ext_resource type="Script" path="res://Scripts/UnitPath.gd" id="2_w1kn0"]
 [ext_resource type="PackedScene" uid="uid://20i4en7e2fm7" path="res://Scenes/Unit.tscn" id="3_7kb1e"]
+[ext_resource type="PackedScene" uid="uid://buy1bcvgkg2p4" path="res://Scenes/Cards.tscn" id="4_7vlpe"]
 [ext_resource type="Script" path="res://Scenes/Deck.gd" id="4_n4ffv"]
 [ext_resource type="Texture2D" uid="uid://t6fvglavpu4g" path="res://UI/EndTurn.png" id="4_qw0um"]
 [ext_resource type="Texture2D" uid="uid://co5cxs0cea2ob" path="res://UI/status_bar_soerjo.png" id="5_eo26c"]
-[ext_resource type="Script" path="res://Scenes/StatusUI.gd" id="6_4eeb0"]
-[ext_resource type="Shader" path="res://Scenes/burn.gdshader" id="7_4j1oy"]
-[ext_resource type="Shader" path="res://Scenes/dissolve.gdshader" id="7_wckpu"]
-[ext_resource type="Texture2D" uid="uid://cvta2lgj4lfww" path="res://UI/dissolve.png" id="8_3yyag"]
+[ext_resource type="Texture2D" uid="uid://yjy6ctv6yeog" path="res://UI/Cards/reload_innate.png" id="5_v6ljp"]
+[ext_resource type="Texture2D" uid="uid://bww4af4bnxvr6" path="res://UI/Cards/boots_movement_innate.png" id="7_or51u"]
+[ext_resource type="Shader" path="res://Scenes/Shine.gdshader" id="7_yuwut"]
 [ext_resource type="PackedScene" uid="uid://b1t8iyisfbe0v" path="res://Scenes/Cursor.tscn" id="8_4uheh"]
-[ext_resource type="Texture2D" uid="uid://nunbe0hanbsd" path="res://UI/innate_status_ui.png" id="8_r03ek"]
-[ext_resource type="Texture2D" uid="uid://bq07uefqpafdi" path="res://UI/modular_status_ui.png" id="9_6n57g"]
+[ext_resource type="Texture2D" uid="uid://cpjb1sotjltt8" path="res://UI/Cards/revamp_nimbu_rare.png" id="10_6jhtb"]
 [ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="11_601eb"]
 [ext_resource type="FontFile" uid="uid://bs41epct36unk" path="res://UI/I-pixel-u.ttf" id="11_jjinn"]
 [ext_resource type="Script" path="res://Scenes/EnemyController.gd" id="12_bpvfk"]
@@ -28,109 +27,35 @@
 content_margin_bottom = 10.0
 texture = ExtResource("4_qw0um")
 
-[sub_resource type="Animation" id="Animation_pfk2h"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Modular:material:shader_parameter/dissolve_value")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/dissolve_value")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-
-[sub_resource type="Animation" id="Animation_qhocx"]
-resource_name = "burn_innate_card"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/dissolve_value")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"card_burned"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_e8keg"]
-resource_name = "burn_modular_card"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Modular:material:shader_parameter/dissolve_value")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"modular_card_finish_burned"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bejng"]
-_data = {
-"RESET": SubResource("Animation_pfk2h"),
-"burn_innate_card": SubResource("Animation_qhocx"),
-"burn_modular_card": SubResource("Animation_e8keg")
-}
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5un84"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wcft1"]
 resource_local_to_scene = true
-shader = ExtResource("7_4j1oy")
-shader_parameter/dissolve_value = 1.0
-shader_parameter/dissolve_texture = ExtResource("8_3yyag")
+shader = ExtResource("7_yuwut")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/inner_stroke_thickness = 1.0
+shader_parameter/inner_stroke_opacity = 1.0
+shader_parameter/inside_opacity = 0.0
+shader_parameter/frequency = 8.0
+shader_parameter/phase_speed = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jewqy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_daejt"]
 resource_local_to_scene = true
-shader = ExtResource("7_wckpu")
-shader_parameter/dissolve_value = 1.0
-shader_parameter/dissolve_texture = ExtResource("8_3yyag")
+shader = ExtResource("7_yuwut")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/inner_stroke_thickness = 1.0
+shader_parameter/inner_stroke_opacity = 1.0
+shader_parameter/inside_opacity = 0.0
+shader_parameter/frequency = 8.0
+shader_parameter/phase_speed = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qpp0e"]
+resource_local_to_scene = true
+shader = ExtResource("7_yuwut")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/inner_stroke_thickness = 1.0
+shader_parameter/inner_stroke_opacity = 1.0
+shader_parameter/inside_opacity = 0.0
+shader_parameter/frequency = 8.0
+shader_parameter/phase_speed = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vlgfa"]
 texture = ExtResource("13_vtw6r")
@@ -170,9 +95,8 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
-offset_top = 11.0
 offset_right = 50.0
-offset_bottom = 115.0
+offset_bottom = 100.0
 grow_horizontal = 2
 texture = ExtResource("2_c3kva")
 patch_margin_left = 40
@@ -224,41 +148,12 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 30
 text = "x"
 
-[node name="StatusUI" type="TextureRect" parent="CanvasLayer/UI"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI"]
 custom_minimum_size = Vector2(576, 320)
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -320.0
 offset_right = 576.0
-grow_vertical = 0
+offset_bottom = 320.0
 texture = ExtResource("5_eo26c")
-script = ExtResource("6_4eeb0")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI/StatusUI"]
-root_node = NodePath("../Ability/Innate")
-libraries = {
-"": SubResource("AnimationLibrary_bejng")
-}
-
-[node name="Ability" type="HBoxContainer" parent="CanvasLayer/UI/StatusUI"]
-layout_mode = 0
-offset_left = 366.0
-offset_top = 219.0
-offset_right = 406.0
-offset_bottom = 259.0
-theme_override_constants/separation = 15
-
-[node name="Innate" type="TextureRect" parent="CanvasLayer/UI/StatusUI/Ability"]
-material = SubResource("ShaderMaterial_5un84")
-layout_mode = 2
-texture = ExtResource("8_r03ek")
-
-[node name="Modular" type="TextureRect" parent="CanvasLayer/UI/StatusUI/Ability"]
-material = SubResource("ShaderMaterial_jewqy")
-layout_mode = 2
-texture = ExtResource("9_6n57g")
 
 [node name="Deck" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -278,12 +173,32 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -384.0
+offset_left = -112.0
 offset_top = -280.0
-offset_right = 524.0
+offset_right = 112.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
+
+[node name="Card" parent="CanvasLayer/Deck/Hands" instance=ExtResource("4_7vlpe")]
+material = SubResource("ShaderMaterial_wcft1")
+layout_mode = 2
+card_texture = ExtResource("7_or51u")
+card_description = "[p][b][center]Walk[/center][/b][/p][p][center]move your unit in range[/center][/p]"
+
+[node name="Card2" parent="CanvasLayer/Deck/Hands" instance=ExtResource("4_7vlpe")]
+material = SubResource("ShaderMaterial_daejt")
+layout_mode = 2
+card_type = "Innate"
+card_texture = ExtResource("5_v6ljp")
+card_description = "[p][b][center]Reload[/center][/b][/p][p][center]Fully reffill the magazine[/center][/p]"
+
+[node name="Card3" parent="CanvasLayer/Deck/Hands" instance=ExtResource("4_7vlpe")]
+material = SubResource("ShaderMaterial_qpp0e")
+layout_mode = 2
+card_type = "Attack"
+card_texture = ExtResource("10_6jhtb")
+card_description = "[p][b][i][center]Nambu[/center][/i][/b][/p][p][center]Damage: 3[/center][/p][p][center]Range: 3[/center][/p]"
 
 [node name="Timer" type="Timer" parent="CanvasLayer/Deck"]
 
@@ -329,6 +244,14 @@ vframe = 12
 
 [node name="Unit2" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
 position = Vector2(442, 678)
+player_id = 6
+_animation_resource = ExtResource("11_601eb")
+_animation_state_machine = ExtResource("12_e2jf1")
+hframe = 8
+vframe = 12
+
+[node name="Unit3" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
+position = Vector2(827, 423)
 player_id = 6
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")

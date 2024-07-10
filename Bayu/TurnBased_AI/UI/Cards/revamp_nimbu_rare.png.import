@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp5owcpdffn22"
-path="res://.godot/imported/cursor.png-97af3808e5ea1d52e364c821589a41df.ctex"
+uid="uid://cpjb1sotjltt8"
+path="res://.godot/imported/revamp_nimbu_rare.png-958f0b526ea6b4a2cf371a2a4776a0c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/cursor.png"
-dest_files=["res://.godot/imported/cursor.png-97af3808e5ea1d52e364c821589a41df.ctex"]
+source_file="res://UI/Cards/revamp_nimbu_rare.png"
+dest_files=["res://.godot/imported/revamp_nimbu_rare.png-958f0b526ea6b4a2cf371a2a4776a0c0.ctex"]
 
 [params]
 

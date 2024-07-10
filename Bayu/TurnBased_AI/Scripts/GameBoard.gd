@@ -13,7 +13,6 @@ var is_within_map: bool
 var _walkable_cells := []
 var _attack_cells := []
 var _units := {}
-var _active_unit: Unit
 
 var _is_clickable := false:
 	set(value):
@@ -61,7 +60,7 @@ func _initiallize_unit_pos() -> void:
 		unit.cell = unitPath.local_to_map(unit.position)
 
 func _unhandled_input(event: InputEvent):
-	if _active_unit and event.is_action("ui_cancel"):
+	if LevelManager.active_unit and event.is_action("ui_cancel"):
 		_deselect_active_unit()
 		_clear_active_unit()
 
@@ -78,19 +77,13 @@ func _check_hoverable_tiles(cell: Vector2) -> void:
 
 func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 	var mapped_cell: Vector2 = unitPath.local_to_map(cell)
-	if _is_clickable:
-		if not _active_unit:
-			#_select_unit(mapped_cell)
-			pass
-		elif _active_unit.is_selected:
-			_move_active_unit(mapped_cell)
-
-##Function yang terhubung dengan cursor click
-func _select_unit(unit: Unit) -> void:
-	#if not _units.has(cell):
-		#return
-	_active_unit = unit
-	_active_unit.is_selected = true
+	_move_active_unit(mapped_cell)
+	#if _is_clickable:
+		#if not LevelManager.active_unit:
+			##_select_unit(mapped_cell)
+			#pass
+		#elif LevelManager.active_unit.is_selected:
+			#_move_active_unit(mapped_cell)
 
 ## Returns an array of cells a given unit can walk using the flood fill algorithm.
 func get_walkable_cells(unit: Unit) -> Array:
@@ -169,28 +162,27 @@ func is_occupied(cell: Vector2) -> bool:
 func _move_active_unit(new_cell: Vector2) -> void:
 	if is_occupied(new_cell) or not new_cell in _walkable_cells:
 		return
-	unitPath.get_walk_path(_active_unit.cell, new_cell)
+	unitPath.get_walk_path(LevelManager.active_unit.cell, new_cell)
 	unitPath.current_path.remove_at(0) #Makes sure that the current path isn't walkable
 	var new_path := []
 	for i in unitPath.current_path:
 		i = unitPath.map_to_local(i)
 		new_path.append(i)
-	_active_unit.walk_coordinates = new_path 
+	LevelManager.active_unit.walk_coordinates = new_path 
 	##Menghapus active unit setelah selesai bergerak
-	_units.erase(_active_unit.cell)
-	_units[new_cell] = _active_unit
+	_units.erase(LevelManager.active_unit.cell)
+	_units[new_cell] = LevelManager.active_unit
 	_deselect_active_unit()
-	_active_unit.walk()
-	await _active_unit.walk_finished
+	LevelManager.active_unit.walk()
+	await LevelManager.active_unit.walk_finished
 	_clear_active_unit()
 
 ## Deselects the active unit, clearing the cells overlay and interactive path drawing.
 func _deselect_active_unit() -> void:
-	_active_unit.is_selected = false
+	LevelManager.active_unit.is_selected = false
 	unitPath.clear_cells(grid)
 
 func _clear_active_unit() -> void:
-	#_active_unit = null
 	_walkable_cells.clear()
 
 func _update() -> void:
@@ -222,7 +214,7 @@ func _sort_index(a: Unit, b: Unit) -> bool:
 		return a.cell.x < b.cell.x
 
 func _on_attack():
-	_attack_cells = get_attack_range_cells(_active_unit)
+	_attack_cells = get_attack_range_cells(LevelManager.active_unit)
 	unitPath.display_attack_range(_attack_cells)
 	unitPath.initialize(_attack_cells)
 	#for target in _attack_cells:
@@ -247,7 +239,7 @@ func get_nearest_neighbor_unit():
 		var player = unit as Unit
 		if not player:
 			pass
-		var  distance: int = unitPath.calculate_distance(_active_unit.cell, player.cell)
+		var  distance: int = unitPath.calculate_distance(LevelManager.active_unit.cell, player.cell)
 		print("jarak ke ", player.nama, ": ", distance)
 		if distance < min_distance:
 			min_distance = distance
@@ -265,7 +257,7 @@ func get_lowest_hp_unit():
 	print(player_hp.values().min())
 
 func testing_card():
-	_walkable_cells = get_walkable_cells(_active_unit)
+	_walkable_cells = get_walkable_cells(LevelManager.active_unit)
 	unitPath.draw(_walkable_cells)
 	unitPath.initialize(_walkable_cells)
 
@@ -282,7 +274,7 @@ func attack():
 	print("show desc of attack")
 
 func show_attack():
-	_attack_cells = get_attack_range_cells(_active_unit)
+	_attack_cells = get_attack_range_cells(LevelManager.active_unit)
 	unitPath.display_attack_range(_attack_cells)
 	unitPath.initialize(_attack_cells)
 

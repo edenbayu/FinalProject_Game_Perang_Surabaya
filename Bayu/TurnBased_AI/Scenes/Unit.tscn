@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://20i4en7e2fm7"]
+[gd_scene load_steps=12 format=3 uid="uid://20i4en7e2fm7"]
 
 [ext_resource type="Script" path="res://Scripts/Unit.gd" id="1_u70hk"]
-[ext_resource type="Texture2D" uid="uid://ciqfa4thchwq" path="res://Sprites/Soerjo.png" id="2_kjqop"]
+[ext_resource type="Texture2D" uid="uid://c766m3iwx0tik" path="res://Sprites/Suryo.png" id="2_4l34f"]
 [ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="3_ox0gf"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="4_6vypo"]
+[ext_resource type="Script" path="res://Scenes/FiniteStateMachine.gd" id="5_w7fm6"]
+[ext_resource type="Script" path="res://Scripts/IdleState.gd" id="6_jy6vm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwmta"]
 
@@ -52,10 +54,10 @@ _data = {
 script = ExtResource("1_u70hk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, -47)
-texture = ExtResource("2_kjqop")
-hframes = 8
-vframes = 12
+position = Vector2(2, -34)
+texture = ExtResource("2_4l34f")
+hframes = 7
+vframes = 4
 frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -69,6 +71,7 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 libraries = {
 "": SubResource("AnimationLibrary_cyab2"),
 "Jepang_animation": SubResource("AnimationLibrary_0eh6d"),
@@ -80,3 +83,12 @@ parameters/conditions/is_idle = true
 parameters/conditions/is_walking = false
 parameters/Idle/blend_position = Vector2(1, 1)
 parameters/Walk/blend_position = Vector2(0, 0)
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("5_w7fm6")
+state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("6_jy6vm")
+
+[connection signal="data_configured" from="." to="FiniteStateMachine" method="initiate_fsm"]
