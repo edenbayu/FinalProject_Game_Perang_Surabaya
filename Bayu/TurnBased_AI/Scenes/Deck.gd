@@ -5,6 +5,7 @@ extends Control
 @onready var hands = $Hands
 @onready var status_ui = $"../UI/StatusUI"
 @onready var gameboard :GameBoard = $"../../GameBoard"
+signal card_unseen
 
 var database = SQLite
 
@@ -32,15 +33,15 @@ func on_card_chosen():
 	var tween : Tween
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween.tween_property($Hands, "position", Vector2($Hands.position.x, 200), 1)
-	timer_setart()
+	card_unseen.emit()
 
-func timer_setart():
-	timer.start(1.5)
-
-func _on_timer_timeout():
+func show_card():
 	var tween : Tween
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween.tween_property($Hands, "position", Vector2($Hands.position.x, -280), 1)
+
+func _on_timer_timeout():
+	pass
 
 #Fungsi untuk menginstansiasi kartu baru sesuai dengan unit
 func spawn_new_card(result):
@@ -72,9 +73,9 @@ func match_card_functionalities():
 			match kartu.card_type:
 				'Walk':
 					kartu.mouse_entered.connect(gameboard.testing_card)
-					kartu.card_chose.connect(inactive_innate_ability)
-					kartu.card_chose.connect(disable_innate_card)
-					kartu.card_chose.connect(on_card_chosen)
+					#kartu.card_chose.connect(inactive_innate_ability)
+					#kartu.card_chose.connect(disable_innate_card)
+					#kartu.card_chose.connect(on_card_chosen)
 					kartu.on_card_selected.connect(gameboard.on_card_clicked)
 					#kartu.pressed.connect(spawn_new_card)
 					#kartu.mouse_exited.connect(gameboard.delete_walk_tiles)
@@ -86,12 +87,6 @@ func match_card_functionalities():
 					kartu.card_chose.connect(inactive_modular_ability)
 					kartu.card_chose.connect(disable_modular_card)
 					kartu.card_chose.connect(on_card_chosen)
-
-		match kartu.card_attribute:
-			'innate':
-				kartu.card_chose.connect(status_ui.burn_innate_card)
-			'modular':
-				kartu.card_chose.connect(status_ui.burn_modular_card)
 
 func inactive_innate_ability() ->void:
 	LevelManager.active_unit.innate_card = false
@@ -114,3 +109,10 @@ func disable_modular_card() -> void:
 			card._back_texture.material["shader_parameter/y_rot"] = 0
 			card._back_texture.use_parent_material = true
 			card._back_texture.modulate = Color(0.50, 0.5, 0.5)
+
+func reset_card() -> void:
+	for card in hands.get_children():
+		card.disabled = false
+		card._back_texture.material["shader_parameter/y_rot"] = 90
+		card._back_texture.use_parent_material = false
+		card._back_texture.modulate = Color (1.0, 1.0, 1.0)

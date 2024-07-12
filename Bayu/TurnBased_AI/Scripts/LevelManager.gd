@@ -100,6 +100,8 @@ func _on_ally_turn_started(unit: Unit) -> void:
 	active_unit.is_selected = true
 	label.text = "It's your turn: " + str(unit.nama)
 	UI_CONTROLLER.visible = true
+	deck.reset_card()
+	deck.show_card()
 
 # Signal handler for enemy turn started
 func _on_enemy_turn_started(unit: Unit) -> void:
@@ -140,6 +142,7 @@ func _active_icon() -> void:
 	tactics_camera.target = active_unit
 	active_unit.is_selected = true
 	active_icon = _icons[turn_index]
+	active_icon.is_active = true
 	if active_icon:
 		active_icon.texture = active_unit.icon
 

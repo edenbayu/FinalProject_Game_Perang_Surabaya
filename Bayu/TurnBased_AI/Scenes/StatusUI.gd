@@ -23,3 +23,7 @@ func burn_modular_card() -> void:
 
 func modular_card_finish_burned() -> void:
 	get_node("Ability/Modular").visible = false
+
+func reset_card_status() -> void:
+	get_node("Ability/Innate").visible = true
+	get_node("Ability/Modular").visible = true

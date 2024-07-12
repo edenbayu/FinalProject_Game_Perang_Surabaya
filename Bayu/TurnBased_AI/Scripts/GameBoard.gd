@@ -8,6 +8,8 @@ const DIRECTIONS = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
 @onready var cursor = $Cursor
 @onready var player = $Player
 @onready var enemy = $Enemy
+@onready var deck = $"../CanvasLayer/Deck" as Deck
+@onready var status_ui : StatusUI = $"../CanvasLayer/UI/StatusUI"
 
 var is_within_map: bool
 var _walkable_cells := []
@@ -83,17 +85,31 @@ func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 		print("choose your ability first!")
 		return
 	match selected_ability:
-		"walk":
+		"Walk":
 			_move_active_unit(mapped_cell)
+		"Reload":
+			reload()
+		"Attack":
+			attack()
+	match selected_type:
+		'innate':
+			status_ui.burn_innate_card()
+			deck.disable_innate_card()
+		'modular':
+			status_ui.burn_modular_card()
+			deck.disable_modular_card()
+	deck.show_card()
 
 func on_card_clicked(card_type, card_ability) -> void:
-	match card_type:
-		"innate":
-			selected_ability = card_ability
-			selected_type = card_type
-			print("WOI", selected_ability)
-		"modular":
-			print("iki yo bener modular rek!")
+	selected_ability = card_ability
+	selected_type = card_type
+	deck.on_card_chosen()
+	#match card_type:
+		#"innate":
+			#deck.on_card_chosen()
+		#"modular":
+			#pass
+
 ## Returns an array of cells a given unit can walk using the flood fill algorithm.
 func get_walkable_cells(unit: Unit) -> Array:
 	return _flood_fill(unit.cell, unit.move_range)
@@ -188,7 +204,7 @@ func _move_active_unit(new_cell: Vector2) -> void:
 
 ## Deselects the active unit, clearing the cells overlay and interactive path drawing.
 func _deselect_active_unit() -> void:
-	LevelManager.active_unit.is_selected = false
+	#LevelManager.active_unit.is_selected = false
 	unitPath.clear_cells(grid)
 
 func _clear_active_unit() -> void:
