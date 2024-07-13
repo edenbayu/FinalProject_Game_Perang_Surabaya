@@ -25,5 +25,7 @@ func modular_card_finish_burned() -> void:
 	get_node("Ability/Modular").visible = false
 
 func reset_card_status() -> void:
+	get_node("Ability/Innate").material["shader_parameter/dissolve_value"] = 1
+	get_node("Ability/Modular").material["shader_parameter/dissolve_value"] = 1
 	get_node("Ability/Innate").visible = true
 	get_node("Ability/Modular").visible = true

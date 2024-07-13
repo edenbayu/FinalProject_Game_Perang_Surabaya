@@ -99,11 +99,14 @@ func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 			status_ui.burn_modular_card()
 			deck.disable_modular_card()
 	deck.show_card()
+	selected_ability = null
+	selected_type = null
 
 func on_card_clicked(card_type, card_ability) -> void:
 	selected_ability = card_ability
 	selected_type = card_type
 	deck.on_card_chosen()
+	print("tipe kartu: ", selected_type, "ability: ", selected_ability)
 	#match card_type:
 		#"innate":
 			#deck.on_card_chosen()

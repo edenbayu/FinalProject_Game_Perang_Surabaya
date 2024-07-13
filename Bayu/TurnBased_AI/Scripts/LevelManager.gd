@@ -15,6 +15,7 @@ static var active_unit: Unit
 @onready var gameboard : GameBoard = $GameBoard
 @onready var tactics_camera : TacticsCamera = $TacticsCamera
 @onready var deck : Deck = $CanvasLayer/Deck
+@onready var status_ui : StatusUI = $CanvasLayer/UI/StatusUI
 
 signal enemy_turn_started(icon: TextureRect)
 signal ally_turn_started
@@ -102,6 +103,7 @@ func _on_ally_turn_started(unit: Unit) -> void:
 	UI_CONTROLLER.visible = true
 	deck.reset_card()
 	deck.show_card()
+	status_ui.reset_card_status()
 
 # Signal handler for enemy turn started
 func _on_enemy_turn_started(unit: Unit) -> void:

@@ -84,9 +84,10 @@ func match_card_functionalities():
 					kartu.card_chose.connect(gameboard.reload)
 				'Attack':
 					kartu.mouse_entered.connect(gameboard.show_attack)
-					kartu.card_chose.connect(inactive_modular_ability)
-					kartu.card_chose.connect(disable_modular_card)
-					kartu.card_chose.connect(on_card_chosen)
+					kartu.on_card_selected.connect(gameboard.on_card_clicked)
+					#kartu.card_chose.connect(inactive_modular_ability)
+					#kartu.card_chose.connect(disable_modular_card)
+					#kartu.card_chose.connect(on_card_chosen)
 
 func inactive_innate_ability() ->void:
 	LevelManager.active_unit.innate_card = false
