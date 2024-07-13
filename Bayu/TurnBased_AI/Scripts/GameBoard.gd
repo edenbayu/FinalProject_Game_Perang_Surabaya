@@ -95,17 +95,21 @@ func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 		'innate':
 			status_ui.burn_innate_card()
 			deck.disable_innate_card()
+			deck.inactive_innate_ability()
 		'modular':
 			status_ui.burn_modular_card()
 			deck.disable_modular_card()
+			deck.inactive_modular_ability()
 	deck.show_card()
 	selected_ability = null
 	selected_type = null
+	cursor.is_visible = false
 
 func on_card_clicked(card_type, card_ability) -> void:
 	selected_ability = card_ability
 	selected_type = card_type
 	deck.on_card_chosen()
+	cursor.is_visible = true
 	print("tipe kartu: ", selected_type, "ability: ", selected_ability)
 	#match card_type:
 		#"innate":
@@ -267,6 +271,7 @@ func get_nearest_neighbor_unit():
 		var player = unit as Unit
 		if not player:
 			pass
+		print(player.cell, "HAHAHA")
 		var  distance: int = unitPath.calculate_distance(LevelManager.active_unit.cell, player.cell)
 		print("jarak ke ", player.nama, ": ", distance)
 		if distance < min_distance:
@@ -301,6 +306,7 @@ func reload():
 	print("buckle up! reloading..")
 
 func attack():
+	_deselect_active_unit()
 	print("show desc of attack")
 
 func show_attack():
@@ -310,5 +316,5 @@ func show_attack():
 		unitPath.display_attack_range(_attack_cells)
 		unitPath.initialize(_attack_cells)
 
-func delete_walk_tiles():
-	unitPath.clear()
+func _clear_attack_cells() -> void:
+	_attack_cells.clear()

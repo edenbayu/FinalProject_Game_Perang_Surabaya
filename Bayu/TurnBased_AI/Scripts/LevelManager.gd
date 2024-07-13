@@ -36,8 +36,8 @@ func _ready():
 	
 	#Change this code later into a more proper way
 	turn_based.size.x += (len(ui_container.get_children()) - 1) * ui_container.size.x
-	for icon in ui_container.get_children():
-		turn_based.position.x -= icon.size.x / 2
+	#for icon in ui_container.get_children():
+		#turn_based.position.x -= icon.size.x / 2
 	label.text = "It's your turn: " + str(_units[turn_index].nama)
 
 func _process(delta):
@@ -82,6 +82,7 @@ func _reinitialize() -> void:
 	#Aktifkan card
 	active_unit.innate_card = true
 	active_unit.modular_card = true
+	print("aktif unit: ", LevelManager.active_unit)
 
 func _reinitialize_icon() -> void:
 	for child in ui_container.get_children():
@@ -104,6 +105,8 @@ func _on_ally_turn_started(unit: Unit) -> void:
 	deck.reset_card()
 	deck.show_card()
 	status_ui.reset_card_status()
+	await status_ui.status_bar_has_exit
+	status_ui.transition_enter()
 
 # Signal handler for enemy turn started
 func _on_enemy_turn_started(unit: Unit) -> void:
@@ -138,6 +141,7 @@ func _end_turn()-> void:
 		_reinitialize()
 		print("new_cycle")
 	set_turn()
+	status_ui.transition_exit()
 
 func _active_icon() -> void:
 	active_unit = _units[turn_index]

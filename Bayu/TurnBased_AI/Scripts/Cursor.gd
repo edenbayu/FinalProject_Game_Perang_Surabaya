@@ -1,24 +1,26 @@
 class_name Cursor
 extends Node2D
 
-@onready var _timer: Timer = $Timer
 #Emitted ketika melakukan click pada cell yang sedang ditunjuk
 signal accept_pressed(cell)
 #Emitted ketika kursor bergerak ke cell baru
 signal moved(new_cell)
 #Waktu sebelum mouse dapat berpindah lagi
-@export var cursor_ui_cooldown := 0.1
 
 ### PR BENARKAN CURSOR LOCATOR SESUAIKAN DENGAN TILEMAP### ->> DONE [v]
 var cell := Vector2.ZERO:
 	set(value):
 		var new_cell: Vector2 = get_global_mouse_position()
 		cell = new_cell
-		_timer.start()
+
+var is_visible := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_timer.wait_time = cursor_ui_cooldown
+	pass
+
+func _process(_delta):
+	visible = is_visible
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Navigating cells with the mouse (update cell baed on hovered mouse).
