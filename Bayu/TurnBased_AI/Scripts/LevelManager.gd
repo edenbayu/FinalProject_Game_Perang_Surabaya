@@ -131,6 +131,7 @@ func _on_timer_timeout():
 func _end_turn()-> void:
 	deck.on_card_chosen()
 	active_icon.texture = active_unit.inactive_icon
+	gameboard._deselect_active_unit()
 	_units[turn_index].is_selected = false
 	_icons[turn_index].is_active = false
 	active_unit = null

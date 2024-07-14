@@ -330,16 +330,16 @@ position = Vector2(62, 552)
 player_id = 6
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
-hframe = 8
-vframe = 12
+hframe = 7
+vframe = 1
 
 [node name="Unit2" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
 position = Vector2(442, 678)
 player_id = 6
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
-hframe = 8
-vframe = 12
+hframe = 7
+vframe = 1
 
 [node name="Timer" type="Timer" parent="."]
 
