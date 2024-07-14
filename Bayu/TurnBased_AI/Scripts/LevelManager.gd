@@ -36,8 +36,8 @@ func _ready():
 	
 	#Change this code later into a more proper way
 	turn_based.size.x += (len(ui_container.get_children()) - 1) * ui_container.size.x
-	#for icon in ui_container.get_children():
-		#turn_based.position.x -= icon.size.x / 2
+	for icon in ui_container.get_children():
+		turn_based.position.x -= icon.size.x / 2
 	label.text = "It's your turn: " + str(_units[turn_index].nama)
 
 func _process(delta):

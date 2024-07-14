@@ -166,8 +166,13 @@ mouse_filter = 2
 [node name="TurnBasedUI" type="NinePatchRect" parent="CanvasLayer/UI"]
 custom_minimum_size = Vector2(100, 104)
 layout_mode = 1
-offset_right = 100.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
 offset_bottom = 104.0
+grow_horizontal = 2
 texture = ExtResource("2_c3kva")
 patch_margin_left = 40
 patch_margin_right = 40

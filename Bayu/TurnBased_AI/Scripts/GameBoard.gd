@@ -271,12 +271,13 @@ func get_nearest_neighbor_unit():
 		var player = unit as Unit
 		if not player:
 			pass
-		print(player.cell, "HAHAHA")
+		unitPath.initialize(_walkable_cells)
 		var  distance: int = unitPath.calculate_distance(LevelManager.active_unit.cell, player.cell)
 		print("jarak ke ", player.nama, ": ", distance)
 		if distance < min_distance:
 			min_distance = distance
 			nearest_unit = player
+	print("Terdekat: ", nearest_unit)
 	return nearest_unit
 
 func get_lowest_hp_unit():

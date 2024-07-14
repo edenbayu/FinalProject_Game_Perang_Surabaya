@@ -9,7 +9,6 @@ func _ready():
 	transition_enter()
 
 func transition_exit() -> void:
-	print("posisi sekarang: ", self.position)
 	self.position.x = 0
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween.tween_property(self, "position", Vector2(-577, self.position.y), 2)
