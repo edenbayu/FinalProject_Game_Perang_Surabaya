@@ -1,58 +1,276 @@
-[gd_scene load_steps=3 format=3 uid="uid://c37pm7mm8vkex"]
+[gd_scene load_steps=55 format=3 uid="uid://c37pm7mm8vkex"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_3xyrq"]
 [ext_resource type="FontFile" uid="uid://be1488wacuvuy" path="res://I-pixel-u.ttf" id="1_i2uaj"]
+[ext_resource type="Texture2D" uid="uid://cu3g0piko2lec" path="res://UI/mainmenu.png" id="2_r0hqn"]
+[ext_resource type="Texture2D" uid="uid://c1pt5kfm162v4" path="res://UI/koran.png" id="3_xw3nl"]
+[ext_resource type="Texture2D" uid="uid://c1swi8r35lmoc" path="res://UI/normal-continue-button.png" id="4_b7h7j"]
+[ext_resource type="Texture2D" uid="uid://bw4lrgkno7w08" path="res://UI/hover-continue-button.png" id="5_noen7"]
+[ext_resource type="Texture2D" uid="uid://6bw5v53kb33r" path="res://UI/pressed-continue-button.png" id="6_41i71"]
+[ext_resource type="Texture2D" uid="uid://csx05essrvk6j" path="res://UI/disabled-continue-button.png" id="7_g4iyq"]
+[ext_resource type="Texture2D" uid="uid://jlto1ot6vi5q" path="res://UI/normal-load-button.png" id="8_relwa"]
+[ext_resource type="Texture2D" uid="uid://bcb7o4gf7co3k" path="res://UI/hover-load-button.png" id="9_dr0a1"]
+[ext_resource type="Texture2D" uid="uid://c347nnmlo2l3e" path="res://UI/pressed-load-button.png" id="10_hnccg"]
+[ext_resource type="Texture2D" uid="uid://cy5s6ytmld618" path="res://UI/disabled-load-button.png" id="11_5ssxc"]
+[ext_resource type="Texture2D" uid="uid://bal5ntf2lv4bh" path="res://UI/normal-new-button.png" id="11_scyhw"]
+[ext_resource type="Texture2D" uid="uid://dglt83vir0qvu" path="res://UI/hover-new-button.png" id="12_f2ks1"]
+[ext_resource type="Texture2D" uid="uid://bu62uydoelr5h" path="res://UI/pressed-new-button.png" id="13_fkvh3"]
+[ext_resource type="Texture2D" uid="uid://wk6747ghmekb" path="res://UI/normal-setting-button.png" id="14_txthe"]
+[ext_resource type="Texture2D" uid="uid://b06qcy8d3vff1" path="res://UI/hover-setting-button.png" id="15_g47xg"]
+[ext_resource type="Texture2D" uid="uid://b7w5nbdpefq7a" path="res://UI/pressed-setting-button.png" id="16_3dn6b"]
+[ext_resource type="Texture2D" uid="uid://duy4gu636iyr8" path="res://UI/normal-credit-button.png" id="17_docoa"]
+[ext_resource type="Texture2D" uid="uid://n3ryi5xv5xy0" path="res://UI/hover-credit-button.png" id="18_pvqe1"]
+[ext_resource type="Texture2D" uid="uid://rcxu1t7hcu1n" path="res://UI/pressed-credit-button.png" id="19_232b3"]
+[ext_resource type="Texture2D" uid="uid://cvp8qckiliw7p" path="res://UI/normal-exit-button.png" id="20_j2lrx"]
+[ext_resource type="Texture2D" uid="uid://bfdf0diulke8c" path="res://UI/hover-exit-button.png" id="21_b8886"]
+[ext_resource type="Texture2D" uid="uid://cbjulex7vtr7k" path="res://UI/pressed-exit-button.png" id="22_bdnkj"]
+[ext_resource type="AudioStream" uid="uid://cg5446grhdqwa" path="res://audio/sad-violin-150146.mp3" id="24_la518"]
+[ext_resource type="Texture2D" uid="uid://cbrnoljinuaks" path="res://UI/Pengatoeran.png" id="25_o6xex"]
+[ext_resource type="Texture2D" uid="uid://c201apo5ty5v4" path="res://UI/grabber_normal.png" id="26_60y8o"]
+[ext_resource type="Texture2D" uid="uid://bjp14b8offso5" path="res://UI/grabber_hover.png" id="27_4woc3"]
+[ext_resource type="Texture2D" uid="uid://fyyqbdpkct0g" path="res://UI/grabber_pressed.png" id="28_2yhdt"]
+[ext_resource type="Texture2D" uid="uid://q3yxnq0br23y" path="res://UI/slider_resized.png" id="29_m7f6f"]
+[ext_resource type="Texture2D" uid="uid://bfnse754es4ou" path="res://UI/slider_content_resized.png" id="30_2dsib"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qobcn"]
+texture = ExtResource("4_b7h7j")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5c12h"]
+texture = ExtResource("5_noen7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ueam"]
+texture = ExtResource("6_41i71")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jlubq"]
+texture = ExtResource("7_g4iyq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sbs8q"]
+texture = ExtResource("8_relwa")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sl1bf"]
+texture = ExtResource("9_dr0a1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bfd2t"]
+texture = ExtResource("10_hnccg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6xveo"]
+texture = ExtResource("11_5ssxc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n51pm"]
+texture = ExtResource("11_scyhw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sgarh"]
+texture = ExtResource("12_f2ks1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jftbc"]
+texture = ExtResource("13_fkvh3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t742a"]
+texture = ExtResource("14_txthe")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vinxr"]
+texture = ExtResource("15_g47xg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1g871"]
+texture = ExtResource("16_3dn6b")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lxv1p"]
+texture = ExtResource("17_docoa")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l8i8i"]
+texture = ExtResource("18_pvqe1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ubrq8"]
+texture = ExtResource("19_232b3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vta1f"]
+texture = ExtResource("20_j2lrx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vfq4y"]
+texture = ExtResource("21_b8886")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cj036"]
+texture = ExtResource("22_bdnkj")
+
+[sub_resource type="GDScript" id="GDScript_yvs77"]
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_75ori"]
+content_margin_top = 20.0
+texture = ExtResource("29_m7f6f")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m0d1c"]
+content_margin_top = 20.0
+texture = ExtResource("30_2dsib")
+texture_margin_left = 8.0
+texture_margin_right = 8.0
 
 [node name="Main Menu" type="Node2D"]
 script = ExtResource("1_3xyrq")
 
-[node name="Button Manage" type="Control" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_r0hqn")
+
+[node name="Koran" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_xw3nl")
+
+[node name="MainMenu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1154.0
-offset_bottom = 650.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Button Manage"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -215.0
-offset_top = -95.0
-offset_right = 216.0
-offset_bottom = 143.0
+offset_left = 23.0
+offset_top = -49.0
+offset_right = 547.0
+offset_bottom = 379.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
-[node name="Continue Game" type="Button" parent="Button Manage/VBoxContainer"]
+[node name="ContinueGame" type="Button" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(524, 68)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i2uaj")
-text = "CONTINUE GAME"
+theme_override_styles/normal = SubResource("StyleBoxTexture_qobcn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5c12h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5ueam")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_jlubq")
+disabled = true
 
-[node name="Load Game" type="Button" parent="Button Manage/VBoxContainer"]
+[node name="LoadGame" type="Button" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(524, 68)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i2uaj")
-text = "LOAD GAME"
+theme_override_styles/normal = SubResource("StyleBoxTexture_sbs8q")
+theme_override_styles/hover = SubResource("StyleBoxTexture_sl1bf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bfd2t")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_6xveo")
+disabled = true
 
-[node name="New Game" type="Button" parent="Button Manage/VBoxContainer"]
+[node name="New Game" type="Button" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(524, 68)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i2uaj")
-text = "NEW GAME"
+theme_override_styles/normal = SubResource("StyleBoxTexture_n51pm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_sgarh")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jftbc")
 
-[node name="Setting Game" type="Button" parent="Button Manage/VBoxContainer"]
+[node name="Setting Game" type="Button" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(524, 68)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i2uaj")
-text = "OPTIONS"
+theme_override_styles/normal = SubResource("StyleBoxTexture_t742a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vinxr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1g871")
 
-[node name="Exit" type="Button" parent="Button Manage/VBoxContainer"]
+[node name="Credit" type="Button" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(524, 68)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_lxv1p")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l8i8i")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ubrq8")
+
+[node name="Exit" type="Button" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(524, 68)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i2uaj")
-text = "EXIT"
+theme_override_styles/normal = SubResource("StyleBoxTexture_vta1f")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vfq4y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cj036")
 
-[connection signal="pressed" from="Button Manage/VBoxContainer/Continue Game" to="." method="_on_continue_game_pressed"]
-[connection signal="pressed" from="Button Manage/VBoxContainer/Load Game" to="." method="_on_load_game_pressed"]
-[connection signal="pressed" from="Button Manage/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="Button Manage/VBoxContainer/Setting Game" to="." method="_on_setting_game_pressed"]
-[connection signal="pressed" from="Button Manage/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[node name="Pengaturan" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_yvs77")
+
+[node name="Pengatoeran" type="TextureRect" parent="Pengaturan"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("25_o6xex")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pengaturan"]
+layout_mode = 0
+offset_left = 976.0
+offset_top = 611.0
+offset_right = 1500.0
+offset_bottom = 1039.0
+theme_override_constants/separation = 90
+
+[node name="MasterSlider" type="HSlider" parent="Pengaturan/VBoxContainer"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("26_60y8o")
+theme_override_icons/grabber_highlight = ExtResource("27_4woc3")
+theme_override_icons/grabber_disabled = ExtResource("28_2yhdt")
+theme_override_icons/tick = ExtResource("28_2yhdt")
+theme_override_styles/slider = SubResource("StyleBoxTexture_75ori")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_m0d1c")
+
+[node name="MasterSlider2" type="HSlider" parent="Pengaturan/VBoxContainer"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("26_60y8o")
+theme_override_icons/grabber_highlight = ExtResource("27_4woc3")
+theme_override_icons/grabber_disabled = ExtResource("28_2yhdt")
+theme_override_icons/tick = ExtResource("28_2yhdt")
+theme_override_styles/slider = SubResource("StyleBoxTexture_75ori")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_m0d1c")
+
+[node name="MasterSlider3" type="HSlider" parent="Pengaturan/VBoxContainer"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("26_60y8o")
+theme_override_icons/grabber_highlight = ExtResource("27_4woc3")
+theme_override_icons/grabber_disabled = ExtResource("28_2yhdt")
+theme_override_icons/tick = ExtResource("28_2yhdt")
+theme_override_styles/slider = SubResource("StyleBoxTexture_75ori")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_m0d1c")
+
+[node name="Button" type="Button" parent="Pengaturan"]
+layout_mode = 0
+offset_left = 1178.0
+offset_top = 950.0
+offset_right = 1249.0
+offset_bottom = 981.0
+text = "Kembali"
+
+[node name="main_menu_back_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_la518")
+volume_db = -80.0
+
+[connection signal="pressed" from="MainMenu/VBoxContainer/ContinueGame" to="." method="_on_continue_game_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/Setting Game" to="." method="_on_setting_game_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Pengaturan/Button" to="." method="on_back_button_pressed"]

@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch6jugr8u8o1j"]
+[gd_scene load_steps=5 format=3 uid="uid://ch6jugr8u8o1j"]
 
 [ext_resource type="Script" path="res://Control.gd" id="1_mjbxy"]
 [ext_resource type="AudioStream" uid="uid://gvv8tsaqhgx" path="res://pianos-by-jtwayne-7-174717.mp3" id="2_0oo2b"]
 [ext_resource type="AudioStream" uid="uid://b54qi46yrmv47" path="res://sunflower-street-drumloop-85bpm-163900.mp3" id="3_nde3f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vyry"]
+content_margin_left = 460.0
+content_margin_top = 460.0
+bg_color = Color(0, 0.358648, 0.361283, 1)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(511, 214)
@@ -29,6 +34,7 @@ text = "SFX"
 
 [node name="HSlider" type="HSlider" parent="Control/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_8vyry")
 min_value = -30.0
 max_value = 0.0
 

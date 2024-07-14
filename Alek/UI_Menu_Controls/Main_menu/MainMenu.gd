@@ -3,18 +3,31 @@ extends Node
 var save_data : SQLite
 var created_new_save_data := false
 var level = null
-@onready var continue_button = $"Button Manage/VBoxContainer/Continue Game"
-@onready var load_button = $"Button Manage/VBoxContainer/Load Game"
+@onready var continue_button = $"MainMenu/VBoxContainer/ContinueGame"
+@onready var load_button = $"MainMenu/VBoxContainer/LoadGame"
+@onready var main_menu_music = $main_menu_back_music
+@onready var setting = $Pengaturan
+@onready var menu = $MainMenu
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	menu.visible = true
+	setting.visible = false
+	main_menu_music.volume_db = -50
+	main_menu_music.stream.loop = true
+	main_menu_music.play()
 	_check_new_date()
-	continue_button.visible = false
-	load_button.visible = false
+	continue_button.visible = true
+	load_button.visible = true
 	created_new_save_data = false
 	_open_database()
 	_get_savings_data()
 
+func backsound_low_to_high(delta):
+	main_menu_music.volume_db += linear_to_db(8.0) * delta
+	if main_menu_music.volume_db >= -10:
+		main_menu_music.volume_db = -10
+		
 func _open_database():
 	save_data = SQLite.new()
 	save_data.path = "res://save.db"
@@ -30,7 +43,7 @@ func _get_savings_data():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	backsound_low_to_high(delta)
 
 func _on_new_game_pressed():
 	save_data.query("Select id, level_name, last_saved_time from level")
@@ -65,7 +78,8 @@ func _on_load_game_pressed():
 	get_tree().change_scene_to_file("res://main_menu.tscn")
 
 func _on_setting_game_pressed():
-	get_tree().change_scene_to_file("res://node_2d.tscn")
+	setting.visible = true
+	#get_tree().change_scene_to_file("res://node_2d.tscn")
 	
 func _on_exit_pressed():
 	get_tree().quit()
@@ -80,3 +94,8 @@ func _match_loaded_save(chapter: String):
 		"Chapter Two" : pass #get scene ke Chapter kedua
 		"Chapter Three" : get_tree().change_scene_to_file("res://chapter_three.tscn")
 	
+
+
+func on_back_button_pressed() -> void:
+	menu.visible = true
+	setting.visible = false
