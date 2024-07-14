@@ -1,6 +1,6 @@
 [gd_scene load_steps=55 format=3 uid="uid://c37pm7mm8vkex"]
 
-[ext_resource type="Script" path="res://MainMenu.gd" id="1_3xyrq"]
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_3xyrq"]
 [ext_resource type="FontFile" uid="uid://be1488wacuvuy" path="res://I-pixel-u.ttf" id="1_i2uaj"]
 [ext_resource type="Texture2D" uid="uid://cu3g0piko2lec" path="res://UI/mainmenu.png" id="2_r0hqn"]
 [ext_resource type="Texture2D" uid="uid://c1pt5kfm162v4" path="res://UI/koran.png" id="3_xw3nl"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://bfdf0diulke8c" path="res://UI/hover-exit-button.png" id="21_b8886"]
 [ext_resource type="Texture2D" uid="uid://cbjulex7vtr7k" path="res://UI/pressed-exit-button.png" id="22_bdnkj"]
 [ext_resource type="AudioStream" uid="uid://cg5446grhdqwa" path="res://audio/sad-violin-150146.mp3" id="24_la518"]
+[ext_resource type="Script" path="res://Pengaturan.gd" id="25_7er1m"]
 [ext_resource type="Texture2D" uid="uid://cbrnoljinuaks" path="res://UI/Pengatoeran.png" id="25_o6xex"]
 [ext_resource type="Texture2D" uid="uid://c201apo5ty5v4" path="res://UI/grabber_normal.png" id="26_60y8o"]
 [ext_resource type="Texture2D" uid="uid://bjp14b8offso5" path="res://UI/grabber_hover.png" id="27_4woc3"]
@@ -91,20 +92,6 @@ texture = ExtResource("21_b8886")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cj036"]
 texture = ExtResource("22_bdnkj")
-
-[sub_resource type="GDScript" id="GDScript_yvs77"]
-script/source = "extends Control
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_75ori"]
 content_margin_top = 20.0
@@ -206,14 +193,15 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_vta1f")
 theme_override_styles/hover = SubResource("StyleBoxTexture_vfq4y")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_cj036")
 
-[node name="Pengaturan" type="Control" parent="."]
+[node name="Pengaturan" type="Control" parent="." node_paths=PackedStringArray("main_menu_music")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_yvs77")
+script = ExtResource("25_7er1m")
+main_menu_music = NodePath("../main_menu_back_music")
 
 [node name="Pengatoeran" type="TextureRect" parent="Pengaturan"]
 layout_mode = 0
@@ -237,8 +225,10 @@ theme_override_icons/grabber_disabled = ExtResource("28_2yhdt")
 theme_override_icons/tick = ExtResource("28_2yhdt")
 theme_override_styles/slider = SubResource("StyleBoxTexture_75ori")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_m0d1c")
+min_value = -30.0
+max_value = 0.0
 
-[node name="MasterSlider2" type="HSlider" parent="Pengaturan/VBoxContainer"]
+[node name="MusicSlider" type="HSlider" parent="Pengaturan/VBoxContainer"]
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("26_60y8o")
 theme_override_icons/grabber_highlight = ExtResource("27_4woc3")
@@ -246,8 +236,10 @@ theme_override_icons/grabber_disabled = ExtResource("28_2yhdt")
 theme_override_icons/tick = ExtResource("28_2yhdt")
 theme_override_styles/slider = SubResource("StyleBoxTexture_75ori")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_m0d1c")
+min_value = -30.0
+max_value = 0.0
 
-[node name="MasterSlider3" type="HSlider" parent="Pengaturan/VBoxContainer"]
+[node name="SFXSlider" type="HSlider" parent="Pengaturan/VBoxContainer"]
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("26_60y8o")
 theme_override_icons/grabber_highlight = ExtResource("27_4woc3")
@@ -255,6 +247,8 @@ theme_override_icons/grabber_disabled = ExtResource("28_2yhdt")
 theme_override_icons/tick = ExtResource("28_2yhdt")
 theme_override_styles/slider = SubResource("StyleBoxTexture_75ori")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_m0d1c")
+min_value = -30.0
+max_value = 0.0
 
 [node name="Button" type="Button" parent="Pengaturan"]
 layout_mode = 0
@@ -266,11 +260,14 @@ text = "Kembali"
 
 [node name="main_menu_back_music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("24_la518")
-volume_db = -80.0
+bus = &"Music"
 
 [connection signal="pressed" from="MainMenu/VBoxContainer/ContinueGame" to="." method="_on_continue_game_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/Setting Game" to="." method="_on_setting_game_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="Pengaturan/VBoxContainer/MasterSlider" to="Pengaturan" method="_change_master_volume"]
+[connection signal="value_changed" from="Pengaturan/VBoxContainer/MusicSlider" to="Pengaturan" method="_change_music_volume"]
+[connection signal="value_changed" from="Pengaturan/VBoxContainer/SFXSlider" to="Pengaturan" method="_change_sfx_volume"]
 [connection signal="pressed" from="Pengaturan/Button" to="." method="on_back_button_pressed"]

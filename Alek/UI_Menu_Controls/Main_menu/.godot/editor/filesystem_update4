@@ -1,4 +1,5 @@
 res://main_menu.tscn
-res://MainMenu.gd
-res://Control.gd
 res://node_2d.tscn
+res://Scripts/MainMenu.gd
+res://Pengaturan.gd
+res://default_bus_layout.tres

@@ -13,9 +13,6 @@ var level = null
 func _ready():
 	menu.visible = true
 	setting.visible = false
-	main_menu_music.volume_db = -50
-	main_menu_music.stream.loop = true
-	main_menu_music.play()
 	_check_new_date()
 	continue_button.visible = true
 	load_button.visible = true
@@ -23,10 +20,11 @@ func _ready():
 	_open_database()
 	_get_savings_data()
 
-func backsound_low_to_high(delta):
-	main_menu_music.volume_db += linear_to_db(8.0) * delta
-	if main_menu_music.volume_db >= -10:
-		main_menu_music.volume_db = -10
+#func backsound_low_to_high(delta):
+	#main_menu_music.volume_db += linear_to_db(8.0) * delta
+	#if main_menu_music.volume_db >= -10:
+		#main_menu_music.volume_db = -10
+	#print(main_menu_music.volume_db)
 		
 func _open_database():
 	save_data = SQLite.new()
@@ -43,7 +41,8 @@ func _get_savings_data():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	backsound_low_to_high(delta)
+	pass
+	#backsound_low_to_high(delta)
 
 func _on_new_game_pressed():
 	save_data.query("Select id, level_name, last_saved_time from level")
@@ -93,8 +92,6 @@ func _match_loaded_save(chapter: String):
 		"Chapter One" : get_tree().change_scene_to_file("res://Prolog.tscn")
 		"Chapter Two" : pass #get scene ke Chapter kedua
 		"Chapter Three" : get_tree().change_scene_to_file("res://chapter_three.tscn")
-	
-
 
 func on_back_button_pressed() -> void:
 	menu.visible = true

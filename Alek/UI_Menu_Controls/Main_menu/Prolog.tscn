@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dpaqnkh7pbfll"]
 
-[ext_resource type="Script" path="res://LevelManager.gd" id="1_s1fi5"]
+[ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_s1fi5"]
 
 [node name="Prolog" type="Node2D"]
 script = ExtResource("1_s1fi5")
