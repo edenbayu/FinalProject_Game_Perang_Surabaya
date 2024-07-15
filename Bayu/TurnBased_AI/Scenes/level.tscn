@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://patekpdib63w"]
+[gd_scene load_steps=41 format=3 uid="uid://patekpdib63w"]
 
 [ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="1_54tt6"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_hgg8q"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://20i4en7e2fm7" path="res://Scenes/Unit.tscn" id="3_7kb1e"]
 [ext_resource type="Script" path="res://Scenes/Deck.gd" id="4_n4ffv"]
 [ext_resource type="Texture2D" uid="uid://t6fvglavpu4g" path="res://UI/EndTurn.png" id="4_qw0um"]
-[ext_resource type="Texture2D" uid="uid://co5cxs0cea2ob" path="res://UI/status_bar_soerjo.png" id="5_eo26c"]
+[ext_resource type="Texture2D" uid="uid://2n71oiuyrq6f" path="res://UI/StatusUI_soerjo.png" id="5_yayhc"]
 [ext_resource type="Script" path="res://Scenes/StatusUI.gd" id="6_4eeb0"]
 [ext_resource type="Shader" path="res://Scenes/burn.gdshader" id="7_4j1oy"]
 [ext_resource type="Shader" path="res://Scenes/dissolve.gdshader" id="7_wckpu"]
@@ -19,10 +19,14 @@
 [ext_resource type="Texture2D" uid="uid://bq07uefqpafdi" path="res://UI/modular_status_ui.png" id="9_6n57g"]
 [ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="11_601eb"]
 [ext_resource type="FontFile" uid="uid://bs41epct36unk" path="res://UI/I-pixel-u.ttf" id="11_jjinn"]
+[ext_resource type="Texture2D" uid="uid://b7hyq78krxwli" path="res://UI/bar_container.png" id="12_2t4b1"]
 [ext_resource type="Script" path="res://Scenes/EnemyController.gd" id="12_bpvfk"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="12_e2jf1"]
+[ext_resource type="Texture2D" uid="uid://jlvsugiwbtfm" path="res://UI/health_bar_filled.png" id="13_lmcxi"]
 [ext_resource type="Texture2D" uid="uid://c6uqkdvdwgqgn" path="res://Sprites/BG.png" id="13_srsit"]
 [ext_resource type="Texture2D" uid="uid://jpc1o1j6bcqu" path="res://Sprites/Path.png" id="13_vtw6r"]
+[ext_resource type="Texture2D" uid="uid://d333a8tuighwt" path="res://UI/armor_bar_empty.png" id="14_ud0ee"]
+[ext_resource type="Texture2D" uid="uid://bfnvl8ax0sf2t" path="res://UI/armor_bar_filled.png" id="15_4irrx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t2hkw"]
 content_margin_bottom = 10.0
@@ -132,6 +136,29 @@ shader = ExtResource("7_wckpu")
 shader_parameter/dissolve_value = 1.0
 shader_parameter/dissolve_texture = ExtResource("8_3yyag")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7sm4h"]
+resource_local_to_scene = true
+content_margin_left = 256.0
+content_margin_top = 52.0
+texture = ExtResource("12_2t4b1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wxmda"]
+resource_local_to_scene = true
+texture = ExtResource("13_lmcxi")
+texture_margin_left = 12.0
+texture_margin_right = 12.0
+axis_stretch_horizontal = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wvygj"]
+content_margin_left = 256.0
+content_margin_top = 52.0
+texture = ExtResource("14_ud0ee")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lsig2"]
+resource_local_to_scene = true
+texture = ExtResource("15_4irrx")
+axis_stretch_horizontal = 1
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vlgfa"]
 texture = ExtResource("13_vtw6r")
 texture_region_size = Vector2i(128, 128)
@@ -232,7 +259,7 @@ anchor_bottom = 1.0
 offset_top = -320.0
 offset_right = 576.0
 grow_vertical = 0
-texture = ExtResource("5_eo26c")
+texture = ExtResource("5_yayhc")
 script = ExtResource("6_4eeb0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI/StatusUI"]
@@ -243,10 +270,10 @@ libraries = {
 
 [node name="Ability" type="HBoxContainer" parent="CanvasLayer/UI/StatusUI"]
 layout_mode = 0
-offset_left = 366.0
-offset_top = 219.0
-offset_right = 406.0
-offset_bottom = 259.0
+offset_left = 333.0
+offset_top = 361.0
+offset_right = 436.0
+offset_bottom = 421.0
 theme_override_constants/separation = 15
 
 [node name="Innate" type="TextureRect" parent="CanvasLayer/UI/StatusUI/Ability"]
@@ -258,6 +285,66 @@ texture = ExtResource("8_r03ek")
 material = SubResource("ShaderMaterial_jewqy")
 layout_mode = 2
 texture = ExtResource("9_6n57g")
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/UI/StatusUI"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 181.0
+offset_right = 576.0
+offset_bottom = 233.0
+theme_override_styles/background = SubResource("StyleBoxTexture_7sm4h")
+theme_override_styles/fill = SubResource("StyleBoxTexture_wxmda")
+max_value = 5.0
+step = 1.0
+value = 3.0
+show_percentage = false
+
+[node name="HPText" type="Label" parent="CanvasLayer/UI/StatusUI/HealthBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -23.0
+offset_right = 35.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_jjinn")
+theme_override_font_sizes/font_size = 30
+text = "3/5"
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/UI/StatusUI"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 283.0
+offset_right = 324.0
+offset_bottom = 310.0
+theme_override_styles/background = SubResource("StyleBoxTexture_wvygj")
+theme_override_styles/fill = SubResource("StyleBoxTexture_lsig2")
+max_value = 3.0
+step = 1.0
+value = 3.0
+show_percentage = false
+
+[node name="ArmorText" type="Label" parent="CanvasLayer/UI/StatusUI/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -24.0
+offset_right = 35.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_jjinn")
+theme_override_font_sizes/font_size = 30
+text = "3/3"
 
 [node name="Deck" type="Control" parent="CanvasLayer"]
 layout_mode = 3
