@@ -288,7 +288,7 @@ func get_lowest_hp_unit():
 		var player = unit as Unit
 		if not player: pass
 		player_hp[player.nama] = player.curr_health
-	print(player_hp.values().min())
+	print("terlemah: ", player_hp.values().min())
 
 func testing_card():
 	print("kondisi innate: ", LevelManager.active_unit.innate_card)

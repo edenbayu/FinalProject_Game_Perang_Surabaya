@@ -24,6 +24,10 @@ window/size/viewport_height=1080
 
 project/assembly_name="Ta Perang Surabaya"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg", "res://addons/utility_ai/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
