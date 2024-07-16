@@ -59,17 +59,21 @@ var skin: Texture2D:
 			await ready
 		_sprite.texture = value
 
+var level: int
+
+##VARIABLE UNTUK AI DECISION MAKING##
 var max_health: float:
 	set(value):
 		max_health = value * 1.0
 
-var level: int
-
 var curr_health: float:
-	get:
-		return max_health
 	set(value):
 		curr_health = clamp(value, 0, max_health)
+
+var is_within_range := false
+var is_empty_ammo := false
+var innate_done := false
+#########################################
 
 #setter getter
 var nama: String:
@@ -108,11 +112,13 @@ func _configure() -> void:
 	database = SQLite.new()
 	database.path = "res://data.db"
 	database.open_db()
+	_update_card_data()
 	database.query("select nama, health, move_speed, move_range, attack_range, icon, inactive_icon, skin, role from Player where player_id = "+ str(player_id))
 	for data in database.query_result:
 		pass
 		nama = data.nama
 		max_health = data.health
+		curr_health = max_health
 		move_speed = data.move_speed
 		move_range = data.move_range
 		attack_range = data.attack_range
@@ -176,3 +182,8 @@ func _update_blend_position() -> void:
 func _update_animation_condition() -> void:
 	_animationTree["parameters/conditions/is_idle"] = _is_idle
 	_animationTree["parameters/conditions/is_walking"] = _is_walking
+
+func _update_card_data() -> void:
+	var walk_image = preload("res://Sprites/Ling.png")
+	var pba = walk_image.get_image().save_png_to_buffer()
+	database.update_rows("Player", "id_card = 2", {"skin" : pba})

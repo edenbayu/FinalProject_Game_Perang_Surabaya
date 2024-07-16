@@ -73,21 +73,14 @@ func match_card_functionalities():
 			match kartu.card_type:
 				'Walk':
 					kartu.mouse_entered.connect(gameboard.testing_card)
-					#kartu.card_chose.connect(inactive_innate_ability)
-					#kartu.card_chose.connect(disable_innate_card)
-					#kartu.card_chose.connect(on_card_chosen)
 					kartu.on_card_selected.connect(gameboard.on_card_clicked)
-					#kartu.pressed.connect(spawn_new_card)
-					#kartu.mouse_exited.connect(gameboard.delete_walk_tiles)
-				'Innate':
+				'Reload':
 					kartu.mouse_entered.connect(gameboard.innate_reload)
-					kartu.card_chose.connect(gameboard.reload)
+					kartu.on_card_selected.connect(gameboard.on_card_clicked)
 				'Attack':
 					kartu.mouse_entered.connect(gameboard.show_attack)
 					kartu.on_card_selected.connect(gameboard.on_card_clicked)
-					#kartu.card_chose.connect(inactive_modular_ability)
-					#kartu.card_chose.connect(disable_modular_card)
-					#kartu.card_chose.connect(on_card_chosen)
+
 
 func inactive_innate_ability() ->void:
 	LevelManager.active_unit.innate_card = false

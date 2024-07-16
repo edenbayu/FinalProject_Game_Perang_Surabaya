@@ -111,11 +111,6 @@ func on_card_clicked(card_type, card_ability) -> void:
 	deck.on_card_chosen()
 	cursor.is_visible = true
 	print("tipe kartu: ", selected_type, "ability: ", selected_ability)
-	#match card_type:
-		#"innate":
-			#deck.on_card_chosen()
-		#"modular":
-			#pass
 
 ## Returns an array of cells a given unit can walk using the flood fill algorithm.
 func get_walkable_cells(unit: Unit) -> Array:
