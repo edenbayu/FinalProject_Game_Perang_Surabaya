@@ -220,10 +220,25 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 60.0
-offset_top = 40.0
+offset_top = 60.0
 offset_right = -60.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TurnBasedUI" type="NinePatchRect" parent="CanvasLayer/UI/HBoxContainer"]
+custom_minimum_size = Vector2(100, 104)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_c3kva")
+patch_margin_left = 40
+patch_margin_right = 40
+
+[node name="TurnBasedIcons" type="HBoxContainer" parent="CanvasLayer/UI/HBoxContainer/TurnBasedUI"]
+layout_mode = 1
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 100.0
+offset_bottom = 96.0
 
 [node name="Panel" type="Panel" parent="CanvasLayer/UI/HBoxContainer"]
 modulate = Color(1, 1, 1, 0)
@@ -356,28 +371,6 @@ offset_bottom = 50.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 30
 text = "x"
-
-[node name="TurnBasedUI" type="NinePatchRect" parent="CanvasLayer/UI"]
-custom_minimum_size = Vector2(100, 104)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -52.0
-offset_top = 20.0
-offset_right = 52.0
-offset_bottom = 124.0
-grow_horizontal = 2
-texture = ExtResource("2_c3kva")
-patch_margin_left = 40
-patch_margin_right = 40
-
-[node name="TurnBasedIcons" type="HBoxContainer" parent="CanvasLayer/UI/TurnBasedUI"]
-layout_mode = 1
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 100.0
-offset_bottom = 96.0
 
 [node name="Bg" type="Sprite2D" parent="."]
 position = Vector2(203, 857)

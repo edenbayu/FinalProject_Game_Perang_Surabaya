@@ -1,10 +1,8 @@
 class_name Deck
 extends Control
 
-@onready var timer = $Timer
-@onready var hands = $Hands
-@onready var status_ui = $"../UI/StatusUI"
-@onready var gameboard :GameBoard = $"../../GameBoard"
+@onready var status_ui = $"../StatusUI"
+@onready var gameboard :GameBoard = $"../../../../../GameBoard"
 signal card_unseen
 
 var database = SQLite
@@ -12,13 +10,11 @@ var database = SQLite
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	match_card_functionalities()
-	for card in $Hands.get_children():
+	for card in self.get_children():
 		var kartu := card as Card
 		if not kartu:
 			continue
 		kartu.card_chose.connect(on_card_chosen)
-
-	timer.timeout.connect(_on_timer_timeout)
 
 func initialize_card() -> void:
 	database = SQLite.new()
@@ -32,16 +28,13 @@ func _process(delta):
 func on_card_chosen():
 	var tween : Tween
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-	tween.tween_property($Hands, "position", Vector2($Hands.position.x, 200), 1)
+	tween.tween_property(self, "position", Vector2(self.position.x, 480), 1)
 	card_unseen.emit()
 
 func show_card():
 	var tween : Tween
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-	tween.tween_property($Hands, "position", Vector2($Hands.position.x, -280), 1)
-
-func _on_timer_timeout():
-	pass
+	tween.tween_property(self, "position", Vector2(self.position.x, 164), 1)
 
 #Fungsi untuk menginstansiasi kartu baru sesuai dengan unit
 func spawn_new_card(result):
@@ -62,10 +55,10 @@ func spawn_new_card(result):
 		instance.card_type = i.card_ability
 		instance.card_attribute = i.card_type
 		print(instance.card_attribute)
-		hands.add_child(instance)
+		self.add_child(instance)
 
 func match_card_functionalities():
-	for card in hands.get_children():
+	for card in self.get_children():
 		var kartu = card as Card
 		if not kartu:
 			continue
@@ -89,7 +82,7 @@ func inactive_modular_ability() ->void:
 	LevelManager.active_unit.modular_card = false
 
 func disable_innate_card() -> void:
-	for card in hands.get_children():
+	for card in self.get_children():
 		if card.card_attribute == "innate":
 			card.disabled = true
 			card._back_texture.material["shader_parameter/y_rot"] = 0
@@ -97,7 +90,7 @@ func disable_innate_card() -> void:
 			card._back_texture.modulate = Color(0.50, 0.5, 0.5)
 
 func disable_modular_card() -> void:
-	for card in hands.get_children():
+	for card in self.get_children():
 		if card.card_attribute == "modular":
 			card.disabled = true
 			card._back_texture.material["shader_parameter/y_rot"] = 0
@@ -105,7 +98,7 @@ func disable_modular_card() -> void:
 			card._back_texture.modulate = Color(0.50, 0.5, 0.5)
 
 func reset_card() -> void:
-	for card in hands.get_children():
+	for card in self.get_children():
 		card.disabled = false
 		card._back_texture.material["shader_parameter/y_rot"] = 90
 		card._back_texture.use_parent_material = false

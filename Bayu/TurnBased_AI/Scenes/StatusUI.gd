@@ -4,9 +4,16 @@ extends TextureRect
 signal status_bar_has_exit
 var tween : Tween
 @onready var animation : AnimationPlayer = $AnimationPlayer
+@onready var hp_text : Label = $HealthBar/HPText
+@onready var armor_text : Label = $ProgressBar/ArmorText
 
 func _ready():
 	transition_enter()
+
+func _process(delta):
+	$HealthBar.max_value = LevelManager.active_unit.max_health
+	$HealthBar.value = LevelManager.active_unit.curr_health
+	hp_text.text = str(LevelManager.active_unit.curr_health) + "/" + str(LevelManager.active_unit.max_health)
 
 func transition_exit() -> void:
 	self.position.x = 0

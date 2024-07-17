@@ -4,18 +4,19 @@ class_name LevelManager
 #Singleton variable for active units
 static var active_unit: Unit
 
+@export var statusUItexture: Array[Texture2D]
 #var turnManager = TurnManager.new()
-@onready var UI_CONTROLLER = $CanvasLayer/UI/TurnChanger
+@onready var UI_CONTROLLER = $CanvasLayer/UI/HBoxContainer/HBoxContainer/TurnChanger
 @onready var ui_container : HBoxContainer = $CanvasLayer/UI/TurnBasedUI/TurnBasedIcons
 @onready var turn_based = $CanvasLayer/UI/TurnBasedUI
-@onready var label = $CanvasLayer/UI/Label
 @onready var timer: Timer = $Timer
 @onready var player = $GameBoard/Player
 @onready var enemy = $GameBoard/Enemy
 @onready var gameboard : GameBoard = $GameBoard
 @onready var tactics_camera : TacticsCamera = $TacticsCamera
-@onready var deck : Deck = $CanvasLayer/Deck
-@onready var status_ui : StatusUI = $CanvasLayer/UI/StatusUI
+@onready var deck : Deck = $CanvasLayer/UI/HBoxContainer/HBoxContainer/Hands
+@onready var status_ui : StatusUI = $CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI
+@onready var player_ui : HBoxContainer = $CanvasLayer/UI/HBoxContainer/HBoxContainer
 
 signal enemy_turn_started(icon: TextureRect)
 signal ally_turn_started
@@ -37,8 +38,7 @@ func _ready():
 	#Change this code later into a more proper way
 	turn_based.size.x += (len(ui_container.get_children()) - 1) * ui_container.size.x
 	for icon in ui_container.get_children():
-		turn_based.position.x -= icon.size.x / 2
-	label.text = "It's your turn: " + str(_units[turn_index].nama)
+		turn_based.position.x -= icon.size.x / 4
 
 func _process(delta):
 	pass
@@ -83,6 +83,15 @@ func _reinitialize() -> void:
 	active_unit.innate_card = true
 	active_unit.modular_card = true
 	print("aktif unit: ", LevelManager.active_unit)
+	configure_status_ui_texture()
+
+func configure_status_ui_texture() -> void:
+	match LevelManager.active_unit.player_id:
+		1:
+			status_ui.texture = statusUItexture[0]
+		2:
+			status_ui.texture = statusUItexture[1]
+		
 
 func _reinitialize_icon() -> void:
 	for child in ui_container.get_children():
@@ -100,8 +109,8 @@ func _on_ally_turn_started(unit: Unit) -> void:
 	active_unit.innate_card = true
 	active_unit.modular_card = true
 	active_unit.is_selected = true
-	label.text = "It's your turn: " + str(unit.nama)
-	UI_CONTROLLER.visible = true
+	configure_status_ui_texture()
+	player_ui.visible = true
 	deck.reset_card()
 	deck.show_card()
 	status_ui.reset_card_status()
@@ -112,8 +121,7 @@ func _on_ally_turn_started(unit: Unit) -> void:
 func _on_enemy_turn_started(unit: Unit) -> void:
 	active_unit = unit
 	active_unit.is_selected = true
-	label.text = "It's your enemy turn: " + str(unit.nama)
-	UI_CONTROLLER.visible = false
+	player_ui.visible = false
 	gameboard.get_nearest_neighbor_unit()
 	gameboard.get_lowest_hp_unit()
 	timer.wait_time = wait_time_test
@@ -154,7 +162,7 @@ func _active_icon() -> void:
 		active_icon.texture = active_unit.icon
 
 func _on_exit_button_pressed() -> void:
-	get_tree().quit()
+	LevelManager.active_unit.curr_health -= 1
 
 func _get_card_informations() -> void:
 	#1. Open database connection

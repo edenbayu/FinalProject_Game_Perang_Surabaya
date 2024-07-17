@@ -93,7 +93,7 @@ func _on_mouse_entered() -> void:
 			tween_hover.kill()
 		tween_hover = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC).set_parallel(true)
 		tween_hover.tween_property(self, "scale", Vector2(1.2, 1.2), 0.5)
-		tween_hover.tween_property(self, "position", Vector2(self.position.x, -80), 0.5)
+		tween_hover.tween_property(self, "position", Vector2(self.position.x, self.position.y -80), 0.5)
 
 func _on_mouse_exited() -> void:
 	$Description.visible = false

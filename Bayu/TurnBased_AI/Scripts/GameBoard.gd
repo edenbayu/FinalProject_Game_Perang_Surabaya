@@ -8,8 +8,8 @@ const DIRECTIONS = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
 @onready var cursor = $Cursor
 @onready var player = $Player
 @onready var enemy = $Enemy
-@onready var deck = $"../CanvasLayer/Deck" as Deck
-@onready var status_ui : StatusUI = $"../CanvasLayer/UI/StatusUI"
+@onready var deck : Deck = $"../CanvasLayer/UI/HBoxContainer/HBoxContainer/Hands"
+@onready var status_ui : StatusUI = $"../CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI"
 
 var is_within_map: bool
 var _walkable_cells := []
