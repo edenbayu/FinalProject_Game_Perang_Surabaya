@@ -1,13 +1,14 @@
-extends Node
+extends Node2D
 
 var save_data : SQLite
 var created_new_save_data := false
 var level = null
 @onready var continue_button = $"MainMenu/VBoxContainer/ContinueGame"
 @onready var load_button = $"MainMenu/VBoxContainer/LoadGame"
-@onready var main_menu_music = $main_menu_back_music
 @onready var setting = $Pengaturan
 @onready var menu = $MainMenu
+@onready var button_sound = $soundbutton
+@onready var press_button = $pressbutton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,6 +20,8 @@ func _ready():
 	created_new_save_data = false
 	_open_database()
 	_get_savings_data()
+	for node in get_children():
+		print(node.name)
 
 #func backsound_low_to_high(delta):
 	#main_menu_music.volume_db += linear_to_db(8.0) * delta
@@ -45,6 +48,7 @@ func _process(delta):
 	#backsound_low_to_high(delta)
 
 func _on_new_game_pressed():
+	press_button.play()
 	save_data.query("Select id, level_name, last_saved_time from level")
 	var result_1 = save_data.query_result
 	for result in result_1:
@@ -77,8 +81,12 @@ func _on_load_game_pressed():
 	get_tree().change_scene_to_file("res://main_menu.tscn")
 
 func _on_setting_game_pressed():
+	press_button.play()
 	setting.visible = true
 	#get_tree().change_scene_to_file("res://node_2d.tscn")
+
+func _on_credit_pressed():
+	press_button.play()
 	
 func _on_exit_pressed():
 	get_tree().quit()
@@ -96,3 +104,21 @@ func _match_loaded_save(chapter: String):
 func on_back_button_pressed() -> void:
 	menu.visible = true
 	setting.visible = false
+
+
+func _on_continue_game_mouse_entered():
+	if not $MainMenu/VBoxContainer/ContinueGame.disabled:
+		button_sound.play()
+
+
+func _on_new_game_mouse_entered():
+	button_sound.play()
+
+func _on_setting_game_mouse_entered():
+	button_sound.play()
+
+func _on_credit_mouse_entered():
+	button_sound.play()
+
+func _on_exit_mouse_entered():
+	button_sound.play()

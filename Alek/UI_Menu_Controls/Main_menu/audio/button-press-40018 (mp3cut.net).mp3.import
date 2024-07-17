@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://crpup5opxjkqd"
+path="res://.godot/imported/button-press-40018 (mp3cut.net).mp3-122a6620898fc42cc9b8edd6a982b704.mp3str"
+
+[deps]
+
+source_file="res://audio/button-press-40018 (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/button-press-40018 (mp3cut.net).mp3-122a6620898fc42cc9b8edd6a982b704.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

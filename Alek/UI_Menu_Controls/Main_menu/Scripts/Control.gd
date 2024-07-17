@@ -15,6 +15,8 @@ func _ready():
 	sound.play()
 	sound2.play()
 	print("ini ready")
+	for node in self.get_children():
+		print(node.a)
 
 func _process(_delta):
 	pass

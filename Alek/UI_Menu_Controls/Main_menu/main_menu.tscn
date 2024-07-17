@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://c37pm7mm8vkex"]
+[gd_scene load_steps=57 format=3 uid="uid://c8t7d3415ry1g"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_3xyrq"]
 [ext_resource type="FontFile" uid="uid://be1488wacuvuy" path="res://I-pixel-u.ttf" id="1_i2uaj"]
@@ -32,6 +32,8 @@
 [ext_resource type="Texture2D" uid="uid://fyyqbdpkct0g" path="res://UI/grabber_pressed.png" id="28_2yhdt"]
 [ext_resource type="Texture2D" uid="uid://q3yxnq0br23y" path="res://UI/slider_resized.png" id="29_m7f6f"]
 [ext_resource type="Texture2D" uid="uid://bfnse754es4ou" path="res://UI/slider_content_resized.png" id="30_2dsib"]
+[ext_resource type="AudioStream" uid="uid://bjufam7tlenqp" path="res://audio/mouse-click-117076 (mp3cut.net).mp3" id="33_kbtwx"]
+[ext_resource type="AudioStream" uid="uid://crpup5opxjkqd" path="res://audio/button-press-40018 (mp3cut.net).mp3" id="34_bpb7j"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qobcn"]
 texture = ExtResource("4_b7h7j")
@@ -103,7 +105,7 @@ texture = ExtResource("30_2dsib")
 texture_margin_left = 8.0
 texture_margin_right = 8.0
 
-[node name="Main Menu" type="Node2D"]
+[node name="Menu" type="Node2D"]
 script = ExtResource("1_3xyrq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -262,10 +264,24 @@ text = "Kembali"
 stream = ExtResource("24_la518")
 bus = &"Music"
 
+[node name="soundbutton" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("33_kbtwx")
+bus = &"SFX"
+
+[node name="pressbutton" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("34_bpb7j")
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="MainMenu/VBoxContainer/ContinueGame" to="." method="_on_continue_game_mouse_entered"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/ContinueGame" to="." method="_on_continue_game_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="mouse_entered" from="MainMenu/VBoxContainer/New Game" to="." method="_on_new_game_mouse_entered"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="MainMenu/VBoxContainer/Setting Game" to="." method="_on_setting_game_mouse_entered"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/Setting Game" to="." method="_on_setting_game_pressed"]
+[connection signal="mouse_entered" from="MainMenu/VBoxContainer/Credit" to="." method="_on_credit_mouse_entered"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/Credit" to="." method="_on_credit_pressed"]
+[connection signal="mouse_entered" from="MainMenu/VBoxContainer/Exit" to="." method="_on_exit_mouse_entered"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="value_changed" from="Pengaturan/VBoxContainer/MasterSlider" to="Pengaturan" method="_change_master_volume"]
 [connection signal="value_changed" from="Pengaturan/VBoxContainer/MusicSlider" to="Pengaturan" method="_change_music_volume"]

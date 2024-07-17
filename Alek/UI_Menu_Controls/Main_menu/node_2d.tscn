@@ -74,6 +74,8 @@ offset_right = -482.0
 offset_bottom = -170.0
 text = "BACK"
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
 [connection signal="value_changed" from="Control/VBoxContainer/HSlider" to="Control" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="Control/VBoxContainer/HSlider2" to="Control" method="_ngubah_volume_sfx"]
 [connection signal="value_changed" from="Control/VBoxContainer/HSlider3" to="Control" method="_on_h_slider_3_value_changed"]

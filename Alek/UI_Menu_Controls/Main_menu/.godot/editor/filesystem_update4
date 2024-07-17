@@ -1,5 +1,5 @@
-res://main_menu.tscn
+res://backup _main_menu.tscn
 res://node_2d.tscn
+res://Scripts/Control.gd
 res://Scripts/MainMenu.gd
-res://Pengaturan.gd
-res://default_bus_layout.tres
+res://main_menu.tscn

@@ -1,17 +1,14 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1720939672
-chapter_three.gd::GDScript::-1::1718726991::0::1::::<>Node2D<>::
-chapter_three.tscn::PackedScene::4482670057162910518::1718726991::0::1::::<><>::res://chapter_three.gd
-Control.gd::GDScript::-1::1720877905::0::1::::<>Control<>::
-default_bus_layout.tres::AudioBusLayout::2345090951784052612::1718726991::0::1::::<><>::
+::res://::1721194805
+chapter_three.tscn::PackedScene::4482670057162910518::1720939687::0::1::::<><>::res://Scripts/chapter_three.gd
+default_bus_layout.tres::AudioBusLayout::2345090951784052612::1720941523::0::1::::<><>::
 I-pixel-u.ttf::FontFile::2722671371099609428::1718726991::1718727137::1::::<><>::
 icon.svg::CompressedTexture2D::2412157805272648987::1718726991::1718727138::1::::<><>::
-LevelManager.gd::GDScript::-1::1718726991::0::1::::<>Node2D<>::
-MainMenu.gd::GDScript::-1::1720939523::0::1::::<>Node<>::
-main_menu.tscn::PackedScene::6805122961674396287::1720939687::0::1::::<><>::res://MainMenu.gd<>uid://be1488wacuvuy::::res://I-pixel-u.ttf<>uid://cu3g0piko2lec::::res://UI/mainmenu.png<>uid://c1pt5kfm162v4::::res://UI/koran.png<>uid://c1swi8r35lmoc::::res://UI/normal-continue-button.png<>uid://bw4lrgkno7w08::::res://UI/hover-continue-button.png<>uid://6bw5v53kb33r::::res://UI/pressed-continue-button.png<>uid://csx05essrvk6j::::res://UI/disabled-continue-button.png<>uid://jlto1ot6vi5q::::res://UI/normal-load-button.png<>uid://bcb7o4gf7co3k::::res://UI/hover-load-button.png<>uid://c347nnmlo2l3e::::res://UI/pressed-load-button.png<>uid://cy5s6ytmld618::::res://UI/disabled-load-button.png<>uid://bal5ntf2lv4bh::::res://UI/normal-new-button.png<>uid://dglt83vir0qvu::::res://UI/hover-new-button.png<>uid://bu62uydoelr5h::::res://UI/pressed-new-button.png<>uid://wk6747ghmekb::::res://UI/normal-setting-button.png<>uid://b06qcy8d3vff1::::res://UI/hover-setting-button.png<>uid://b7w5nbdpefq7a::::res://UI/pressed-setting-button.png<>uid://duy4gu636iyr8::::res://UI/normal-credit-button.png<>uid://n3ryi5xv5xy0::::res://UI/hover-credit-button.png<>uid://rcxu1t7hcu1n::::res://UI/pressed-credit-button.png<>uid://cvp8qckiliw7p::::res://UI/normal-exit-button.png<>uid://bfdf0diulke8c::::res://UI/hover-exit-button.png<>uid://cbjulex7vtr7k::::res://UI/pressed-exit-button.png<>uid://cg5446grhdqwa::::res://audio/sad-violin-150146.mp3<>uid://cbrnoljinuaks::::res://UI/Pengatoeran.png<>uid://c201apo5ty5v4::::res://UI/grabber_normal.png<>uid://bjp14b8offso5::::res://UI/grabber_hover.png<>uid://fyyqbdpkct0g::::res://UI/grabber_pressed.png<>uid://q3yxnq0br23y::::res://UI/slider_resized.png<>uid://bfnse754es4ou::::res://UI/slider_content_resized.png
-node_2d.tscn::PackedScene::5328741494970463709::1720939687::0::1::::<><>::res://Control.gd<>uid://gvv8tsaqhgx::::res://pianos-by-jtwayne-7-174717.mp3<>uid://b54qi46yrmv47::::res://sunflower-street-drumloop-85bpm-163900.mp3
+main_menu.tscn::PackedScene::7130246202593888066::1721194805::0::1::::<><>::res://Scripts/MainMenu.gd<>uid://be1488wacuvuy::::res://I-pixel-u.ttf<>uid://cu3g0piko2lec::::res://UI/mainmenu.png<>uid://c1pt5kfm162v4::::res://UI/koran.png<>uid://c1swi8r35lmoc::::res://UI/normal-continue-button.png<>uid://bw4lrgkno7w08::::res://UI/hover-continue-button.png<>uid://6bw5v53kb33r::::res://UI/pressed-continue-button.png<>uid://csx05essrvk6j::::res://UI/disabled-continue-button.png<>uid://jlto1ot6vi5q::::res://UI/normal-load-button.png<>uid://bcb7o4gf7co3k::::res://UI/hover-load-button.png<>uid://c347nnmlo2l3e::::res://UI/pressed-load-button.png<>uid://cy5s6ytmld618::::res://UI/disabled-load-button.png<>uid://bal5ntf2lv4bh::::res://UI/normal-new-button.png<>uid://dglt83vir0qvu::::res://UI/hover-new-button.png<>uid://bu62uydoelr5h::::res://UI/pressed-new-button.png<>uid://wk6747ghmekb::::res://UI/normal-setting-button.png<>uid://b06qcy8d3vff1::::res://UI/hover-setting-button.png<>uid://b7w5nbdpefq7a::::res://UI/pressed-setting-button.png<>uid://duy4gu636iyr8::::res://UI/normal-credit-button.png<>uid://n3ryi5xv5xy0::::res://UI/hover-credit-button.png<>uid://rcxu1t7hcu1n::::res://UI/pressed-credit-button.png<>uid://cvp8qckiliw7p::::res://UI/normal-exit-button.png<>uid://bfdf0diulke8c::::res://UI/hover-exit-button.png<>uid://cbjulex7vtr7k::::res://UI/pressed-exit-button.png<>uid://cg5446grhdqwa::::res://audio/sad-violin-150146.mp3<>res://Pengaturan.gd<>uid://cbrnoljinuaks::::res://UI/Pengatoeran.png<>uid://c201apo5ty5v4::::res://UI/grabber_normal.png<>uid://bjp14b8offso5::::res://UI/grabber_hover.png<>uid://fyyqbdpkct0g::::res://UI/grabber_pressed.png<>uid://q3yxnq0br23y::::res://UI/slider_resized.png<>uid://bfnse754es4ou::::res://UI/slider_content_resized.png<>uid://bjufam7tlenqp::::res://audio/mouse-click-117076 (mp3cut.net).mp3
+node_2d.tscn::PackedScene::5328741494970463709::1721194804::0::1::::<><>::res://Scripts/Control.gd<>uid://gvv8tsaqhgx::::res://pianos-by-jtwayne-7-174717.mp3<>uid://b54qi46yrmv47::::res://sunflower-street-drumloop-85bpm-163900.mp3
+Pengaturan.gd::GDScript::-1::1720941735::0::1::::Settings<>Control<>::
 pianos-by-jtwayne-7-174717.mp3::AudioStreamMP3::13700588484770687::1718726991::1718727138::1::::<><>::
-Prolog.tscn::PackedScene::8213089930375972429::1718726991::0::1::::<><>::res://LevelManager.gd
+Prolog.tscn::PackedScene::8213089930375972429::1720939687::0::1::::<><>::res://Scripts/LevelManager.gd
 sunflower-street-drumloop-85bpm-163900.mp3::AudioStreamMP3::4552940278117064574::1718726991::1718727138::1::::<><>::
 ::res://addons/::1718728775
 ::res://addons/godot-sqlite/::1718728775
@@ -19,12 +16,19 @@ gdsqlite.gdextension::GDExtension::-1::1718726991::0::1::::<><>::
 godot-sqlite.gd::GDScript::-1::1718726991::0::1::::<>EditorPlugin<>::
 LICENSE.md::TextFile::-1::1718726991::0::1::::<><>::
 plugin.cfg::TextFile::-1::1718726991::0::1::::<><>::
-::res://addons/godot-sqlite/bin/::1720939635
+::res://addons/godot-sqlite/bin/::1721193563
 ::res://addons/godot-sqlite/bin/libgdsqlite.macos.template_debug.framework/::1718728775
 ::res://addons/godot-sqlite/bin/libgdsqlite.macos.template_release.framework/::1718728775
-::res://audio/::1720939523
+::res://audio/::1721194976
+button-press-40018 (mp3cut.net).mp3::AudioStreamMP3::5998260100347951075::1721194957::1721194980::1::::<><>::
+click_effect-86995.mp3::AudioStreamMP3::880311499338674700::1721189146::1721191978::1::::<><>::
+mouse-click-117076 (mp3cut.net).mp3::AudioStreamMP3::3059712097072508947::1721194606::1721194612::1::::<><>::
 sad-violin-150146.mp3::AudioStreamMP3::5257719980924233812::1720939523::1720939523::1::::<><>::
-::res://Scripts/::1720939672
+::res://Scripts/::1721194803
+chapter_three.gd::GDScript::-1::1718726991::0::1::::<>Node2D<>::
+Control.gd::GDScript::-1::1721193731::0::1::::<>Control<>::
+LevelManager.gd::GDScript::-1::1718726991::0::1::::<>Node2D<>::
+MainMenu.gd::GDScript::-1::1721194803::0::1::::<>Node2D<>::
 ::res://UI/::1720939523
 disabled-continue-button.png::CompressedTexture2D::6085292978591741767::1720939523::1720939523::1::::<><>::
 disabled-load-button.png::CompressedTexture2D::6520454503273387545::1720939523::1720939523::1::::<><>::

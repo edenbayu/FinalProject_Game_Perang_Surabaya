@@ -1,0 +1,488 @@
+[gd_scene load_steps=20 format=3 uid="uid://domclt8f1h7gw"]
+
+[ext_resource type="Script" path="res://Levelmenu.gd" id="1_5ginm"]
+[ext_resource type="Texture2D" uid="uid://cmhgx5xby3bhy" path="res://aset asprite/LevelMenu1.png" id="1_aoa4a"]
+[ext_resource type="Texture2D" uid="uid://bpoohwu5sc7m6" path="res://aset asprite/LevelMenu.png" id="2_dg164"]
+[ext_resource type="Texture2D" uid="uid://by7rtcjcnso8f" path="res://aset asprite/bg_kayu.png" id="2_jfl8a"]
+[ext_resource type="Texture2D" uid="uid://ddsoqpmdq7ew4" path="res://aset asprite/LevelMenu2.png" id="3_ja04f"]
+[ext_resource type="FontFile" uid="uid://c583mm1xbwni5" path="res://aset asprite/I-pixel-u.ttf" id="4_vie55"]
+[ext_resource type="FontFile" uid="uid://blsauaajm2sjg" path="res://DePixelBreit.ttf" id="6_n2tbx"]
+[ext_resource type="Texture2D" uid="uid://dwc4d75arlukl" path="res://aset asprite/Sprite-0008.png" id="8_3vwfv"]
+[ext_resource type="Texture2D" uid="uid://cgryg6mutfhok" path="res://aset asprite/SELECT.png" id="8_hxav1"]
+[ext_resource type="Texture2D" uid="uid://b8ldmbhsqvvhp" path="res://aset asprite/foto2.png" id="8_ocqkt"]
+[ext_resource type="Texture2D" uid="uid://mmm4n40d6pks" path="res://aset asprite/foto3.png" id="9_8qy2f"]
+[ext_resource type="Texture2D" uid="uid://b0e0d5ckrmo4b" path="res://aset asprite/SELECT1-export.png" id="9_ethxe"]
+[ext_resource type="Texture2D" uid="uid://c4d6dqw7ktigb" path="res://aset asprite/Sprite-000(1).png" id="10_1ixp6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kxpm6"]
+content_margin_left = 131.0
+content_margin_top = 13.0
+texture = ExtResource("8_hxav1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tj4wp"]
+content_margin_left = 131.0
+content_margin_top = 13.0
+texture = ExtResource("9_ethxe")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_givj2"]
+content_margin_left = 292.0
+content_margin_top = 236.0
+texture = ExtResource("8_3vwfv")
+region_rect = Rect2(0, 0, 292, 236)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vtbw2"]
+content_margin_left = 292.0
+content_margin_top = 236.0
+texture = ExtResource("10_1ixp6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y84tf"]
+content_margin_left = 292.0
+content_margin_top = 236.0
+texture = ExtResource("8_3vwfv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bgypq"]
+content_margin_left = 292.0
+content_margin_top = 236.0
+texture = ExtResource("10_1ixp6")
+
+[node name="LevelMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ginm")
+
+[node name="BGKayu" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jfl8a")
+
+[node name="Level1" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="koran" type="TextureRect" parent="Level1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = -534.0
+offset_right = 720.0
+offset_bottom = 534.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_aoa4a")
+
+[node name="Label" type="Label" parent="Level1/koran"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 255.0
+offset_right = 843.0
+offset_bottom = 305.0
+theme_override_colors/font_color = Color(0.290196, 0.282353, 0.266667, 1)
+theme_override_fonts/font = ExtResource("4_vie55")
+theme_override_font_sizes/font_size = 36
+text = "BAB SATOE:"
+
+[node name="Label2" type="Label" parent="Level1/koran"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 298.0
+offset_right = 1279.0
+offset_bottom = 348.0
+theme_override_colors/font_color = Color(0.384314, 0.368627, 0.345098, 1)
+theme_override_fonts/font = ExtResource("4_vie55")
+theme_override_font_sizes/font_size = 36
+text = "INSIDEN HOTEL YAMATO"
+
+[node name="foto" type="TextureRect" parent="Level1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = -534.0
+offset_right = 720.0
+offset_bottom = 534.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dg164")
+
+[node name="kronology" type="TextureRect" parent="Level1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = -534.0
+offset_right = 720.0
+offset_bottom = 534.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ja04f")
+
+[node name="Label" type="Label" parent="Level1/kronology"]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 451.0
+offset_right = 1070.0
+offset_bottom = 514.0
+theme_override_colors/font_color = Color(0.290196, 0.282353, 0.266667, 1)
+theme_override_fonts/font = ExtResource("4_vie55")
+theme_override_font_sizes/font_size = 50
+text = "KRONOLOGI"
+
+[node name="Label2" type="Label" parent="Level1/kronology"]
+offset_left = 716.0
+offset_top = 318.0
+offset_right = 1181.0
+offset_bottom = 735.0
+theme_override_colors/font_color = Color(0.290196, 0.282353, 0.266667, 1)
+theme_override_fonts/font = ExtResource("6_n2tbx")
+text = "Peristiwa Hotel Yamato terjadi pada 19 September 1945 di Surabaya. Sekelompok pemuda Indonesia, dipimpin oleh Sidik, Koesno, dan Hariyono, merobek bagian biru dari bendera Belanda di Hotel Yamato dan mengibarkan bendera Merah Putih sebagai simbol kemerdekaan. Tindakan ini memicu ketegangan dengan pasukan Belanda dan menjadi salah satu pemicu Pertempuran Surabaya pada November 1945."
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Level1"]
+custom_minimum_size = Vector2(131, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = -160.0
+offset_right = 342.0
+offset_bottom = -126.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_kxpm6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tj4wp")
+
+[node name="Level2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="koran" type="TextureRect" parent="Level2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = -534.0
+offset_right = 720.0
+offset_bottom = 534.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_aoa4a")
+
+[node name="Label" type="Label" parent="Level2/koran"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 255.0
+offset_right = 843.0
+offset_bottom = 305.0
+theme_override_colors/font_color = Color(0.290196, 0.282353, 0.266667, 1)
+theme_override_fonts/font = ExtResource("4_vie55")
+theme_override_font_sizes/font_size = 36
+text = "BAB DUA:"
+
+[node name="Label2" type="Label" parent="Level2/koran"]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 304.0
+offset_right = 1187.0
+offset_bottom = 354.0
+theme_override_colors/font_color = Color(0.384314, 0.368627, 0.345098, 1)
+theme_override_fonts/font = ExtResource("4_vie55")
+theme_override_font_sizes/font_size = 36
+text = "KEDATANGAN PASUKAN INGGRIS-INDIA"
+
+[node name="foto" type="TextureRect" parent="Level2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = -534.0
+offset_right = 720.0
+offset_bottom = 534.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_ocqkt")
+
+[node name="kronology" type="TextureRect" parent="Level2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = -534.0
+offset_right = 720.0
+offset_bottom = 534.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ja04f")
+
+[node name="Label" type="Label" parent="Level2/kronology"]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 451.0
+offset_right = 1070.0
+offset_bottom = 514.0
+theme_override_colors/font_color = Color(0.290196, 0.282353, 0.266667, 1)
+theme_override_fonts/font = ExtResource("4_vie55")
+theme_override_font_sizes/font_size = 50
+text = "KRONOLOGI"
+
+[node name="Label2" type="Label" parent="Level2/kronology"]
+layout_mode = 0
+offset_left = 717.0
+offset_top = 335.0
+offset_right = 1182.0
+offset_bottom = 752.0
+theme_override_colors/font_color = Color(0.290196, 0.282353, 0.266667, 1)
+theme_override_fonts/font = ExtResource("6_n2tbx")
+text = "Pada bulan Oktober 1945, pasukan Inggris yang terdiri dari tentara India-Britania tiba di Surabaya. Mereka datang untuk melucuti senjata tentara Jepang yang sudah menyerah dan memulangkan tawanan perang Sekutu.
+Pasukan ini juga bertugas mengembalikan kontrol kepada Belanda, yang memicu ketegangan dengan pejuang kemerdekaan Indonesia yang ingin mempertahankan kemerdekaan mereka."
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Level2"]
+custom_minimum_size = Vector2(131, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = -160.0
+offset_right = 342.0
+offset_bottom = -126.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_kxpm6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tj4wp")
+
+[node name="Level3" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="koran" type="TextureRect" parent="Level3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = -534.0
+offset_right = 720.0
+offset_bottom = 534.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_aoa4a")
+
+[node name="Label" type="Label" parent="Level3/koran"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 255.0
+offset_right = 843.0
+offset_bottom = 305.0
+theme_override_colors/font_color = Color(0.290196, 0.282353, 0.266667, 1)
+theme_override_fonts/font = ExtResource("4_vie55")
+theme_override_font_sizes/font_size = 36
+text = "BAB TIGA:"
+
+[node name="Label2" type="Label" parent="Level3/koran"]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 304.0
+offset_right = 1243.0
+offset_bottom = 354.0
+theme_override_colors/font_color = Color(0.384314, 0.368627, 0.345098, 1)
+theme_override_fonts/font = ExtResource("4_vie55")
+theme_override_font_sizes/font_size = 36
+text = "PERTEMPURAN 10 NOVEMBER"
+
+[node name="foto" type="TextureRect" parent="Level3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = -534.0
+offset_right = 720.0
+offset_bottom = 534.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_8qy2f")
+
+[node name="kronology" type="TextureRect" parent="Level3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = -534.0
+offset_right = 720.0
+offset_bottom = 534.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ja04f")
+
+[node name="Label" type="Label" parent="Level3/kronology"]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 451.0
+offset_right = 1070.0
+offset_bottom = 514.0
+theme_override_colors/font_color = Color(0.290196, 0.282353, 0.266667, 1)
+theme_override_fonts/font = ExtResource("4_vie55")
+theme_override_font_sizes/font_size = 50
+text = "KRONOLOGI"
+
+[node name="Label2" type="Label" parent="Level3/kronology"]
+layout_mode = 0
+offset_left = 713.0
+offset_top = 453.0
+offset_right = 1178.0
+offset_bottom = 870.0
+theme_override_colors/font_color = Color(0.290196, 0.282353, 0.266667, 1)
+theme_override_fonts/font = ExtResource("6_n2tbx")
+text = "Puncaknya mulai 10 November 1945 hingga dua pekan selanjutnya, 28 November 1945 terjadi pertempuran Surabaya. Pertempuran ini setidaknya memakan korban sebanyak 20.000 orang dari Surabaya dan 1.500 dari Sekutu. Selain itu diperkirakan sebanyak 150.000 orang meninggalkan Surabaya.
+
+Pertempuran 10 November 1945 merupakan pertempuran terbesar dalam sejarah mempertahankan kemerdekaan Indonesia. Mengingat semangat militan pemuda Surabaya untuk mempertahankan kemerdekaan RI, Presiden Soekarno menetapkan 10 November 1945 sebagai Hari Pahlawan."
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="Level3"]
+custom_minimum_size = Vector2(131, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = -160.0
+offset_right = 342.0
+offset_bottom = -126.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_kxpm6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tj4wp")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -96.0
+offset_right = -83.0
+offset_bottom = 140.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxTexture_givj2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vtbw2")
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 400.0
+offset_top = -122.0
+offset_right = 700.0
+offset_bottom = 122.0
+grow_vertical = 2
+scale = Vector2(-1, 1)
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxTexture_y84tf")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bgypq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(70, 20)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="select1" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_vie55")
+text = "1"
+
+[node name="select2" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_direction = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_vie55")
+text = "2"
+
+[node name="select3" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_direction = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_vie55")
+text = "3"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/select1" to="." method="_on_select_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/select2" to="." method="_on_select_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/select3" to="." method="_on_select_3_pressed"]
