@@ -358,14 +358,13 @@ theme_override_font_sizes/font_size = 30
 text = "x"
 
 [node name="TurnBasedUI" type="NinePatchRect" parent="CanvasLayer/UI"]
-custom_minimum_size = Vector2(100, 104)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -52.0
 offset_top = 20.0
-offset_right = 52.0
+offset_right = 48.0
 offset_bottom = 124.0
 grow_horizontal = 2
 texture = ExtResource("2_c3kva")

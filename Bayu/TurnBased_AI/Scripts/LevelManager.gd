@@ -17,6 +17,7 @@ static var active_unit: Unit
 @onready var deck : Deck = $CanvasLayer/UI/HBoxContainer/HBoxContainer/Hands
 @onready var status_ui : StatusUI = $CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI
 @onready var player_ui : HBoxContainer = $CanvasLayer/UI/HBoxContainer/HBoxContainer
+@onready var path : UnitPath = $GameBoard/UnitPath
 
 signal enemy_turn_started(icon: TextureRect)
 signal ally_turn_started
@@ -28,7 +29,7 @@ var _icons := []
 var turn_index := 0
 var active_icon : TextureRect
 
-var wait_time_test := 1.0
+var wait_time_test := 3.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -82,7 +83,6 @@ func _reinitialize() -> void:
 	#Aktifkan card
 	active_unit.innate_card = true
 	active_unit.modular_card = true
-	print("aktif unit: ", LevelManager.active_unit)
 	configure_status_ui_texture()
 
 func configure_status_ui_texture() -> void:
@@ -122,8 +122,14 @@ func _on_enemy_turn_started(unit: Unit) -> void:
 	active_unit = unit
 	active_unit.is_selected = true
 	player_ui.visible = false
-	gameboard.get_nearest_neighbor_unit()
-	gameboard.get_lowest_hp_unit()
+	gameboard.initialize_AI_area_attack()
+	var path1 = gameboard.get_path_to_weakest_unit()
+	var path2 = gameboard.get_walkable_cells(active_unit)
+	print("My cell: ", active_unit.cell)
+	var ai_walk_paths = gameboard.array_intersection(path1, path2)
+	var ai_final_target = ai_walk_paths.back()
+	print(ai_final_target)
+	gameboard._move_active_AI(ai_walk_paths, ai_final_target)
 	timer.wait_time = wait_time_test
 	timer.start()
 

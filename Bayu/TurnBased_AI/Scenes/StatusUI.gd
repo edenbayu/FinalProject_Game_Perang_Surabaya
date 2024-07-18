@@ -20,9 +20,7 @@ func transition_exit() -> void:
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween.tween_property(self, "position", Vector2(-577, self.position.y), 2)
 	self.position.x = -577
-	print(self.position.x)
 	if self.position.x <= -500:
-		print("emitted signal")
 		status_bar_has_exit.emit()
 
 func transition_enter() -> void:

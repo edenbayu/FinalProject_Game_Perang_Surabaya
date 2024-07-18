@@ -8,7 +8,6 @@ func _ready():
 
 func _enter_state() -> void:
 	set_physics_process(true)
-	print(LevelManager.active_unit, "has just entered it's idle state")
 
 func _exite_state() -> void:
 	set_physics_process(false)

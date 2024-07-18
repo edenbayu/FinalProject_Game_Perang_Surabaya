@@ -18,6 +18,8 @@ var _units := {}
 var selected_ability = null
 var selected_type = null
 
+var ai_attack_area := []
+
 var _is_clickable := false:
 	set(value):
 		_is_clickable = value
@@ -29,10 +31,16 @@ func _ready() -> void:
 	_reinitialize()
 	unitPath.clear_cells(grid)
 	_update()
-	get_weakest_unit()
 
 func _process(_delta):
 	_update()
+
+func get_grid_data(grid_data: Grid) -> Array:
+	var cells = []
+	for x in range(grid_data.start_rect.x, grid_data.start_rect.x + grid_data.tilemap_size.x):
+		for y in range(grid_data.start_rect.y, grid_data.start_rect.y + grid_data.tilemap_size.y):
+			cells.append(Vector2(x, y))
+	return cells
 
 ## Clears, and refills the `_units` dictionary wit	h game objects that are on the board.
 func _reinitialize() -> void:
@@ -82,7 +90,6 @@ func _check_hoverable_tiles(cell: Vector2) -> void:
 func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 	var mapped_cell: Vector2 = unitPath.local_to_map(cell)
 	if selected_ability == null:
-		print("choose your ability first!")
 		return
 	match selected_ability:
 		"Walk":
@@ -110,11 +117,19 @@ func on_card_clicked(card_type, card_ability) -> void:
 	selected_type = card_type
 	deck.on_card_chosen()
 	cursor.is_visible = true
-	print("tipe kartu: ", selected_type, "ability: ", selected_ability)
 
 ## Returns an array of cells a given unit can walk using the flood fill algorithm.
 func get_walkable_cells(unit: Unit) -> Array:
 	return _flood_fill(unit.cell, unit.move_range)
+
+func array_intersection(arr1: Array, arr2: Array) -> Array:
+	var intersection = []
+	
+	for elem in arr1:
+		if arr2.has(elem) and not intersection.has(elem):
+			intersection.append(elem)
+	
+	return intersection
 
 func get_attack_range_cells(unit: Unit) -> Array:
 	return _flood_fill_attack(unit.cell, unit.attack_range)
@@ -249,7 +264,7 @@ func _on_attack():
 		#if not unit:
 			#continue
 
-func get_weakest_unit():
+func get_weakest_unit() -> Unit:
 	var weakest : Unit = null
 	for unit in player.get_children():
 		var player = unit as Unit
@@ -258,6 +273,14 @@ func get_weakest_unit():
 		if (!weakest or player.curr_health < weakest.curr_health) and player.curr_health > 0:
 			weakest = player
 	return weakest
+
+func get_path_to_weakest_unit() -> PackedVector2Array:
+	var weakest_unit = get_weakest_unit()
+	var pathfinder = Pathfinder.new(grid, get_grid_data(grid))
+	var paths = pathfinder.calculate_point_paths(LevelManager.active_unit.cell, weakest_unit.cell)
+	paths.remove_at(0)
+	print(paths)
+	return paths
 
 func get_nearest_neighbor_unit():
 	var nearest_unit :Unit = null
@@ -268,25 +291,12 @@ func get_nearest_neighbor_unit():
 			pass
 		unitPath.initialize(_walkable_cells)
 		var  distance: int = unitPath.calculate_distance(LevelManager.active_unit.cell, player.cell)
-		print("jarak ke ", player.nama, ": ", distance)
 		if distance < min_distance:
 			min_distance = distance
 			nearest_unit = player
-	print("Terdekat: ", nearest_unit)
 	return nearest_unit
 
-func get_lowest_hp_unit():
-	var lowest_hp_unit: Unit = null
-	var player_hp := {}
-	##Iterate through the player
-	for unit in player.get_children():
-		var player = unit as Unit
-		if not player: pass
-		player_hp[player.nama] = player.curr_health
-	print("terlemah: ", player_hp.values().min())
-
 func testing_card():
-	print("kondisi innate: ", LevelManager.active_unit.innate_card)
 	if LevelManager.active_unit.innate_card:
 		_walkable_cells = get_walkable_cells(LevelManager.active_unit)
 		unitPath.draw(_walkable_cells)
@@ -306,7 +316,6 @@ func attack():
 	print("show desc of attack")
 
 func show_attack():
-	print(LevelManager.active_unit.modular_card)
 	if LevelManager.active_unit.modular_card:
 		_attack_cells = get_attack_range_cells(LevelManager.active_unit)
 		unitPath.display_attack_range(_attack_cells)
@@ -314,3 +323,31 @@ func show_attack():
 
 func _clear_attack_cells() -> void:
 	_attack_cells.clear()
+
+##Code for AI actions##
+func initialize_AI_area_attack() -> void:
+	ai_attack_area = get_attack_range_cells(LevelManager.active_unit)
+	unitPath.draw(ai_attack_area)
+	#unitPath.initialize(ai_attack_area)
+	#for cell in ai_attack_area:
+		#if not is_occupied(cell):
+			#_move_active_unit(cell)
+		#else:
+			#print("attack enemy within range!")
+
+func _move_active_AI(walk_paths: Array, new_cell: Vector2) -> void:
+	if is_occupied(new_cell) or not new_cell in walk_paths:
+		return
+	var new_path := []
+	for i in walk_paths:
+		i = unitPath.map_to_local(i)
+		new_path.append(i)
+	print(new_path)
+	LevelManager.active_unit.walk_coordinates = new_path 
+	##Menghapus active unit setelah selesai bergerak
+	_units.erase(LevelManager.active_unit.cell)
+	_units[new_cell] = LevelManager.active_unit
+	_deselect_active_unit()
+	LevelManager.active_unit.walk()
+	await LevelManager.active_unit.walk_finished
+	_clear_active_unit()

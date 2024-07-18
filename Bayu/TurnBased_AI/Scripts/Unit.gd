@@ -139,7 +139,6 @@ func _configure() -> void:
 
 func _ready():
 	_configure()
-	print(nama, attack_range, unit_role, move_speed, "Current Health: ", curr_health)
 	#Configuring AnimationPlayer and AnimationTree
 	_animationTree.tree_root = _animation_state_machine
 	_animationTree.active = true
