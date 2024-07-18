@@ -335,7 +335,9 @@ func initialize_AI_area_attack() -> void:
 		#else:
 			#print("attack enemy within range!")
 
-func _move_active_AI(walk_paths: Array, new_cell: Vector2) -> void:
+func _move_active_AI(walk_paths: Array, new_cell) -> void:
+	if new_cell == null:
+		return
 	if is_occupied(new_cell) or not new_cell in walk_paths:
 		return
 	var new_path := []

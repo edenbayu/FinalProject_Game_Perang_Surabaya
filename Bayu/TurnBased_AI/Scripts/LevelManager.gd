@@ -128,7 +128,6 @@ func _on_enemy_turn_started(unit: Unit) -> void:
 	print("My cell: ", active_unit.cell)
 	var ai_walk_paths = gameboard.array_intersection(path1, path2)
 	var ai_final_target = ai_walk_paths.back()
-	print(ai_final_target)
 	gameboard._move_active_AI(ai_walk_paths, ai_final_target)
 	timer.wait_time = wait_time_test
 	timer.start()
