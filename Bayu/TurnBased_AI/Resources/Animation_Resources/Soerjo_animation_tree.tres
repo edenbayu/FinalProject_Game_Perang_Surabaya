@@ -28,16 +28,16 @@ max_space = Vector2(2, 2)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gmjtn"]
-animation = &"Soerjo_animation/Walk_FL"
+animation = &"Soerjo_animation/Idle_FL"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k65oa"]
-animation = &"Soerjo_animation/Walk_FR"
+animation = &"Soerjo_animation/Idle_FR"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2p6qt"]
-animation = &"Soerjo_animation/Walk_BR"
+animation = &"Soerjo_animation/Idle_BR"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bn1s6"]
-animation = &"Soerjo_animation/Walk_BL"
+animation = &"Soerjo_animation/Idle_BL"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_qs1sg"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_gmjtn")

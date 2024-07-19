@@ -3,9 +3,6 @@ extends Node
 
 @export var state: State
 
-func _ready():
-	pass
-
 func change_state(new_state: State) -> void:
 	if state is State:
 		state._exit_state()

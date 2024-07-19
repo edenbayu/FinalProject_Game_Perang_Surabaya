@@ -29,7 +29,7 @@ var _icons := []
 var turn_index := 0
 var active_icon : TextureRect
 
-var wait_time_test := 3.0
+var wait_time_test := 1.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -125,10 +125,10 @@ func _on_enemy_turn_started(unit: Unit) -> void:
 	gameboard.initialize_AI_area_attack()
 	var path1 = gameboard.get_path_to_weakest_unit()
 	var path2 = gameboard.get_walkable_cells(active_unit)
-	print("My cell: ", active_unit.cell)
 	var ai_walk_paths = gameboard.array_intersection(path1, path2)
 	var ai_final_target = ai_walk_paths.back()
-	gameboard._move_active_AI(ai_walk_paths, ai_final_target)
+	if not LevelManager.active_unit.is_within_range:
+		gameboard._move_active_AI(ai_walk_paths, ai_final_target)
 	timer.wait_time = wait_time_test
 	timer.start()
 

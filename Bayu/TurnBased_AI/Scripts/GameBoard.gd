@@ -18,6 +18,7 @@ var _units := {}
 var selected_ability = null
 var selected_type = null
 
+## AI's variables ##
 var ai_attack_area := []
 
 var _is_clickable := false:
@@ -26,7 +27,6 @@ var _is_clickable := false:
 	
 
 func _ready() -> void:
-	pass
 	_initiallize_unit_pos()
 	_reinitialize()
 	unitPath.clear_cells(grid)
@@ -216,7 +216,7 @@ func _move_active_unit(new_cell: Vector2) -> void:
 	_units[new_cell] = LevelManager.active_unit
 	_deselect_active_unit()
 	LevelManager.active_unit.walk()
-	await LevelManager.active_unit.walk_finished
+	await LevelManager.active_unit.walk_state.walk_finished
 	_clear_active_unit()
 
 ## Deselects the active unit, clearing the cells overlay and interactive path drawing.
@@ -279,7 +279,6 @@ func get_path_to_weakest_unit() -> PackedVector2Array:
 	var pathfinder = Pathfinder.new(grid, get_grid_data(grid))
 	var paths = pathfinder.calculate_point_paths(LevelManager.active_unit.cell, weakest_unit.cell)
 	paths.remove_at(0)
-	print(paths)
 	return paths
 
 func get_nearest_neighbor_unit():
@@ -303,17 +302,20 @@ func testing_card():
 		unitPath.initialize(_walkable_cells)
 
 func walk():
-	print("Gooo!")
+	pass
+	#print("Gooo!")
 
 func innate_reload():
-	print("show desc of reload")
+	pass
+	#print("show desc of reload")
 
 func reload():
-	print("buckle up! reloading..")
+	pass
+	#print("buckle up! reloading..")
 
 func attack():
 	_deselect_active_unit()
-	print("show desc of attack")
+	#print("show desc of attack")
 
 func show_attack():
 	if LevelManager.active_unit.modular_card:
@@ -327,14 +329,24 @@ func _clear_attack_cells() -> void:
 ##Code for AI actions##
 func initialize_AI_area_attack() -> void:
 	ai_attack_area = get_attack_range_cells(LevelManager.active_unit)
-	unitPath.draw(ai_attack_area)
-	#unitPath.initialize(ai_attack_area)
-	#for cell in ai_attack_area:
-		#if not is_occupied(cell):
-			#_move_active_unit(cell)
-		#else:
-			#print("attack enemy within range!")
+	var enemyDetected = false
 
+	for cell in ai_attack_area:
+		if _detect_player_unit(cell):
+			enemyDetected = true
+			break  # Exit the loop early if an enemy is found
+	LevelManager.active_unit.is_within_range = enemyDetected
+	print("Enemy sensor within area: ", LevelManager.active_unit.is_within_range)
+
+func _detect_player_unit(cell: Vector2) -> bool:
+	var unit_cells = []
+	for u in player.get_children():
+		var unit = u as Unit
+		if not unit:
+			continue
+		unit_cells.append(unit.cell)
+	return unit_cells.has(cell)
+	
 func _move_active_AI(walk_paths: Array, new_cell) -> void:
 	if new_cell == null:
 		return
@@ -344,7 +356,6 @@ func _move_active_AI(walk_paths: Array, new_cell) -> void:
 	for i in walk_paths:
 		i = unitPath.map_to_local(i)
 		new_path.append(i)
-	print(new_path)
 	LevelManager.active_unit.walk_coordinates = new_path 
 	##Menghapus active unit setelah selesai bergerak
 	_units.erase(LevelManager.active_unit.cell)

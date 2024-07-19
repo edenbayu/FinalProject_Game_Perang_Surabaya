@@ -2,6 +2,7 @@ class_name Unit
 extends CharacterBody2D
 
 ## Emitted when the unit reached the end of a path along which it was walking.
+signal enter_walk_state
 signal walk_finished
 signal data_configured
 
@@ -14,7 +15,9 @@ signal data_configured
 @onready var _animation := $AnimationPlayer
 @onready var _animationTree := $AnimationTree
 @onready var fsm : FiniteStateMachine = $FiniteStateMachine
-@onready var idle_state: IdleState = $FiniteStateMachine/IdleState
+@onready var idle_state : IdleState = $FiniteStateMachine/IdleState
+@onready var walk_state : WalkState = $FiniteStateMachine/WalkState
+
 
 ## Cuma untuk debugging sementara, nanti benerin njih ##
 @export var hframe: int:
@@ -138,14 +141,16 @@ func _configure() -> void:
 	emit_signal("data_configured")
 
 func _ready():
+	#Konfigurasi signal dalam FSM#
+	walk_state.walk_finished.connect(fsm.change_state.bind(idle_state))
+	enter_walk_state.connect(fsm.change_state.bind(walk_state))
 	_configure()
 	#Configuring AnimationPlayer and AnimationTree
 	_animationTree.tree_root = _animation_state_machine
 	_animationTree.active = true
 
 func walk():
-	_is_walking = true
-	_is_idle = false
+	enter_walk_state.emit()
 
 func activate_ability_cards() -> void:
 	innate_card = true
@@ -155,20 +160,8 @@ func _process(delta: float):
 	_update_animation_condition()
 	_update_blend_position()
 
-	#Process unit walk code
-	if walk_coordinates.is_empty():
-		_is_walking = false
-		_is_idle = true
-		emit_signal("walk_finished")
-
 func _physics_process(delta):
-	if _is_walking:
-		var target_pos = walk_coordinates.front()
-		cell = path.local_to_map(target_pos) 
-		last_direction = check_direction(target_pos)
-		position = position.move_toward(target_pos, move_speed*delta)
-		if position == target_pos:
-			walk_coordinates.pop_front()
+	pass
 
 func check_direction(next_tile) -> Vector2:
 	var direction_vector = sign(next_tile - global_position)
