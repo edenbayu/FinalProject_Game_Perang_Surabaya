@@ -34,6 +34,7 @@ var wait_time_test := 1.5
 func _ready():
 	_reinitialize()
 	_get_card_informations()
+	print(active_unit)
 	
 	#Change this code later into a more proper way
 	turn_based.size.x += (len(ui_container.get_children()) - 1) * ui_container.size.x
@@ -118,6 +119,7 @@ func _on_ally_turn_started(unit: Unit) -> void:
 
 # Signal handler for enemy turn started
 func _on_enemy_turn_started(unit: Unit) -> void:
+	gameboard.get_path_to_flee()
 	var action_turns := 2
 	active_unit = unit
 	active_unit.is_selected = true

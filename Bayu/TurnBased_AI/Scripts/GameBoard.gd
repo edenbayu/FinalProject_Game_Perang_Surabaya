@@ -302,6 +302,7 @@ func testing_card():
 		unitPath.draw(_walkable_cells)
 		unitPath.initialize(_walkable_cells)
 
+ ## FUNCTION ACTIONS UNTUK PLAYER ABILITIES ##
 func walk():
 	pass
 	#print("Gooo!")
@@ -375,11 +376,21 @@ func approach() -> void:
 	if not LevelManager.active_unit.is_within_range:
 		_move_active_AI(ai_walk_paths, ai_final_target)
 
+func get_path_to_flee() -> void:
+	var _pathfinder = Pathfinder.new(grid, get_grid_data(grid))
+	var unit_player_locations = []
+	for player_unit in player.get_children():
+		var unit = player_unit as Unit
+		unit_player_locations.append(unit.cell)
+	for cell in unit_player_locations:
+		print("arah dari tujuan : ", sign(LevelManager.active_unit.cell - cell))
+	
+	
 func flee() -> void:
 	print("flee from battle!")
 
 func ai_reload() -> void:
-	print("rilodin!")
+	LevelManager.active_unit.ammo = 3
 
 func shoot() -> void:
 	print("be shootin yer hed!")

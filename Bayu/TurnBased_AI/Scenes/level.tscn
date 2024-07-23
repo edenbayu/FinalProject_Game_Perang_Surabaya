@@ -169,16 +169,26 @@ texture = ExtResource("4_qw0um")
 texture = ExtResource("13_vtw6r")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 30)
+0:0/0/texture_origin = Vector2i(0, 32)
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -32, 64, 0, 0, 32, -64, 0)
 1:0/0 = 0
-1:0/0/texture_origin = Vector2i(0, 30)
+1:0/0/texture_origin = Vector2i(0, 32)
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -32, 64, 0, 0, 32, -64, 0)
 2:0/0 = 0
-2:0/0/texture_origin = Vector2i(0, 30)
+2:0/0/texture_origin = Vector2i(0, 32)
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -32, 64, 0, 0, 32, -64, 0)
 
 [sub_resource type="TileSet" id="TileSet_5x5x1"]
 tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(128, 64)
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_vlgfa")
 
 [sub_resource type="Curve" id="Curve_is87y"]
@@ -434,7 +444,7 @@ position = Vector2(-960, 540)
 texture = ExtResource("18_vnaq5")
 
 [node name="Bg" type="Sprite2D" parent="."]
-position = Vector2(562, 314)
+position = Vector2(168, 124)
 texture = ExtResource("19_nxtcr")
 
 [node name="GameBoard" type="Node2D" parent="."]
@@ -446,6 +456,7 @@ y_sort_enabled = true
 tile_set = SubResource("TileSet_5x5x1")
 format = 2
 layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(-262145, 0, 0)
 script = ExtResource("2_w1kn0")
 grid = ExtResource("2_0r2mq")
 
