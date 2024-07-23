@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://patekpdib63w"]
+[gd_scene load_steps=60 format=3 uid="uid://patekpdib63w"]
 
 [ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="1_54tt6"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_hgg8q"]
@@ -24,10 +24,11 @@
 [ext_resource type="Script" path="res://Scenes/EnemyController.gd" id="12_bpvfk"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="12_e2jf1"]
 [ext_resource type="Texture2D" uid="uid://jlvsugiwbtfm" path="res://UI/health_bar_filled.png" id="13_lmcxi"]
-[ext_resource type="Texture2D" uid="uid://c6uqkdvdwgqgn" path="res://Sprites/BG.png" id="13_srsit"]
 [ext_resource type="Texture2D" uid="uid://jpc1o1j6bcqu" path="res://Sprites/Path.png" id="13_vtw6r"]
 [ext_resource type="Texture2D" uid="uid://d333a8tuighwt" path="res://UI/armor_bar_empty.png" id="14_ud0ee"]
 [ext_resource type="Texture2D" uid="uid://bfnvl8ax0sf2t" path="res://UI/armor_bar_filled.png" id="15_4irrx"]
+[ext_resource type="Texture2D" uid="uid://bvbm5241gmlcx" path="res://UI/bg.png" id="18_vnaq5"]
+[ext_resource type="Texture2D" uid="uid://sqoccmhkk5ea" path="res://Sprites/lvl1.png" id="19_nxtcr"]
 [ext_resource type="Script" path="res://addons/utility_ai/agent/agent.gd" id="27_yvtgi"]
 [ext_resource type="Script" path="res://addons/utility_ai/actions/action.gd" id="28_lvhxf"]
 [ext_resource type="Script" path="res://addons/utility_ai/considerations/aggregation.gd" id="29_6jobp"]
@@ -180,35 +181,61 @@ tile_layout = 5
 tile_size = Vector2i(128, 64)
 sources/0 = SubResource("TileSetAtlasSource_vlgfa")
 
-[sub_resource type="Curve" id="Curve_ur48y"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
 [sub_resource type="Curve" id="Curve_is87y"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Curve" id="Curve_ur48y"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="Curve" id="Curve_coru3"]
 resource_local_to_scene = true
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.198675, 0.101064), 0.0, 0.0, 0, 0, Vector2(0.496689, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+max_value = 1.5
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.198675, 0.101064), 0.0, 0.0, 0, 0, Vector2(0.496689, 1), 0.0, 0.0, 0, 0, Vector2(1, 1.00275), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="Curve" id="Curve_iuq50"]
+[sub_resource type="Curve" id="Curve_00g62"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_np16m"]
 resource_local_to_scene = true
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 0.9), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, -0.5, 0, 1, Vector2(0.2, 0.9), -0.5, -2.46495, 1, 1, Vector2(0.549575, 0.0383133), 0.0, 0.0, 0, 0, Vector2(0.985836, 0.0383133), 0.0, 0.0, 0, 0]
 point_count = 4
-metadata/_snap_enabled = true
+metadata/_snap_count = 14
 
-[sub_resource type="Curve" id="Curve_3wgha"]
+[sub_resource type="Curve" id="Curve_pgk3n"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_iuq50"]
+max_value = 1.5
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_mo8k6"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_bpnxu"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ugd0t"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_kpq00"]
+[sub_resource type="Curve" id="Curve_io8sp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_c5jau"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ouiti"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Level" type="Node2D"]
@@ -391,9 +418,24 @@ offset_top = 4.0
 offset_right = 100.0
 offset_bottom = 96.0
 
+[node name="Bg4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-960, -540)
+texture = ExtResource("18_vnaq5")
+
+[node name="Bg3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, -540)
+texture = ExtResource("18_vnaq5")
+
+[node name="Bg2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-960, 540)
+texture = ExtResource("18_vnaq5")
+
 [node name="Bg" type="Sprite2D" parent="."]
-position = Vector2(203, 857)
-texture = ExtResource("13_srsit")
+position = Vector2(562, 314)
+texture = ExtResource("19_nxtcr")
 
 [node name="GameBoard" type="Node2D" parent="."]
 script = ExtResource("1_54tt6")
@@ -439,140 +481,6 @@ _animation_state_machine = ExtResource("12_e2jf1")
 hframe = 7
 vframe = 1
 
-[node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit"]
-script = ExtResource("27_yvtgi")
-
-[node name="approach" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
-_action_id = "approach"
-
-[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach"]
-script = ExtResource("29_6jobp")
-
-[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "is_empty_ammo"
-curve = SubResource("Curve_ur48y")
-
-[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "is_within_range"
-curve = SubResource("Curve_is87y")
-
-[node name="health" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "curr_health"
-curve = SubResource("Curve_coru3")
-
-[node name="get_close" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
-
-[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/get_close"]
-script = ExtResource("29_6jobp")
-
-[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/get_close/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "is_empty_ammo"
-curve = SubResource("Curve_iuq50")
-
-[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/get_close/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "is_within_range"
-curve = SubResource("Curve_is87y")
-
-[node name="health" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/get_close/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "curr_health"
-curve = SubResource("Curve_coru3")
-
-[node name="flee" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
-_action_id = "flee"
-
-[node name="health" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/flee" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../..")
-property_name = "curr_health"
-max_value = 10.0
-curve = SubResource("Curve_np16m")
-
-[node name="reload" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
-_action_id = "reload"
-
-[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/reload" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../..")
-property_name = "is_empty_ammo"
-curve = SubResource("Curve_iuq50")
-
-[node name="health" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/reload" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../..")
-property_name = "health"
-max_value = 10.0
-curve = SubResource("Curve_np16m")
-
-[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/reload" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../..")
-property_name = "is_within_range"
-curve = SubResource("Curve_is87y")
-
-[node name="shoot" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
-_action_id = "shoot"
-
-[node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/shoot"]
-script = ExtResource("29_w7j6f")
-property_name = "innate_done"
-
-[node name="melee" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
-_action_id = "melee"
-
-[node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/melee"]
-script = ExtResource("29_w7j6f")
-property_name = "innate_done"
-
-[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/melee" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../..")
-property_name = "is_empty_ammo"
-curve = SubResource("Curve_iuq50")
-
-[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/melee" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../..")
-property_name = "is_within_range"
-curve = SubResource("Curve_is87y")
-
-[node name="rest" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
-_action_id = "rest"
-
-[node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest"]
-script = ExtResource("29_w7j6f")
-property_name = "innate_done"
-
-[node name="is_empty_ammo" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../..")
-property_name = "is_empty_ammo"
-curve = SubResource("Curve_3wgha")
-
-[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../..")
-property_name = "is_within_range"
-curve = SubResource("Curve_kpq00")
-
 [node name="Unit2" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
 position = Vector2(442, 678)
 player_id = 6
@@ -580,6 +488,144 @@ _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
 hframe = 7
 vframe = 1
+
+[node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy"]
+script = ExtResource("27_yvtgi")
+
+[node name="approach" type="Node" parent="GameBoard/Enemy/UtilityAiAgent"]
+script = ExtResource("28_lvhxf")
+_action_id = "approach"
+
+[node name="UtilityAiAggregation2" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/approach"]
+script = ExtResource("29_6jobp")
+
+[node name="is_within_range" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../..")
+property_name = "is_within_range"
+curve = SubResource("Curve_is87y")
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/approach/UtilityAiAggregation2"]
+script = ExtResource("29_6jobp")
+
+[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/approach/UtilityAiAggregation2/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../../..")
+property_name = "is_empty_ammo"
+curve = SubResource("Curve_ur48y")
+
+[node name="health" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/approach/UtilityAiAggregation2/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../../..")
+property_name = "curr_health"
+max_value = 12.0
+curve = SubResource("Curve_coru3")
+
+[node name="flee" type="Node" parent="GameBoard/Enemy/UtilityAiAgent"]
+script = ExtResource("28_lvhxf")
+_action_id = "flee"
+
+[node name="UtilityAiAggregation2" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/flee"]
+script = ExtResource("29_6jobp")
+
+[node name="is_within_range" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/flee/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../..")
+property_name = "is_within_range"
+curve = SubResource("Curve_00g62")
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/flee/UtilityAiAggregation2"]
+script = ExtResource("29_6jobp")
+
+[node name="health" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/flee/UtilityAiAggregation2/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../../..")
+property_name = "curr_health"
+max_value = 12.0
+curve = SubResource("Curve_np16m")
+
+[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/flee/UtilityAiAggregation2/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../../..")
+property_name = "is_empty_ammo"
+curve = SubResource("Curve_pgk3n")
+
+[node name="reload" type="Node" parent="GameBoard/Enemy/UtilityAiAgent"]
+script = ExtResource("28_lvhxf")
+_action_id = "reload"
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/reload"]
+script = ExtResource("29_6jobp")
+
+[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../..")
+property_name = "is_empty_ammo"
+max_value = 1.5
+curve = SubResource("Curve_iuq50")
+
+[node name="health" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../..")
+property_name = "curr_health"
+max_value = 12.0
+curve = SubResource("Curve_coru3")
+
+[node name="shoot" type="Node" parent="GameBoard/Enemy/UtilityAiAgent"]
+script = ExtResource("28_lvhxf")
+_action_id = "shoot"
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/shoot"]
+script = ExtResource("29_6jobp")
+
+[node name="innate_done" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/shoot/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../..")
+property_name = "innate_done"
+curve = SubResource("Curve_mo8k6")
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/shoot/UtilityAiAggregation"]
+script = ExtResource("29_6jobp")
+
+[node name="is_within_range" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../../..")
+property_name = "is_within_range"
+curve = SubResource("Curve_bpnxu")
+
+[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../../..")
+property_name = "is_empty_ammo"
+curve = SubResource("Curve_ugd0t")
+
+[node name="rest" type="Node" parent="GameBoard/Enemy/UtilityAiAgent"]
+script = ExtResource("28_lvhxf")
+_action_id = "rest"
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/rest"]
+script = ExtResource("29_6jobp")
+
+[node name="innate_done" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/rest/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../..")
+property_name = "innate_done"
+curve = SubResource("Curve_io8sp")
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/rest/UtilityAiAggregation"]
+script = ExtResource("29_6jobp")
+
+[node name="is_within_range" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../../..")
+property_name = "is_within_range"
+curve = SubResource("Curve_c5jau")
+
+[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../../..")
+property_name = "is_empty_ammo"
+curve = SubResource("Curve_ouiti")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -592,4 +638,5 @@ position = Vector2(960, 540)
 [connection signal="pressed" from="CanvasLayer/UI/Button" to="." method="_on_exit_button_pressed"]
 [connection signal="accept_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_accept_pressed"]
 [connection signal="moved" from="GameBoard/Cursor" to="GameBoard" method="_check_hoverable_tiles"]
+[connection signal="top_score_action_changed" from="GameBoard/Enemy/UtilityAiAgent" to="GameBoard" method="_on_utility_ai_agent_top_score_action_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

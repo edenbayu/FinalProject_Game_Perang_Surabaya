@@ -5,7 +5,6 @@ class_name LevelManager
 static var active_unit: Unit
 
 @export var statusUItexture: Array[Texture2D]
-#var turnManager = TurnManager.new()
 @onready var UI_CONTROLLER = $CanvasLayer/UI/HBoxContainer/HBoxContainer/TurnChanger
 @onready var ui_container : HBoxContainer = $CanvasLayer/UI/TurnBasedUI/TurnBasedIcons
 @onready var turn_based = $CanvasLayer/UI/TurnBasedUI
@@ -119,16 +118,14 @@ func _on_ally_turn_started(unit: Unit) -> void:
 
 # Signal handler for enemy turn started
 func _on_enemy_turn_started(unit: Unit) -> void:
+	var action_turns := 2
 	active_unit = unit
 	active_unit.is_selected = true
 	player_ui.visible = false
 	gameboard.initialize_AI_area_attack()
-	var path1 = gameboard.get_path_to_weakest_unit()
-	var path2 = gameboard.get_walkable_cells(active_unit)
-	var ai_walk_paths = gameboard.array_intersection(path1, path2)
-	var ai_final_target = ai_walk_paths.back()
-	if not LevelManager.active_unit.is_within_range:
-		gameboard._move_active_AI(ai_walk_paths, ai_final_target)
+	gameboard.approach()
+	#await LevelManager.active_unit.walk_state.walk_finished
+	print("kondisi innate: ",LevelManager.active_unit.innate_done)
 	timer.wait_time = wait_time_test
 	timer.start()
 
@@ -167,7 +164,7 @@ func _active_icon() -> void:
 		active_icon.texture = active_unit.icon
 
 func _on_exit_button_pressed() -> void:
-	LevelManager.active_unit.curr_health -= 1
+	LevelManager.active_unit.ammo += 1
 
 func _get_card_informations() -> void:
 	#1. Open database connection

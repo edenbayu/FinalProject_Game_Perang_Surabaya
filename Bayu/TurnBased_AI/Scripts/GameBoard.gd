@@ -8,6 +8,7 @@ const DIRECTIONS = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
 @onready var cursor = $Cursor
 @onready var player = $Player
 @onready var enemy = $Enemy
+@onready var ai_agent : UtilityAiAgent = $Enemy/UtilityAiAgent
 @onready var deck : Deck = $"../CanvasLayer/UI/HBoxContainer/HBoxContainer/Hands"
 @onready var status_ui : StatusUI = $"../CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI"
 
@@ -362,5 +363,31 @@ func _move_active_AI(walk_paths: Array, new_cell) -> void:
 	_units[new_cell] = LevelManager.active_unit
 	_deselect_active_unit()
 	LevelManager.active_unit.walk()
-	await LevelManager.active_unit.walk_finished
+	await LevelManager.active_unit.walk_state.walk_finished
 	_clear_active_unit()
+
+#AI actions
+func approach() -> void:
+	var path1 = get_path_to_weakest_unit()
+	var path2 = get_walkable_cells(LevelManager.active_unit)
+	var ai_walk_paths = array_intersection(path1, path2)
+	var ai_final_target = ai_walk_paths.back()
+	if not LevelManager.active_unit.is_within_range:
+		_move_active_AI(ai_walk_paths, ai_final_target)
+
+func flee() -> void:
+	print("flee from battle!")
+
+func ai_reload() -> void:
+	print("rilodin!")
+
+func shoot() -> void:
+	print("be shootin yer hed!")
+
+func rest() -> void:
+	print("guess i'd do nothin")
+
+func get_ai_actions():
+	var action = ai_agent.get_top
+func _on_utility_ai_agent_top_score_action_changed(top_action_id):
+	pass

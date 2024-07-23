@@ -55,7 +55,7 @@ _data = {
 script = ExtResource("1_u70hk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, -34)
+position = Vector2(2, -40)
 texture = ExtResource("2_4l34f")
 hframes = 7
 vframes = 4
@@ -73,11 +73,6 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
-libraries = {
-"": SubResource("AnimationLibrary_cyab2"),
-"Jepang_animation": SubResource("AnimationLibrary_0eh6d"),
-"Soerjo_animation": ExtResource("3_ox0gf")
-}
 tree_root = ExtResource("4_6vypo")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_idle = true

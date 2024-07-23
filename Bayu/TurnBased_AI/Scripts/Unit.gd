@@ -3,7 +3,6 @@ extends CharacterBody2D
 
 ## Emitted when the unit reached the end of a path along which it was walking.
 signal enter_walk_state
-signal walk_finished
 signal data_configured
 
 @export var player_id := 1
@@ -64,7 +63,7 @@ var skin: Texture2D:
 
 var level: int
 
-##VARIABLE UNTUK AI DECISION MAKING##
+##### VARIABLE UNTUK AI DECISION MAKING #####
 var max_health: float:
 	set(value):
 		max_health = value * 1.0
@@ -76,7 +75,7 @@ var curr_health: float:
 var is_within_range := false
 var is_empty_ammo := false
 var innate_done := false
-#########################################
+#############################################
 
 #setter getter
 var nama: String:
@@ -90,6 +89,14 @@ var icon: Texture2D:
 var inactive_icon: Texture2D:
 	set(value):
 		inactive_icon = value
+
+var ammo: int:
+	set(value):
+		ammo = value
+		if ammo <= 0:
+			is_empty_ammo = true
+		else:
+			is_empty_ammo = false
 
 var move_range :int
 var move_speed :int
@@ -115,7 +122,6 @@ func _configure() -> void:
 	database = SQLite.new()
 	database.path = "res://data.db"
 	database.open_db()
-	_update_card_data()
 	database.query("select nama, health, move_speed, move_range, attack_range, icon, inactive_icon, skin, role from Player where player_id = "+ str(player_id))
 	for data in database.query_result:
 		pass
@@ -125,6 +131,7 @@ func _configure() -> void:
 		move_speed = data.move_speed
 		move_range = data.move_range
 		attack_range = data.attack_range
+		ammo = 0
 		var skin_image = Image.new()
 		skin_image.load_png_from_buffer(data.skin)
 		var texture = ImageTexture.create_from_image(skin_image)
@@ -143,6 +150,7 @@ func _configure() -> void:
 func _ready():
 	#Konfigurasi signal dalam FSM#
 	walk_state.walk_finished.connect(fsm.change_state.bind(idle_state))
+	walk_state.walk_finished.connect(on_walk_finished)
 	enter_walk_state.connect(fsm.change_state.bind(walk_state))
 	_configure()
 	#Configuring AnimationPlayer and AnimationTree
@@ -160,9 +168,9 @@ func _process(delta: float):
 	_update_animation_condition()
 	_update_blend_position()
 
-func _physics_process(delta):
-	pass
-
+func on_walk_finished():
+	innate_done = true
+	
 func check_direction(next_tile) -> Vector2:
 	var direction_vector = sign(next_tile - global_position)
 	return direction_vector
@@ -174,8 +182,3 @@ func _update_blend_position() -> void:
 func _update_animation_condition() -> void:
 	_animationTree["parameters/conditions/is_idle"] = _is_idle
 	_animationTree["parameters/conditions/is_walking"] = _is_walking
-
-func _update_card_data() -> void:
-	var walk_image = preload("res://Sprites/Ling.png")
-	var pba = walk_image.get_image().save_png_to_buffer()
-	database.update_rows("Player", "id_card = 2", {"skin" : pba})
