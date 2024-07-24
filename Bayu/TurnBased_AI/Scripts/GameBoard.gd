@@ -331,6 +331,7 @@ func _clear_attack_cells() -> void:
 ##Code for AI actions##
 func initialize_AI_area_attack() -> void:
 	ai_attack_area = get_attack_range_cells(LevelManager.active_unit)
+	unitPath.display_attack_range(ai_attack_area)
 	var enemyDetected = false
 
 	for cell in ai_attack_area:

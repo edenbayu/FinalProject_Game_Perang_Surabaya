@@ -119,7 +119,7 @@ func _on_ally_turn_started(unit: Unit) -> void:
 
 # Signal handler for enemy turn started
 func _on_enemy_turn_started(unit: Unit) -> void:
-	gameboard.get_path_to_flee()
+	#gameboard.get_path_to_flee()
 	var action_turns := 2
 	active_unit = unit
 	active_unit.is_selected = true

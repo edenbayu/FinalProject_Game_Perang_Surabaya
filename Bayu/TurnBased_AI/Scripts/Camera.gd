@@ -20,14 +20,13 @@ func follow() -> void:
 	set_velocity(vel)
 	move_and_slide()
 	vel = velocity
-	if from.distance_to(to) <= 0.25: target = null
+	#if from.distance_to(to) <= 0.25: target = null
 
 func _process(delta):
 	follow()
 
 func _physics_process(delta):
 	pass
-	_move_cam()
 	#if moveable:
 		#_move_cam()
 
