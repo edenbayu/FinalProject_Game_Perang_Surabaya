@@ -105,9 +105,11 @@ var is_selected := false:
 	set(value):
 		is_selected = value
 		if is_selected:
-			_sprite.modulate = Color(1, 1, 1)
+			_sprite.material["shader_parameter/modulate_color"] = Color(1, 1, 1)
+			_sprite.material["shader_parameter/line_thickness"] = 3.0
 		else:
-			_sprite.modulate = Color(0.70, 0.70, 0.70)
+			_sprite.material["shader_parameter/modulate_color"] = Color(0.50, 0.50, 0.50)
+			_sprite.material["shader_parameter/line_thickness"] = 0.0
 
 var _is_walking := false:
 	set(value):
@@ -148,6 +150,7 @@ func _configure() -> void:
 	emit_signal("data_configured")
 
 func _ready():
+	is_selected = false
 	#Konfigurasi signal dalam FSM#
 	walk_state.walk_finished.connect(fsm.change_state.bind(idle_state))
 	walk_state.walk_finished.connect(on_walk_finished)

@@ -34,7 +34,6 @@ var wait_time_test := 1.5
 func _ready():
 	_reinitialize()
 	_get_card_informations()
-	print(active_unit)
 	
 	#Change this code later into a more proper way
 	turn_based.size.x += (len(ui_container.get_children()) - 1) * ui_container.size.x
@@ -70,7 +69,7 @@ func _reinitialize() -> void:
 			continue
 		_units.append(unit)
 	_units.sort_custom(_sort_turn)
-	_units[turn_index].is_selected = true
+	#_units[turn_index].is_selected = true
 	
 	##Adding icon child into the UI container
 	for unit in _units:
@@ -119,6 +118,7 @@ func _on_ally_turn_started(unit: Unit) -> void:
 
 # Signal handler for enemy turn started
 func _on_enemy_turn_started(unit: Unit) -> void:
+	tactics_camera.zoom_in()
 	#gameboard.get_path_to_flee()
 	var action_turns := 2
 	active_unit = unit
@@ -159,14 +159,14 @@ func _end_turn()-> void:
 func _active_icon() -> void:
 	active_unit = _units[turn_index]
 	tactics_camera.target = active_unit
-	active_unit.is_selected = true
+	_units[turn_index].is_selected = true
 	active_icon = _icons[turn_index]
 	active_icon.is_active = true
 	if active_icon:
 		active_icon.texture = active_unit.icon
 
 func _on_exit_button_pressed() -> void:
-	LevelManager.active_unit.ammo += 1
+	tactics_camera.zoom_out()
 
 func _get_card_informations() -> void:
 	#1. Open database connection

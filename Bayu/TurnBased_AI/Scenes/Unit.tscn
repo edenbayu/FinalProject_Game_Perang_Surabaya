@@ -1,12 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://20i4en7e2fm7"]
+[gd_scene load_steps=15 format=3 uid="uid://20i4en7e2fm7"]
 
 [ext_resource type="Script" path="res://Scripts/Unit.gd" id="1_u70hk"]
 [ext_resource type="Texture2D" uid="uid://c766m3iwx0tik" path="res://Sprites/Suryo.png" id="2_4l34f"]
+[ext_resource type="Shader" path="res://Resources/outline.gdshader" id="2_mbqfs"]
 [ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="3_ox0gf"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="4_6vypo"]
 [ext_resource type="Script" path="res://Scenes/FiniteStateMachine.gd" id="5_w7fm6"]
 [ext_resource type="Script" path="res://Scripts/IdleState.gd" id="6_jy6vm"]
 [ext_resource type="Script" path="res://Scripts/WalkState.gd" id="7_dcy7x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vph2h"]
+resource_local_to_scene = true
+shader = ExtResource("2_mbqfs")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 3.0
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwmta"]
 
@@ -55,6 +63,7 @@ _data = {
 script = ExtResource("1_u70hk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_vph2h")
 position = Vector2(2, -40)
 texture = ExtResource("2_4l34f")
 hframes = 7
@@ -73,17 +82,12 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
-libraries = {
-"": SubResource("AnimationLibrary_cyab2"),
-"Jepang_animation": SubResource("AnimationLibrary_0eh6d"),
-"Soerjo_animation": ExtResource("3_ox0gf")
-}
 tree_root = ExtResource("4_6vypo")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_idle = true
 parameters/conditions/is_walking = false
 parameters/Idle/blend_position = Vector2(1, 1)
-parameters/Walk/blend_position = Vector2(0.994728, 1.02381)
+parameters/Walk/blend_position = Vector2(1.00069, 0.988235)
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("5_w7fm6")

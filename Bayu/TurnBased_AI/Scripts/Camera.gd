@@ -4,12 +4,15 @@ class_name TacticsCamera
 const MOVE_SPEED = 16
 const ROT_SPEED = 10
 
+@onready var cam : Camera2D = $Node2D/Camera2D
+var tween : Tween
 var target = null
 var direction = Vector2.ZERO
 const speed := 300
 var moveable := false
 
 func _ready():
+	zoom_in()
 	moveable = true
 
 func follow() -> void:
@@ -22,7 +25,19 @@ func follow() -> void:
 	vel = velocity
 	#if from.distance_to(to) <= 0.25: target = null
 
+func zoom_in() -> void:
+	tween = create_tween().set_ease(Tween.EASE_IN).set_parallel(true)
+	tween.tween_property(cam, "zoom", Vector2(1, 1), 0.8)
+	tween.tween_property(self, "position", Vector2(self.position.x, self.position.y), 0.0001)
+
+func zoom_out() -> void:
+	target = null
+	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel(true)
+	tween.tween_property(cam, "zoom", Vector2(1, 1), 0.8)
+	tween.tween_property(self, "position", Vector2(168, 124), 0.8)
+
 func _process(delta):
+	pass
 	follow()
 
 func _physics_process(delta):
