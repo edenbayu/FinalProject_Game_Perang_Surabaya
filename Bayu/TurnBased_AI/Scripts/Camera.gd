@@ -33,7 +33,7 @@ func zoom_in() -> void:
 func zoom_out() -> void:
 	target = null
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel(true)
-	tween.tween_property(cam, "zoom", Vector2(1, 1), 0.8)
+	tween.tween_property(cam, "zoom", Vector2(0.667, 0.667), 0.8)
 	tween.tween_property(self, "position", Vector2(168, 124), 0.8)
 
 func _process(delta):

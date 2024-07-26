@@ -108,7 +108,7 @@ var is_selected := false:
 			_sprite.material["shader_parameter/modulate_color"] = Color(1, 1, 1)
 			_sprite.material["shader_parameter/line_thickness"] = 3.0
 		else:
-			_sprite.material["shader_parameter/modulate_color"] = Color(0.50, 0.50, 0.50)
+			_sprite.material["shader_parameter/modulate_color"] = Color(0.65, 0.65, 0.65)
 			_sprite.material["shader_parameter/line_thickness"] = 0.0
 
 var _is_walking := false:
