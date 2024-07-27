@@ -124,12 +124,36 @@ func _on_enemy_turn_started(unit: Unit) -> void:
 	active_unit = unit
 	active_unit.is_selected = true
 	player_ui.visible = false
-	gameboard.initialize_AI_area_attack()
+	var detected = _detect_ally_units()
+	var target = set_attack_target(detected)
+	gameboard.shoot(active_unit, target, action_turns)
+	#gameboard.initialize_AI_area_attack()
 	gameboard.approach()
 	#await LevelManager.active_unit.walk_state.walk_finished
-	print("kondisi innate: ",LevelManager.active_unit.innate_done)
 	timer.wait_time = wait_time_test
 	timer.start()
+
+func _detect_ally_units() -> Array:
+	var detected := []
+	var sensor = active_unit.get_children()
+	var raycast = sensor.back()
+	for ray in raycast.get_children():
+		if ray.is_colliding():
+			var detected_unit = ray.get_collider() as Unit
+			if detected_unit.unit_role == "ally":
+				detected.append(detected_unit)
+	if detected.is_empty():
+		active_unit.is_within_range = false
+	else:
+		active_unit.is_within_range = true
+	return detected
+
+func set_attack_target(in_range_target: Array) -> Unit:
+	var attack_target = null
+	for target in in_range_target:
+		if (!attack_target or target.curr_health < target.curr_health) and target.curr_health > 0:
+			attack_target = target
+	return attack_target
 
 ## Function to handle button press (switches to enemy turn)
 func _on_button_pressed():
@@ -189,3 +213,6 @@ func _get_card_informations() -> void:
 	#var walk_image = preload("res://UI/Cards/reload_revamped.png")
 	#var pba = walk_image.get_image().save_png_to_buffer()
 	#database.update_rows("card", "id_card = 2", {"texture" : pba})
+
+func _on_zoom_in_pressed() -> void:
+	tactics_camera.zoom_in()

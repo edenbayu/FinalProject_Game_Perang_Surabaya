@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp5owcpdffn22"
-path="res://.godot/imported/Cursor.png-fcd5a00857a28e87c249056eda5037fc.ctex"
+uid="uid://bs7kqfql1ysto"
+path="res://.godot/imported/enemy_status_card.png-ff8a537b6988d26bf87a4cb2be40b30b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Cursor.png"
-dest_files=["res://.godot/imported/Cursor.png-fcd5a00857a28e87c249056eda5037fc.ctex"]
+source_file="res://Sprites/enemy_status_card.png"
+dest_files=["res://.godot/imported/enemy_status_card.png-ff8a537b6988d26bf87a4cb2be40b30b.ctex"]
 
 [params]
 

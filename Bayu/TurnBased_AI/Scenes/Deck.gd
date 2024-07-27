@@ -54,7 +54,6 @@ func spawn_new_card(result):
 		instance.card_description = i.description
 		instance.card_type = i.card_ability
 		instance.card_attribute = i.card_type
-		print(instance.card_attribute)
 		self.add_child(instance)
 
 func match_card_functionalities():

@@ -16,7 +16,8 @@ signal data_configured
 @onready var fsm : FiniteStateMachine = $FiniteStateMachine
 @onready var idle_state : IdleState = $FiniteStateMachine/IdleState
 @onready var walk_state : WalkState = $FiniteStateMachine/WalkState
-
+@onready var hp_status = $Status/HP
+@onready var armor_status = $Status/Armor
 
 ## Cuma untuk debugging sementara, nanti benerin njih ##
 @export var hframe: int:
@@ -107,9 +108,13 @@ var is_selected := false:
 		if is_selected:
 			_sprite.material["shader_parameter/modulate_color"] = Color(1, 1, 1)
 			_sprite.material["shader_parameter/line_thickness"] = 3.0
+			hp_status.visible = true
+			armor_status.visible = true
 		else:
 			_sprite.material["shader_parameter/modulate_color"] = Color(0.65, 0.65, 0.65)
 			_sprite.material["shader_parameter/line_thickness"] = 0.0
+			hp_status.visible = false
+			armor_status.visible = false
 
 var _is_walking := false:
 	set(value):
@@ -151,6 +156,8 @@ func _configure() -> void:
 
 func _ready():
 	is_selected = false
+	hp_status.visible = false
+	armor_status.visible = false
 	#Konfigurasi signal dalam FSM#
 	walk_state.walk_finished.connect(fsm.change_state.bind(idle_state))
 	walk_state.walk_finished.connect(on_walk_finished)
@@ -168,6 +175,8 @@ func activate_ability_cards() -> void:
 	modular_card = true
 
 func _process(delta: float):
+	hp_status.max_value = max_health
+	hp_status.value = curr_health
 	_update_animation_condition()
 	_update_blend_position()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://patekpdib63w"]
+[gd_scene load_steps=60 format=3 uid="uid://patekpdib63w"]
 
 [ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="1_54tt6"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_hgg8q"]
@@ -8,13 +8,9 @@
 [ext_resource type="Script" path="res://Scripts/UnitPath.gd" id="2_w1kn0"]
 [ext_resource type="PackedScene" uid="uid://20i4en7e2fm7" path="res://Scenes/Unit.tscn" id="3_7kb1e"]
 [ext_resource type="Texture2D" uid="uid://cksudcxp4vmyu" path="res://UI/StatusUI_Ling.png" id="3_7qpu3"]
-[ext_resource type="Texture2D" uid="uid://bs7kqfql1ysto" path="res://Sprites/enemy_status_card.png" id="4_8igjc"]
-[ext_resource type="Shader" path="res://Resources/outline.gdshader" id="4_eoqsm"]
 [ext_resource type="Script" path="res://Scenes/Deck.gd" id="4_n4ffv"]
 [ext_resource type="Texture2D" uid="uid://t6fvglavpu4g" path="res://UI/EndTurn.png" id="4_qw0um"]
-[ext_resource type="Texture2D" uid="uid://dvju22472hmbe" path="res://UI/empty_hp_status.png" id="5_0fg6s"]
 [ext_resource type="Texture2D" uid="uid://2n71oiuyrq6f" path="res://UI/StatusUI_soerjo.png" id="5_yayhc"]
-[ext_resource type="Texture2D" uid="uid://cso0au1maoatp" path="res://UI/half_health_bar_filledt.png" id="6_0e031"]
 [ext_resource type="Script" path="res://Scenes/StatusUI.gd" id="6_4eeb0"]
 [ext_resource type="Shader" path="res://Scenes/burn.gdshader" id="7_4j1oy"]
 [ext_resource type="Shader" path="res://Scenes/dissolve.gdshader" id="7_wckpu"]
@@ -24,34 +20,19 @@
 [ext_resource type="Texture2D" uid="uid://bq07uefqpafdi" path="res://UI/modular_status_ui.png" id="9_6n57g"]
 [ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="11_601eb"]
 [ext_resource type="FontFile" uid="uid://bs41epct36unk" path="res://UI/I-pixel-u.ttf" id="11_jjinn"]
+[ext_resource type="Texture2D" uid="uid://b7hyq78krxwli" path="res://UI/bar_container.png" id="12_2t4b1"]
 [ext_resource type="Script" path="res://Scenes/EnemyController.gd" id="12_bpvfk"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="12_e2jf1"]
+[ext_resource type="Texture2D" uid="uid://jlvsugiwbtfm" path="res://UI/health_bar_filled.png" id="13_lmcxi"]
 [ext_resource type="Texture2D" uid="uid://jpc1o1j6bcqu" path="res://Sprites/Path.png" id="13_vtw6r"]
 [ext_resource type="Texture2D" uid="uid://d333a8tuighwt" path="res://UI/armor_bar_empty.png" id="14_ud0ee"]
 [ext_resource type="Texture2D" uid="uid://bfnvl8ax0sf2t" path="res://UI/armor_bar_filled.png" id="15_4irrx"]
+[ext_resource type="Texture2D" uid="uid://bvbm5241gmlcx" path="res://UI/bg.png" id="18_vnaq5"]
 [ext_resource type="Texture2D" uid="uid://sqoccmhkk5ea" path="res://Sprites/lvl1.png" id="19_nxtcr"]
 [ext_resource type="Script" path="res://addons/utility_ai/agent/agent.gd" id="27_yvtgi"]
 [ext_resource type="Script" path="res://addons/utility_ai/actions/action.gd" id="28_lvhxf"]
 [ext_resource type="Script" path="res://addons/utility_ai/considerations/aggregation.gd" id="29_6jobp"]
 [ext_resource type="Script" path="res://addons/utility_ai/considerations/consideration_from_node.gd" id="29_w7j6f"]
-[ext_resource type="Texture2D" uid="uid://v5elhraurb2y" path="res://Sprites/static_table.png" id="33_240rj"]
-[ext_resource type="Script" path="res://Scenes/CursorSelection.gd" id="35_84v7m"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_furj2"]
-shader = ExtResource("4_eoqsm")
-shader_parameter/line_color = Color(1, 1, 1, 1)
-shader_parameter/line_thickness = 1.0
-shader_parameter/modulate_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ncjxh"]
-texture = ExtResource("5_0fg6s")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_05tuo"]
-texture = ExtResource("6_0e031")
-axis_stretch_horizontal = 1
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cyrrq"]
-texture = ExtResource("5_0fg6s")
 
 [sub_resource type="Animation" id="Animation_pfk2h"]
 length = 0.001
@@ -159,20 +140,20 @@ shader_parameter/dissolve_texture = ExtResource("8_3yyag")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7sm4h"]
 resource_local_to_scene = true
-content_margin_left = 128.0
-content_margin_top = 26.0
-texture = ExtResource("5_0fg6s")
+content_margin_left = 256.0
+content_margin_top = 52.0
+texture = ExtResource("12_2t4b1")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wxmda"]
 resource_local_to_scene = true
-texture = ExtResource("6_0e031")
+texture = ExtResource("13_lmcxi")
 texture_margin_left = 12.0
 texture_margin_right = 12.0
 axis_stretch_horizontal = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wvygj"]
-content_margin_left = 128.0
-content_margin_top = 26.0
+content_margin_left = 256.0
+content_margin_top = 52.0
 texture = ExtResource("14_ud0ee")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lsig2"]
@@ -257,11 +238,6 @@ point_count = 2
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1t3p"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2175y"]
-size = Vector2(32, 32)
-
 [node name="Level" type="Node2D"]
 script = ExtResource("1_hgg8q")
 statusUItexture = Array[Texture2D]([ExtResource("5_yayhc"), ExtResource("3_7qpu3")])
@@ -289,82 +265,21 @@ offset_right = -60.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/UI/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2"]
-material = SubResource("ShaderMaterial_furj2")
-use_parent_material = true
-layout_mode = 2
-size_flags_vertical = 8
-texture = ExtResource("4_8igjc")
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2/TextureRect"]
-custom_minimum_size = Vector2(128, 26)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = 45.0
-offset_right = 64.0
-offset_bottom = 71.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxTexture_ncjxh")
-theme_override_styles/fill = SubResource("StyleBoxTexture_05tuo")
-value = 35.0
-show_percentage = false
-
-[node name="HP" type="Label" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2/TextureRect/ProgressBar"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -26.0
-offset_top = -11.5
-offset_right = 26.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_jjinn")
-text = "35/35"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ProgressBar2" type="ProgressBar" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2/TextureRect"]
-custom_minimum_size = Vector2(128, 26)
-layout_mode = 0
-offset_left = 61.0
-offset_top = 271.0
-offset_right = 189.0
-offset_bottom = 298.0
-theme_override_styles/background = SubResource("StyleBoxTexture_cyrrq")
-show_percentage = false
-
-[node name="Panel" type="Panel" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2"]
+[node name="Panel" type="Panel" parent="CanvasLayer/UI/HBoxContainer"]
 modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 740)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/HBoxContainer"]
-custom_minimum_size = Vector2(0, 296)
 layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="StatusUI" type="TextureRect" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(288, 160)
+custom_minimum_size = Vector2(576, 320)
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("5_yayhc")
-expand_mode = 3
 script = ExtResource("6_4eeb0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI"]
@@ -393,10 +308,10 @@ texture = ExtResource("9_6n57g")
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI"]
 layout_mode = 0
-offset_left = 222.0
-offset_top = 123.0
-offset_right = 350.0
-offset_bottom = 149.0
+offset_left = 320.0
+offset_top = 181.0
+offset_right = 576.0
+offset_bottom = 233.0
 theme_override_styles/background = SubResource("StyleBoxTexture_7sm4h")
 theme_override_styles/fill = SubResource("StyleBoxTexture_wxmda")
 max_value = 5.0
@@ -411,22 +326,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -13.0
-offset_top = -13.0
-offset_right = 56.0
-offset_bottom = 25.0
+offset_left = -34.0
+offset_top = -23.0
+offset_right = 35.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("11_jjinn")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 30
 text = "3/5"
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI"]
 layout_mode = 0
-offset_left = 222.0
-offset_top = 192.0
-offset_right = 350.0
-offset_bottom = 218.0
+offset_left = 320.0
+offset_top = 283.0
+offset_right = 324.0
+offset_bottom = 310.0
 theme_override_styles/background = SubResource("StyleBoxTexture_wvygj")
 theme_override_styles/fill = SubResource("StyleBoxTexture_lsig2")
 max_value = 3.0
@@ -475,7 +390,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_t2hkw")
 text = "END TURN
 "
 
-[node name="ZoomOut" type="Button" parent="CanvasLayer/UI"]
+[node name="Button" type="Button" parent="CanvasLayer/UI"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 1
@@ -486,19 +401,6 @@ offset_bottom = 50.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 30
 text = "x"
-metadata/_edit_use_anchors_ = true
-
-[node name="ZoomIn" type="Button" parent="CanvasLayer/UI"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -50.0
-offset_right = -75.0
-offset_bottom = 50.0
-grow_horizontal = 0
-text = "Y"
 
 [node name="TurnBasedUI" type="NinePatchRect" parent="CanvasLayer/UI"]
 layout_mode = 1
@@ -520,6 +422,21 @@ offset_left = 4.0
 offset_top = 4.0
 offset_right = 100.0
 offset_bottom = 96.0
+
+[node name="Bg4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-960, -540)
+texture = ExtResource("18_vnaq5")
+
+[node name="Bg3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, -540)
+texture = ExtResource("18_vnaq5")
+
+[node name="Bg2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-960, 540)
+texture = ExtResource("18_vnaq5")
 
 [node name="Bg" type="Sprite2D" parent="."]
 position = Vector2(168, 124)
@@ -551,6 +468,8 @@ _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
 hframe = 7
 vframe = 4
+
+[node name="Area2D" type="Area2D" parent="GameBoard/Player/Soerjo"]
 
 [node name="Ling" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
 position = Vector2(578, 161)
@@ -817,55 +736,17 @@ node = NodePath("../../../../..")
 property_name = "is_empty_ammo"
 curve = SubResource("Curve_ouiti")
 
-[node name="Props" type="Node2D" parent="GameBoard"]
-
-[node name="TableChair" type="StaticBody2D" parent="GameBoard/Props"]
-position = Vector2(-640, 406)
-
-[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair"]
-texture = ExtResource("33_240rj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair"]
-shape = SubResource("RectangleShape2D_t1t3p")
-
-[node name="TableChair2" type="StaticBody2D" parent="GameBoard/Props"]
-position = Vector2(-320, 566)
-
-[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair2"]
-texture = ExtResource("33_240rj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair2"]
-shape = SubResource("RectangleShape2D_t1t3p")
-
-[node name="TableChair3" type="StaticBody2D" parent="GameBoard/Props"]
-position = Vector2(0, 726)
-
-[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair3"]
-texture = ExtResource("33_240rj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair3"]
-shape = SubResource("RectangleShape2D_t1t3p")
-
 [node name="Timer" type="Timer" parent="."]
 
 [node name="TacticsCamera" parent="." instance=ExtResource("2_pxgfw")]
 position = Vector2(168, 124)
 collision_mask = 4
 
-[node name="Cursor" type="Area2D" parent="."]
-script = ExtResource("35_84v7m")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
-shape = SubResource("RectangleShape2D_2175y")
-
 [connection signal="ally_turn_started" from="." to="." method="_on_ally_turn_started"]
 [connection signal="enemy_turn_started" from="." to="." method="_on_enemy_turn_started"]
 [connection signal="pressed" from="CanvasLayer/UI/HBoxContainer/HBoxContainer/TurnChanger" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/ZoomOut" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/ZoomIn" to="." method="_on_zoom_in_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Button" to="." method="_on_exit_button_pressed"]
 [connection signal="accept_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_accept_pressed"]
 [connection signal="moved" from="GameBoard/Cursor" to="GameBoard" method="_check_hoverable_tiles"]
 [connection signal="top_score_action_changed" from="GameBoard/Enemy/UtilityAiAgent" to="GameBoard" method="_on_utility_ai_agent_top_score_action_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="Cursor" to="Cursor" method="_on_body_entered"]
-[connection signal="body_exited" from="Cursor" to="Cursor" method="_on_body_exited"]

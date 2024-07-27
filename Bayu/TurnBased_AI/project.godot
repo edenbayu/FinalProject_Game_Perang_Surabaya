@@ -13,12 +13,14 @@ config_version=5
 config/name="Ta Perang Surabaya"
 run/main_scene="res://Scenes/level.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
+boot_splash/bg_color=Color(0.262745, 0.262745, 0.309804, 1)
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+mouse_cursor/custom_image="res://Sprites/cursor_texture.png"
 
 [dotnet]
 
@@ -46,3 +48,4 @@ click={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.262745, 0.262745, 0.309804, 1)

@@ -34,4 +34,6 @@ func _init(grid: Grid, _walkable_cells: Array) -> void:
 			#print("Non solid-cell:", cell)
 
 func calculate_point_paths(start: Vector2, end: Vector2)-> PackedVector2Array:
+	if start == null:
+		return []
 	return _astar.get_id_path(start, end)

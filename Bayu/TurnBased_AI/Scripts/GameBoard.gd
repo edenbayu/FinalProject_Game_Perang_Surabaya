@@ -329,17 +329,6 @@ func _clear_attack_cells() -> void:
 	_attack_cells.clear()
 
 ##Code for AI actions##
-func initialize_AI_area_attack() -> void:
-	ai_attack_area = get_attack_range_cells(LevelManager.active_unit)
-	unitPath.display_attack_range(ai_attack_area)
-	var enemyDetected = false
-
-	for cell in ai_attack_area:
-		if _detect_player_unit(cell):
-			enemyDetected = true
-			break  # Exit the loop early if an enemy is found
-	LevelManager.active_unit.is_within_range = enemyDetected
-	print("Enemy sensor within area: ", LevelManager.active_unit.is_within_range)
 
 func _detect_player_unit(cell: Vector2) -> bool:
 	var unit_cells = []
@@ -390,16 +379,23 @@ func get_path_to_flee() -> void:
 func flee() -> void:
 	print("flee from battle!")
 
-func ai_reload() -> void:
-	LevelManager.active_unit.ammo = 3
+func ai_reload(active_unit: Unit) -> void:
+	active_unit.ammo = 3
 
-func shoot() -> void:
-	print("be shootin yer hed!")
+func shoot(active_unit: Unit, target: Unit, turn: int) -> void:
+	if target == null:
+		turn -= 1
+		return
+	#active_unit.enter_state = shootin!
+	target.curr_health -= 4
+	print("be shootin yer hed!", target)
 
-func rest() -> void:
+func rest(turn: int) -> void:
+	turn -= 1
 	print("guess i'd do nothin")
 
 func get_ai_actions():
 	var action = ai_agent.get_top
+
 func _on_utility_ai_agent_top_score_action_changed(top_action_id):
 	pass

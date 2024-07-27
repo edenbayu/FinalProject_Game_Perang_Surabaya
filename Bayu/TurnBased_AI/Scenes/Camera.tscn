@@ -5,6 +5,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cu5o1"]
 
 [node name="TacticsCamera" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_d61jt")
 
 [node name="Node2D" type="Node2D" parent="."]

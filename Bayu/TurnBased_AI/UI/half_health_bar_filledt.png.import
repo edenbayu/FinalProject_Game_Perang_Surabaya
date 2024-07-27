@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp5owcpdffn22"
-path="res://.godot/imported/Cursor.png-fcd5a00857a28e87c249056eda5037fc.ctex"
+uid="uid://cso0au1maoatp"
+path="res://.godot/imported/half_health_bar_filledt.png-17516eaa6b835a5e2439b59dffd998b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Cursor.png"
-dest_files=["res://.godot/imported/Cursor.png-fcd5a00857a28e87c249056eda5037fc.ctex"]
+source_file="res://UI/half_health_bar_filledt.png"
+dest_files=["res://.godot/imported/half_health_bar_filledt.png-17516eaa6b835a5e2439b59dffd998b2.ctex"]
 
 [params]
 
