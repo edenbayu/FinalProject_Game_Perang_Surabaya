@@ -189,9 +189,6 @@ func _active_icon() -> void:
 	if active_icon:
 		active_icon.texture = active_unit.icon
 
-func _on_exit_button_pressed() -> void:
-	tactics_camera.zoom_out()
-
 func _get_card_informations() -> void:
 	#1. Open database connection
 	database = SQLite.new()
@@ -214,5 +211,9 @@ func _get_card_informations() -> void:
 	#var pba = walk_image.get_image().save_png_to_buffer()
 	#database.update_rows("card", "id_card = 2", {"texture" : pba})
 
+##Camera configurations
 func _on_zoom_in_pressed() -> void:
 	tactics_camera.zoom_in()
+
+func _on_exit_button_pressed() -> void:
+	tactics_camera.zoom_out()

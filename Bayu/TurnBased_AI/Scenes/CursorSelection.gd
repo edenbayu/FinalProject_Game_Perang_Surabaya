@@ -25,6 +25,12 @@ func _on_body_entered(body) -> void:
 		hp_bar.max_value = show.max_health
 		hp_label.text = str(hp_bar.value) + "/" + str(hp_bar.max_value)
 		unit_status.visible = true
+		show.is_hovered = true
 
 func _on_body_exited(body):
-	unit_status.visible = false
+	var show = body as Unit
+	if not show:
+		return
+	if show.unit_role == "enemy":
+		unit_status.visible = false
+		show.is_hovered = false
