@@ -34,7 +34,7 @@ func on_card_chosen():
 func show_card():
 	var tween : Tween
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-	tween.tween_property(self, "position", Vector2(self.position.x, 164), 1)
+	tween.tween_property(self, "position", Vector2(self.position.x, 0), 1)
 
 #Fungsi untuk menginstansiasi kartu baru sesuai dengan unit
 func spawn_new_card(result):

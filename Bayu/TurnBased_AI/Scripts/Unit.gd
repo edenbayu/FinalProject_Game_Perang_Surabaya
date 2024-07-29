@@ -69,6 +69,11 @@ var max_health: float:
 	set(value):
 		max_health = value * 1.0
 
+var max_armor : float
+var curr_armor : float:
+	set(value):
+		curr_armor = clamp(value, 0, max_armor)
+
 var curr_health: float:
 	set(value):
 		curr_health = clamp(value, 0, max_health)
@@ -76,6 +81,7 @@ var curr_health: float:
 var is_within_range := false
 var is_empty_ammo := false
 var innate_done := false
+var modular_done := false
 #############################################
 
 #setter getter
@@ -143,16 +149,18 @@ func _configure() -> void:
 	database = SQLite.new()
 	database.path = "res://data.db"
 	database.open_db()
-	database.query("select nama, health, move_speed, move_range, attack_range, icon, inactive_icon, skin, role from Player where player_id = "+ str(player_id))
+	database.query("select nama, health, armor, move_speed, move_range, attack_range, icon, inactive_icon, skin, role from Player where player_id = "+ str(player_id))
 	for data in database.query_result:
 		pass
 		nama = data.nama
 		max_health = data.health
 		curr_health = max_health
+		max_armor = data.armor
+		curr_armor = max_armor
 		move_speed = data.move_speed
 		move_range = data.move_range
 		attack_range = data.attack_range
-		ammo = 0
+		ammo = 3
 		var skin_image = Image.new()
 		skin_image.load_png_from_buffer(data.skin)
 		var texture = ImageTexture.create_from_image(skin_image)

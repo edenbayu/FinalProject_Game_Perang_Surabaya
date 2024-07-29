@@ -5,7 +5,7 @@ signal status_bar_has_exit
 var tween : Tween
 @onready var animation : AnimationPlayer = $AnimationPlayer
 @onready var hp_text : Label = $HealthBar/HPText
-@onready var armor_text : Label = $ProgressBar/ArmorText
+@onready var armor_text = $ArmorBar/ArmorText
 
 func _ready():
 	transition_enter()
@@ -13,7 +13,10 @@ func _ready():
 func _process(delta):
 	$HealthBar.max_value = LevelManager.active_unit.max_health
 	$HealthBar.value = LevelManager.active_unit.curr_health
+	$ArmorBar.max_value = LevelManager.active_unit.max_armor
+	$ArmorBar.value = LevelManager.active_unit.curr_armor
 	hp_text.text = str(LevelManager.active_unit.curr_health) + "/" + str(LevelManager.active_unit.max_health)
+	armor_text.text = str(LevelManager.active_unit.curr_armor) + "/" + str(LevelManager.active_unit.max_armor)
 
 func transition_exit() -> void:
 	self.position.x = 0

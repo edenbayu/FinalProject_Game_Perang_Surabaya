@@ -3,6 +3,8 @@ class_name LevelManager
 
 #Singleton variable for active units
 static var active_unit: Unit
+const turn := 2
+signal next_action
 
 @export var statusUItexture: Array[Texture2D]
 @onready var UI_CONTROLLER = $CanvasLayer/UI/HBoxContainer/HBoxContainer/TurnChanger
@@ -118,20 +120,54 @@ func _on_ally_turn_started(unit: Unit) -> void:
 
 # Signal handler for enemy turn started
 func _on_enemy_turn_started(unit: Unit) -> void:
-	tactics_camera.zoom_in()
-	#gameboard.get_path_to_flee()
-	var action_turns := 2
 	active_unit = unit
 	active_unit.is_selected = true
 	player_ui.visible = false
-	var detected = _detect_ally_units()
-	var target = set_attack_target(detected)
-	gameboard.shoot(active_unit, target, action_turns)
-	#gameboard.initialize_AI_area_attack()
-	gameboard.approach()
-	#await LevelManager.active_unit.walk_state.walk_finished
+	run_first_action()
+	#await gameboard.action_done
+	await get_tree().create_timer(0.5).timeout
+	print("oke bole dilanjut")
+	run_second_action()
+	#var detected = _detect_ally_units()
+	#var target = set_attack_target(detected)
+	#var action = gameboard.get_first_act(active_unit)
+	#execute_matched_actions(action, target)
+	#gameboard.shoot(active_unit, target, active_unit.turn_index)
+	active_unit.modular_done = false
+	active_unit.innate_done = false
 	timer.wait_time = wait_time_test
 	timer.start()
+
+func run_first_action() -> void:
+	var detected = _detect_ally_units()
+	var target = set_attack_target(detected)
+	var action = gameboard.get_first_act(active_unit)
+	execute_matched_actions(action, target)
+	print("ini aksi pertama: ", action)
+	print("cek kondisi modular: ", active_unit.modular_done)
+
+func run_second_action() -> void:
+	var detected = _detect_ally_units()
+	var target = set_attack_target(detected)
+	var action = gameboard.get_first_act(active_unit)
+	execute_matched_actions(action, target)
+	print("ini aksi kedua: ", action)
+	#print("kondisi index kedua: ", active_unit.turn_index)
+	print("cek kondisi modular: ", active_unit.modular_done)
+
+func execute_matched_actions(action: String, target: Unit) -> void:
+	#await next_action
+	match action:
+		"approach":
+			gameboard.approach(active_unit)
+		"flee":
+			gameboard.flee()
+		"reload":
+			gameboard.relaod()
+		"shoot":
+			gameboard.shoot(active_unit, target)
+		"rest":
+			gameboard.rest(active_unit)
 
 func _detect_ally_units() -> Array:
 	var detected := []
@@ -217,3 +253,6 @@ func _on_zoom_in_pressed() -> void:
 
 func _on_exit_button_pressed() -> void:
 	tactics_camera.zoom_out()
+
+func _on_utility_ai_agent_top_score_action_changed(top_action_id):
+	next_action.emit()

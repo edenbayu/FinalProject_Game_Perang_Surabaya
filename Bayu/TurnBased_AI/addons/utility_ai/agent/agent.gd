@@ -19,6 +19,7 @@ func _physics_process(delta):
 	if not enabled:
 		return
 	_process_actions()
+	print(get_all_scores())
 
 
 func _process_actions():
@@ -58,7 +59,7 @@ func _get_highest_utility_action(actions: Array) -> UtilityAiAction:
 
 	_action_scores = all_scores
 	_score_sorted = false
-
+	
 	return top_action
 
 

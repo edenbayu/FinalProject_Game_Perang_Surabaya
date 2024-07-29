@@ -2,13 +2,13 @@ class_name GameBoard
 extends Node2D
 
 const DIRECTIONS = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
+signal action_done
 
 @export var grid: Grid
 @onready var unitPath: UnitPath = $UnitPath
 @onready var cursor = $Cursor
 @onready var player = $Player
 @onready var enemy = $Enemy
-@onready var ai_agent : UtilityAiAgent = $Enemy/UtilityAiAgent
 @onready var deck : Deck = $"../CanvasLayer/UI/HBoxContainer/HBoxContainer/Hands"
 @onready var status_ui : StatusUI = $"../CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI"
 
@@ -355,16 +355,17 @@ func _move_active_AI(walk_paths: Array, new_cell) -> void:
 	_deselect_active_unit()
 	LevelManager.active_unit.walk()
 	await LevelManager.active_unit.walk_state.walk_finished
+	LevelManager.active_unit.innate_done = true
+	action_done.emit()
 	_clear_active_unit()
 
 #AI actions
-func approach() -> void:
+func approach(active_unit: Unit) -> void:
 	var path1 = get_path_to_weakest_unit()
-	var path2 = get_walkable_cells(LevelManager.active_unit)
+	var path2 = get_walkable_cells(active_unit)
 	var ai_walk_paths = array_intersection(path1, path2)
 	var ai_final_target = ai_walk_paths.back()
-	if not LevelManager.active_unit.is_within_range:
-		_move_active_AI(ai_walk_paths, ai_final_target)
+	_move_active_AI(ai_walk_paths, ai_final_target)
 
 func get_path_to_flee() -> void:
 	var _pathfinder = Pathfinder.new(grid, get_grid_data(grid))
@@ -374,28 +375,32 @@ func get_path_to_flee() -> void:
 		unit_player_locations.append(unit.cell)
 	for cell in unit_player_locations:
 		print("arah dari tujuan : ", sign(LevelManager.active_unit.cell - cell))
-	
-	
+
 func flee() -> void:
 	print("flee from battle!")
 
 func ai_reload(active_unit: Unit) -> void:
 	active_unit.ammo = 3
+	active_unit.innate_done = true
+	action_done.emit()
 
-func shoot(active_unit: Unit, target: Unit, turn: int) -> void:
+func shoot(active_unit: Unit, target: Unit) -> void:
 	if target == null:
-		turn -= 1
 		return
 	#active_unit.enter_state = shootin!
 	target.curr_health -= 4
+	active_unit.modular_done = true
 	print("be shootin yer hed!", target)
+	action_done.emit()
 
-func rest(turn: int) -> void:
-	turn -= 1
+func rest(active_unit: Unit) -> void:
+	active_unit.modular_done = true
+	action_done.emit()
 	print("guess i'd do nothin")
 
-func get_ai_actions():
-	var action = ai_agent.get_top
+#func get_ai_actions():
+	#var action = ai_agent.get_top
 
-func _on_utility_ai_agent_top_score_action_changed(top_action_id):
-	pass
+func get_first_act(active_unit: Unit) -> String:
+	var ai_agent = active_unit.get_child(6) as UtilityAiAgent
+	return ai_agent._current_top_action

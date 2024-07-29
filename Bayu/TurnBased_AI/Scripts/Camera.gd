@@ -10,6 +10,7 @@ var target = null
 var direction = Vector2.ZERO
 const speed := 300
 var moveable := false
+var zoomed_in := false
 
 func _ready():
 	zoom_in()
@@ -26,18 +27,22 @@ func follow() -> void:
 	#if from.distance_to(to) <= 0.25: target = null
 
 func zoom_in() -> void:
+	zoomed_in = true
 	tween = create_tween().set_ease(Tween.EASE_IN).set_parallel(true)
 	tween.tween_property(cam, "zoom", Vector2(1, 1), 0.8)
 	tween.tween_property(self, "position", Vector2(self.position.x, self.position.y), 0.0001)
 
 func zoom_out() -> void:
-	target = null
+	zoomed_in = false
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).set_parallel(true)
 	tween.tween_property(cam, "zoom", Vector2(0.667, 0.667), 0.8)
 	tween.tween_property(self, "position", Vector2(168, 124), 0.8)
 
 func _process(delta):
-	pass
+	if zoomed_in:
+		target = LevelManager.active_unit
+	else:
+		target = null
 	follow()
 
 func _physics_process(delta):
