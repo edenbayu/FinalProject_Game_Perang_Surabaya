@@ -16,6 +16,9 @@ func _ready():
 	#main_menu_music.volume_db = -50
 	main_menu_music.stream.loop = true
 	main_menu_music.play()
+	$VBoxContainer/MasterSlider.value = AudioServer.get_bus_volume_db(master)
+	$VBoxContainer/MusicSlider.value = AudioServer.get_bus_volume_db(music)
+	$VBoxContainer/SFXSlider.value = AudioServer.get_bus_volume_db(sfx)
 
 func _process(_delta):
 	pass
@@ -33,7 +36,6 @@ func _change_music_volume(value):
 		AudioServer.set_bus_mute(music,true)
 	else:
 		AudioServer.set_bus_mute(music,false)
-
 
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://main_menu.tscn")
