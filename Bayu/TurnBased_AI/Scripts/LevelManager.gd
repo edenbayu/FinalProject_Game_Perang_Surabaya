@@ -29,7 +29,9 @@ var _units := []
 var _icons := []
 var turn_index := 0
 var active_icon : TextureRect
-
+var target = null
+var targets = []
+var detected := []
 var wait_time_test := 1.5
 
 # Called when the node enters the scene tree for the first time.
@@ -44,6 +46,9 @@ func _ready():
 
 func _process(delta):
 	pass
+	#if active_unit.unit_role == "enemy":
+		#_detect_ally_units()
+	#print(detected)
 
 func set_turn():
 	var unit_status = _units[turn_index].unit_role
@@ -120,57 +125,64 @@ func _on_ally_turn_started(unit: Unit) -> void:
 
 # Signal handler for enemy turn started
 func _on_enemy_turn_started(unit: Unit) -> void:
+	active_unit.modular_done = false
+	active_unit.innate_done = false
+	detected.clear()
 	active_unit = unit
+	_detect_ally_units()
 	active_unit.is_selected = true
 	player_ui.visible = false
-	run_first_action()
-	#await gameboard.action_done
+	#await _detect_ally_units()
+	await get_tree().create_timer(0.25).timeout
+	print("innate ", active_unit.innate_done)
+	print("modular ", active_unit.modular_done)
+	print("ammo ", active_unit.is_empty_ammo)
+	print("range ", active_unit.is_within_range)
+	await run_first_action()
+	await _detect_ally_units()
 	await get_tree().create_timer(0.5).timeout
-	print("oke bole dilanjut")
-	run_second_action()
+	print("innate ", active_unit.innate_done)
+	print("modular ", active_unit.modular_done)
+	print("ammo ", active_unit.is_empty_ammo)
+	print("range ", active_unit.is_within_range)
+	await run_second_action()
 	#var detected = _detect_ally_units()
 	#var target = set_attack_target(detected)
 	#var action = gameboard.get_first_act(active_unit)
 	#execute_matched_actions(action, target)
 	#gameboard.shoot(active_unit, target, active_unit.turn_index)
-	active_unit.modular_done = false
-	active_unit.innate_done = false
 	timer.wait_time = wait_time_test
 	timer.start()
 
 func run_first_action() -> void:
-	var detected = _detect_ally_units()
 	var target = set_attack_target(detected)
 	var action = gameboard.get_first_act(active_unit)
-	execute_matched_actions(action, target)
+	await execute_matched_actions(action, target)
 	print("ini aksi pertama: ", action)
-	print("cek kondisi modular: ", active_unit.modular_done)
+	print("skoring: ", $GameBoard/Enemy/Unit/UtilityAiAgent._action_scores)
 
 func run_second_action() -> void:
-	var detected = _detect_ally_units()
 	var target = set_attack_target(detected)
 	var action = gameboard.get_first_act(active_unit)
-	execute_matched_actions(action, target)
+	await execute_matched_actions(action, target)
 	print("ini aksi kedua: ", action)
-	#print("kondisi index kedua: ", active_unit.turn_index)
-	print("cek kondisi modular: ", active_unit.modular_done)
+	print("skoring: ", $GameBoard/Enemy/Unit/UtilityAiAgent._action_scores)
 
 func execute_matched_actions(action: String, target: Unit) -> void:
 	#await next_action
 	match action:
 		"approach":
-			gameboard.approach(active_unit)
+			await gameboard.approach(active_unit)
 		"flee":
-			gameboard.flee()
+			await gameboard.flee()
 		"reload":
-			gameboard.relaod()
+			await gameboard.reload()
 		"shoot":
-			gameboard.shoot(active_unit, target)
+			await gameboard.shoot(active_unit, target)
 		"rest":
-			gameboard.rest(active_unit)
+			await gameboard.rest(active_unit)
 
-func _detect_ally_units() -> Array:
-	var detected := []
+func _detect_ally_units() -> void:
 	var sensor = active_unit.get_children()
 	var raycast = sensor.back()
 	for ray in raycast.get_children():
@@ -182,7 +194,6 @@ func _detect_ally_units() -> Array:
 		active_unit.is_within_range = false
 	else:
 		active_unit.is_within_range = true
-	return detected
 
 func set_attack_target(in_range_target: Array) -> Unit:
 	var attack_target = null
@@ -240,19 +251,18 @@ func _get_card_informations() -> void:
 	#3. instantiate card based on query result
 	deck.spawn_new_card(database.query_result)
 	deck.match_card_functionalities()
-	#_update_card_data()
-#
-#func _update_card_data() -> void:
-	#var walk_image = preload("res://UI/Cards/reload_revamped.png")
-	#var pba = walk_image.get_image().save_png_to_buffer()
-	#database.update_rows("card", "id_card = 2", {"texture" : pba})
 
 ##Camera configurations
 func _on_zoom_in_pressed() -> void:
 	tactics_camera.zoom_in()
+	$GameBoard/Enemy/Unit.modular_done = true
+	print($GameBoard/Enemy/Unit/UtilityAiAgent._action_scores)
 
 func _on_exit_button_pressed() -> void:
 	tactics_camera.zoom_out()
+	print("apakah dalam range? ", $GameBoard/Enemy/Unit.is_within_range)
+	print("peluru kosong?", $GameBoard/Enemy/Unit.is_empty_ammo)
+	print($GameBoard/Enemy/Unit/UtilityAiAgent._action_scores)
 
 func _on_utility_ai_agent_top_score_action_changed(top_action_id):
 	next_action.emit()

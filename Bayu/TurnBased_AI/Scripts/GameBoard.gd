@@ -356,7 +356,7 @@ func _move_active_AI(walk_paths: Array, new_cell) -> void:
 	LevelManager.active_unit.walk()
 	await LevelManager.active_unit.walk_state.walk_finished
 	LevelManager.active_unit.innate_done = true
-	action_done.emit()
+	emit_signal("action_done")
 	_clear_active_unit()
 
 #AI actions
@@ -365,7 +365,7 @@ func approach(active_unit: Unit) -> void:
 	var path2 = get_walkable_cells(active_unit)
 	var ai_walk_paths = array_intersection(path1, path2)
 	var ai_final_target = ai_walk_paths.back()
-	_move_active_AI(ai_walk_paths, ai_final_target)
+	await _move_active_AI(ai_walk_paths, ai_final_target)
 
 func get_path_to_flee() -> void:
 	var _pathfinder = Pathfinder.new(grid, get_grid_data(grid))

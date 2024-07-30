@@ -19,7 +19,7 @@ func _physics_process(delta):
 	if not enabled:
 		return
 	_process_actions()
-	print(get_all_scores())
+	#print(get_all_scores())
 
 
 func _process_actions():
