@@ -176,7 +176,7 @@ func execute_matched_actions(action: String, target: Unit) -> void:
 		"flee":
 			await gameboard.flee()
 		"reload":
-			await gameboard.reload()
+			await gameboard.ai_reload(active_unit)
 		"shoot":
 			await gameboard.shoot(active_unit, target)
 		"rest":
@@ -188,7 +188,7 @@ func _detect_ally_units() -> void:
 	for ray in raycast.get_children():
 		if ray.is_colliding():
 			var detected_unit = ray.get_collider() as Unit
-			if detected_unit.unit_role == "ally":
+			if detected_unit.unit_role == "ally" and detected_unit.curr_health > 0:
 				detected.append(detected_unit)
 	if detected.is_empty():
 		active_unit.is_within_range = false

@@ -277,6 +277,8 @@ func get_weakest_unit() -> Unit:
 
 func get_path_to_weakest_unit() -> PackedVector2Array:
 	var weakest_unit = get_weakest_unit()
+	if weakest_unit == null:
+		return []
 	var pathfinder = Pathfinder.new(grid, get_grid_data(grid))
 	var paths = pathfinder.calculate_point_paths(LevelManager.active_unit.cell, weakest_unit.cell)
 	paths.remove_at(0)
@@ -388,7 +390,9 @@ func shoot(active_unit: Unit, target: Unit) -> void:
 	if target == null:
 		return
 	#active_unit.enter_state = shootin!
-	target.curr_health -= 4
+	var final_damage = clamp(apply_reduction(active_unit.damage, target.curr_armor), 0, active_unit.damage)
+	target.curr_health -= final_damage
+	active_unit.ammo -= 1
 	active_unit.modular_done = true
 	print("be shootin yer hed!", target)
 	action_done.emit()
@@ -404,3 +408,17 @@ func rest(active_unit: Unit) -> void:
 func get_first_act(active_unit: Unit) -> String:
 	var ai_agent = active_unit.get_child(6) as UtilityAiAgent
 	return ai_agent._current_top_action
+
+func apply_reduction(base_damage: int, current_armor: int) -> int:
+	var final_damage = base_damage
+	if current_armor > 10:
+		final_damage -= 4
+	elif current_armor >= 7:
+		final_damage -= 3
+	elif current_armor >= 4:
+		final_damage -= 2
+	elif current_armor >= 1:
+		final_damage -= 1
+	else:
+		return final_damage
+	return final_damage

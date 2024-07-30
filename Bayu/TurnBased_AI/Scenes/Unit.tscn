@@ -114,11 +114,6 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
-libraries = {
-"": SubResource("AnimationLibrary_cyab2"),
-"Jepang_animation": SubResource("AnimationLibrary_0eh6d"),
-"Soerjo_animation": ExtResource("3_ox0gf")
-}
 tree_root = ExtResource("4_6vypo")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_idle = true

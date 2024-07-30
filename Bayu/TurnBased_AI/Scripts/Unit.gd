@@ -62,7 +62,7 @@ var skin: Texture2D:
 			await ready
 		_sprite.texture = value
 
-var level: int
+var damage: int
 
 ##### VARIABLE UNTUK AI DECISION MAKING #####
 var max_health: float:
@@ -149,7 +149,7 @@ func _configure() -> void:
 	database = SQLite.new()
 	database.path = "res://data.db"
 	database.open_db()
-	database.query("select nama, health, armor, move_speed, move_range, attack_range, icon, inactive_icon, skin, role from Player where player_id = "+ str(player_id))
+	database.query("select nama, health, armor, move_speed, move_range, damage, attack_range, icon, inactive_icon, skin, role from Player where player_id = "+ str(player_id))
 	for data in database.query_result:
 		pass
 		nama = data.nama
@@ -160,6 +160,7 @@ func _configure() -> void:
 		move_speed = data.move_speed
 		move_range = data.move_range
 		attack_range = data.attack_range
+		damage = data.damage
 		ammo = 3
 		var skin_image = Image.new()
 		skin_image.load_png_from_buffer(data.skin)
@@ -199,6 +200,8 @@ func activate_ability_cards() -> void:
 func _process(delta: float):
 	hp_status.max_value = max_health
 	hp_status.value = curr_health
+	armor_status.max_value = max_armor
+	armor_status.max_value = curr_armor
 	_update_animation_condition()
 	_update_blend_position()
 
