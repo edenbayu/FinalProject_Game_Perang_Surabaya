@@ -11,9 +11,18 @@ config_version=5
 [application]
 
 config/name="Main menu Prototipe"
-run/main_scene="res://main_menu.tscn"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://audio/default_bus_layout.tres"
+
+[autoload]
+
+LoadManager="*res://autoloads/LoadManager.gd"
+LevelState="*res://Scripts/LevelState.gd"
 
 [display]
 
@@ -27,3 +36,11 @@ project/assembly_name="Main menu Prototipe"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")
+
+[input]
+
+klik_mouse_kiri={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}

@@ -1,0 +1,614 @@
+[gd_scene load_steps=78 format=3 uid="uid://c8t7d3415ry1g"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_3xyrq"]
+[ext_resource type="FontFile" uid="uid://be1488wacuvuy" path="res://I-pixel-u.ttf" id="1_i2uaj"]
+[ext_resource type="Texture2D" uid="uid://cu3g0piko2lec" path="res://UI/mainmenu.png" id="2_r0hqn"]
+[ext_resource type="Texture2D" uid="uid://c1pt5kfm162v4" path="res://UI/koran.png" id="3_xw3nl"]
+[ext_resource type="Texture2D" uid="uid://c1swi8r35lmoc" path="res://UI/normal-continue-button.png" id="4_b7h7j"]
+[ext_resource type="Texture2D" uid="uid://bw4lrgkno7w08" path="res://UI/hover-continue-button.png" id="5_noen7"]
+[ext_resource type="Texture2D" uid="uid://6bw5v53kb33r" path="res://UI/pressed-continue-button.png" id="6_41i71"]
+[ext_resource type="Texture2D" uid="uid://csx05essrvk6j" path="res://UI/disabled-continue-button.png" id="7_g4iyq"]
+[ext_resource type="Texture2D" uid="uid://jlto1ot6vi5q" path="res://UI/normal-load-button.png" id="8_relwa"]
+[ext_resource type="Texture2D" uid="uid://bcb7o4gf7co3k" path="res://UI/hover-load-button.png" id="9_dr0a1"]
+[ext_resource type="Texture2D" uid="uid://c347nnmlo2l3e" path="res://UI/pressed-load-button.png" id="10_hnccg"]
+[ext_resource type="Texture2D" uid="uid://cy5s6ytmld618" path="res://UI/disabled-load-button.png" id="11_5ssxc"]
+[ext_resource type="Texture2D" uid="uid://bal5ntf2lv4bh" path="res://UI/normal-new-button.png" id="11_scyhw"]
+[ext_resource type="Texture2D" uid="uid://dglt83vir0qvu" path="res://UI/hover-new-button.png" id="12_f2ks1"]
+[ext_resource type="Texture2D" uid="uid://bu62uydoelr5h" path="res://UI/pressed-new-button.png" id="13_fkvh3"]
+[ext_resource type="Texture2D" uid="uid://wk6747ghmekb" path="res://UI/normal-setting-button.png" id="14_txthe"]
+[ext_resource type="Texture2D" uid="uid://b06qcy8d3vff1" path="res://UI/hover-setting-button.png" id="15_g47xg"]
+[ext_resource type="Texture2D" uid="uid://b7w5nbdpefq7a" path="res://UI/pressed-setting-button.png" id="16_3dn6b"]
+[ext_resource type="Texture2D" uid="uid://duy4gu636iyr8" path="res://UI/normal-credit-button.png" id="17_docoa"]
+[ext_resource type="Texture2D" uid="uid://n3ryi5xv5xy0" path="res://UI/hover-credit-button.png" id="18_pvqe1"]
+[ext_resource type="Texture2D" uid="uid://rcxu1t7hcu1n" path="res://UI/pressed-credit-button.png" id="19_232b3"]
+[ext_resource type="Texture2D" uid="uid://cvp8qckiliw7p" path="res://UI/normal-exit-button.png" id="20_j2lrx"]
+[ext_resource type="Texture2D" uid="uid://bfdf0diulke8c" path="res://UI/hover-exit-button.png" id="21_b8886"]
+[ext_resource type="Texture2D" uid="uid://cbjulex7vtr7k" path="res://UI/pressed-exit-button.png" id="22_bdnkj"]
+[ext_resource type="AudioStream" uid="uid://cg5446grhdqwa" path="res://audio/sad-violin-150146.mp3" id="24_la518"]
+[ext_resource type="Script" path="res://Pengaturan.gd" id="25_7er1m"]
+[ext_resource type="Texture2D" uid="uid://cbrnoljinuaks" path="res://UI/Pengatoeran.png" id="25_o6xex"]
+[ext_resource type="Texture2D" uid="uid://c201apo5ty5v4" path="res://UI/grabber_normal.png" id="26_60y8o"]
+[ext_resource type="Texture2D" uid="uid://bjp14b8offso5" path="res://UI/grabber_hover.png" id="27_4woc3"]
+[ext_resource type="Texture2D" uid="uid://fyyqbdpkct0g" path="res://UI/grabber_pressed.png" id="28_2yhdt"]
+[ext_resource type="Texture2D" uid="uid://q3yxnq0br23y" path="res://UI/slider_resized.png" id="29_m7f6f"]
+[ext_resource type="Texture2D" uid="uid://bfnse754es4ou" path="res://UI/slider_content_resized.png" id="30_2dsib"]
+[ext_resource type="Texture2D" uid="uid://thp8k2x1bli7" path="res://UI/load_polosan.png" id="32_htc86"]
+[ext_resource type="Script" path="res://Scenes/LoadGame.gd" id="32_k838o"]
+[ext_resource type="Texture2D" uid="uid://486hjlpkd6y8" path="res://UI/(normal)loadfile-export.png" id="33_cjh56"]
+[ext_resource type="AudioStream" uid="uid://bjufam7tlenqp" path="res://audio/mouse-click-117076 (mp3cut.net).mp3" id="33_kbtwx"]
+[ext_resource type="Texture2D" uid="uid://bv73xiyrdn5mc" path="res://UI/normal-back.png" id="34_6fs4f"]
+[ext_resource type="AudioStream" uid="uid://crpup5opxjkqd" path="res://audio/button-press-40018 (mp3cut.net).mp3" id="34_bpb7j"]
+[ext_resource type="Texture2D" uid="uid://cmth7e8srivg8" path="res://UI/hover-back.png" id="35_lgb11"]
+[ext_resource type="Texture2D" uid="uid://cdyu5d1yuvj5" path="res://aset aseprite/(hover) loadfile-export.png" id="35_xv44j"]
+[ext_resource type="Texture2D" uid="uid://ctrjn48gfwry2" path="res://aset aseprite/(normal)loadfile-export.png" id="36_3cgut"]
+[ext_resource type="Texture2D" uid="uid://dklxl0a13cvlk" path="res://UI/pressed-back.png" id="36_awm7n"]
+[ext_resource type="FontFile" uid="uid://c583mm1xbwni5" path="res://font/I-pixel-u.ttf" id="37_oo0lt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qobcn"]
+texture = ExtResource("4_b7h7j")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5c12h"]
+texture = ExtResource("5_noen7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ueam"]
+texture = ExtResource("6_41i71")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jlubq"]
+texture = ExtResource("7_g4iyq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sbs8q"]
+texture = ExtResource("8_relwa")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sl1bf"]
+texture = ExtResource("9_dr0a1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bfd2t"]
+texture = ExtResource("10_hnccg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6xveo"]
+texture = ExtResource("11_5ssxc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n51pm"]
+texture = ExtResource("11_scyhw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sgarh"]
+texture = ExtResource("12_f2ks1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jftbc"]
+texture = ExtResource("13_fkvh3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t742a"]
+texture = ExtResource("14_txthe")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vinxr"]
+texture = ExtResource("15_g47xg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1g871"]
+texture = ExtResource("16_3dn6b")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lxv1p"]
+texture = ExtResource("17_docoa")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l8i8i"]
+texture = ExtResource("18_pvqe1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ubrq8"]
+texture = ExtResource("19_232b3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vta1f"]
+texture = ExtResource("20_j2lrx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vfq4y"]
+texture = ExtResource("21_b8886")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cj036"]
+texture = ExtResource("22_bdnkj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_75ori"]
+content_margin_top = 20.0
+texture = ExtResource("29_m7f6f")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m0d1c"]
+content_margin_top = 20.0
+texture = ExtResource("30_2dsib")
+texture_margin_left = 8.0
+texture_margin_right = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_trc0i"]
+content_margin_left = 880.0
+content_margin_top = 168.0
+texture = ExtResource("33_cjh56")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wg61t"]
+texture = ExtResource("35_xv44j")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3f1dy"]
+texture = ExtResource("36_3cgut")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7wcxh"]
+texture = ExtResource("35_xv44j")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ujal5"]
+texture = ExtResource("36_3cgut")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ibm2h"]
+texture = ExtResource("35_xv44j")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_70ec0"]
+texture = ExtResource("36_3cgut")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nrf2v"]
+texture = ExtResource("35_xv44j")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3hnmy"]
+texture = ExtResource("36_3cgut")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ki380"]
+content_margin_left = 184.0
+content_margin_top = 40.0
+texture = ExtResource("34_6fs4f")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t01jo"]
+content_margin_left = 184.0
+content_margin_top = 40.0
+texture = ExtResource("35_lgb11")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_75o3s"]
+content_margin_left = 184.0
+content_margin_top = 40.0
+texture = ExtResource("36_awm7n")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3xyrq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_r0hqn")
+
+[node name="Koran" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_xw3nl")
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = -49.0
+offset_right = 547.0
+offset_bottom = 379.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ContinueGame" type="Button" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(524, 68)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i2uaj")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qobcn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5c12h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5ueam")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_jlubq")
+disabled = true
+
+[node name="LoadGame" type="Button" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(524, 68)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i2uaj")
+theme_override_styles/normal = SubResource("StyleBoxTexture_sbs8q")
+theme_override_styles/hover = SubResource("StyleBoxTexture_sl1bf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bfd2t")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_6xveo")
+disabled = true
+
+[node name="New Game" type="Button" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(524, 68)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i2uaj")
+theme_override_styles/normal = SubResource("StyleBoxTexture_n51pm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_sgarh")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jftbc")
+
+[node name="Setting Game" type="Button" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(524, 68)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i2uaj")
+theme_override_styles/normal = SubResource("StyleBoxTexture_t742a")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vinxr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1g871")
+
+[node name="Credit" type="Button" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(524, 68)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_lxv1p")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l8i8i")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ubrq8")
+
+[node name="Exit" type="Button" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(524, 68)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i2uaj")
+theme_override_styles/normal = SubResource("StyleBoxTexture_vta1f")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vfq4y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cj036")
+
+[node name="Pengaturan" type="Control" parent="." node_paths=PackedStringArray("main_menu_music")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("25_7er1m")
+main_menu_music = NodePath("../main_menu_back_music")
+
+[node name="Pengatoeran" type="TextureRect" parent="Pengaturan"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_o6xex")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pengaturan"]
+layout_mode = 0
+offset_left = 976.0
+offset_top = 611.0
+offset_right = 1500.0
+offset_bottom = 1039.0
+theme_override_constants/separation = 90
+
+[node name="MasterSlider" type="HSlider" parent="Pengaturan/VBoxContainer"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("26_60y8o")
+theme_override_icons/grabber_highlight = ExtResource("27_4woc3")
+theme_override_icons/grabber_disabled = ExtResource("28_2yhdt")
+theme_override_icons/tick = ExtResource("28_2yhdt")
+theme_override_styles/slider = SubResource("StyleBoxTexture_75ori")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_m0d1c")
+min_value = -30.0
+max_value = 6.0
+
+[node name="MusicSlider" type="HSlider" parent="Pengaturan/VBoxContainer"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("26_60y8o")
+theme_override_icons/grabber_highlight = ExtResource("27_4woc3")
+theme_override_icons/grabber_disabled = ExtResource("28_2yhdt")
+theme_override_icons/tick = ExtResource("28_2yhdt")
+theme_override_styles/slider = SubResource("StyleBoxTexture_75ori")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_m0d1c")
+min_value = -30.0
+max_value = 6.0
+
+[node name="SFXSlider" type="HSlider" parent="Pengaturan/VBoxContainer"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("26_60y8o")
+theme_override_icons/grabber_highlight = ExtResource("27_4woc3")
+theme_override_icons/grabber_disabled = ExtResource("28_2yhdt")
+theme_override_icons/tick = ExtResource("28_2yhdt")
+theme_override_styles/slider = SubResource("StyleBoxTexture_75ori")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_m0d1c")
+min_value = -30.0
+max_value = 6.0
+
+[node name="Button" type="Button" parent="Pengaturan"]
+layout_mode = 0
+offset_left = 1178.0
+offset_top = 950.0
+offset_right = 1249.0
+offset_bottom = 981.0
+text = "Kembali"
+
+[node name="LoadGame" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("32_k838o")
+
+[node name="MoetGame" type="TextureRect" parent="LoadGame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("32_htc86")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadGame/MoetGame"]
+layout_mode = 0
+offset_left = 922.0
+offset_top = 238.0
+offset_right = 1802.0
+offset_bottom = 970.0
+theme_override_constants/separation = 20
+
+[node name="load" type="Button" parent="LoadGame/MoetGame/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_trc0i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wg61t")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3f1dy")
+
+[node name="Label" type="Label" parent="LoadGame/MoetGame/VBoxContainer/load"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -285.0
+offset_right = 285.0
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.113725, 0.101961, 0.027451, 1)
+theme_override_fonts/font = ExtResource("37_oo0lt")
+theme_override_font_sizes/font_size = 60
+
+[node name="Label2" type="Label" parent="LoadGame/MoetGame/VBoxContainer/load"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -193.0
+offset_top = -56.0
+offset_right = 188.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.784314, 0.670588, 0.513726, 1)
+theme_override_fonts/font = ExtResource("37_oo0lt")
+theme_override_font_sizes/font_size = 30
+
+[node name="Label3" type="Label" parent="LoadGame/MoetGame/VBoxContainer/load"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -90.0
+offset_right = 114.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.784314, 0.670588, 0.513726, 1)
+theme_override_fonts/font = ExtResource("37_oo0lt")
+theme_override_font_sizes/font_size = 25
+
+[node name="load1" type="Button" parent="LoadGame/MoetGame/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_trc0i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7wcxh")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ujal5")
+
+[node name="Label" type="Label" parent="LoadGame/MoetGame/VBoxContainer/load1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -285.0
+offset_right = 285.0
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.113725, 0.101961, 0.027451, 1)
+theme_override_fonts/font = ExtResource("37_oo0lt")
+theme_override_font_sizes/font_size = 60
+
+[node name="Label2" type="Label" parent="LoadGame/MoetGame/VBoxContainer/load1"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -193.0
+offset_top = -56.0
+offset_right = 188.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.784314, 0.670588, 0.513726, 1)
+theme_override_fonts/font = ExtResource("37_oo0lt")
+theme_override_font_sizes/font_size = 30
+
+[node name="Label3" type="Label" parent="LoadGame/MoetGame/VBoxContainer/load1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -90.0
+offset_right = 114.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.784314, 0.670588, 0.513726, 1)
+theme_override_fonts/font = ExtResource("37_oo0lt")
+theme_override_font_sizes/font_size = 25
+
+[node name="load2" type="Button" parent="LoadGame/MoetGame/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_trc0i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ibm2h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_70ec0")
+
+[node name="Label" type="Label" parent="LoadGame/MoetGame/VBoxContainer/load2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -285.0
+offset_right = 285.0
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.113725, 0.101961, 0.027451, 1)
+theme_override_fonts/font = ExtResource("37_oo0lt")
+theme_override_font_sizes/font_size = 60
+
+[node name="Label2" type="Label" parent="LoadGame/MoetGame/VBoxContainer/load2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -193.0
+offset_top = -56.0
+offset_right = 188.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.784314, 0.670588, 0.513726, 1)
+theme_override_fonts/font = ExtResource("37_oo0lt")
+theme_override_font_sizes/font_size = 30
+
+[node name="Label3" type="Label" parent="LoadGame/MoetGame/VBoxContainer/load2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -90.0
+offset_right = 114.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.784314, 0.670588, 0.513726, 1)
+theme_override_fonts/font = ExtResource("37_oo0lt")
+theme_override_font_sizes/font_size = 25
+
+[node name="load3" type="Button" parent="LoadGame/MoetGame/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_trc0i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nrf2v")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3hnmy")
+
+[node name="Label" type="Label" parent="LoadGame/MoetGame/VBoxContainer/load3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -285.0
+offset_right = 285.0
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.113725, 0.101961, 0.027451, 1)
+theme_override_fonts/font = ExtResource("37_oo0lt")
+theme_override_font_sizes/font_size = 60
+
+[node name="Label2" type="Label" parent="LoadGame/MoetGame/VBoxContainer/load3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -193.0
+offset_top = -56.0
+offset_right = 188.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.784314, 0.670588, 0.513726, 1)
+theme_override_fonts/font = ExtResource("37_oo0lt")
+theme_override_font_sizes/font_size = 30
+
+[node name="Label3" type="Label" parent="LoadGame/MoetGame/VBoxContainer/load3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -90.0
+offset_right = 114.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.784314, 0.670588, 0.513726, 1)
+theme_override_fonts/font = ExtResource("37_oo0lt")
+theme_override_font_sizes/font_size = 25
+
+[node name="back" type="Button" parent="LoadGame"]
+layout_mode = 0
+offset_left = 1575.0
+offset_top = 153.0
+offset_right = 1759.0
+offset_bottom = 193.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_ki380")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t01jo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_75o3s")
+
+[node name="main_menu_back_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_la518")
+bus = &"Music"
+
+[node name="soundbutton" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("33_kbtwx")
+bus = &"SFX"
+
+[node name="pressbutton" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("34_bpb7j")
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="MainMenu/VBoxContainer/ContinueGame" to="." method="_on_continue_game_mouse_entered"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/ContinueGame" to="." method="_on_continue_game_pressed"]
+[connection signal="mouse_entered" from="MainMenu/VBoxContainer/LoadGame" to="." method="_load_game_mouse_entered"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="mouse_entered" from="MainMenu/VBoxContainer/New Game" to="." method="_on_new_game_mouse_entered"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="MainMenu/VBoxContainer/Setting Game" to="." method="_on_setting_game_mouse_entered"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/Setting Game" to="." method="_on_setting_game_pressed"]
+[connection signal="mouse_entered" from="MainMenu/VBoxContainer/Credit" to="." method="_on_credit_mouse_entered"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/Credit" to="." method="_on_credit_pressed"]
+[connection signal="mouse_entered" from="MainMenu/VBoxContainer/Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="Pengaturan/VBoxContainer/MasterSlider" to="Pengaturan" method="_change_master_volume"]
+[connection signal="value_changed" from="Pengaturan/VBoxContainer/MusicSlider" to="Pengaturan" method="_change_music_volume"]
+[connection signal="value_changed" from="Pengaturan/VBoxContainer/SFXSlider" to="Pengaturan" method="_change_sfx_volume"]
+[connection signal="pressed" from="Pengaturan/Button" to="." method="on_back_button_pressed"]
+[connection signal="mouse_entered" from="LoadGame/MoetGame/VBoxContainer/load" to="." method="_on_load_game_mouse_entered"]
+[connection signal="pressed" from="LoadGame/MoetGame/VBoxContainer/load" to="." method="_on_load_game_mouse_pressed"]
+[connection signal="mouse_entered" from="LoadGame/MoetGame/VBoxContainer/load1" to="." method="_on_load1_game_mouse_entered"]
+[connection signal="pressed" from="LoadGame/MoetGame/VBoxContainer/load1" to="." method="_on_load1_game_mouse_pressed"]
+[connection signal="mouse_entered" from="LoadGame/MoetGame/VBoxContainer/load2" to="." method="_on_load2_game_mouse_entered"]
+[connection signal="pressed" from="LoadGame/MoetGame/VBoxContainer/load2" to="." method="_on_load2_game_mouse_pressed"]
+[connection signal="mouse_entered" from="LoadGame/MoetGame/VBoxContainer/load3" to="." method="_on_load3_game_mouse_entered"]
+[connection signal="pressed" from="LoadGame/MoetGame/VBoxContainer/load3" to="." method="_on_load3_game_mouse_pressed"]
+[connection signal="pressed" from="LoadGame/back" to="." method="on_load_back_button_pressed"]

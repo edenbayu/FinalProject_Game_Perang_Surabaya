@@ -1,40 +1,97 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1721194805
-chapter_three.tscn::PackedScene::4482670057162910518::1720939687::0::1::::<><>::res://Scripts/chapter_three.gd
-default_bus_layout.tres::AudioBusLayout::2345090951784052612::1720941523::0::1::::<><>::
+::res://::1722349835
+dialog_library.res::AnimationLibrary::6663618973586364863::1721663257::0::1::::<><>::uid://c08mskhvcbbyw::::res://transition.res
 I-pixel-u.ttf::FontFile::2722671371099609428::1718726991::1718727137::1::::<><>::
 icon.svg::CompressedTexture2D::2412157805272648987::1718726991::1718727138::1::::<><>::
-main_menu.tscn::PackedScene::7130246202593888066::1721194805::0::1::::<><>::res://Scripts/MainMenu.gd<>uid://be1488wacuvuy::::res://I-pixel-u.ttf<>uid://cu3g0piko2lec::::res://UI/mainmenu.png<>uid://c1pt5kfm162v4::::res://UI/koran.png<>uid://c1swi8r35lmoc::::res://UI/normal-continue-button.png<>uid://bw4lrgkno7w08::::res://UI/hover-continue-button.png<>uid://6bw5v53kb33r::::res://UI/pressed-continue-button.png<>uid://csx05essrvk6j::::res://UI/disabled-continue-button.png<>uid://jlto1ot6vi5q::::res://UI/normal-load-button.png<>uid://bcb7o4gf7co3k::::res://UI/hover-load-button.png<>uid://c347nnmlo2l3e::::res://UI/pressed-load-button.png<>uid://cy5s6ytmld618::::res://UI/disabled-load-button.png<>uid://bal5ntf2lv4bh::::res://UI/normal-new-button.png<>uid://dglt83vir0qvu::::res://UI/hover-new-button.png<>uid://bu62uydoelr5h::::res://UI/pressed-new-button.png<>uid://wk6747ghmekb::::res://UI/normal-setting-button.png<>uid://b06qcy8d3vff1::::res://UI/hover-setting-button.png<>uid://b7w5nbdpefq7a::::res://UI/pressed-setting-button.png<>uid://duy4gu636iyr8::::res://UI/normal-credit-button.png<>uid://n3ryi5xv5xy0::::res://UI/hover-credit-button.png<>uid://rcxu1t7hcu1n::::res://UI/pressed-credit-button.png<>uid://cvp8qckiliw7p::::res://UI/normal-exit-button.png<>uid://bfdf0diulke8c::::res://UI/hover-exit-button.png<>uid://cbjulex7vtr7k::::res://UI/pressed-exit-button.png<>uid://cg5446grhdqwa::::res://audio/sad-violin-150146.mp3<>res://Pengaturan.gd<>uid://cbrnoljinuaks::::res://UI/Pengatoeran.png<>uid://c201apo5ty5v4::::res://UI/grabber_normal.png<>uid://bjp14b8offso5::::res://UI/grabber_hover.png<>uid://fyyqbdpkct0g::::res://UI/grabber_pressed.png<>uid://q3yxnq0br23y::::res://UI/slider_resized.png<>uid://bfnse754es4ou::::res://UI/slider_content_resized.png<>uid://bjufam7tlenqp::::res://audio/mouse-click-117076 (mp3cut.net).mp3
-node_2d.tscn::PackedScene::5328741494970463709::1721194804::0::1::::<><>::res://Scripts/Control.gd<>uid://gvv8tsaqhgx::::res://pianos-by-jtwayne-7-174717.mp3<>uid://b54qi46yrmv47::::res://sunflower-street-drumloop-85bpm-163900.mp3
-Pengaturan.gd::GDScript::-1::1720941735::0::1::::Settings<>Control<>::
-pianos-by-jtwayne-7-174717.mp3::AudioStreamMP3::13700588484770687::1718726991::1718727138::1::::<><>::
-Prolog.tscn::PackedScene::8213089930375972429::1720939687::0::1::::<><>::res://Scripts/LevelManager.gd
-sunflower-street-drumloop-85bpm-163900.mp3::AudioStreamMP3::4552940278117064574::1718726991::1718727138::1::::<><>::
-::res://addons/::1718728775
+Pengaturan.gd::GDScript::-1::1721646093::0::1::::Settings<>Control<>::
+transition.res::Animation::6596448209428460242::1721664338::0::1::::<><>::
+::res://addons/::1721379178
 ::res://addons/godot-sqlite/::1718728775
 gdsqlite.gdextension::GDExtension::-1::1718726991::0::1::::<><>::
 godot-sqlite.gd::GDScript::-1::1718726991::0::1::::<>EditorPlugin<>::
 LICENSE.md::TextFile::-1::1718726991::0::1::::<><>::
 plugin.cfg::TextFile::-1::1718726991::0::1::::<><>::
-::res://addons/godot-sqlite/bin/::1721193563
+::res://addons/godot-sqlite/bin/::1722349825
 ::res://addons/godot-sqlite/bin/libgdsqlite.macos.template_debug.framework/::1718728775
 ::res://addons/godot-sqlite/bin/libgdsqlite.macos.template_release.framework/::1718728775
-::res://audio/::1721194976
-button-press-40018 (mp3cut.net).mp3::AudioStreamMP3::5998260100347951075::1721194957::1721194980::1::::<><>::
-click_effect-86995.mp3::AudioStreamMP3::880311499338674700::1721189146::1721191978::1::::<><>::
-mouse-click-117076 (mp3cut.net).mp3::AudioStreamMP3::3059712097072508947::1721194606::1721194612::1::::<><>::
+::res://aset aseprite/::1721641799
+(hover) loadfile-export.png::CompressedTexture2D::148065325791858500::1721641641::1721641645::1::::<><>::
+(normal)loadfile-export.png::CompressedTexture2D::6142095061019374735::1721641770::1721641756::1::::<><>::
+background-table.png::CompressedTexture2D::2637552727760859495::1721195778::1721283852::1::::<><>::
+bg_kayu.png::CompressedTexture2D::4138079257155922047::1721195778::1721283852::1::::<><>::
+foto2.png::CompressedTexture2D::4725564323725035385::1721195778::1721283852::1::::<><>::
+foto3.png::CompressedTexture2D::867819777385556138::1721195778::1721283852::1::::<><>::
+LevelMenu1.png::CompressedTexture2D::5629965121847035850::1721195778::1721283852::1::::<><>::
+LevelMenu2.png::CompressedTexture2D::7407866798714541049::1721195778::1721283852::1::::<><>::
+LevelMenu.png::CompressedTexture2D::3469018353073512743::1721195778::1721283852::1::::<><>::
+level_menu_locked.png::CompressedTexture2D::6922348213564248869::1721628500::1721628501::1::::<><>::
+SELECT1-export.png::CompressedTexture2D::4150924147128699971::1721195778::1721283852::1::::<><>::
+SELECT.png::CompressedTexture2D::5230538421319048538::1721195778::1721283852::1::::<><>::
+Soerjo.png::CompressedTexture2D::8946809085880858671::1718726991::1721422444::1::::<><>::
+Sprite-000(1).png::CompressedTexture2D::6816399426136148261::1721195778::1721283852::1::::<><>::
+Sprite-0008.png::CompressedTexture2D::8709313243910587927::1721195778::1721283852::1::::<><>::
+::res://audio/::1721660603
+bab1-bagian1-bgm.mp3::AudioStreamMP3::7665969746986384332::1721660582::1721660603::1::::<><>::
+button-press-40018 (mp3cut.net).mp3::AudioStreamMP3::5998260100347951075::1721195778::1721195778::1::::<><>::
+click_effect-86995.mp3::AudioStreamMP3::880311499338674700::1721195778::1721195778::1::::<><>::
+default_bus_layout.tres::AudioBusLayout::2345090951784052612::1721445498::0::1::::<><>::
+menembak.mp3::AudioStreamMP3::3538830756399733154::1721657960::1721658136::1::::<><>::
+mouse-click-117076 (mp3cut.net).mp3::AudioStreamMP3::3059712097072508947::1721195778::1721195778::1::::<><>::
+pianos-by-jtwayne-7-174717.mp3::AudioStreamMP3::13700588484770687::1718726991::1721378509::1::::<><>::
+relod.mp3::AudioStreamMP3::2904053592118738420::1721657968::1721658136::1::::<><>::
 sad-violin-150146.mp3::AudioStreamMP3::5257719980924233812::1720939523::1720939523::1::::<><>::
-::res://Scripts/::1721194803
+sunflower-street-drumloop-85bpm-163900.mp3::AudioStreamMP3::4552940278117064574::1718726991::1721378509::1::::<><>::
+::res://autoloads/::1721701623
+LoadManager.gd::GDScript::-1::1721701623::0::1::::<>Node<>::
+::res://DialogSistem/::1722258122
+DialogSistem.gd::GDScript::-1::1721699686::0::1::::DialogueManager<>Control<>::
+DialogueSistem2.gd::GDScript::-1::1722230319::0::1::::Dialog2<>Control<>::
+DialogueSistem2.json::JSON::-1::1722230417::0::1::::<><>::
+DialogueSistem.json::JSON::-1::1721715836::0::1::::<><>::
+DialogueSistem.tscn::PackedScene::392968247804934450::1722258122::0::1::::<><>::res://DialogSistem/DialogSistem.gd<>uid://do57esfye700d::::res://DialogSistem/aset aseprite/LuarHotel.png<>uid://0y7pc61c1ovt::::res://DialogSistem/aset aseprite/Soerjott.png<>uid://dy5w5gbiu3ivf::::res://DialogSistem/aset aseprite/Sudirman.png<>uid://bl2t4vdp1myv1::::res://DialogSistem/aset aseprite/Ling.png<>uid://b84ciemgnmjgs::::res://DialogSistem/aset aseprite/Sidik.png<>uid://o8d6hmqppsju::::res://DialogSistem/aset aseprite/TextBox.png<>uid://myjhjym4wilm::::res://DialogSistem/aset aseprite/Jepangt.png<>uid://bk8pr1pctcdmv::::res://DialogSistem/aset aseprite/logmen_Portrait.png<>uid://dkxw7vgx2ysgw::::res://DialogSistem/aset aseprite/downtown-soerabaja.png<>uid://cm2pv441tk2o0::::res://DialogSistem/aset aseprite/background.png<>uid://d18cpml72xrda::::res://DialogSistem/aset aseprite/namebox.png<>uid://c583mm1xbwni5::::res://font/I-pixel-u.ttf<>uid://cnrpw086ndg2n::::res://font/DePixelBreit.ttf<>uid://c1653is2ck4lf::::res://dialog_library.res<>uid://cpyxiy0jmybap::::res://DialogSistem/aset aseprite/Transition.png
+dialogue_sistem_2.tscn::PackedScene::2619008857746565726::1722258122::0::1::::<><>::res://DialogSistem/DialogueSistem2.gd<>uid://0y7pc61c1ovt::::res://DialogSistem/aset aseprite/Soerjott.png<>uid://bl2t4vdp1myv1::::res://DialogSistem/aset aseprite/Ling.png<>uid://myjhjym4wilm::::res://DialogSistem/aset aseprite/Jepangt.png<>uid://bk8pr1pctcdmv::::res://DialogSistem/aset aseprite/logmen_Portrait.png<>uid://dy5w5gbiu3ivf::::res://DialogSistem/aset aseprite/Sudirman.png<>uid://b84ciemgnmjgs::::res://DialogSistem/aset aseprite/Sidik.png<>uid://dkxw7vgx2ysgw::::res://DialogSistem/aset aseprite/downtown-soerabaja.png<>uid://cm2pv441tk2o0::::res://DialogSistem/aset aseprite/background.png<>uid://bve5y02t7ogte::::res://DialogSistem/aset aseprite/tandjoeng-perak-export.png<>uid://1lsl4xux0t6w::::res://DialogSistem/aset aseprite/tkr-hq.png<>uid://o8d6hmqppsju::::res://DialogSistem/aset aseprite/TextBox.png<>uid://d18cpml72xrda::::res://DialogSistem/aset aseprite/namebox.png<>uid://c583mm1xbwni5::::res://font/I-pixel-u.ttf<>uid://cnrpw086ndg2n::::res://font/DePixelBreit.ttf<>uid://cpyxiy0jmybap::::res://DialogSistem/aset aseprite/Transition.png
+ResouarceDialogue.gd::GDScript::-1::1721456223::0::1::::ResourceDialogue<>Resource<>::
+::res://DialogSistem/aset aseprite/::1722229897
+background.png::CompressedTexture2D::5671795516149322849::1718907011::1721451924::1::::<><>::
+downtown-soerabaja.png::CompressedTexture2D::7910025208390060410::1722229890::1722229897::1::::<><>::
+Jepangt.png::CompressedTexture2D::892370653616366114::1721600432::1721600435::1::::<><>::
+Ling.png::CompressedTexture2D::3215442682298418532::1718907011::1721451923::1::::<><>::
+logmen_Portrait.png::CompressedTexture2D::3157376088240791417::1719751370::1721456654::1::::<><>::
+LuarHotel.png::CompressedTexture2D::8205788235819103929::1719751370::1721451924::1::::<><>::
+namebox.png::CompressedTexture2D::9052445321210212818::1718907011::1721456992::1::::<><>::
+Sidik.png::CompressedTexture2D::4762655427874196082::1718907011::1721451923::1::::<><>::
+Soerjott.png::CompressedTexture2D::1806236041846014213::1721599913::1721599934::1::::<><>::
+Sudirman.png::CompressedTexture2D::8907115295748108623::1718907011::1721451923::1::::<><>::
+tandjoeng-perak-export.png::CompressedTexture2D::3870509635644798130::1722179680::1722225639::1::::<><>::
+TextBox.png::CompressedTexture2D::1051006174354503670::1718907011::1721453868::1::::<><>::
+tkr-hq.png::CompressedTexture2D::1848732199134355320::1722182446::1722225639::1::::<><>::
+Transition.png::CompressedTexture2D::5876631164845403507::1721661043::1721661043::1::::<><>::
+::res://font/::1721292636
+DePixelBreit.ttf::FontFile::5721342164345339587::1721195778::1721292636::1::::<><>::
+I-pixel-u.ttf::FontFile::6948353319227813634::1721195778::1721283870::1::::<><>::
+::res://LoadingScreen/::1722258122
+loading_screen.gd::GDScript::-1::1721701670::0::1::::LoadingScreen<>Control<>::
+loading_screen.tscn::PackedScene::5384655579178009647::1722258122::0::1::::<><>::res://LoadingScreen/loading_screen.gd<>uid://d0p5vydtua6gh::::res://aset aseprite/Soerjo.png<>uid://cpyxiy0jmybap::::res://DialogSistem/aset aseprite/Transition.png<>uid://c583mm1xbwni5::::res://font/I-pixel-u.ttf
+::res://Scenes/::1722258122
+chapter_three.tscn::PackedScene::4482670057162910518::1722258122::0::1::::<><>::res://Scripts/chapter_three.gd
+level_menu.tscn::PackedScene::3089806690988814610::1722258122::0::1::::<><>::res://Scripts/level_menu.gd<>uid://by7rtcjcnso8f::::res://aset aseprite/bg_kayu.png<>uid://cmhgx5xby3bhy::::res://aset aseprite/LevelMenu1.png<>uid://bpoohwu5sc7m6::::res://aset aseprite/LevelMenu.png<>uid://c583mm1xbwni5::::res://font/I-pixel-u.ttf<>uid://c5vicfwbr7rbp::::res://aset aseprite/level_menu_locked.png<>uid://ddsoqpmdq7ew4::::res://aset aseprite/LevelMenu2.png<>uid://cnrpw086ndg2n::::res://font/DePixelBreit.ttf<>uid://cgryg6mutfhok::::res://aset aseprite/SELECT.png<>uid://b0e0d5ckrmo4b::::res://aset aseprite/SELECT1-export.png<>uid://be1488wacuvuy::::res://I-pixel-u.ttf<>uid://b8ldmbhsqvvhp::::res://aset aseprite/foto2.png<>uid://mmm4n40d6pks::::res://aset aseprite/foto3.png
+LoadGame.gd::GDScript::-1::1721646121::0::1::::LoadGame<>Control<>::
+main_menu.tscn::PackedScene::7130246202593888066::1722258122::0::1::::<><>::res://Scripts/MainMenu.gd<>uid://be1488wacuvuy::::res://I-pixel-u.ttf<>uid://cu3g0piko2lec::::res://UI/mainmenu.png<>uid://c1pt5kfm162v4::::res://UI/koran.png<>uid://c1swi8r35lmoc::::res://UI/normal-continue-button.png<>uid://bw4lrgkno7w08::::res://UI/hover-continue-button.png<>uid://6bw5v53kb33r::::res://UI/pressed-continue-button.png<>uid://csx05essrvk6j::::res://UI/disabled-continue-button.png<>uid://jlto1ot6vi5q::::res://UI/normal-load-button.png<>uid://bcb7o4gf7co3k::::res://UI/hover-load-button.png<>uid://c347nnmlo2l3e::::res://UI/pressed-load-button.png<>uid://cy5s6ytmld618::::res://UI/disabled-load-button.png<>uid://bal5ntf2lv4bh::::res://UI/normal-new-button.png<>uid://dglt83vir0qvu::::res://UI/hover-new-button.png<>uid://bu62uydoelr5h::::res://UI/pressed-new-button.png<>uid://wk6747ghmekb::::res://UI/normal-setting-button.png<>uid://b06qcy8d3vff1::::res://UI/hover-setting-button.png<>uid://b7w5nbdpefq7a::::res://UI/pressed-setting-button.png<>uid://duy4gu636iyr8::::res://UI/normal-credit-button.png<>uid://n3ryi5xv5xy0::::res://UI/hover-credit-button.png<>uid://rcxu1t7hcu1n::::res://UI/pressed-credit-button.png<>uid://cvp8qckiliw7p::::res://UI/normal-exit-button.png<>uid://bfdf0diulke8c::::res://UI/hover-exit-button.png<>uid://cbjulex7vtr7k::::res://UI/pressed-exit-button.png<>uid://cg5446grhdqwa::::res://audio/sad-violin-150146.mp3<>res://Pengaturan.gd<>uid://cbrnoljinuaks::::res://UI/Pengatoeran.png<>uid://c201apo5ty5v4::::res://UI/grabber_normal.png<>uid://bjp14b8offso5::::res://UI/grabber_hover.png<>uid://fyyqbdpkct0g::::res://UI/grabber_pressed.png<>uid://q3yxnq0br23y::::res://UI/slider_resized.png<>uid://bfnse754es4ou::::res://UI/slider_content_resized.png<>uid://thp8k2x1bli7::::res://UI/load_polosan.png<>res://Scenes/LoadGame.gd<>uid://486hjlpkd6y8::::res://UI/(normal)loadfile-export.png<>uid://bjufam7tlenqp::::res://audio/mouse-click-117076 (mp3cut.net).mp3<>uid://bv73xiyrdn5mc::::res://UI/normal-back.png<>uid://crpup5opxjkqd::::res://audio/button-press-40018 (mp3cut.net).mp3<>uid://cmth7e8srivg8::::res://UI/hover-back.png<>uid://cdyu5d1yuvj5::::res://aset aseprite/(hover) loadfile-export.png<>uid://ctrjn48gfwry2::::res://aset aseprite/(normal)loadfile-export.png<>uid://dklxl0a13cvlk::::res://UI/pressed-back.png<>uid://c583mm1xbwni5::::res://font/I-pixel-u.ttf
+SoundManager.gd::GDScript::-1::1721699173::0::1::::SoundManager<>Node2D<>::
+SoundManager.tscn::PackedScene::1283401287523740381::1722258121::0::1::::<><>::res://Scenes/SoundManager.gd<>uid://bjufam7tlenqp::::res://audio/mouse-click-117076 (mp3cut.net).mp3<>uid://crpup5opxjkqd::::res://audio/button-press-40018 (mp3cut.net).mp3<>uid://dhhpnwnh16dh1::::res://audio/bab1-bagian1-bgm.mp3
+::res://Scripts/::1721699806
 chapter_three.gd::GDScript::-1::1718726991::0::1::::<>Node2D<>::
-Control.gd::GDScript::-1::1721193731::0::1::::<>Control<>::
-LevelManager.gd::GDScript::-1::1718726991::0::1::::<>Node2D<>::
-MainMenu.gd::GDScript::-1::1721194803::0::1::::<>Node2D<>::
-::res://UI/::1720939523
+LevelState.gd::GDScript::-1::1721629881::0::1::::<>Node<>::
+level_menu.gd::GDScript::-1::1721699665::0::1::::LevelMenu<>Control<>::
+MainMenu.gd::GDScript::-1::1721699642::0::1::::<>Control<>::
+::res://UI/::1721556576
+(normal)loadfile-export.png::CompressedTexture2D::2105496149118055589::1721489541::1721489543::1::::<><>::
 disabled-continue-button.png::CompressedTexture2D::6085292978591741767::1720939523::1720939523::1::::<><>::
 disabled-load-button.png::CompressedTexture2D::6520454503273387545::1720939523::1720939523::1::::<><>::
 grabber_hover.png::CompressedTexture2D::3050716476726350522::1720939523::1720939523::1::::<><>::
 grabber_normal.png::CompressedTexture2D::6721129042143444751::1720939523::1720939523::1::::<><>::
 grabber_pressed.png::CompressedTexture2D::401975122669229556::1720939523::1720939523::1::::<><>::
+hover-back.png::CompressedTexture2D::5654813094636888977::1721556520::1721556522::1::::<><>::
 hover-continue-button.png::CompressedTexture2D::3991140775213159627::1720939523::1720939523::1::::<><>::
 hover-credit-button.png::CompressedTexture2D::971333059944060101::1720939523::1720939523::1::::<><>::
 hover-exit-button.png::CompressedTexture2D::2743906435809189748::1720939523::1720939523::1::::<><>::
@@ -42,8 +99,10 @@ hover-load-button.png::CompressedTexture2D::2530832226322437290::1720939523::172
 hover-new-button.png::CompressedTexture2D::7604317325745479094::1720939523::1720939523::1::::<><>::
 hover-setting-button.png::CompressedTexture2D::4206113840205341152::1720939523::1720939523::1::::<><>::
 koran.png::CompressedTexture2D::6629924698504394155::1720939523::1720939523::1::::<><>::
+load_polosan.png::CompressedTexture2D::1349008927514424740::1721489326::1721489246::1::::<><>::
 mainmenu-nobutton-export.png::CompressedTexture2D::2604470726368976136::1720939523::1720939523::1::::<><>::
 mainmenu.png::CompressedTexture2D::6234830564747569198::1720939523::1720939523::1::::<><>::
+normal-back.png::CompressedTexture2D::3928188095318031946::1721556198::1721556199::1::::<><>::
 normal-continue-button.png::CompressedTexture2D::6636261922585179910::1720939523::1720939523::1::::<><>::
 normal-credit-button.png::CompressedTexture2D::8614356597160943155::1720939523::1720939523::1::::<><>::
 normal-exit-button.png::CompressedTexture2D::6279805104432818967::1720939523::1720939523::1::::<><>::
@@ -51,6 +110,7 @@ normal-load-button.png::CompressedTexture2D::655587760154081060::1720939523::172
 normal-new-button.png::CompressedTexture2D::2410974571001506069::1720939523::1720939523::1::::<><>::
 normal-setting-button.png::CompressedTexture2D::1566739282651366261::1720939523::1720939523::1::::<><>::
 Pengatoeran.png::CompressedTexture2D::4878939546905616790::1720939523::1720939523::1::::<><>::
+pressed-back.png::CompressedTexture2D::7885276091623462372::1721556575::1721556576::1::::<><>::
 pressed-continue-button.png::CompressedTexture2D::2179309028811186145::1720939523::1720939523::1::::<><>::
 pressed-credit-button.png::CompressedTexture2D::1198772700488174865::1720939523::1720939523::1::::<><>::
 pressed-exit-button.png::CompressedTexture2D::4862843841505721910::1720939523::1720939523::1::::<><>::
