@@ -3,7 +3,6 @@ class_name LevelManager
 
 #Singleton variable for active units
 static var active_unit: Unit
-const turn := 2
 signal next_action
 
 @export var statusUItexture: Array[Texture2D]
@@ -37,12 +36,15 @@ var wait_time_test := 1.5
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_reinitialize()
-	_get_card_informations()
+	#_get_card_informations()
 	
 	#Change this code later into a more proper way
 	turn_based.size.x += (len(ui_container.get_children()) - 1) * ui_container.size.x
 	for icon in ui_container.get_children():
 		turn_based.position.x -= icon.size.x / 4
+	$CanvasLayer.visible = false
+	#active_unit.hp_status.visible = false
+	#active_unit.armor_status.visible = false
 
 func _process(delta):
 	pass
@@ -266,3 +268,11 @@ func _on_exit_button_pressed() -> void:
 
 func _on_utility_ai_agent_top_score_action_changed(top_action_id):
 	next_action.emit()
+
+
+func _on_interactables_enter_gameplay():
+	$CanvasLayer.visible = true
+	status_ui.transition_enter()
+	_get_card_informations()
+	$GameBoard/UnitPath.visible = true
+	

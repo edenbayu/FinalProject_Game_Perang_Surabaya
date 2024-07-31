@@ -1,0 +1,113 @@
+[gd_scene load_steps=14 format=3 uid="uid://ciymqxhyy6lj0"]
+
+[ext_resource type="Script" path="res://LoadingScreen/loading_screen.gd" id="1_ji0vd"]
+[ext_resource type="Texture2D" uid="uid://d0p5vydtua6gh" path="res://aset aseprite/Soerjo.png" id="2_3ut1d"]
+[ext_resource type="Texture2D" uid="uid://cpyxiy0jmybap" path="res://DialogSistem/aset aseprite/Transition.png" id="2_cgqk7"]
+[ext_resource type="FontFile" uid="uid://c583mm1xbwni5" path="res://font/I-pixel-u.ttf" id="3_cx4bc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1jwgg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odyxa"]
+atlas = ExtResource("2_3ut1d")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w7qe"]
+atlas = ExtResource("2_3ut1d")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it4vl"]
+atlas = ExtResource("2_3ut1d")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j05l4"]
+atlas = ExtResource("2_3ut1d")
+region = Rect2(1920, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcfw7"]
+atlas = ExtResource("2_3ut1d")
+region = Rect2(2560, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2vq8"]
+atlas = ExtResource("2_3ut1d")
+region = Rect2(3200, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l50j"]
+atlas = ExtResource("2_3ut1d")
+region = Rect2(3840, 0, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sfvh0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odyxa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1w7qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it4vl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j05l4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcfw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2vq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l50j")
+}],
+"loop": true,
+"name": &"running",
+"speed": 10.0
+}]
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ji0vd")
+
+[node name="Panel" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -480.0
+offset_top = -270.0
+offset_right = 480.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_cgqk7")
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel"]
+layout_mode = 0
+offset_left = 1333.0
+offset_top = 909.0
+offset_right = 1926.0
+offset_bottom = 1060.0
+theme_override_font_sizes/font_size = 100
+theme_override_styles/background = SubResource("StyleBoxTexture_1jwgg")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+offset_left = 1367.0
+offset_top = 950.0
+offset_right = 1844.0
+offset_bottom = 995.0
+theme_override_fonts/font = ExtResource("3_cx4bc")
+theme_override_font_sizes/font_size = 36
+text = "TEKAN UNTUK LANJUT!"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1124, 484)
+sprite_frames = SubResource("SpriteFrames_sfvh0")
+animation = &"running"
+frame_progress = 0.783932

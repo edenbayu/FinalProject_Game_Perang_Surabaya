@@ -12,6 +12,7 @@ script = ExtResource("1_d61jt")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
+texture_filter = 1
 zoom = Vector2(0.667, 0.667)
 limit_right = 2000
 limit_bottom = 2000

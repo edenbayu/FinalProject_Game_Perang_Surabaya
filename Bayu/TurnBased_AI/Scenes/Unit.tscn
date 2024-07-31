@@ -85,11 +85,13 @@ border_width_bottom = 2
 border_color = Color(0.152941, 0.152941, 0.211765, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qyll"]
-bg_color = Color(0.294118, 0.356863, 0.670588, 1)
+bg_color = Color(0.25716, 0.314377, 0.609664, 1)
 border_width_left = 2
 border_width_top = 2
+border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.145098, 0.168627, 0.203922, 1)
+expand_margin_right = 2.0
 
 [node name="Unit" type="CharacterBody2D"]
 script = ExtResource("1_u70hk")
@@ -162,6 +164,7 @@ custom_minimum_size = Vector2(80, 12)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_uq5h6")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0qyll")
+step = 1.0
 value = 80.0
 show_percentage = false
 

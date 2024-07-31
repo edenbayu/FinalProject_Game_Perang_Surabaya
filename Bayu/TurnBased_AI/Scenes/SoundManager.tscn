@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://sjxoxbp5vpld"]
+
+[ext_resource type="Script" path="res://Scenes/SoundManager.gd" id="1_pov6s"]
+[ext_resource type="AudioStream" uid="uid://bjufam7tlenqp" path="res://audio/mouse-click-117076 (mp3cut.net).mp3" id="2_sxfdy"]
+[ext_resource type="AudioStream" uid="uid://crpup5opxjkqd" path="res://audio/button-press-40018 (mp3cut.net).mp3" id="3_2fxt2"]
+[ext_resource type="AudioStream" uid="uid://dhhpnwnh16dh1" path="res://audio/bab1-bagian1-bgm.mp3" id="4_38ocb"]
+
+[node name="SoundManager" type="Node2D"]
+script = ExtResource("1_pov6s")
+
+[node name="hover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_sxfdy")
+bus = &"SFX"
+
+[node name="click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_2fxt2")
+bus = &"SFX"
+
+[node name="bgds" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_38ocb")

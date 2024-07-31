@@ -8,7 +8,8 @@ var tween : Tween
 @onready var armor_text = $ArmorBar/ArmorText
 
 func _ready():
-	transition_enter()
+	pass
+	#transition_enter()
 
 func _process(delta):
 	$HealthBar.max_value = LevelManager.active_unit.max_health

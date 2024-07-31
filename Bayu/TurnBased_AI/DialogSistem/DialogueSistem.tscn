@@ -1,0 +1,280 @@
+[gd_scene load_steps=34 format=3 uid="uid://fumen35rw86q"]
+
+[ext_resource type="Script" path="res://DialogSistem/DialogSistem.gd" id="1_da1nl"]
+[ext_resource type="Texture2D" uid="uid://do57esfye700d" path="res://DialogSistem/aset aseprite/LuarHotel.png" id="2_ihf7m"]
+[ext_resource type="Texture2D" uid="uid://0y7pc61c1ovt" path="res://DialogSistem/aset aseprite/Soerjott.png" id="2_ogq4p"]
+[ext_resource type="Texture2D" uid="uid://dy5w5gbiu3ivf" path="res://DialogSistem/aset aseprite/Sudirman.png" id="3_dugn6"]
+[ext_resource type="Texture2D" uid="uid://bl2t4vdp1myv1" path="res://DialogSistem/aset aseprite/Ling.png" id="4_c68oo"]
+[ext_resource type="Texture2D" uid="uid://b84ciemgnmjgs" path="res://DialogSistem/aset aseprite/Sidik.png" id="4_viujw"]
+[ext_resource type="Texture2D" uid="uid://o8d6hmqppsju" path="res://DialogSistem/aset aseprite/TextBox.png" id="5_5pcuv"]
+[ext_resource type="Texture2D" uid="uid://myjhjym4wilm" path="res://DialogSistem/aset aseprite/Jepangt.png" id="5_u8y4o"]
+[ext_resource type="Texture2D" uid="uid://bk8pr1pctcdmv" path="res://DialogSistem/aset aseprite/logmen_Portrait.png" id="7_scggo"]
+[ext_resource type="Texture2D" uid="uid://dkxw7vgx2ysgw" path="res://DialogSistem/aset aseprite/downtown-soerabaja.png" id="8_ux70s"]
+[ext_resource type="Texture2D" uid="uid://cm2pv441tk2o0" path="res://DialogSistem/aset aseprite/background.png" id="9_lwd5o"]
+[ext_resource type="Texture2D" uid="uid://d18cpml72xrda" path="res://DialogSistem/aset aseprite/namebox.png" id="10_68tah"]
+[ext_resource type="FontFile" uid="uid://c583mm1xbwni5" path="res://font/I-pixel-u.ttf" id="12_tunkq"]
+[ext_resource type="FontFile" uid="uid://cnrpw086ndg2n" path="res://font/DePixelBreit.ttf" id="13_7jnha"]
+[ext_resource type="AnimationLibrary" uid="uid://bquud4724q4tx" path="res://dialog_library.res" id="14_8kg7l"]
+[ext_resource type="Texture2D" uid="uid://cpyxiy0jmybap" path="res://DialogSistem/aset aseprite/Transition.png" id="15_2e5a6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5a11"]
+atlas = ExtResource("5_5pcuv")
+region = Rect2(0, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt72n"]
+atlas = ExtResource("5_5pcuv")
+region = Rect2(1816, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4sg5"]
+atlas = ExtResource("5_5pcuv")
+region = Rect2(3632, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swimk"]
+atlas = ExtResource("5_5pcuv")
+region = Rect2(5448, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3h22"]
+atlas = ExtResource("5_5pcuv")
+region = Rect2(7264, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8xhe"]
+atlas = ExtResource("5_5pcuv")
+region = Rect2(9080, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4s5ny"]
+atlas = ExtResource("5_5pcuv")
+region = Rect2(10896, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61105"]
+atlas = ExtResource("5_5pcuv")
+region = Rect2(12712, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfi32"]
+atlas = ExtResource("5_5pcuv")
+region = Rect2(14528, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n04p2"]
+atlas = ExtResource("5_5pcuv")
+region = Rect2(16344, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajw37"]
+atlas = ExtResource("5_5pcuv")
+region = Rect2(18160, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keyeu"]
+atlas = ExtResource("5_5pcuv")
+region = Rect2(19976, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yh0f"]
+atlas = ExtResource("5_5pcuv")
+region = Rect2(21792, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfjry"]
+atlas = ExtResource("5_5pcuv")
+region = Rect2(23608, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlphv"]
+atlas = ExtResource("5_5pcuv")
+region = Rect2(25424, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26he5"]
+atlas = ExtResource("5_5pcuv")
+region = Rect2(27240, 0, 1816, 232)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y0i34"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5a11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt72n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4sg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swimk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3h22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8xhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4s5ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61105")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfi32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n04p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajw37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keyeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yh0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfjry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlphv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26he5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_da1nl")
+character_portraits = Array[Texture2D]([ExtResource("2_ogq4p"), ExtResource("4_viujw"), ExtResource("4_c68oo"), ExtResource("5_u8y4o"), null, ExtResource("3_dugn6"), ExtResource("7_scggo"), ExtResource("4_viujw"), ExtResource("2_ogq4p")])
+scene_background = Array[Texture2D]([ExtResource("8_ux70s"), ExtResource("9_lwd5o")])
+is_faded_black = false
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ihf7m")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Potrait" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -707.0
+offset_top = -308.0
+offset_right = -107.0
+offset_bottom = 290.0
+grow_horizontal = 2
+texture = ExtResource("3_dugn6")
+
+[node name="Potrait2" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 212.0
+offset_top = -334.0
+offset_right = 812.0
+offset_bottom = 266.0
+grow_horizontal = 2
+texture = ExtResource("4_viujw")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_left = -922.0
+offset_top = 204.0
+offset_right = 998.0
+offset_bottom = 483.0
+
+[node name="Dialoguebox" type="TextureRect" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="NameBox" type="TextureRect" parent="Control/MarginContainer/Dialoguebox"]
+z_index = 2
+layout_mode = 2
+offset_left = 1394.0
+offset_top = -15.0
+offset_right = 1866.0
+offset_bottom = 105.0
+texture = ExtResource("10_68tah")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/MarginContainer/Dialoguebox"]
+position = Vector2(958, 149)
+sprite_frames = SubResource("SpriteFrames_y0i34")
+
+[node name="NameTextBox" type="RichTextLabel" parent="Control/MarginContainer/Dialoguebox"]
+z_index = 3
+layout_mode = 2
+offset_left = 1439.0
+offset_top = 26.0
+offset_right = 1840.0
+offset_bottom = 79.0
+theme_override_fonts/normal_font = ExtResource("12_tunkq")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Tentara Belanda"
+fit_content = true
+
+[node name="TextBox" type="RichTextLabel" parent="Control/MarginContainer/Dialoguebox"]
+z_index = 2
+layout_mode = 2
+offset_left = 108.0
+offset_top = 106.0
+offset_right = 1808.0
+offset_bottom = 239.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("13_7jnha")
+theme_override_font_sizes/normal_font_size = 50
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": ExtResource("14_8kg7l")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Transition" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_2e5a6")
+
+[node name="TransitionText" type="RichTextLabel" parent="Transition"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -787.5
+offset_top = -42.5
+offset_right = 787.5
+offset_bottom = 42.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("13_7jnha")
+theme_override_font_sizes/normal_font_size = 60
+text = "Sementara itu, di dalam hotel Yamato..."
+visible_characters = 0
+visible_ratio = 0.0

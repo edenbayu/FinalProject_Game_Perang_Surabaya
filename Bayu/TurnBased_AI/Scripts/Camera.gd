@@ -39,14 +39,14 @@ func zoom_out() -> void:
 	tween.tween_property(self, "position", Vector2(168, 124), 0.8)
 
 func _process(delta):
+	pass
+
+func _physics_process(delta):
 	if zoomed_in:
 		target = LevelManager.active_unit
 	else:
 		target = null
 	follow()
-
-func _physics_process(delta):
-	pass
 	#if moveable:
 		#_move_cam()
 
