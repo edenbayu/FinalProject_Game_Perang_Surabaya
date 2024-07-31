@@ -5,4 +5,4 @@ res://LoadingScreen/loading_screen.tscn
 res://DialogSistem/DialogueSistem.tscn
 res://DialogSistem/dialogue_sistem_2.tscn
 res://Scenes/chapter_three.tscn
-res://Scripts/level_menu.gd
+res://Bayu/Scenes/Deck.gd

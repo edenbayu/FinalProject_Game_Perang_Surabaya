@@ -1,0 +1,168 @@
+[gd_scene load_steps=19 format=3 uid="uid://20i4en7e2fm7"]
+
+[ext_resource type="Script" path="res://Scripts/Unit.gd" id="1_u70hk"]
+[ext_resource type="Texture2D" uid="uid://c766m3iwx0tik" path="res://Sprites/Suryo.png" id="2_4l34f"]
+[ext_resource type="Shader" path="res://Resources/outline.gdshader" id="2_mbqfs"]
+[ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="3_ox0gf"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="4_6vypo"]
+[ext_resource type="Script" path="res://Scenes/FiniteStateMachine.gd" id="5_w7fm6"]
+[ext_resource type="Script" path="res://Scripts/IdleState.gd" id="6_jy6vm"]
+[ext_resource type="Script" path="res://Scripts/WalkState.gd" id="7_dcy7x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vph2h"]
+resource_local_to_scene = true
+shader = ExtResource("2_mbqfs")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 3.0
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwmta"]
+
+[sub_resource type="Animation" id="Animation_ji6qf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cyab2"]
+_data = {
+"RESET": SubResource("Animation_ji6qf")
+}
+
+[sub_resource type="Animation" id="Animation_m3qby"]
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 0, 0, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0eh6d"]
+_data = {
+"Idle": SubResource("Animation_m3qby")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3j2r0"]
+bg_color = Color(0.760784, 0.760784, 0.819608, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.152941, 0.152941, 0.211765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wphm"]
+bg_color = Color(0.588235, 0.258824, 0.32549, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.152941, 0.152941, 0.211765, 1)
+expand_margin_right = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uq5h6"]
+bg_color = Color(0.760784, 0.760784, 0.819608, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.152941, 0.152941, 0.211765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qyll"]
+bg_color = Color(0.294118, 0.356863, 0.670588, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.145098, 0.168627, 0.203922, 1)
+
+[node name="Unit" type="CharacterBody2D"]
+script = ExtResource("1_u70hk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_vph2h")
+position = Vector2(2, -40)
+texture = ExtResource("2_4l34f")
+hframes = 7
+vframes = 4
+frame = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qwmta")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cyab2"),
+"Jepang_animation": SubResource("AnimationLibrary_0eh6d"),
+"Soerjo_animation": ExtResource("3_ox0gf")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
+libraries = {
+"": SubResource("AnimationLibrary_cyab2"),
+"Jepang_animation": SubResource("AnimationLibrary_0eh6d"),
+"Soerjo_animation": ExtResource("3_ox0gf")
+}
+tree_root = ExtResource("4_6vypo")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/is_idle = true
+parameters/conditions/is_walking = false
+parameters/Idle/blend_position = Vector2(1, 1)
+parameters/Walk/blend_position = Vector2(1.00069, 0.988235)
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("5_w7fm6")
+state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_jy6vm")
+actor = NodePath("../..")
+
+[node name="WalkState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("7_dcy7x")
+actor = NodePath("../..")
+
+[node name="Status" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(80, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = -190.0
+offset_right = 50.0
+offset_bottom = 27.0
+grow_horizontal = 2
+
+[node name="HP" type="ProgressBar" parent="Status"]
+custom_minimum_size = Vector2(80, 12)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_3j2r0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8wphm")
+value = 80.0
+show_percentage = false
+
+[node name="Armor" type="ProgressBar" parent="Status"]
+custom_minimum_size = Vector2(80, 12)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_uq5h6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0qyll")
+value = 80.0
+show_percentage = false
+
+[connection signal="data_configured" from="." to="FiniteStateMachine" method="initiate_fsm"]

@@ -28,6 +28,7 @@ LevelState="*res://Scripts/LevelState.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/stretch/mode="viewport"
 
 [dotnet]
 
@@ -35,7 +36,7 @@ project/assembly_name="Main menu Prototipe"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg", "res://addons/utility_ai/plugin.cfg")
 
 [input]
 
