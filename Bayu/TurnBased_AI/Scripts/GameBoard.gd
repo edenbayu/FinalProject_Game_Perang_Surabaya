@@ -18,6 +18,7 @@ var _attack_cells := []
 var _units := {}
 var selected_ability = null
 var selected_type = null
+var target_attack :Unit = null
 
 ## AI's variables ##
 var ai_attack_area := []
@@ -98,7 +99,7 @@ func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 		"Reload":
 			reload()
 		"Attack":
-			attack()
+			attack(LevelManager.active_unit, target_attack)
 	match selected_type:
 		'innate':
 			status_ui.burn_innate_card()
@@ -108,7 +109,7 @@ func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 			status_ui.burn_modular_card()
 			deck.disable_modular_card()
 			deck.inactive_modular_ability()
-	deck.show_card()
+	#deck.show_card()
 	selected_ability = null
 	selected_type = null
 	cursor.is_visible = false
@@ -317,9 +318,30 @@ func reload():
 	pass
 	#print("buckle up! reloading..")
 
-func attack():
+## SET UP UNTUK ATTACK ##
+func set_target_attack(target) -> void:
+	var t = target as Unit
+	if not t:
+		return
+	if _attack_cells.has(t.cell) and t.unit_role == "enemy":
+		target_attack = t
+
+func on_target_exited(target) -> void:
+	target_attack = null
+	print("set up target", target_attack)
+
+func attack(active_unit: Unit, target: Unit):
 	_deselect_active_unit()
+	var final_damage = clamp(apply_reduction(active_unit.damage, target.curr_armor), 0, active_unit.damage)
+	target.curr_health -= final_damage
 	#print("show desc of attack")
+
+func attack_hp(active_unit: Unit, target: Unit):
+	var final_damage = clamp(apply_reduction(active_unit.damage, target.curr_armor), 0, active_unit.damage)
+	target.curr_health -= final_damage
+
+func attack_armor(active_unit: Unit, target: Unit):
+	target.curr_armor -= active_unit.damage
 
 func show_attack():
 	if LevelManager.active_unit.modular_card:

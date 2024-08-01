@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://patekpdib63w"]
+[gd_scene load_steps=93 format=3 uid="uid://patekpdib63w"]
 
 [ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="1_54tt6"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_hgg8q"]
@@ -269,6 +269,9 @@ point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2175y"]
 size = Vector2(32, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnclj"]
+bg_color = Color(0, 0, 0, 0.313726)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5a11"]
 atlas = ExtResource("39_uvxks")
@@ -942,6 +945,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("37_2eyfr")
 
+[node name="Panel" type="Panel" parent="Interacts/Interactables"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nnclj")
+
 [node name="MarginContainer" type="MarginContainer" parent="Interacts/Interactables"]
 layout_mode = 1
 anchors_preset = 7
@@ -1022,6 +1034,8 @@ fit_content = true
 [connection signal="accept_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_accept_pressed"]
 [connection signal="moved" from="GameBoard/Cursor" to="GameBoard" method="_check_hoverable_tiles"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Cursor" to="GameBoard" method="set_target_attack"]
 [connection signal="body_entered" from="Cursor" to="Cursor" method="_on_body_entered"]
+[connection signal="body_exited" from="Cursor" to="GameBoard" method="on_target_exited"]
 [connection signal="body_exited" from="Cursor" to="Cursor" method="_on_body_exited"]
 [connection signal="enter_gameplay" from="Interacts/Interactables" to="." method="_on_interactables_enter_gameplay"]
