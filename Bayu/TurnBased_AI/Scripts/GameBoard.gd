@@ -22,6 +22,7 @@ var target_attack :Unit = null
 
 ## AI's variables ##
 var ai_attack_area := []
+var damage_type = null
 
 var _is_clickable := false:
 	set(value):
@@ -33,9 +34,18 @@ func _ready() -> void:
 	_reinitialize()
 	unitPath.clear_cells(grid)
 	_update()
+	for p in player.get_children():
+		var unit = p as Unit
+		unit.damage_enter.connect(apply_damage)
+	for e in enemy.get_children():
+		var unit = e as Unit
+		unit.damage_enter.connect(apply_damage)
 
 func _process(_delta):
 	_update()
+	print(LevelManager.active_unit.fsm.state.name)
+	#print("walking: ", LevelManager.active_unit._is_walking)
+	#print("attacking: ", LevelManager.active_unit._is_attacking)
 
 func get_grid_data(grid_data: Grid) -> Array:
 	var cells = []
@@ -95,7 +105,7 @@ func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 		return
 	match selected_ability:
 		"Walk":
-			_move_active_unit(mapped_cell)
+			await _move_active_unit(mapped_cell)
 		"Reload":
 			reload()
 		"Attack":
@@ -109,7 +119,7 @@ func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 			status_ui.burn_modular_card()
 			deck.disable_modular_card()
 			deck.inactive_modular_ability()
-	#deck.show_card()
+	deck.show_card()
 	selected_ability = null
 	selected_type = null
 	cursor.is_visible = false
@@ -319,6 +329,20 @@ func reload():
 	#print("buckle up! reloading..")
 
 ## SET UP UNTUK ATTACK ##
+func set_attack_direction(active_unit: Unit, target: Unit) -> void:
+	if target == null:
+		return
+	
+	var attacker_dir = check_direction(target, active_unit)
+	var attacked_dir = sign(active_unit.cell - target.cell)
+	active_unit.last_direction = attacker_dir
+	target.last_direction = attacked_dir
+	print("attack direction: ", active_unit.last_direction)
+	
+func check_direction(target: Unit, active_unit: Unit) -> Vector2:
+	var direction_vector = sign(target.global_position - active_unit.global_position)
+	return direction_vector
+
 func set_target_attack(target) -> void:
 	var t = target as Unit
 	if not t:
@@ -326,19 +350,32 @@ func set_target_attack(target) -> void:
 	if _attack_cells.has(t.cell) and t.unit_role == "enemy":
 		target_attack = t
 
-func on_target_exited(target) -> void:
-	target_attack = null
-	print("set up target", target_attack)
+#func on_target_exited(target) -> void:
+	#target_attack = null
+	#print("set up target", target_attack)
 
 func attack(active_unit: Unit, target: Unit):
+	if target == null:
+		return
 	_deselect_active_unit()
-	var final_damage = clamp(apply_reduction(active_unit.damage, target.curr_armor), 0, active_unit.damage)
-	target.curr_health -= final_damage
-	#print("show desc of attack")
+	set_attack_direction(active_unit, target)
+	damage_type = "hp_damage"
+	active_unit.attack()
+	#var final_damage = clamp(apply_reduction(active_unit.damage, target.curr_armor), 0, active_unit.damage)
+	#target.curr_health -= active_unit.damage
+
+func apply_damage():
+	target_attack._animation.play("Hurt")
+	match damage_type:
+		"hp_damage":
+			attack_hp(LevelManager.active_unit, target_attack)
+		"armor_damage":
+			attack_armor(LevelManager.active_unit, target_attack)
 
 func attack_hp(active_unit: Unit, target: Unit):
 	var final_damage = clamp(apply_reduction(active_unit.damage, target.curr_armor), 0, active_unit.damage)
-	target.curr_health -= final_damage
+	target.curr_health -= 3.0
+#### END OF CODE FOR ATTACK ABILITY ###
 
 func attack_armor(active_unit: Unit, target: Unit):
 	target.curr_armor -= active_unit.damage

@@ -4,6 +4,8 @@ extends CharacterBody2D
 ## Emitted when the unit reached the end of a path along which it was walking.
 signal enter_walk_state
 signal data_configured
+signal damage_enter
+signal enter_attack
 
 @export var player_id := 1
 
@@ -11,11 +13,12 @@ signal data_configured
 @export var _animation_resource: AnimationLibrary
 @onready var path = $"../../UnitPath"
 @export var _animation_state_machine: AnimationNodeStateMachine
-@onready var _animation := $AnimationPlayer
+@onready var _animation : AnimationPlayer = $AnimationPlayer
 @onready var _animationTree := $AnimationTree
 @onready var fsm : FiniteStateMachine = $FiniteStateMachine
 @onready var idle_state : IdleState = $FiniteStateMachine/IdleState
 @onready var walk_state : WalkState = $FiniteStateMachine/WalkState
+@onready var attack_state = $FiniteStateMachine/AttackState
 @onready var hp_status = $Status/HP
 @onready var armor_status = $Status/Armor
 
@@ -36,10 +39,9 @@ signal data_configured
 
 var database : SQLite
 var attack_range : int
-var current_dir : String
 var last_direction := Vector2.ZERO
 
-var _is_idle : bool
+var _is_idle := false
 #Flag that indicates wheter card has been used or not
 var innate_card := false
 var modular_card := false
@@ -141,6 +143,8 @@ var _is_walking := false:
 		_is_walking = value
 		#set_process(_is_walking)
 
+var _is_attacking := false
+
 var unit_role: String:
 	set(value):
 		unit_role = value
@@ -175,7 +179,7 @@ func _configure() -> void:
 		inactive_icon = inactive_icon_data
 		skin = texture
 		unit_role = data.role
-	emit_signal("data_configured")
+	#emit_signal("data_configured")
 
 func _ready():
 	is_selected = false
@@ -184,14 +188,20 @@ func _ready():
 	#Konfigurasi signal dalam FSM#
 	walk_state.walk_finished.connect(fsm.change_state.bind(idle_state))
 	walk_state.walk_finished.connect(on_walk_finished)
-	enter_walk_state.connect(fsm.change_state.bind(walk_state))
-	_configure()
+	attack_state.attack_finished.connect(fsm.change_state.bind(idle_state))
+	attack_state.attack_finished.connect(on_attack_finished)
+	attack_state.damage_enter.connect(on_damage_entered)
+	await _configure()
+	fsm.change_state(idle_state)
 	#Configuring AnimationPlayer and AnimationTree
 	_animationTree.tree_root = _animation_state_machine
 	_animationTree.active = true
 
 func walk():
-	enter_walk_state.emit()
+	fsm.change_state(walk_state)
+
+func attack():    
+	fsm.change_state(attack_state)
 
 func activate_ability_cards() -> void:
 	innate_card = true
@@ -207,7 +217,13 @@ func _process(delta: float):
 
 func on_walk_finished():
 	innate_done = true
-	
+
+func on_attack_finished() -> void:
+	modular_done = true
+
+func on_damage_entered():
+	emit_signal("damage_enter")
+
 func check_direction(next_tile) -> Vector2:
 	var direction_vector = sign(next_tile - global_position)
 	return direction_vector
@@ -215,7 +231,8 @@ func check_direction(next_tile) -> Vector2:
 func _update_blend_position() -> void:
 	_animationTree["parameters/Idle/blend_position"] = last_direction
 	_animationTree["parameters/Walk/blend_position"] = last_direction
-
+	_animationTree["parameters/Attack/blend_position"] = last_direction
 func _update_animation_condition() -> void:
 	_animationTree["parameters/conditions/is_idle"] = _is_idle
 	_animationTree["parameters/conditions/is_walking"] = _is_walking
+	_animationTree["parameters/conditions/is_attacking"] = _is_attacking

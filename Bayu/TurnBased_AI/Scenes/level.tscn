@@ -45,9 +45,12 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_furj2"]
 shader = ExtResource("4_eoqsm")
-shader_parameter/line_color = Color(1, 1, 1, 1)
-shader_parameter/line_thickness = 1.0
-shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ncjxh"]
 texture = ExtResource("5_0fg6s")
@@ -686,7 +689,6 @@ script = ExtResource("1_54tt6")
 grid = ExtResource("2_0r2mq")
 
 [node name="UnitPath" type="TileMap" parent="GameBoard"]
-visible = false
 y_sort_enabled = true
 tile_set = SubResource("TileSet_5x5x1")
 format = 2
@@ -706,8 +708,8 @@ use_parent_material = true
 position = Vector2(-259, 130)
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
-hframe = 7
-vframe = 4
+hframe = 12
+vframe = 8
 
 [node name="Ling" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
 position = Vector2(-60, 100)

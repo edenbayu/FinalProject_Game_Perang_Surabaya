@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://20i4en7e2fm7"]
+[gd_scene load_steps=21 format=3 uid="uid://20i4en7e2fm7"]
 
 [ext_resource type="Script" path="res://Scripts/Unit.gd" id="1_u70hk"]
 [ext_resource type="Texture2D" uid="uid://c766m3iwx0tik" path="res://Sprites/Suryo.png" id="2_4l34f"]
@@ -8,15 +8,34 @@
 [ext_resource type="Script" path="res://Scenes/FiniteStateMachine.gd" id="5_w7fm6"]
 [ext_resource type="Script" path="res://Scripts/IdleState.gd" id="6_jy6vm"]
 [ext_resource type="Script" path="res://Scripts/WalkState.gd" id="7_dcy7x"]
+[ext_resource type="Script" path="res://Scripts/AttackState.gd" id="9_js0jk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vph2h"]
 resource_local_to_scene = true
 shader = ExtResource("2_mbqfs")
-shader_parameter/line_color = Color(1, 1, 1, 1)
-shader_parameter/line_thickness = 3.0
-shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 3.0
+shader_parameter/pattern = 2
+shader_parameter/inside = false
+shader_parameter/add_margins = false
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwmta"]
+
+[sub_resource type="Animation" id="Animation_gm7wa"]
+resource_name = "Hurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/modulate_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.521569, 0.486275, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ji6qf"]
 length = 0.001
@@ -32,9 +51,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [3]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/modulate_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cyab2"]
 _data = {
+"Hurt": SubResource("Animation_gm7wa"),
 "RESET": SubResource("Animation_ji6qf")
 }
 
@@ -97,11 +129,12 @@ expand_margin_right = 2.0
 script = ExtResource("1_u70hk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.27451, 0.27451, 1)
 material = SubResource("ShaderMaterial_vph2h")
 position = Vector2(2, -40)
 texture = ExtResource("2_4l34f")
-hframes = 7
-vframes = 4
+hframes = 12
+vframes = 8
 frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -115,7 +148,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-active = false
 libraries = {
 "": SubResource("AnimationLibrary_cyab2"),
 "Jepang_animation": SubResource("AnimationLibrary_0eh6d"),
@@ -123,10 +155,12 @@ libraries = {
 }
 tree_root = ExtResource("4_6vypo")
 anim_player = NodePath("../AnimationPlayer")
-parameters/conditions/is_idle = true
+parameters/conditions/is_attacking = false
+parameters/conditions/is_idle = false
 parameters/conditions/is_walking = false
+parameters/Attack/blend_position = Vector2(0, 1)
 parameters/Idle/blend_position = Vector2(1, 1)
-parameters/Walk/blend_position = Vector2(1.00069, 0.988235)
+parameters/Walk/blend_position = Vector2(0.641262, 0.76652)
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("5_w7fm6")
@@ -138,6 +172,10 @@ actor = NodePath("../..")
 
 [node name="WalkState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("7_dcy7x")
+actor = NodePath("../..")
+
+[node name="AttackState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("9_js0jk")
 actor = NodePath("../..")
 
 [node name="Status" type="VBoxContainer" parent="."]
