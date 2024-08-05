@@ -48,9 +48,6 @@ func _ready():
 
 func _process(delta):
 	pass
-	#if active_unit.unit_role == "enemy":
-		#_detect_ally_units()
-	#print(detected)
 
 func set_turn():
 	var unit_status = _units[turn_index].unit_role

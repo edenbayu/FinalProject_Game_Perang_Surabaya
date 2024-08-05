@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://20i4en7e2fm7"]
+[gd_scene load_steps=24 format=3 uid="uid://20i4en7e2fm7"]
 
 [ext_resource type="Script" path="res://Scripts/Unit.gd" id="1_u70hk"]
 [ext_resource type="Texture2D" uid="uid://c766m3iwx0tik" path="res://Sprites/Suryo.png" id="2_4l34f"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" path="res://Scripts/IdleState.gd" id="6_jy6vm"]
 [ext_resource type="Script" path="res://Scripts/WalkState.gd" id="7_dcy7x"]
 [ext_resource type="Script" path="res://Scripts/AttackState.gd" id="9_js0jk"]
+[ext_resource type="Script" path="res://Scenes/UnitSound.gd" id="10_476id"]
+[ext_resource type="AudioStream" uid="uid://dl85j5bq1s7ng" path="res://audio/nambu_shoot.mp3" id="11_rm3k0"]
+[ext_resource type="AudioStream" uid="uid://45c1blgvsnrb" path="res://audio/male_hurt7-48124.mp3" id="12_g1y0g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vph2h"]
 resource_local_to_scene = true
@@ -24,17 +27,18 @@ shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="Animation" id="Animation_gm7wa"]
 resource_name = "Hurt"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/modulate_color")
+tracks/0/path = NodePath("Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
+"times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0.521569, 0.486275, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(0.878431, 0.309804, 0.32549, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ji6qf"]
@@ -54,7 +58,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:material:shader_parameter/modulate_color")
+tracks/1/path = NodePath("Sprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -129,7 +133,6 @@ expand_margin_right = 2.0
 script = ExtResource("1_u70hk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.27451, 0.27451, 1)
 material = SubResource("ShaderMaterial_vph2h")
 position = Vector2(2, -40)
 texture = ExtResource("2_4l34f")
@@ -156,7 +159,8 @@ libraries = {
 tree_root = ExtResource("4_6vypo")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_attacking = false
-parameters/conditions/is_idle = false
+parameters/conditions/is_hurt = false
+parameters/conditions/is_idle = true
 parameters/conditions/is_walking = false
 parameters/Attack/blend_position = Vector2(0, 1)
 parameters/Idle/blend_position = Vector2(1, 1)
@@ -205,5 +209,15 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_0qyll")
 step = 1.0
 value = 80.0
 show_percentage = false
+
+[node name="UnitSound" type="Node2D" parent="."]
+script = ExtResource("10_476id")
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="UnitSound"]
+stream = ExtResource("11_rm3k0")
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="UnitSound"]
+stream = ExtResource("12_g1y0g")
+pitch_scale = 0.8
 
 [connection signal="data_configured" from="." to="FiniteStateMachine" method="initiate_fsm"]

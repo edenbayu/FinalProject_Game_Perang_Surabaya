@@ -11,6 +11,7 @@ signal action_done
 @onready var enemy = $Enemy
 @onready var deck : Deck = $"../CanvasLayer/UI/HBoxContainer/HBoxContainer/Hands"
 @onready var status_ui : StatusUI = $"../CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI"
+var audio = preload("res://Scenes/SoundManager.tscn")
 
 var is_within_map: bool
 var _walkable_cells := []
@@ -30,6 +31,9 @@ var _is_clickable := false:
 	
 
 func _ready() -> void:
+	audio = audio.instantiate()
+	add_child(audio)
+	audio.level1_bgm()
 	_initiallize_unit_pos()
 	_reinitialize()
 	unitPath.clear_cells(grid)
@@ -43,9 +47,6 @@ func _ready() -> void:
 
 func _process(_delta):
 	_update()
-	print(LevelManager.active_unit.fsm.state.name)
-	#print("walking: ", LevelManager.active_unit._is_walking)
-	#print("attacking: ", LevelManager.active_unit._is_attacking)
 
 func get_grid_data(grid_data: Grid) -> Array:
 	var cells = []
@@ -334,9 +335,7 @@ func set_attack_direction(active_unit: Unit, target: Unit) -> void:
 		return
 	
 	var attacker_dir = check_direction(target, active_unit)
-	var attacked_dir = sign(active_unit.cell - target.cell)
 	active_unit.last_direction = attacker_dir
-	target.last_direction = attacked_dir
 	print("attack direction: ", active_unit.last_direction)
 	
 func check_direction(target: Unit, active_unit: Unit) -> Vector2:
@@ -365,7 +364,14 @@ func attack(active_unit: Unit, target: Unit):
 	#target.curr_health -= active_unit.damage
 
 func apply_damage():
-	target_attack._animation.play("Hurt")
+	#audio.nambu_shoot()
+	#audio.unit_hurt()
+	var attacked_dir = check_direction(LevelManager.active_unit, target_attack)
+	target_attack.last_direction = attacked_dir
+	var tween : Tween
+	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(target_attack, "modulate", Color8(224, 133, 124), 0.2)
+	tween.tween_property(target_attack, "modulate", Color(1,1,1), 0.2)
 	match damage_type:
 		"hp_damage":
 			attack_hp(LevelManager.active_unit, target_attack)
@@ -465,7 +471,8 @@ func rest(active_unit: Unit) -> void:
 	#var action = ai_agent.get_top
 
 func get_first_act(active_unit: Unit) -> String:
-	var ai_agent = active_unit.get_child(6) as UtilityAiAgent
+	var ai_agent = active_unit.get_node("UtilityAiAgent")
+	print("HASHAHA", ai_agent.name)
 	return ai_agent._current_top_action
 
 func apply_reduction(base_damage: int, current_armor: int) -> int:

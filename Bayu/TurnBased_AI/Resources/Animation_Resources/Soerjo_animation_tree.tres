@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=21 format=3 uid="uid://cxhfosr80gxwx"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=24 format=3 uid="uid://cxhfosr80gxwx"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8uknw"]
 animation = &"Soerjo_animation/Shoot_FL"
@@ -23,6 +23,9 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_4p0c1")
 blend_point_3/pos = Vector2(1, 1)
 min_space = Vector2(-2, -2)
 max_space = Vector2(2, 2)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r2kg3"]
+animation = &"Hurt"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nb3lq"]
 animation = &"Soerjo_animation/Idle_FR"
@@ -96,12 +99,22 @@ advance_condition = &"is_attacking"
 advance_mode = 2
 advance_condition = &"is_idle"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d2h06"]
+advance_mode = 2
+advance_condition = &"is_hurt"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_25t7m"]
+advance_mode = 2
+advance_condition = &"is_idle"
+
 [resource]
 states/Attack/node = SubResource("AnimationNodeBlendSpace2D_jank0")
 states/Attack/position = Vector2(410, 191.259)
+states/Hurt/node = SubResource("AnimationNodeAnimation_r2kg3")
+states/Hurt/position = Vector2(410, 10.4726)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_la47q")
 states/Idle/position = Vector2(410, 100)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_qs1sg")
 states/Walk/position = Vector2(567, 100)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_hkxpm"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_vvut2"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_5e03q"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_fi1gy"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_c25pu")]
-graph_offset = Vector2(-428.994, 37.2595)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_hkxpm"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_vvut2"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_5e03q"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_fi1gy"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_c25pu"), "Idle", "Hurt", SubResource("AnimationNodeStateMachineTransition_d2h06"), "Hurt", "Idle", SubResource("AnimationNodeStateMachineTransition_25t7m")]
+graph_offset = Vector2(-428.994, -40.5274)

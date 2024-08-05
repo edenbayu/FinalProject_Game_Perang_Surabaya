@@ -114,13 +114,13 @@ var is_selected := false:
 	set(value):
 		is_selected = value
 		if is_selected:
-			_sprite.material["shader_parameter/modulate_color"] = Color(1, 1, 1)
-			_sprite.material["shader_parameter/line_thickness"] = 3.0
+			_sprite.modulate = Color(1, 1, 1)
+			_sprite.material["shader_parameter/width"] = 3.0
 			hp_status.visible = true
 			armor_status.visible = true
 		else:
-			_sprite.material["shader_parameter/modulate_color"] = Color(0.65, 0.65, 0.65)
-			_sprite.material["shader_parameter/line_thickness"] = 0.0
+			_sprite.modulate = Color(0.65, 0.65, 0.65)
+			_sprite.material["shader_parameter/width"] = 0.0
 			hp_status.visible = false
 			armor_status.visible = false
 			
@@ -128,14 +128,14 @@ var is_hovered := false:
 	set(value):
 		is_hovered = value
 		if is_hovered:
-			_sprite.material["shader_parameter/line_thickness"] = 3.0
-			_sprite.material["shader_parameter/line_color"] = Color8(224, 79, 83)
-			_sprite.material["shader_parameter/modulate_color"] = Color(1, 1, 1)
+			_sprite.material["shader_parameter/width"] = 3.0
+			_sprite.material["shader_parameter/color"] = Color8(224, 79, 83)
+			_sprite.modulate = Color(1, 1, 1)
 			hp_status.visible = true
 			armor_status.visible = true
 		else:
-			_sprite.material["shader_parameter/modulate_color"] = Color(0.65, 0.65, 0.65)
-			_sprite.material["shader_parameter/line_thickness"] = 0.0
+			_sprite.modulate = Color(0.65, 0.65, 0.65)
+			_sprite.material["shader_parameter/width"] = 0.0
 			hp_status.visible = false
 			armor_status.visible = false
 var _is_walking := false:

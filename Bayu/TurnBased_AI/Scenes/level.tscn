@@ -895,6 +895,179 @@ target_position = Vector2(-158, -8)
 [node name="RayCast2D16" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
 target_position = Vector2(1, 72)
 
+[node name="Unit2" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
+position = Vector2(193, 672)
+player_id = 6
+_animation_resource = ExtResource("11_601eb")
+_animation_state_machine = ExtResource("12_e2jf1")
+hframe = 7
+vframe = 1
+
+[node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit2"]
+script = ExtResource("27_yvtgi")
+
+[node name="approach" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent"]
+script = ExtResource("28_lvhxf")
+_action_id = "approach"
+
+[node name="UtilityAiAggregation2" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach"]
+script = ExtResource("29_6jobp")
+
+[node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../..")
+property_name = "innate_done"
+curve = SubResource("Curve_f4f8w")
+
+[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../..")
+property_name = "is_within_range"
+curve = SubResource("Curve_1kur1")
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach/UtilityAiAggregation2"]
+script = ExtResource("29_6jobp")
+
+[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach/UtilityAiAggregation2/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../../..")
+property_name = "is_empty_ammo"
+curve = SubResource("Curve_th8ef")
+
+[node name="reload" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent"]
+script = ExtResource("28_lvhxf")
+_action_id = "reload"
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/reload"]
+script = ExtResource("29_6jobp")
+
+[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../..")
+property_name = "is_empty_ammo"
+max_value = 1.5
+curve = SubResource("Curve_wln8g")
+
+[node name="health" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../..")
+property_name = "curr_health"
+max_value = 12.0
+curve = SubResource("Curve_ipvhf")
+
+[node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../..")
+property_name = "innate_done"
+curve = SubResource("Curve_ymwmf")
+
+[node name="shoot" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent"]
+script = ExtResource("28_lvhxf")
+_action_id = "shoot"
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot"]
+script = ExtResource("29_6jobp")
+
+[node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../..")
+property_name = "modular_done"
+curve = SubResource("Curve_gjwa0")
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot/UtilityAiAggregation"]
+script = ExtResource("29_6jobp")
+
+[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../../..")
+property_name = "is_within_range"
+curve = SubResource("Curve_8laea")
+
+[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../../..")
+property_name = "is_empty_ammo"
+curve = SubResource("Curve_ucavg")
+
+[node name="rest" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent"]
+script = ExtResource("28_lvhxf")
+_action_id = "rest"
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest"]
+script = ExtResource("29_6jobp")
+
+[node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../..")
+property_name = "modular_done"
+curve = SubResource("Curve_5von7")
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest/UtilityAiAggregation"]
+script = ExtResource("29_6jobp")
+aggregation_type = 2
+
+[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../../..")
+property_name = "is_within_range"
+curve = SubResource("Curve_3eyec")
+
+[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_w7j6f")
+node = NodePath("../../../../..")
+property_name = "is_empty_ammo"
+curve = SubResource("Curve_740e6")
+
+[node name="SensorJarak" type="Node2D" parent="GameBoard/Enemy/Unit2"]
+
+[node name="RayCast2D" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
+target_position = Vector2(210, 100)
+
+[node name="RayCast2D2" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
+target_position = Vector2(228, 26)
+
+[node name="RayCast2D3" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
+target_position = Vector2(70, 102)
+
+[node name="RayCast2D4" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
+target_position = Vector2(227, -40)
+
+[node name="RayCast2D5" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
+target_position = Vector2(208, -109)
+
+[node name="RayCast2D6" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
+target_position = Vector2(65, -117)
+
+[node name="RayCast2D7" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
+target_position = Vector2(-62, -117)
+
+[node name="RayCast2D8" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
+target_position = Vector2(-202, -108)
+
+[node name="RayCast2D9" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
+target_position = Vector2(-219, -37)
+
+[node name="RayCast2D10" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
+target_position = Vector2(-215, 26)
+
+[node name="RayCast2D11" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
+target_position = Vector2(-205, 97)
+
+[node name="RayCast2D12" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
+target_position = Vector2(-64, 101)
+
+[node name="RayCast2D13" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
+target_position = Vector2(170, -7)
+
+[node name="RayCast2D14" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
+target_position = Vector2(0, -88)
+
+[node name="RayCast2D15" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
+target_position = Vector2(-158, -8)
+
+[node name="RayCast2D16" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
+target_position = Vector2(1, 72)
+
 [node name="Props" type="Node2D" parent="GameBoard"]
 
 [node name="TableChair" type="StaticBody2D" parent="GameBoard/Props"]
