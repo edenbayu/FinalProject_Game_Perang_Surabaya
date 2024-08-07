@@ -711,13 +711,13 @@ _animation_state_machine = ExtResource("12_e2jf1")
 hframe = 12
 vframe = 8
 
-[node name="Ling" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
+[node name="Tomo" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
 position = Vector2(-60, 100)
-player_id = 2
+player_id = 3
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
-hframe = 7
-vframe = 1
+hframe = 12
+vframe = 8
 
 [node name="Enemy" type="Node2D" parent="GameBoard"]
 script = ExtResource("12_bpvfk")

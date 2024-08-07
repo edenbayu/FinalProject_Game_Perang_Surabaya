@@ -43,6 +43,13 @@ func _ready():
 	for icon in ui_container.get_children():
 		turn_based.position.x -= icon.size.x / 4
 	$CanvasLayer.visible = false
+	
+	for p in player.get_children():
+		var unit = p as Unit
+		unit.unit_die.connect(on_unit_die)
+	for e in enemy.get_children():
+		var unit = e as Unit
+		unit.unit_die.connect(on_unit_die)
 	#active_unit.hp_status.visible = false
 	#active_unit.armor_status.visible = false
 
@@ -66,12 +73,16 @@ func _reinitialize() -> void:
 		var unit := child as Unit
 		if not unit:
 			continue
+		if unit.is_dead:
+			continue
 		_units.append(unit)
 
 	##Getting the move_speed stats from enemy node
 	for child in enemy.get_children():
 		var unit := child as Unit
 		if not unit:
+			continue
+		if unit.is_dead:
 			continue
 		_units.append(unit)
 	_units.sort_custom(_sort_turn)
@@ -133,10 +144,10 @@ func _on_enemy_turn_started(unit: Unit) -> void:
 	player_ui.visible = false
 	#await _detect_ally_units()
 	await get_tree().create_timer(0.25).timeout
-	print("innate ", active_unit.innate_done)
-	print("modular ", active_unit.modular_done)
-	print("ammo ", active_unit.is_empty_ammo)
-	print("range ", active_unit.is_within_range)
+	#print("innate ", active_unit.innate_done)
+	#print("modular ", active_unit.modular_done)
+	#print("ammo ", active_unit.is_empty_ammo)
+	#print("range ", active_unit.is_within_range)
 	await run_first_action()
 	await _detect_ally_units()
 	await get_tree().create_timer(0.5).timeout
@@ -157,15 +168,11 @@ func run_first_action() -> void:
 	var target = set_attack_target(detected)
 	var action = gameboard.get_first_act(active_unit)
 	await execute_matched_actions(action, target)
-	print("ini aksi pertama: ", action)
-	print("skoring: ", $GameBoard/Enemy/Unit/UtilityAiAgent._action_scores)
 
 func run_second_action() -> void:
 	var target = set_attack_target(detected)
 	var action = gameboard.get_first_act(active_unit)
 	await execute_matched_actions(action, target)
-	print("ini aksi kedua: ", action)
-	print("skoring: ", $GameBoard/Enemy/Unit/UtilityAiAgent._action_scores)
 
 func execute_matched_actions(action: String, target: Unit) -> void:
 	#await next_action
@@ -187,7 +194,7 @@ func _detect_ally_units() -> void:
 	for ray in raycast.get_children():
 		if ray.is_colliding():
 			var detected_unit = ray.get_collider() as Unit
-			if detected_unit.unit_role == "ally" and detected_unit.curr_health > 0:
+			if detected_unit.unit_role == "ally" and detected_unit.curr_health > 0 and not detected_unit.is_dead:
 				detected.append(detected_unit)
 	if detected.is_empty():
 		active_unit.is_within_range = false
@@ -253,15 +260,13 @@ func _get_card_informations() -> void:
 
 ##Camera configurations
 func _on_zoom_in_pressed() -> void:
-	tactics_camera.zoom_in()
-	$GameBoard/Enemy/Unit.modular_done = true
-	print($GameBoard/Enemy/Unit/UtilityAiAgent._action_scores)
+	get_tree().paused = false
+	#tactics_camera.zoom_in()
 
 func _on_exit_button_pressed() -> void:
-	tactics_camera.zoom_out()
-	print("apakah dalam range? ", $GameBoard/Enemy/Unit.is_within_range)
-	print("peluru kosong?", $GameBoard/Enemy/Unit.is_empty_ammo)
-	print($GameBoard/Enemy/Unit/UtilityAiAgent._action_scores)
+	get_tree().paused = true
+	$CanvasLayer.visible = false
+	#tactics_camera.zoom_out()
 
 func _on_utility_ai_agent_top_score_action_changed(top_action_id):
 	next_action.emit()
@@ -273,3 +278,22 @@ func _on_interactables_enter_gameplay():
 	_get_card_informations()
 	$GameBoard/UnitPath.visible = true
 	
+func on_unit_die(unit) -> void:
+	_units.erase(unit)
+	_icons.clear()
+	_reinitialize_icon()
+	for u in _units:
+		if u.is_dead:
+			continue
+		var unit_texture = TurnBasedIcon.new()
+		ui_container.add_child(unit_texture)
+		_icons.append(unit_texture)
+		unit_texture.texture = u.inactive_icon
+	match unit.unit_role:
+		"enemy":
+			_active_icon()
+		"ally":
+			turn_index -= 1
+			_active_icon()
+	gameboard._units.erase(unit.cell)
+	turn_based.size.x -= 94

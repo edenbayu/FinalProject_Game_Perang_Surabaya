@@ -44,6 +44,7 @@ func _ready() -> void:
 	for e in enemy.get_children():
 		var unit = e as Unit
 		unit.damage_enter.connect(apply_damage)
+	print(_units)
 
 func _process(_delta):
 	_update()

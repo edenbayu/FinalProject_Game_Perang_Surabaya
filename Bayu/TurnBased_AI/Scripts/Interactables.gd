@@ -28,7 +28,7 @@ func mini_dialog() -> void:
 		queue_free()
 
 func _input(event):
-	if Input.is_action_pressed("klik_mouse_kiri"):
+	if Input.is_action_pressed("klik_mouse_kiri") and text.visible_ratio >= 1:
 		mini_dialog()
 	#enter_game()
 

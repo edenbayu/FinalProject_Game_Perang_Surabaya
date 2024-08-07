@@ -6,6 +6,7 @@ signal enter_walk_state
 signal data_configured
 signal damage_enter
 signal enter_attack
+signal unit_die(unit)
 
 @export var player_id := 1
 
@@ -79,11 +80,15 @@ var curr_armor : float:
 var curr_health: float:
 	set(value):
 		curr_health = clamp(value, 0, max_health)
+		if curr_health <= 0:
+			is_dead = true
+			death()
 
 var is_within_range := false
 var is_empty_ammo := false
 var innate_done := false
 var modular_done := false
+var is_dead := false
 #############################################
 
 #setter getter
@@ -236,3 +241,10 @@ func _update_animation_condition() -> void:
 	_animationTree["parameters/conditions/is_idle"] = _is_idle
 	_animationTree["parameters/conditions/is_walking"] = _is_walking
 	_animationTree["parameters/conditions/is_attacking"] = _is_attacking
+
+func death() -> void:
+	var tween : Tween
+	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(self, "modulate", Color8(255, 255, 255, 0), 1)
+	unit_die.emit(self)
+	#queue_free()
