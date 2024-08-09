@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://20i4en7e2fm7"]
+[gd_scene load_steps=26 format=3 uid="uid://20i4en7e2fm7"]
 
 [ext_resource type="Script" path="res://Scripts/Unit.gd" id="1_u70hk"]
 [ext_resource type="Texture2D" uid="uid://c766m3iwx0tik" path="res://Sprites/Suryo.png" id="2_4l34f"]
@@ -11,8 +11,9 @@
 [ext_resource type="Script" path="res://Scripts/WalkState.gd" id="7_dcy7x"]
 [ext_resource type="Script" path="res://Scripts/AttackState.gd" id="9_js0jk"]
 [ext_resource type="Script" path="res://Scenes/UnitSound.gd" id="10_476id"]
-[ext_resource type="AudioStream" uid="uid://dl85j5bq1s7ng" path="res://audio/nambu_shoot.mp3" id="11_rm3k0"]
+[ext_resource type="AudioStream" uid="uid://csyh7tvwhtt3m" path="res://audio/bamboo_hit.mp3" id="12_3lds6"]
 [ext_resource type="AudioStream" uid="uid://45c1blgvsnrb" path="res://audio/male_hurt7-48124.mp3" id="12_g1y0g"]
+[ext_resource type="AudioStream" uid="uid://nprlxnrhvoum" path="res://audio/walk.mp3" id="14_3f15n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vph2h"]
 resource_local_to_scene = true
@@ -153,6 +154,7 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 libraries = {
 "": SubResource("AnimationLibrary_cyab2"),
 "Jepang_animation": SubResource("AnimationLibrary_0eh6d"),
@@ -217,10 +219,13 @@ show_percentage = false
 script = ExtResource("10_476id")
 
 [node name="Shoot" type="AudioStreamPlayer2D" parent="UnitSound"]
-stream = ExtResource("11_rm3k0")
+stream = ExtResource("12_3lds6")
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="UnitSound"]
 stream = ExtResource("12_g1y0g")
 pitch_scale = 0.8
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="UnitSound"]
+stream = ExtResource("14_3f15n")
 
 [connection signal="data_configured" from="." to="FiniteStateMachine" method="initiate_fsm"]

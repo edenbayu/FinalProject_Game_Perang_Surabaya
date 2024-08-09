@@ -21,7 +21,6 @@ signal next_action
 
 signal enemy_turn_started(icon: TextureRect)
 signal ally_turn_started
-signal turn_changed
 
 var database : SQLite
 var _units := []
@@ -57,12 +56,14 @@ func _process(delta):
 	pass
 
 func set_turn():
+	check_game_over(player, enemy)
 	var unit_status = _units[turn_index].unit_role
 	_active_icon()
-	if unit_status == "ally":
-		emit_signal("ally_turn_started", active_unit)
-	elif unit_status == "enemy":
-		emit_signal("enemy_turn_started", active_unit)
+	match unit_status:
+		"ally":
+			emit_signal("ally_turn_started", active_unit)
+		"enemy":
+			emit_signal("enemy_turn_started", active_unit)
 
 func _reinitialize() -> void:
 	_units.clear()
@@ -121,10 +122,13 @@ func _sort_turn(a: Unit, b: Unit) -> bool:
 
 # Signal handler for ally turn started
 func _on_ally_turn_started(unit: Unit) -> void:
+	deck.clear_hands()
 	active_unit = unit
 	active_unit.innate_card = true
 	active_unit.modular_card = true
 	active_unit.is_selected = true
+	_get_card_informations()
+	print(active_unit.nama)
 	configure_status_ui_texture()
 	player_ui.visible = true
 	deck.reset_card()
@@ -144,32 +148,24 @@ func _on_enemy_turn_started(unit: Unit) -> void:
 	player_ui.visible = false
 	#await _detect_ally_units()
 	await get_tree().create_timer(0.25).timeout
+	await run_action()
+	await _detect_ally_units()
+	await get_tree().create_timer(0.5).timeout
 	#print("innate ", active_unit.innate_done)
 	#print("modular ", active_unit.modular_done)
 	#print("ammo ", active_unit.is_empty_ammo)
 	#print("range ", active_unit.is_within_range)
-	await run_first_action()
-	await _detect_ally_units()
-	await get_tree().create_timer(0.5).timeout
-	print("innate ", active_unit.innate_done)
-	print("modular ", active_unit.modular_done)
-	print("ammo ", active_unit.is_empty_ammo)
-	print("range ", active_unit.is_within_range)
-	await run_second_action()
+	await run_action()
 	#var detected = _detect_ally_units()
 	#var target = set_attack_target(detected)
 	#var action = gameboard.get_first_act(active_unit)
 	#execute_matched_actions(action, target)
 	#gameboard.shoot(active_unit, target, active_unit.turn_index)
-	timer.wait_time = wait_time_test
-	timer.start()
+	_end_turn()
+	#timer.wait_time = wait_time_test
+	#timer.start()
 
-func run_first_action() -> void:
-	var target = set_attack_target(detected)
-	var action = gameboard.get_first_act(active_unit)
-	await execute_matched_actions(action, target)
-
-func run_second_action() -> void:
+func run_action() -> void:
 	var target = set_attack_target(detected)
 	var action = gameboard.get_first_act(active_unit)
 	await execute_matched_actions(action, target)
@@ -213,19 +209,15 @@ func _on_button_pressed():
 	# Set the turn to enemy turn
 	_end_turn()
 
-func _on_timer_timeout():
-	timer.stop()
-	_end_turn()
-
 func _end_turn()-> void:
 	deck.on_card_chosen()
 	active_icon.texture = active_unit.inactive_icon
 	gameboard._deselect_active_unit()
 	_units[turn_index].is_selected = false
 	_icons[turn_index].is_active = false
+	gameboard.target_attack = null
 	active_unit = null
 	turn_index = (turn_index + 1) % _units.size()
-	emit_signal("turn_changed")
 	if turn_index == 0:
 		_reinitialize_icon()
 		_reinitialize()
@@ -251,22 +243,33 @@ func _get_card_informations() -> void:
 	#2. query the card datas
 	database.query("select card.id_card, card_name, texture, back_texture, description, card_ability, card_type 
 					from unit_data
-					join card on unit_data.id_unit = card.id_card
+					join card on unit_data.id_card = card.id_card
 					where unit_data.nama = " + "'" + str(active_unit.nama).to_lower() + "'") 
 	
 	#3. instantiate card based on query result
 	deck.spawn_new_card(database.query_result)
-	deck.match_card_functionalities()
+	#deck.match_card_functionalities()
 
+func get_card_textures() -> void:
+	database = SQLite.new()
+	database.path = "res://database.db"
+	database.open_db()
+	#2. query the card datas
+	database.query("select card.id_card, card_name, texture, back_texture, description, card_ability, card_type 
+					from unit_data
+					join card on unit_data.id_card = card.id_card
+					where unit_data.nama = " + "'" + str(active_unit.nama).to_lower() + "'")
+	
+	 
 ##Camera configurations
 func _on_zoom_in_pressed() -> void:
-	get_tree().paused = false
-	#tactics_camera.zoom_in()
+	#get_tree().paused = false
+	tactics_camera.zoom_in()
 
 func _on_exit_button_pressed() -> void:
-	get_tree().paused = true
-	$CanvasLayer.visible = false
-	#tactics_camera.zoom_out()
+	#get_tree().paused = true
+	#$CanvasLayer.visible = false
+	tactics_camera.zoom_out()
 
 func _on_utility_ai_agent_top_score_action_changed(top_action_id):
 	next_action.emit()
@@ -281,6 +284,7 @@ func _on_interactables_enter_gameplay():
 func on_unit_die(unit) -> void:
 	_units.erase(unit)
 	_icons.clear()
+	var icon = ui_container.get_children()
 	_reinitialize_icon()
 	for u in _units:
 		if u.is_dead:
@@ -289,11 +293,34 @@ func on_unit_die(unit) -> void:
 		ui_container.add_child(unit_texture)
 		_icons.append(unit_texture)
 		unit_texture.texture = u.inactive_icon
-	match unit.unit_role:
-		"enemy":
-			_active_icon()
-		"ally":
-			turn_index -= 1
-			_active_icon()
+	if turn_index >= _units.size() - 1:
+		turn_index -= 1
+		_active_icon()
+	else:
+		_active_icon()
+	turn_based.size.x -= 96
 	gameboard._units.erase(unit.cell)
-	turn_based.size.x -= 94
+
+func check_game_over(player, enemy) -> void:
+	var all_player_dead = true
+	var all_enemies_dead = true
+	for unit in player.get_children():
+		var u = unit as Unit
+		if not u.is_dead:
+			all_player_dead = false
+			break
+	for unit in enemy.get_children():
+		var u = unit as Unit
+		if not u.is_dead:
+			all_enemies_dead = false
+			break
+	if all_player_dead:
+		lose_game()
+	elif all_enemies_dead:
+		win_game()
+
+func lose_game():
+	print("Game 0ver!")
+
+func win_game():
+	print("Congradilations!")

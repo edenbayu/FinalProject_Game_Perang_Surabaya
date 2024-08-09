@@ -255,6 +255,8 @@ func _update() -> void:
 		if not unit:
 			continue
 		ordering.append(unit)
+	#for child in $Props.get_children():
+		#ordering.append(child)
 	# Sort units based on their cell values
 	ordering.sort_custom(_sort_index)
 	# Iterate through sorted units and assign Z indices
@@ -350,9 +352,6 @@ func set_target_attack(target) -> void:
 	if _attack_cells.has(t.cell) and t.unit_role == "enemy":
 		target_attack = t
 
-#func on_target_exited(target) -> void:
-	#target_attack = null
-	#print("set up target", target_attack)
 
 func attack(active_unit: Unit, target: Unit):
 	if target == null:
@@ -473,7 +472,7 @@ func rest(active_unit: Unit) -> void:
 
 func get_first_act(active_unit: Unit) -> String:
 	var ai_agent = active_unit.get_node("UtilityAiAgent")
-	print("HASHAHA", ai_agent.name)
+	#print("HASHAHA", ai_agent.name)
 	return ai_agent._current_top_action
 
 func apply_reduction(base_damage: int, current_armor: int) -> int:

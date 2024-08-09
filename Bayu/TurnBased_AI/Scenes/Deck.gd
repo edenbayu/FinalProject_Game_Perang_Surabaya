@@ -55,6 +55,11 @@ func spawn_new_card(result):
 		instance.card_type = i.card_ability
 		instance.card_attribute = i.card_type
 		self.add_child(instance)
+	match_card_functionalities()
+
+func clear_hands():
+	for card in self.get_children():
+		card.queue_free()
 
 func match_card_functionalities():
 	for card in self.get_children():

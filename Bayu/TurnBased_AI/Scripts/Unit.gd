@@ -88,7 +88,13 @@ var is_within_range := false
 var is_empty_ammo := false
 var innate_done := false
 var modular_done := false
-var is_dead := false
+var is_dead := false:
+	set(value):
+		is_dead = value
+		if is_dead:
+			get_node("CollisionShape2D").disabled = true
+		else:
+			get_node("CollisionShape2D").disabled = false
 #############################################
 
 #setter getter

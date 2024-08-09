@@ -15,6 +15,9 @@ func _init(grid: Grid, _walkable_cells: Array) -> void:
 	_astar.default_estimate_heuristic = AStarGrid2D.HEURISTIC_EUCLIDEAN
 	_astar.update()
 	
+	_astar.set_point_solid(Vector2i(8, 3), true)
+	_astar.set_point_solid(Vector2i(8, 4), true)
+	_astar.set_point_solid(Vector2i(8, 5), true)
 	var vectors_inside = []
 	 # Iterate over each point inside the rectangle
 	for x in range(_astar.region.position.x, _astar.region.position.x + _astar.region.size.x):

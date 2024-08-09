@@ -3,6 +3,7 @@ extends State
 
 signal walk_finished
 @export var actor: Unit
+@onready var audio := $"../../UnitSound"
 
 func _ready() -> void:
 	set_physics_process(false)
@@ -11,6 +12,7 @@ func _enter_state() -> void:
 	set_physics_process(true)
 	actor._is_walking = true
 	actor._is_idle = false
+	audio.play_walk()
 
 func _exit_state() -> void:
 	set_physics_process(false)
@@ -26,4 +28,5 @@ func _physics_process(delta) -> void:
 		if actor.position == target_pos:
 			actor.walk_coordinates.pop_front()
 	if actor.walk_coordinates.is_empty():
+		audio.stop_walk()
 		emit_signal("walk_finished")

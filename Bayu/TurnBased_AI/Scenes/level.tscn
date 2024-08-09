@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://patekpdib63w"]
+[gd_scene load_steps=94 format=3 uid="uid://patekpdib63w"]
 
 [ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="1_54tt6"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_hgg8q"]
@@ -270,6 +270,9 @@ point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t1t3p"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_54ujx"]
+radius = 63.0553
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2175y"]
 size = Vector2(32, 32)
 
@@ -403,7 +406,6 @@ statusUItexture = Array[Texture2D]([ExtResource("5_yayhc"), ExtResource("3_7qpu3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
-visible = false
 
 [node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -727,8 +729,8 @@ position = Vector2(579, 484)
 player_id = 6
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
-hframe = 7
-vframe = 1
+hframe = 12
+vframe = 8
 
 [node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit"]
 script = ExtResource("27_yvtgi")
@@ -900,8 +902,8 @@ position = Vector2(193, 672)
 player_id = 6
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
-hframe = 7
-vframe = 1
+hframe = 12
+vframe = 8
 
 [node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit2"]
 script = ExtResource("27_yvtgi")
@@ -1097,6 +1099,21 @@ texture = ExtResource("33_240rj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair3"]
 shape = SubResource("RectangleShape2D_t1t3p")
 
+[node name="TableChair4" type="StaticBody2D" parent="GameBoard/Props"]
+position = Vector2(320, 374)
+scale = Vector2(-1, 1)
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair4"]
+texture = ExtResource("33_240rj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair4"]
+position = Vector2(-2, 44)
+rotation = 0.475294
+scale = Vector2(1.52103, 0.218512)
+shape = SubResource("CircleShape2D_54ujx")
+
 [node name="Timer" type="Timer" parent="."]
 
 [node name="TacticsCamera" parent="." instance=ExtResource("2_pxgfw")]
@@ -1200,6 +1217,15 @@ theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "SOERJO"
 fit_content = true
+
+[node name="Pause" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="Pause"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="ally_turn_started" from="." to="." method="_on_ally_turn_started"]
 [connection signal="enemy_turn_started" from="." to="." method="_on_enemy_turn_started"]
