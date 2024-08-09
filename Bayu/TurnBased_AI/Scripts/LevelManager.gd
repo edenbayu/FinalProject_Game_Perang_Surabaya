@@ -122,6 +122,7 @@ func _sort_turn(a: Unit, b: Unit) -> bool:
 
 # Signal handler for ally turn started
 func _on_ally_turn_started(unit: Unit) -> void:
+	deck.disconnects_card_functionalities()
 	deck.clear_hands()
 	active_unit = unit
 	active_unit.innate_card = true
@@ -156,11 +157,6 @@ func _on_enemy_turn_started(unit: Unit) -> void:
 	#print("ammo ", active_unit.is_empty_ammo)
 	#print("range ", active_unit.is_within_range)
 	await run_action()
-	#var detected = _detect_ally_units()
-	#var target = set_attack_target(detected)
-	#var action = gameboard.get_first_act(active_unit)
-	#execute_matched_actions(action, target)
-	#gameboard.shoot(active_unit, target, active_unit.turn_index)
 	_end_turn()
 	#timer.wait_time = wait_time_test
 	#timer.start()
@@ -248,7 +244,7 @@ func _get_card_informations() -> void:
 	
 	#3. instantiate card based on query result
 	deck.spawn_new_card(database.query_result)
-	#deck.match_card_functionalities()
+	deck.match_card_functionalities()
 
 func get_card_textures() -> void:
 	database = SQLite.new()
@@ -259,8 +255,7 @@ func get_card_textures() -> void:
 					from unit_data
 					join card on unit_data.id_card = card.id_card
 					where unit_data.nama = " + "'" + str(active_unit.nama).to_lower() + "'")
-	
-	 
+ 
 ##Camera configurations
 func _on_zoom_in_pressed() -> void:
 	#get_tree().paused = false

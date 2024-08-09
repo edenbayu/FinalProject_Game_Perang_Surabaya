@@ -9,7 +9,6 @@ var database = SQLite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	match_card_functionalities()
 	for card in self.get_children():
 		var kartu := card as Card
 		if not kartu:
@@ -78,6 +77,13 @@ func match_card_functionalities():
 					kartu.mouse_entered.connect(gameboard.show_attack)
 					kartu.on_card_selected.connect(gameboard.on_card_clicked)
 
+func disconnects_card_functionalities():
+	for card in self.get_children():
+		var kartu = card as Card
+		kartu.mouse_entered.disconnect(gameboard.testing_card)
+		kartu.mouse_entered.disconnect(gameboard.innate_reload)
+		kartu.mouse_entered.disconnect(gameboard.show_attack)
+		kartu.on_card_selected.disconnect(gameboard.on_card_clicked)
 
 func inactive_innate_ability() ->void:
 	LevelManager.active_unit.innate_card = false
