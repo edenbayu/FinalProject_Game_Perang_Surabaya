@@ -122,7 +122,6 @@ func _sort_turn(a: Unit, b: Unit) -> bool:
 
 # Signal handler for ally turn started
 func _on_ally_turn_started(unit: Unit) -> void:
-	deck.disconnects_card_functionalities()
 	deck.clear_hands()
 	active_unit = unit
 	active_unit.innate_card = true
@@ -246,20 +245,11 @@ func _get_card_informations() -> void:
 	deck.spawn_new_card(database.query_result)
 	deck.match_card_functionalities()
 
-func get_card_textures() -> void:
-	database = SQLite.new()
-	database.path = "res://database.db"
-	database.open_db()
-	#2. query the card datas
-	database.query("select card.id_card, card_name, texture, back_texture, description, card_ability, card_type 
-					from unit_data
-					join card on unit_data.id_card = card.id_card
-					where unit_data.nama = " + "'" + str(active_unit.nama).to_lower() + "'")
- 
 ##Camera configurations
 func _on_zoom_in_pressed() -> void:
 	#get_tree().paused = false
-	tactics_camera.zoom_in()
+	#tactics_camera.zoom_in()
+	print(gameboard._units)
 
 func _on_exit_button_pressed() -> void:
 	#get_tree().paused = true
@@ -295,6 +285,7 @@ func on_unit_die(unit) -> void:
 		_active_icon()
 	turn_based.size.x -= 96
 	gameboard._units.erase(unit.cell)
+	check_game_over(player, enemy)
 
 func check_game_over(player, enemy) -> void:
 	var all_player_dead = true
@@ -315,7 +306,7 @@ func check_game_over(player, enemy) -> void:
 		win_game()
 
 func lose_game():
-	print("Game 0ver!")
+	$GameOver.show()
 
 func win_game():
-	print("Congradilations!")
+	$GameOver.show()

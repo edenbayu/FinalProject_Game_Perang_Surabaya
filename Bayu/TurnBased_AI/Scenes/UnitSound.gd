@@ -4,9 +4,14 @@ extends Node2D
 @onready var shoot = $Shoot
 @onready var hurt = $Hurt
 @onready var walk = $Walk
+@onready var bamboo = $Bamboo
 
 func play_shoot() -> void:
-	shoot.play()
+	var parent = get_parent() as Unit
+	if parent.nama == "Soerjo":
+		shoot.play()
+	elif parent.nama == "Arief":
+		bamboo.play()
 
 func play_hurt() -> void:
 	hurt.play()

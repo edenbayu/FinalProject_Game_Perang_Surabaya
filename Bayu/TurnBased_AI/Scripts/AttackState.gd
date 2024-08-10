@@ -20,6 +20,7 @@ func _exit_state() -> void:
 	actor._is_idle = true
 
 func _on_attack_finished() -> void:
+	Battle.target_attack = null
 	attack_finished.emit()
 
 func _on_damage_entered() -> void:

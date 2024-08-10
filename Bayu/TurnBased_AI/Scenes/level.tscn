@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://patekpdib63w"]
+[gd_scene load_steps=96 format=3 uid="uid://patekpdib63w"]
 
 [ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="1_54tt6"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_hgg8q"]
@@ -36,12 +36,14 @@
 [ext_resource type="Script" path="res://addons/utility_ai/considerations/consideration_from_node.gd" id="29_w7j6f"]
 [ext_resource type="Texture2D" uid="uid://v5elhraurb2y" path="res://Sprites/static_table.png" id="33_240rj"]
 [ext_resource type="Script" path="res://Scenes/CursorSelection.gd" id="35_84v7m"]
+[ext_resource type="Script" path="res://Scenes/Property.gd" id="35_dg0a8"]
 [ext_resource type="Script" path="res://Scripts/Interactables.gd" id="37_2eyfr"]
 [ext_resource type="Texture2D" uid="uid://0y7pc61c1ovt" path="res://DialogSistem/aset aseprite/Soerjott.png" id="37_wjlli"]
 [ext_resource type="Texture2D" uid="uid://d18cpml72xrda" path="res://DialogSistem/aset aseprite/namebox.png" id="38_nsmwq"]
 [ext_resource type="Texture2D" uid="uid://o8d6hmqppsju" path="res://DialogSistem/aset aseprite/TextBox.png" id="39_uvxks"]
 [ext_resource type="FontFile" uid="uid://c583mm1xbwni5" path="res://font/I-pixel-u.ttf" id="40_25nho"]
 [ext_resource type="FontFile" uid="uid://cnrpw086ndg2n" path="res://font/DePixelBreit.ttf" id="41_r0bv2"]
+[ext_resource type="Script" path="res://Scenes/WinningButtonLevel1.gd" id="43_465j5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_furj2"]
 shader = ExtResource("4_eoqsm")
@@ -729,8 +731,8 @@ position = Vector2(579, 484)
 player_id = 6
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
-hframe = 12
-vframe = 8
+hframe = 7
+vframe = 1
 
 [node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit"]
 script = ExtResource("27_yvtgi")
@@ -902,8 +904,8 @@ position = Vector2(193, 672)
 player_id = 6
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
-hframe = 12
-vframe = 8
+hframe = 7
+vframe = 1
 
 [node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit2"]
 script = ExtResource("27_yvtgi")
@@ -1100,16 +1102,18 @@ texture = ExtResource("33_240rj")
 shape = SubResource("RectangleShape2D_t1t3p")
 
 [node name="TableChair4" type="StaticBody2D" parent="GameBoard/Props"]
-position = Vector2(320, 374)
+position = Vector2(322, 420)
 scale = Vector2(-1, 1)
 collision_layer = 0
 collision_mask = 0
+script = ExtResource("35_dg0a8")
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair4"]
+position = Vector2(2, -44)
 texture = ExtResource("33_240rj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair4"]
-position = Vector2(-2, 44)
+position = Vector2(3.8147e-06, -3.69549e-06)
 rotation = 0.475294
 scale = Vector2(1.52103, 0.218512)
 shape = SubResource("CircleShape2D_54ujx")
@@ -1227,6 +1231,63 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="GameOver" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Winning" type="Control" parent="GameOver"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="GameOver/Winning"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="GameOver/Winning/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("40_25nho")
+theme_override_font_sizes/font_size = 40
+text = "LANJUT KE BAB 2"
+script = ExtResource("43_465j5")
+
+[node name="Label" type="Label" parent="GameOver/Winning/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -459.0
+offset_top = 45.0
+offset_right = 452.0
+offset_bottom = 108.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("40_25nho")
+theme_override_font_sizes/font_size = 50
+text = "\"KEMENANGAN TELAH DIRAIH!\""
+
+[node name="Losing" type="Control" parent="GameOver"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="ally_turn_started" from="." to="." method="_on_ally_turn_started"]
 [connection signal="enemy_turn_started" from="." to="." method="_on_enemy_turn_started"]
 [connection signal="pressed" from="CanvasLayer/UI/HBoxContainer/HBoxContainer/TurnChanger" to="." method="_on_button_pressed"]
@@ -1240,3 +1301,4 @@ offset_bottom = 40.0
 [connection signal="body_exited" from="Cursor" to="GameBoard" method="on_target_exited"]
 [connection signal="body_exited" from="Cursor" to="Cursor" method="_on_body_exited"]
 [connection signal="enter_gameplay" from="Interacts/Interactables" to="." method="_on_interactables_enter_gameplay"]
+[connection signal="pressed" from="GameOver/Winning/Panel/Button" to="GameOver/Winning/Panel/Button" method="go_to_next_level"]

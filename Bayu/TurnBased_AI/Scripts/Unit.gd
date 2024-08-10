@@ -7,6 +7,7 @@ signal data_configured
 signal damage_enter
 signal enter_attack
 signal unit_die(unit)
+signal attack_chosen(damage_type)
 
 @export var player_id := 1
 
@@ -22,6 +23,7 @@ signal unit_die(unit)
 @onready var attack_state = $FiniteStateMachine/AttackState
 @onready var hp_status = $Status/HP
 @onready var armor_status = $Status/Armor
+@onready var attack_options = $AttackIcons
 
 ## Cuma untuk debugging sementara, nanti benerin njih ##
 @export var hframe: int:
@@ -95,6 +97,7 @@ var is_dead := false:
 			get_node("CollisionShape2D").disabled = true
 		else:
 			get_node("CollisionShape2D").disabled = false
+var incoming_damage := 0
 #############################################
 
 #setter getter
@@ -222,7 +225,7 @@ func _process(delta: float):
 	hp_status.max_value = max_health
 	hp_status.value = curr_health
 	armor_status.max_value = max_armor
-	armor_status.max_value = curr_armor
+	armor_status.value = curr_armor
 	_update_animation_condition()
 	_update_blend_position()
 
@@ -254,3 +257,11 @@ func death() -> void:
 	tween.tween_property(self, "modulate", Color8(255, 255, 255, 0), 1)
 	unit_die.emit(self)
 	#queue_free()
+
+func _on_taking_hp_damage():
+	attack_options.hide()
+	Battle.do_shoot("hp_damage")
+
+func _attack_armor_pressed():
+	attack_options.hide()
+	Battle.do_shoot("armor_damage")

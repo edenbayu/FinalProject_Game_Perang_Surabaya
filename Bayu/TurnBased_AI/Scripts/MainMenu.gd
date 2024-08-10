@@ -58,6 +58,7 @@ func _on_new_game_pressed():
 			save_data.update_rows('Level', 'id = '+ str(result['id']), {'level_status' = 1})
 			save_data.update_rows('Level', 'id = '+ str(result['id']), {'last_saved_time' = _check_new_date()})
 			created_new_save_data = true
+			LevelState.set_current_saving_id(1)
 			LevelState.set_current_level(1)
 			LevelState.set_level_status(1)
 			get_tree().change_scene_to_file("res://Scenes/level_menu.tscn")
@@ -69,19 +70,21 @@ func _on_new_game_pressed():
 			save_data.update_rows('Level', 'id = 1', {'id_level' = 1})
 			save_data.update_rows('Level', 'id = 1', {'level_status' = 1})
 			save_data.update_rows('Level', 'id = 1', {'last_saved_time' = _check_new_date()})
-			save_data.query("Select id_level, level_status from level where id = 1")
+			save_data.query("Select id, id_level, level_status from level where id = 1")
 			var hasil = save_data.query_result
+			LevelState.set_current_saving_id(hasil[0].id)
 			LevelState.set_current_level(hasil[0].id_level)
 			LevelState.set_level_status(hasil[0].level_status)
 			created_new_save_data = false
 			get_tree().change_scene_to_file.bind("res://Scenes/level_menu.tscn").call_deferred()
 
 func _on_continue_game_pressed():
-	save_data.query("SELECT id_level, level_status, last_saved_time
+	save_data.query("SELECT id, id_level, level_status, last_saved_time
 					FROM level
 					ORDER BY last_saved_time DESC
 					limit 1;")
 	var result = save_data.query_result
+	LevelState.set_current_saving_id(result[0].id)
 	LevelState.set_current_level(result[0].id_level)
 	LevelState.set_level_status(result[0].level_status)
 	get_tree().change_scene_to_file("res://Scenes/level_menu.tscn")

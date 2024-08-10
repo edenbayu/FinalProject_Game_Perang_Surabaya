@@ -54,7 +54,7 @@ func spawn_new_card(result):
 		instance.card_type = i.card_ability
 		instance.card_attribute = i.card_type
 		self.add_child(instance)
-	match_card_functionalities()
+	#match_card_functionalities()
 
 func clear_hands():
 	for card in self.get_children():
@@ -66,6 +66,14 @@ func match_card_functionalities():
 		if not kartu:
 			continue
 		if not kartu.disabled:
+			if kartu.is_connected("mouse_entered", gameboard.testing_card):
+				kartu.disconnect("mouse_entered", gameboard.testing_card)
+			if kartu.is_connected("mouse_entered", gameboard.innate_reload):
+				kartu.disconnect("mouse_entered", gameboard.innate_reload)
+			if kartu.is_connected("mouse_entered", gameboard.show_attack):
+				kartu.disconnect("mouse_entered", gameboard.show_attack)
+			if kartu.is_connected("on_card_selected", gameboard.on_card_clicked):
+				kartu.disconnect("on_card_selected", gameboard.on_card_clicked)
 			match kartu.card_type:
 				'Walk':
 					kartu.mouse_entered.connect(gameboard.testing_card)
@@ -76,14 +84,6 @@ func match_card_functionalities():
 				'Attack':
 					kartu.mouse_entered.connect(gameboard.show_attack)
 					kartu.on_card_selected.connect(gameboard.on_card_clicked)
-
-func disconnects_card_functionalities():
-	for card in self.get_children():
-		var kartu = card as Card
-		kartu.mouse_entered.disconnect(gameboard.testing_card)
-		kartu.mouse_entered.disconnect(gameboard.innate_reload)
-		kartu.mouse_entered.disconnect(gameboard.show_attack)
-		kartu.on_card_selected.disconnect(gameboard.on_card_clicked)
 
 func inactive_innate_ability() ->void:
 	LevelManager.active_unit.innate_card = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://20i4en7e2fm7"]
+[gd_scene load_steps=41 format=3 uid="uid://20i4en7e2fm7"]
 
 [ext_resource type="Script" path="res://Scripts/Unit.gd" id="1_u70hk"]
 [ext_resource type="Texture2D" uid="uid://c766m3iwx0tik" path="res://Sprites/Suryo.png" id="2_4l34f"]
@@ -13,7 +13,14 @@
 [ext_resource type="Script" path="res://Scenes/UnitSound.gd" id="10_476id"]
 [ext_resource type="AudioStream" uid="uid://csyh7tvwhtt3m" path="res://audio/bamboo_hit.mp3" id="12_3lds6"]
 [ext_resource type="AudioStream" uid="uid://45c1blgvsnrb" path="res://audio/male_hurt7-48124.mp3" id="12_g1y0g"]
+[ext_resource type="AudioStream" uid="uid://dl85j5bq1s7ng" path="res://audio/nambu_shoot.mp3" id="12_jay8r"]
 [ext_resource type="AudioStream" uid="uid://nprlxnrhvoum" path="res://audio/walk.mp3" id="14_3f15n"]
+[ext_resource type="Texture2D" uid="uid://cx04mxaffvq8l" path="res://UI/hp_damage.png" id="15_fkd81"]
+[ext_resource type="Texture2D" uid="uid://b2kk8dspv25cm" path="res://UI/hp_damage_active.png" id="16_gnftb"]
+[ext_resource type="Texture2D" uid="uid://b3y66i4wviyx3" path="res://UI/hp_damage_clicked.png" id="17_fyhlj"]
+[ext_resource type="Texture2D" uid="uid://bexcv3r84cy2v" path="res://UI/armor_damage.png" id="18_37gpy"]
+[ext_resource type="Texture2D" uid="uid://csh76vc2sxyu1" path="res://UI/armor_damage_active.png" id="19_22yqn"]
+[ext_resource type="Texture2D" uid="uid://4w14rqlv4ct2" path="res://UI/armor_damage_clicked.png" id="20_awenf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vph2h"]
 resource_local_to_scene = true
@@ -131,6 +138,28 @@ border_width_bottom = 2
 border_color = Color(0.145098, 0.168627, 0.203922, 1)
 expand_margin_right = 2.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7c0cy"]
+texture = ExtResource("15_fkd81")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_52v17"]
+texture = ExtResource("16_gnftb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lvtyb"]
+texture = ExtResource("17_fyhlj")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i6g1m"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ra7uc"]
+texture = ExtResource("18_37gpy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_arl0p"]
+texture = ExtResource("19_22yqn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7tvgv"]
+texture = ExtResource("20_awenf")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j1qn2"]
+
 [node name="Unit" type="CharacterBody2D"]
 script = ExtResource("1_u70hk")
 
@@ -219,13 +248,48 @@ show_percentage = false
 script = ExtResource("10_476id")
 
 [node name="Shoot" type="AudioStreamPlayer2D" parent="UnitSound"]
-stream = ExtResource("12_3lds6")
+stream = ExtResource("12_jay8r")
+bus = &"SFX"
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="UnitSound"]
 stream = ExtResource("12_g1y0g")
 pitch_scale = 0.8
+bus = &"SFX"
 
 [node name="Walk" type="AudioStreamPlayer2D" parent="UnitSound"]
 stream = ExtResource("14_3f15n")
+bus = &"SFX"
+
+[node name="Bamboo" type="AudioStreamPlayer2D" parent="UnitSound"]
+stream = ExtResource("12_3lds6")
+
+[node name="AttackIcons" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_top = -263.0
+offset_right = 45.0
+offset_bottom = -195.0
+grow_horizontal = 2
+
+[node name="Button" type="Button" parent="AttackIcons"]
+custom_minimum_size = Vector2(68, 68)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_7c0cy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_52v17")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lvtyb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i6g1m")
+
+[node name="Button2" type="Button" parent="AttackIcons"]
+custom_minimum_size = Vector2(68, 68)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ra7uc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_arl0p")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7tvgv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j1qn2")
 
 [connection signal="data_configured" from="." to="FiniteStateMachine" method="initiate_fsm"]
+[connection signal="pressed" from="AttackIcons/Button" to="." method="_on_taking_hp_damage"]
+[connection signal="pressed" from="AttackIcons/Button2" to="." method="_attack_armor_pressed"]

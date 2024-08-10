@@ -2,6 +2,7 @@ class_name GameBoard
 extends Node2D
 
 const DIRECTIONS = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
+const property_cells = [Vector2(8,5), Vector2(8,4), Vector2(8,3)]
 signal action_done
 
 @export var grid: Grid
@@ -40,11 +41,11 @@ func _ready() -> void:
 	_update()
 	for p in player.get_children():
 		var unit = p as Unit
-		unit.damage_enter.connect(apply_damage)
+		unit.damage_enter.connect(Battle.apply_damage)
 	for e in enemy.get_children():
 		var unit = e as Unit
-		unit.damage_enter.connect(apply_damage)
-	print(_units)
+		unit.damage_enter.connect(Battle.apply_damage)
+	print("list unit:", _units)
 
 func _process(_delta):
 	_update()
@@ -111,7 +112,9 @@ func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 		"Reload":
 			reload()
 		"Attack":
-			attack(LevelManager.active_unit, target_attack)
+			choose_attack_action(LevelManager.active_unit, target_attack)
+			await LevelManager.active_unit.attack_state.attack_finished
+			#attack(LevelManager.active_unit, target_attack)
 	match selected_type:
 		'innate':
 			status_ui.burn_innate_card()
@@ -125,6 +128,15 @@ func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 	selected_ability = null
 	selected_type = null
 	cursor.is_visible = false
+
+func choose_attack_action(active_unit: Unit, target: Unit) -> void:
+	if target == null:
+		return
+	Battle.active_unit = active_unit
+	Battle.target_attack = target
+	_deselect_active_unit()
+	cursor.is_visible = false
+	target.attack_options.show()
 
 func on_card_clicked(card_type, card_ability) -> void:
 	selected_ability = card_ability
@@ -165,7 +177,7 @@ func _flood_fill(cell: Vector2, max_distance: int) -> Array:
 		array.append(current)
 		for direction in DIRECTIONS:
 			var coordinates: Vector2 = current + direction
-			if is_occupied(coordinates) or is_outside_map(coordinates):
+			if is_occupied(coordinates) or is_outside_map(coordinates) or object_cell(coordinates):
 				continue
 			if coordinates in array:
 				continue
@@ -214,9 +226,12 @@ func is_outside_map(cell: Vector2i) -> bool:
 func is_occupied(cell: Vector2) -> bool:
 	return _units.has(cell)
 
+func object_cell(cell: Vector2) -> bool:
+	return property_cells.has(cell)
+
 ##Move active unit based on it's movement area, initializing pathfinding, executing walk function
 func _move_active_unit(new_cell: Vector2) -> void:
-	if is_occupied(new_cell) or not new_cell in _walkable_cells:
+	if is_occupied(new_cell) or not new_cell in _walkable_cells or object_cell(new_cell):
 		return
 	unitPath.get_walk_path(LevelManager.active_unit.cell, new_cell)
 	unitPath.current_path.remove_at(0) #Makes sure that the current path isn't walkable
@@ -255,8 +270,9 @@ func _update() -> void:
 		if not unit:
 			continue
 		ordering.append(unit)
-	#for child in $Props.get_children():
-		#ordering.append(child)
+	##Hardcodeed bisa lebih dirapihin kalau ada waktu
+	ordering.append($Props/TableChair4)
+	#print(ordering)
 	# Sort units based on their cell values
 	ordering.sort_custom(_sort_index)
 	# Iterate through sorted units and assign Z indices
@@ -265,20 +281,16 @@ func _update() -> void:
 		# Assign Z index based on the index in the sorted list
 		unit.z_index = i
 
-func _sort_index(a: Unit, b: Unit) -> bool:
-	if a.cell.y != b.cell.y:
-		return a.cell.y < b.cell.y
-	else:
+func _sort_index(a, b) -> bool:
+	if a.cell.x != b.cell.x:
 		return a.cell.x < b.cell.x
+	else:
+		return a.cell.y < b.cell.y
 
 func _on_attack():
 	_attack_cells = get_attack_range_cells(LevelManager.active_unit)
 	unitPath.display_attack_range(_attack_cells)
 	unitPath.initialize(_attack_cells)
-	#for target in _attack_cells:
-		#var unit := target as Unit
-		#if not unit:
-			#continue
 
 func get_weakest_unit() -> Unit:
 	var weakest : Unit = null
@@ -352,6 +364,8 @@ func set_target_attack(target) -> void:
 	if _attack_cells.has(t.cell) and t.unit_role == "enemy":
 		target_attack = t
 
+func on_target_exited(body):
+	target_attack = null
 
 func attack(active_unit: Unit, target: Unit):
 	if target == null:
@@ -409,7 +423,7 @@ func _detect_player_unit(cell: Vector2) -> bool:
 func _move_active_AI(walk_paths: Array, new_cell) -> void:
 	if new_cell == null:
 		return
-	if is_occupied(new_cell) or not new_cell in walk_paths:
+	if is_occupied(new_cell) or not new_cell in walk_paths or object_cell(new_cell):
 		return
 	var new_path := []
 	for i in walk_paths:
