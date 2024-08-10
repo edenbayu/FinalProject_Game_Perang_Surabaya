@@ -61,4 +61,5 @@ klik_mouse_kiri={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.262745, 0.262745, 0.309804, 1)
