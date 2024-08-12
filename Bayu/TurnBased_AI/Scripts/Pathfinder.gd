@@ -5,7 +5,7 @@ var _grid: Resource
 var _astar := AStarGrid2D.new()
 
 ##Init untuk AstartGrid2D's Grid 
-func _init(grid: Grid, _walkable_cells: Array) -> void:
+func _init(grid: Grid, _walkable_cells: Array, solid_cells: Array) -> void:
 	_grid = grid
 	var map_rect = Rect2i(_grid.start_rect, _grid.tilemap_size)
 	_astar.region = map_rect
@@ -15,9 +15,17 @@ func _init(grid: Grid, _walkable_cells: Array) -> void:
 	_astar.default_estimate_heuristic = AStarGrid2D.HEURISTIC_EUCLIDEAN
 	_astar.update()
 	
-	_astar.set_point_solid(Vector2i(8, 3), true)
-	_astar.set_point_solid(Vector2i(8, 4), true)
-	_astar.set_point_solid(Vector2i(8, 5), true)
+	for cell in solid_cells:
+		_astar.set_point_solid(cell, true)
+	#_astar.set_point_solid(Vector2i(8, 3), true)
+	#_astar.set_point_solid(Vector2i(8, 4), true)
+	#_astar.set_point_solid(Vector2i(8, 5), true)
+	#_astar.set_point_solid(Vector2i(8, -1), true)
+	#_astar.set_point_solid(Vector2i(8, -2), true)
+	#_astar.set_point_solid(Vector2i(8, -3), true)
+	#_astar.set_point_solid(Vector2i(5, 2), true)
+	#_astar.set_point_solid(Vector2i(5, 1), true)
+	#_astar.set_point_solid(Vector2i(5, 0), true)
 	var vectors_inside = []
 	 # Iterate over each point inside the rectangle
 	for x in range(_astar.region.position.x, _astar.region.position.x + _astar.region.size.x):

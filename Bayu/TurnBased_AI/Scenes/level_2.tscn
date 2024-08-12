@@ -1,53 +1,54 @@
-[gd_scene load_steps=97 format=3 uid="uid://patekpdib63w"]
+[gd_scene load_steps=97 format=3 uid="uid://tx8xep5r6v38"]
 
-[ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="1_54tt6"]
-[ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_hgg8q"]
-[ext_resource type="Resource" uid="uid://d32f7w6gvavmm" path="res://Resources/Grid.tres" id="2_0r2mq"]
-[ext_resource type="Texture2D" uid="uid://wrgk0ah3wagm" path="res://UI/TurnBar.png" id="2_c3kva"]
-[ext_resource type="PackedScene" uid="uid://bb1s8fhbukv66" path="res://Scenes/Camera.tscn" id="2_pxgfw"]
-[ext_resource type="Script" path="res://Scripts/UnitPath.gd" id="2_w1kn0"]
-[ext_resource type="PackedScene" uid="uid://20i4en7e2fm7" path="res://Scenes/Unit.tscn" id="3_7kb1e"]
-[ext_resource type="Texture2D" uid="uid://cksudcxp4vmyu" path="res://UI/StatusUI_Ling.png" id="3_7qpu3"]
-[ext_resource type="Texture2D" uid="uid://bs7kqfql1ysto" path="res://Sprites/enemy_status_card.png" id="4_8igjc"]
-[ext_resource type="Shader" path="res://Resources/outline.gdshader" id="4_eoqsm"]
-[ext_resource type="Script" path="res://Scenes/Deck.gd" id="4_n4ffv"]
-[ext_resource type="Texture2D" uid="uid://t6fvglavpu4g" path="res://UI/EndTurn.png" id="4_qw0um"]
-[ext_resource type="Texture2D" uid="uid://bs0k6mt3ogla7" path="res://UI/StatusUI_Tomo.png" id="4_sypab"]
-[ext_resource type="Texture2D" uid="uid://dvju22472hmbe" path="res://UI/empty_hp_status.png" id="5_0fg6s"]
-[ext_resource type="Texture2D" uid="uid://2n71oiuyrq6f" path="res://UI/StatusUI_soerjo.png" id="5_yayhc"]
-[ext_resource type="Texture2D" uid="uid://cso0au1maoatp" path="res://UI/half_health_bar_filledt.png" id="6_0e031"]
-[ext_resource type="Script" path="res://Scenes/StatusUI.gd" id="6_4eeb0"]
-[ext_resource type="Shader" path="res://Scenes/burn.gdshader" id="7_4j1oy"]
-[ext_resource type="Shader" path="res://Scenes/dissolve.gdshader" id="7_wckpu"]
-[ext_resource type="Texture2D" uid="uid://cvta2lgj4lfww" path="res://UI/dissolve.png" id="8_3yyag"]
-[ext_resource type="PackedScene" uid="uid://b1t8iyisfbe0v" path="res://Scenes/Cursor.tscn" id="8_4uheh"]
-[ext_resource type="Texture2D" uid="uid://nunbe0hanbsd" path="res://UI/innate_status_ui.png" id="8_r03ek"]
-[ext_resource type="Texture2D" uid="uid://bq07uefqpafdi" path="res://UI/modular_status_ui.png" id="9_6n57g"]
-[ext_resource type="Texture2D" uid="uid://dj8nyg33cpjqh" path="res://UI/half_armor_bar_filled.png" id="9_lscm0"]
-[ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="11_601eb"]
-[ext_resource type="FontFile" uid="uid://bs41epct36unk" path="res://UI/I-pixel-u.ttf" id="11_jjinn"]
-[ext_resource type="Script" path="res://Scenes/EnemyController.gd" id="12_bpvfk"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="12_e2jf1"]
-[ext_resource type="Texture2D" uid="uid://jpc1o1j6bcqu" path="res://Sprites/Path.png" id="13_vtw6r"]
-[ext_resource type="Texture2D" uid="uid://d333a8tuighwt" path="res://UI/armor_bar_empty.png" id="14_ud0ee"]
-[ext_resource type="Texture2D" uid="uid://sqoccmhkk5ea" path="res://Sprites/lvl1.png" id="19_nxtcr"]
-[ext_resource type="Script" path="res://addons/utility_ai/agent/agent.gd" id="27_yvtgi"]
-[ext_resource type="Script" path="res://addons/utility_ai/actions/action.gd" id="28_lvhxf"]
-[ext_resource type="Script" path="res://addons/utility_ai/considerations/aggregation.gd" id="29_6jobp"]
-[ext_resource type="Script" path="res://addons/utility_ai/considerations/consideration_from_node.gd" id="29_w7j6f"]
-[ext_resource type="Texture2D" uid="uid://v5elhraurb2y" path="res://Sprites/static_table.png" id="33_240rj"]
-[ext_resource type="Script" path="res://Scenes/CursorSelection.gd" id="35_84v7m"]
-[ext_resource type="Script" path="res://Scenes/Property.gd" id="35_dg0a8"]
-[ext_resource type="Script" path="res://Scripts/Interactables.gd" id="37_2eyfr"]
-[ext_resource type="Texture2D" uid="uid://0y7pc61c1ovt" path="res://DialogSistem/aset aseprite/Soerjott.png" id="37_wjlli"]
-[ext_resource type="Texture2D" uid="uid://d18cpml72xrda" path="res://DialogSistem/aset aseprite/namebox.png" id="38_nsmwq"]
-[ext_resource type="Texture2D" uid="uid://o8d6hmqppsju" path="res://DialogSistem/aset aseprite/TextBox.png" id="39_uvxks"]
-[ext_resource type="FontFile" uid="uid://c583mm1xbwni5" path="res://font/I-pixel-u.ttf" id="40_25nho"]
-[ext_resource type="FontFile" uid="uid://cnrpw086ndg2n" path="res://font/DePixelBreit.ttf" id="41_r0bv2"]
-[ext_resource type="Script" path="res://Scenes/WinningButtonLevel1.gd" id="43_465j5"]
+[ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_g8q1o"]
+[ext_resource type="Texture2D" uid="uid://2n71oiuyrq6f" path="res://UI/StatusUI_soerjo.png" id="2_g4i3q"]
+[ext_resource type="Texture2D" uid="uid://cksudcxp4vmyu" path="res://UI/StatusUI_Ling.png" id="3_pp0v4"]
+[ext_resource type="Texture2D" uid="uid://bs0k6mt3ogla7" path="res://UI/StatusUI_Tomo.png" id="4_6y356"]
+[ext_resource type="Shader" path="res://Resources/outline.gdshader" id="5_36esu"]
+[ext_resource type="Texture2D" uid="uid://bs7kqfql1ysto" path="res://Sprites/enemy_status_card.png" id="6_y0nbv"]
+[ext_resource type="Texture2D" uid="uid://dvju22472hmbe" path="res://UI/empty_hp_status.png" id="7_ls8xx"]
+[ext_resource type="Texture2D" uid="uid://cso0au1maoatp" path="res://UI/half_health_bar_filledt.png" id="8_xwkdc"]
+[ext_resource type="FontFile" uid="uid://bs41epct36unk" path="res://UI/I-pixel-u.ttf" id="9_ebpv6"]
+[ext_resource type="Texture2D" uid="uid://dj8nyg33cpjqh" path="res://UI/half_armor_bar_filled.png" id="10_vrov4"]
+[ext_resource type="Script" path="res://Scenes/StatusUI.gd" id="11_7xg7h"]
+[ext_resource type="Shader" path="res://Scenes/burn.gdshader" id="12_6m5m0"]
+[ext_resource type="Texture2D" uid="uid://cvta2lgj4lfww" path="res://UI/dissolve.png" id="13_iekid"]
+[ext_resource type="Texture2D" uid="uid://nunbe0hanbsd" path="res://UI/innate_status_ui.png" id="14_1e5r7"]
+[ext_resource type="Shader" path="res://Scenes/dissolve.gdshader" id="15_2obd2"]
+[ext_resource type="Texture2D" uid="uid://bq07uefqpafdi" path="res://UI/modular_status_ui.png" id="16_4ix37"]
+[ext_resource type="Texture2D" uid="uid://d333a8tuighwt" path="res://UI/armor_bar_empty.png" id="17_5hgqd"]
+[ext_resource type="Texture2D" uid="uid://t6fvglavpu4g" path="res://UI/EndTurn.png" id="18_04toi"]
+[ext_resource type="Script" path="res://Scenes/Deck.gd" id="19_8xmwi"]
+[ext_resource type="Texture2D" uid="uid://wrgk0ah3wagm" path="res://UI/TurnBar.png" id="20_coun4"]
+[ext_resource type="Texture2D" uid="uid://cfmgg1xju0okv" path="res://Sprites/lvl2.png" id="21_8ulkf"]
+[ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="22_w24wq"]
+[ext_resource type="Resource" uid="uid://d32f7w6gvavmm" path="res://Resources/Grid.tres" id="23_pkg1r"]
+[ext_resource type="Texture2D" uid="uid://jpc1o1j6bcqu" path="res://Sprites/Path.png" id="24_1vhyr"]
+[ext_resource type="Script" path="res://Scripts/UnitPath.gd" id="25_kkcr1"]
+[ext_resource type="PackedScene" uid="uid://b1t8iyisfbe0v" path="res://Scenes/Cursor.tscn" id="26_b6jms"]
+[ext_resource type="PackedScene" uid="uid://20i4en7e2fm7" path="res://Scenes/Unit.tscn" id="27_w4smp"]
+[ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="28_sdajn"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="29_jbyoq"]
+[ext_resource type="Script" path="res://Scenes/EnemyController.gd" id="30_g5c6a"]
+[ext_resource type="Script" path="res://addons/utility_ai/agent/agent.gd" id="31_t2rdm"]
+[ext_resource type="Script" path="res://addons/utility_ai/actions/action.gd" id="32_20iat"]
+[ext_resource type="Script" path="res://addons/utility_ai/considerations/aggregation.gd" id="33_myvtt"]
+[ext_resource type="Script" path="res://addons/utility_ai/considerations/consideration_from_node.gd" id="34_bvv5r"]
+[ext_resource type="Script" path="res://Scenes/Property.gd" id="36_5nhef"]
+[ext_resource type="Texture2D" uid="uid://d38rp8dm2eep1" path="res://Sprites/willys.png" id="36_ip2bn"]
+[ext_resource type="Texture2D" uid="uid://sbi4ldrgwe6a" path="res://Sprites/bushes.png" id="37_axx1l"]
+[ext_resource type="PackedScene" uid="uid://bb1s8fhbukv66" path="res://Scenes/Camera.tscn" id="37_w7uuv"]
+[ext_resource type="Script" path="res://Scenes/CursorSelection.gd" id="38_unt22"]
+[ext_resource type="Script" path="res://Scripts/Interactables.gd" id="39_r8lgb"]
+[ext_resource type="Texture2D" uid="uid://0y7pc61c1ovt" path="res://DialogSistem/aset aseprite/Soerjott.png" id="40_a1o76"]
+[ext_resource type="Texture2D" uid="uid://d18cpml72xrda" path="res://DialogSistem/aset aseprite/namebox.png" id="41_15dct"]
+[ext_resource type="Texture2D" uid="uid://o8d6hmqppsju" path="res://DialogSistem/aset aseprite/TextBox.png" id="42_bk2ym"]
+[ext_resource type="FontFile" uid="uid://cnrpw086ndg2n" path="res://font/DePixelBreit.ttf" id="43_odlnh"]
+[ext_resource type="FontFile" uid="uid://c583mm1xbwni5" path="res://font/I-pixel-u.ttf" id="44_oo024"]
+[ext_resource type="Script" path="res://Scenes/WinningButtonLevel1.gd" id="45_lra5v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_furj2"]
-shader = ExtResource("4_eoqsm")
+shader = ExtResource("5_36esu")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 1.0
 shader_parameter/pattern = 0
@@ -56,17 +57,17 @@ shader_parameter/add_margins = true
 shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ncjxh"]
-texture = ExtResource("5_0fg6s")
+texture = ExtResource("7_ls8xx")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_05tuo"]
-texture = ExtResource("6_0e031")
+texture = ExtResource("8_xwkdc")
 axis_stretch_horizontal = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cyrrq"]
-texture = ExtResource("5_0fg6s")
+texture = ExtResource("7_ls8xx")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t2h2j"]
-texture = ExtResource("9_lscm0")
+texture = ExtResource("10_vrov4")
 
 [sub_resource type="Animation" id="Animation_pfk2h"]
 length = 0.001
@@ -162,25 +163,25 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5un84"]
 resource_local_to_scene = true
-shader = ExtResource("7_4j1oy")
+shader = ExtResource("12_6m5m0")
 shader_parameter/dissolve_value = 1.0
-shader_parameter/dissolve_texture = ExtResource("8_3yyag")
+shader_parameter/dissolve_texture = ExtResource("13_iekid")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jewqy"]
 resource_local_to_scene = true
-shader = ExtResource("7_wckpu")
+shader = ExtResource("15_2obd2")
 shader_parameter/dissolve_value = 1.0
-shader_parameter/dissolve_texture = ExtResource("8_3yyag")
+shader_parameter/dissolve_texture = ExtResource("13_iekid")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7sm4h"]
 resource_local_to_scene = true
 content_margin_left = 128.0
 content_margin_top = 26.0
-texture = ExtResource("5_0fg6s")
+texture = ExtResource("7_ls8xx")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wxmda"]
 resource_local_to_scene = true
-texture = ExtResource("6_0e031")
+texture = ExtResource("8_xwkdc")
 texture_margin_left = 12.0
 texture_margin_right = 12.0
 axis_stretch_horizontal = 1
@@ -188,19 +189,19 @@ axis_stretch_horizontal = 1
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wvygj"]
 content_margin_left = 128.0
 content_margin_top = 26.0
-texture = ExtResource("14_ud0ee")
+texture = ExtResource("17_5hgqd")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lsig2"]
 resource_local_to_scene = true
-texture = ExtResource("9_lscm0")
+texture = ExtResource("10_vrov4")
 axis_stretch_horizontal = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t2hkw"]
 content_margin_bottom = 10.0
-texture = ExtResource("4_qw0um")
+texture = ExtResource("18_04toi")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vlgfa"]
-texture = ExtResource("13_vtw6r")
+texture = ExtResource("24_1vhyr")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 32)
@@ -271,8 +272,6 @@ max_value = 0.5
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.502181), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1t3p"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_54ujx"]
 radius = 63.0553
 
@@ -283,67 +282,67 @@ size = Vector2(32, 32)
 bg_color = Color(0, 0, 0, 0.313726)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5a11"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_bk2ym")
 region = Rect2(0, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dt72n"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_bk2ym")
 region = Rect2(1816, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4sg5"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_bk2ym")
 region = Rect2(3632, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_swimk"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_bk2ym")
 region = Rect2(5448, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3h22"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_bk2ym")
 region = Rect2(7264, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h8xhe"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_bk2ym")
 region = Rect2(9080, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4s5ny"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_bk2ym")
 region = Rect2(10896, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_61105"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_bk2ym")
 region = Rect2(12712, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hfi32"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_bk2ym")
 region = Rect2(14528, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n04p2"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_bk2ym")
 region = Rect2(16344, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajw37"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_bk2ym")
 region = Rect2(18160, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_keyeu"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_bk2ym")
 region = Rect2(19976, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6yh0f"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_bk2ym")
 region = Rect2(21792, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bfjry"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_bk2ym")
 region = Rect2(23608, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlphv"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_bk2ym")
 region = Rect2(25424, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_26he5"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_bk2ym")
 region = Rect2(27240, 0, 1816, 232)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vjwr7"]
@@ -402,14 +401,15 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Level" type="Node2D"]
+[node name="Level2" type="Node2D"]
 process_mode = 1
 texture_filter = 1
-script = ExtResource("1_hgg8q")
-statusUItexture = Array[Texture2D]([ExtResource("5_yayhc"), ExtResource("3_7qpu3"), ExtResource("4_sypab")])
+script = ExtResource("1_g8q1o")
+statusUItexture = Array[Texture2D]([ExtResource("2_g4i3q"), ExtResource("3_pp0v4"), ExtResource("4_6y356")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
+visible = false
 
 [node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -440,7 +440,7 @@ material = SubResource("ShaderMaterial_furj2")
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 8
-texture = ExtResource("4_8igjc")
+texture = ExtResource("6_y0nbv")
 
 [node name="HP_Bar" type="ProgressBar" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2/TextureRect"]
 custom_minimum_size = Vector2(128, 26)
@@ -474,7 +474,7 @@ offset_right = 30.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_jjinn")
+theme_override_fonts/font = ExtResource("9_ebpv6")
 text = "35/35"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -505,7 +505,7 @@ offset_right = 30.0
 offset_bottom = 9.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_jjinn")
+theme_override_fonts/font = ExtResource("9_ebpv6")
 text = "35/35"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -527,9 +527,9 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(288, 160)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("5_yayhc")
+texture = ExtResource("2_g4i3q")
 expand_mode = 3
-script = ExtResource("6_4eeb0")
+script = ExtResource("11_7xg7h")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI"]
 root_node = NodePath("../Ability/Innate")
@@ -548,12 +548,12 @@ theme_override_constants/separation = 15
 [node name="Innate" type="TextureRect" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI/Ability"]
 material = SubResource("ShaderMaterial_5un84")
 layout_mode = 2
-texture = ExtResource("8_r03ek")
+texture = ExtResource("14_1e5r7")
 
 [node name="Modular" type="TextureRect" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI/Ability"]
 material = SubResource("ShaderMaterial_jewqy")
 layout_mode = 2
-texture = ExtResource("9_6n57g")
+texture = ExtResource("16_4ix37")
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI"]
 layout_mode = 0
@@ -581,7 +581,7 @@ offset_right = 56.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_jjinn")
+theme_override_fonts/font = ExtResource("9_ebpv6")
 theme_override_font_sizes/font_size = 16
 text = "3/5"
 
@@ -611,7 +611,7 @@ offset_right = 54.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_jjinn")
+theme_override_fonts/font = ExtResource("9_ebpv6")
 theme_override_font_sizes/font_size = 16
 text = "3/3"
 
@@ -625,7 +625,7 @@ custom_minimum_size = Vector2(328, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("11_jjinn")
+theme_override_fonts/font = ExtResource("9_ebpv6")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxTexture_t2hkw")
 text = "END TURN
@@ -638,7 +638,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 8
 mouse_filter = 2
 alignment = 2
-script = ExtResource("4_n4ffv")
+script = ExtResource("19_8xmwi")
 
 [node name="ZoomOut" type="Button" parent="CanvasLayer/UI"]
 custom_minimum_size = Vector2(50, 50)
@@ -675,7 +675,7 @@ offset_top = 20.0
 offset_right = 48.0
 offset_bottom = 124.0
 grow_horizontal = 2
-texture = ExtResource("2_c3kva")
+texture = ExtResource("20_coun4")
 patch_margin_left = 40
 patch_margin_right = 40
 
@@ -688,176 +688,189 @@ offset_bottom = 96.0
 
 [node name="Bg" type="Sprite2D" parent="."]
 position = Vector2(168, 124)
-texture = ExtResource("19_nxtcr")
+texture = ExtResource("21_8ulkf")
 
 [node name="GameBoard" type="Node2D" parent="."]
-script = ExtResource("1_54tt6")
-orientation = "portrait"
-grid = ExtResource("2_0r2mq")
+script = ExtResource("22_w24wq")
+property_cells = Array[Vector2]([Vector2(-1, 4), Vector2(0, 4), Vector2(1, 4), Vector2(2, 4), Vector2(3, 4), Vector2(4, 4), Vector2(7, 4), Vector2(8, 4), Vector2(9, 4), Vector2(10, 4), Vector2(11, 4), Vector2(12, 4), Vector2(13, 4), Vector2(10, 1), Vector2(10, 2), Vector2(10, 3), Vector2(11, 1), Vector2(11, 2), Vector2(11, 3), Vector2(12, 1), Vector2(12, 2), Vector2(12, 3), Vector2(13, 1), Vector2(13, 2), Vector2(13, 3), Vector2(10, -1), Vector2(10, -2), Vector2(10, -3), Vector2(11, -1), Vector2(11, -2), Vector2(11, -3), Vector2(12, -1), Vector2(12, -2), Vector2(12, -3), Vector2(13, -1), Vector2(13, -2), Vector2(13, -3)])
+orientation = "landscape"
+grid = ExtResource("23_pkg1r")
 
 [node name="UnitPath" type="TileMap" parent="GameBoard"]
 y_sort_enabled = true
 tile_set = SubResource("TileSet_5x5x1")
 format = 2
 layer_0/y_sort_enabled = true
-layer_0/tile_data = PackedInt32Array(-262145, 0, 0)
-script = ExtResource("2_w1kn0")
-grid = ExtResource("2_0r2mq")
-solid_cells = Array[Vector2]([Vector2(8, 3), Vector2(8, 4), Vector2(8, 5), Vector2(8, -1), Vector2(8, -2), Vector2(8, -3), Vector2(5, 2), Vector2(5, 1), Vector2(5, 0)])
+layer_0/tile_data = PackedInt32Array(-262145, 0, 0, -196609, 0, 0, -131073, 0, 0, -1, 0, 0, -65537, 0, 0, 65535, 0, 0, 131071, 0, 0, 196607, 0, 0, 262143, 0, 0, 327679, 0, 0, 393215, 0, 0, 458751, 0, 0, 524287, 0, 0, 589823, 0, 0, 655359, 0, 0, 720895, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655371, 0, 0, 655370, 0, 0, 655369, 0, 0, 655368, 0, 0, 655367, 0, 0, 655366, 0, 0, 655372, 0, 0, 655373, 0, 0, -327667, 0, 0, -262131, 0, 0, -196595, 0, 0, -131059, 0, 0, -65523, 0, 0, 13, 0, 0, 65549, 0, 0, 131085, 0, 0, 196621, 0, 0, 262157, 0, 0, 327693, 0, 0, 393229, 0, 0, 458765, 0, 0, 524301, 0, 0, 589837, 0, 0, -327668, 0, 0, -327669, 0, 0, -327670, 0, 0, -327671, 0, 0, -327672, 0, 0, -327673, 0, 0, -327674, 0, 0, -327675, 0, 0, -327676, 0, 0, -327677, 0, 0, -327678, 0, 0, -327679, 0, 0, -327680, 0, 0, 327686, 0, 0, 262150, 0, 0, 196614, 0, 0, 131078, 0, 0, 65542, 0, 0, 6, 0, 0, -65530, 0, 0, -131066, 0, 0, -196602, 0, 0, -262138, 0, 0, -262139, 0, 0, -262140, 0, 0, -262141, 0, 0, -262142, 0, 0, -262143, 0, 0, -262144, 0, 0, -196608, 0, 0, -131072, 0, 0, -65536, 0, 0, 0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608, 0, 0, 262144, 0, 0, 327680, 0, 0, 393216, 0, 0, 458752, 0, 0, 524288, 0, 0, 589824, 0, 0, 589825, 0, 0, 524289, 0, 0, 458753, 0, 0, 393217, 0, 0, 327681, 0, 0, 262145, 0, 0, 196609, 0, 0, 131073, 0, 0, 65537, 0, 0, 1, 0, 0, -65535, 0, 0, -131071, 0, 0, -196607, 0, 0, -196606, 0, 0, -131070, 0, 0, -65534, 0, 0, 2, 0, 0, 65538, 0, 0, 131074, 0, 0, 196610, 0, 0, 262146, 0, 0, 327682, 0, 0, 393218, 0, 0, 458754, 0, 0, 524290, 0, 0, 589826, 0, 0, 589827, 0, 0, 524291, 0, 0, 458755, 0, 0, 393219, 0, 0, 327683, 0, 0, 262147, 0, 0, 196611, 0, 0, 131075, 0, 0, 65539, 0, 0, 3, 0, 0, -65533, 0, 0, -131069, 0, 0, -196605, 0, 0, -196604, 0, 0, -131068, 0, 0, -65532, 0, 0, 4, 0, 0, 65540, 0, 0, 131076, 0, 0, 196612, 0, 0, 262148, 0, 0, 327684, 0, 0, 393220, 0, 0, 458756, 0, 0, 524292, 0, 0, 589828, 0, 0, 589829, 0, 0, 524293, 0, 0, 458757, 0, 0, 393221, 0, 0, 327685, 0, 0, 262149, 0, 0, 196613, 0, 0, 131077, 0, 0, 65541, 0, 0, 5, 0, 0, -65531, 0, 0, -131067, 0, 0, -196603, 0, 0, 393222, 0, 0, 458758, 0, 0, 524294, 0, 0, 589830, 0, 0, 589831, 0, 0, 524295, 0, 0, 458759, 0, 0, 393223, 0, 0, 327687, 0, 0, 262151, 0, 0, 196615, 0, 0, 131079, 0, 0, 65543, 0, 0, 7, 0, 0, -65529, 0, 0, -131065, 0, 0, -196601, 0, 0, -262137, 0, 0, -262136, 0, 0, -196600, 0, 0, -131064, 0, 0, -65528, 0, 0, 8, 0, 0, 65544, 0, 0, 131080, 0, 0, 196616, 0, 0, 262152, 0, 0, 327688, 0, 0, 393224, 0, 0, 458760, 0, 0, 524296, 0, 0, 589832, 0, 0, 589833, 0, 0, 524297, 0, 0, 458761, 0, 0, 393225, 0, 0, 327689, 0, 0, 262153, 0, 0, 196617, 0, 0, 131081, 0, 0, 65545, 0, 0, 9, 0, 0, -65527, 0, 0, -131063, 0, 0, -196599, 0, 0, -262135, 0, 0, -262134, 0, 0, -196598, 0, 0, -131062, 0, 0, -65526, 0, 0, 10, 0, 0, 65546, 0, 0, 131082, 0, 0, 196618, 0, 0, 262154, 0, 0, 327690, 0, 0, 393226, 0, 0, 458762, 0, 0, 524298, 0, 0, 589834, 0, 0, 589835, 0, 0, 524299, 0, 0, 458763, 0, 0, 393227, 0, 0, 327691, 0, 0, 262155, 0, 0, 196619, 0, 0, 131083, 0, 0, 65547, 0, 0, 11, 0, 0, -65525, 0, 0, -131061, 0, 0, -196597, 0, 0, -262133, 0, 0, -262132, 0, 0, -196596, 0, 0, -131060, 0, 0, -65524, 0, 0, 12, 0, 0, 65548, 0, 0, 131084, 0, 0, 196620, 0, 0, 262156, 0, 0, 327692, 0, 0, 393228, 0, 0, 458764, 0, 0, 524300, 0, 0, 589836, 0, 0)
+script = ExtResource("25_kkcr1")
+grid = ExtResource("23_pkg1r")
+solid_cells = Array[Vector2]([Vector2(-1, 4), Vector2(0, 4), Vector2(1, 4), Vector2(2, 4), Vector2(3, 4), Vector2(4, 4), Vector2(7, 4), Vector2(8, 4), Vector2(9, 4), Vector2(10, 4), Vector2(11, 4), Vector2(12, 4), Vector2(13, 4), Vector2(10, 1), Vector2(10, 2), Vector2(10, 3), Vector2(11, 1), Vector2(11, 2), Vector2(11, 3), Vector2(12, 1), Vector2(12, 2), Vector2(12, 3), Vector2(13, 1), Vector2(13, 2), Vector2(13, 3), Vector2(10, -1), Vector2(10, -2), Vector2(10, -3), Vector2(11, -1), Vector2(11, -2), Vector2(11, -3), Vector2(12, -1), Vector2(12, -2), Vector2(12, -3), Vector2(13, -1), Vector2(13, -2), Vector2(13, -3)])
 
-[node name="Cursor" parent="GameBoard" instance=ExtResource("8_4uheh")]
+[node name="Cursor" parent="GameBoard" instance=ExtResource("26_b6jms")]
 z_index = 1
 position = Vector2(400, 33)
 
 [node name="Player" type="Node2D" parent="GameBoard"]
 
-[node name="Soerjo" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
+[node name="Soerjo" parent="GameBoard/Player" instance=ExtResource("27_w4smp")]
 use_parent_material = true
-position = Vector2(-259, 130)
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
+position = Vector2(-133, 580)
+_animation_resource = ExtResource("28_sdajn")
+_animation_state_machine = ExtResource("29_jbyoq")
 hframe = 12
 vframe = 8
+last_direction = Vector2(1, -1)
 
-[node name="Tomo" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
-position = Vector2(-60, 100)
+[node name="Tomo" parent="GameBoard/Player" instance=ExtResource("27_w4smp")]
+position = Vector2(-205, 489)
 player_id = 3
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
+_animation_resource = ExtResource("28_sdajn")
+_animation_state_machine = ExtResource("29_jbyoq")
 hframe = 12
 vframe = 8
+last_direction = Vector2(1, -1)
 
-[node name="Tomo2" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
-position = Vector2(-318, 227)
+[node name="Tomo2" parent="GameBoard/Player" instance=ExtResource("27_w4smp")]
+position = Vector2(-6, 580)
 player_id = 3
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
+_animation_resource = ExtResource("28_sdajn")
+_animation_state_machine = ExtResource("29_jbyoq")
 hframe = 12
 vframe = 8
+last_direction = Vector2(1, -1)
+
+[node name="Tomo3" parent="GameBoard/Player" instance=ExtResource("27_w4smp")]
+position = Vector2(122, 645)
+player_id = 3
+_animation_resource = ExtResource("28_sdajn")
+_animation_state_machine = ExtResource("29_jbyoq")
+hframe = 12
+vframe = 8
+last_direction = Vector2(1, -1)
 
 [node name="Enemy" type="Node2D" parent="GameBoard"]
-script = ExtResource("12_bpvfk")
+script = ExtResource("30_g5c6a")
 
-[node name="Unit" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
-position = Vector2(579, 484)
+[node name="Unit" parent="GameBoard/Enemy" instance=ExtResource("27_w4smp")]
+position = Vector2(961, 224)
 player_id = 6
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
+_animation_resource = ExtResource("28_sdajn")
+_animation_state_machine = ExtResource("29_jbyoq")
 hframe = 12
 vframe = 8
-last_direction = Vector2(-1, -1)
+last_direction = Vector2(-1, 1)
 
 [node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit"]
-script = ExtResource("27_yvtgi")
+script = ExtResource("31_t2rdm")
 
 [node name="approach" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
+script = ExtResource("32_20iat")
 _action_id = "approach"
 
 [node name="UtilityAiAggregation2" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_myvtt")
 
 [node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../..")
 property_name = "innate_done"
 curve = SubResource("Curve_f4f8w")
 
 [node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../..")
 property_name = "is_within_range"
 curve = SubResource("Curve_1kur1")
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach/UtilityAiAggregation2"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_myvtt")
 
 [node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach/UtilityAiAggregation2/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../../..")
 property_name = "is_empty_ammo"
 curve = SubResource("Curve_th8ef")
 
 [node name="reload" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
+script = ExtResource("32_20iat")
 _action_id = "reload"
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/reload"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_myvtt")
 
 [node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../..")
 property_name = "is_empty_ammo"
 max_value = 1.5
 curve = SubResource("Curve_wln8g")
 
 [node name="health" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../..")
 property_name = "curr_health"
 max_value = 12.0
 curve = SubResource("Curve_ipvhf")
 
 [node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../..")
 property_name = "innate_done"
 curve = SubResource("Curve_ymwmf")
 
 [node name="shoot" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
+script = ExtResource("32_20iat")
 _action_id = "shoot"
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/shoot"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_myvtt")
 
 [node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/shoot/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../..")
 property_name = "modular_done"
 curve = SubResource("Curve_gjwa0")
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/shoot/UtilityAiAggregation"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_myvtt")
 
 [node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../../..")
 property_name = "is_within_range"
 curve = SubResource("Curve_8laea")
 
 [node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../../..")
 property_name = "is_empty_ammo"
 curve = SubResource("Curve_ucavg")
 
 [node name="rest" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
+script = ExtResource("32_20iat")
 _action_id = "rest"
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_myvtt")
 
 [node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../..")
 property_name = "modular_done"
 curve = SubResource("Curve_5von7")
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest/UtilityAiAggregation"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_myvtt")
 aggregation_type = 2
 
 [node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../../..")
 property_name = "is_within_range"
 curve = SubResource("Curve_3eyec")
 
 [node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../../..")
 property_name = "is_empty_ammo"
 curve = SubResource("Curve_740e6")
@@ -912,126 +925,126 @@ target_position = Vector2(-158, -8)
 [node name="RayCast2D16" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
 target_position = Vector2(1, 72)
 
-[node name="Unit2" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
-position = Vector2(193, 672)
+[node name="Unit2" parent="GameBoard/Enemy" instance=ExtResource("27_w4smp")]
+position = Vector2(386, -64)
 player_id = 6
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
+_animation_resource = ExtResource("28_sdajn")
+_animation_state_machine = ExtResource("29_jbyoq")
 hframe = 12
 vframe = 8
-last_direction = Vector2(-1, -1)
+last_direction = Vector2(-1, 1)
 
 [node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit2"]
-script = ExtResource("27_yvtgi")
+script = ExtResource("31_t2rdm")
 
 [node name="approach" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
+script = ExtResource("32_20iat")
 _action_id = "approach"
 
 [node name="UtilityAiAggregation2" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_myvtt")
 
 [node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../..")
 property_name = "innate_done"
 curve = SubResource("Curve_f4f8w")
 
 [node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../..")
 property_name = "is_within_range"
 curve = SubResource("Curve_1kur1")
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach/UtilityAiAggregation2"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_myvtt")
 
 [node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach/UtilityAiAggregation2/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../../..")
 property_name = "is_empty_ammo"
 curve = SubResource("Curve_th8ef")
 
 [node name="reload" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
+script = ExtResource("32_20iat")
 _action_id = "reload"
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/reload"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_myvtt")
 
 [node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../..")
 property_name = "is_empty_ammo"
 max_value = 1.5
 curve = SubResource("Curve_wln8g")
 
 [node name="health" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../..")
 property_name = "curr_health"
 max_value = 12.0
 curve = SubResource("Curve_ipvhf")
 
 [node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../..")
 property_name = "innate_done"
 curve = SubResource("Curve_ymwmf")
 
 [node name="shoot" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
+script = ExtResource("32_20iat")
 _action_id = "shoot"
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_myvtt")
 
 [node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../..")
 property_name = "modular_done"
 curve = SubResource("Curve_gjwa0")
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot/UtilityAiAggregation"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_myvtt")
 
 [node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../../..")
 property_name = "is_within_range"
 curve = SubResource("Curve_8laea")
 
 [node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../../..")
 property_name = "is_empty_ammo"
 curve = SubResource("Curve_ucavg")
 
 [node name="rest" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
+script = ExtResource("32_20iat")
 _action_id = "rest"
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_myvtt")
 
 [node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../..")
 property_name = "modular_done"
 curve = SubResource("Curve_5von7")
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest/UtilityAiAggregation"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_myvtt")
 aggregation_type = 2
 
 [node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../../..")
 property_name = "is_within_range"
 curve = SubResource("Curve_3eyec")
 
 [node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
+script = ExtResource("34_bvv5r")
 node = NodePath("../../../../..")
 property_name = "is_empty_ammo"
 curve = SubResource("Curve_740e6")
@@ -1086,89 +1099,419 @@ target_position = Vector2(-158, -8)
 [node name="RayCast2D16" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
 target_position = Vector2(1, 72)
 
+[node name="Unit4" parent="GameBoard/Enemy" instance=ExtResource("27_w4smp")]
+position = Vector2(638, 0)
+player_id = 6
+_animation_resource = ExtResource("28_sdajn")
+_animation_state_machine = ExtResource("29_jbyoq")
+hframe = 12
+vframe = 8
+last_direction = Vector2(-1, 1)
+
+[node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit4"]
+script = ExtResource("31_t2rdm")
+
+[node name="approach" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent"]
+script = ExtResource("32_20iat")
+_action_id = "approach"
+
+[node name="UtilityAiAggregation2" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/approach"]
+script = ExtResource("33_myvtt")
+
+[node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../..")
+property_name = "innate_done"
+curve = SubResource("Curve_f4f8w")
+
+[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../..")
+property_name = "is_within_range"
+curve = SubResource("Curve_1kur1")
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/approach/UtilityAiAggregation2"]
+script = ExtResource("33_myvtt")
+
+[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/approach/UtilityAiAggregation2/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../../..")
+property_name = "is_empty_ammo"
+curve = SubResource("Curve_th8ef")
+
+[node name="reload" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent"]
+script = ExtResource("32_20iat")
+_action_id = "reload"
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/reload"]
+script = ExtResource("33_myvtt")
+
+[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../..")
+property_name = "is_empty_ammo"
+max_value = 1.5
+curve = SubResource("Curve_wln8g")
+
+[node name="health" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../..")
+property_name = "curr_health"
+max_value = 12.0
+curve = SubResource("Curve_ipvhf")
+
+[node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../..")
+property_name = "innate_done"
+curve = SubResource("Curve_ymwmf")
+
+[node name="shoot" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent"]
+script = ExtResource("32_20iat")
+_action_id = "shoot"
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/shoot"]
+script = ExtResource("33_myvtt")
+
+[node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/shoot/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../..")
+property_name = "modular_done"
+curve = SubResource("Curve_gjwa0")
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/shoot/UtilityAiAggregation"]
+script = ExtResource("33_myvtt")
+
+[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../../..")
+property_name = "is_within_range"
+curve = SubResource("Curve_8laea")
+
+[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../../..")
+property_name = "is_empty_ammo"
+curve = SubResource("Curve_ucavg")
+
+[node name="rest" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent"]
+script = ExtResource("32_20iat")
+_action_id = "rest"
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/rest"]
+script = ExtResource("33_myvtt")
+
+[node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/rest/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../..")
+property_name = "modular_done"
+curve = SubResource("Curve_5von7")
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/rest/UtilityAiAggregation"]
+script = ExtResource("33_myvtt")
+aggregation_type = 2
+
+[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../../..")
+property_name = "is_within_range"
+curve = SubResource("Curve_3eyec")
+
+[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit4/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../../..")
+property_name = "is_empty_ammo"
+curve = SubResource("Curve_740e6")
+
+[node name="SensorJarak" type="Node2D" parent="GameBoard/Enemy/Unit4"]
+
+[node name="RayCast2D" type="RayCast2D" parent="GameBoard/Enemy/Unit4/SensorJarak"]
+target_position = Vector2(210, 100)
+
+[node name="RayCast2D2" type="RayCast2D" parent="GameBoard/Enemy/Unit4/SensorJarak"]
+target_position = Vector2(228, 26)
+
+[node name="RayCast2D3" type="RayCast2D" parent="GameBoard/Enemy/Unit4/SensorJarak"]
+target_position = Vector2(70, 102)
+
+[node name="RayCast2D4" type="RayCast2D" parent="GameBoard/Enemy/Unit4/SensorJarak"]
+target_position = Vector2(227, -40)
+
+[node name="RayCast2D5" type="RayCast2D" parent="GameBoard/Enemy/Unit4/SensorJarak"]
+target_position = Vector2(208, -109)
+
+[node name="RayCast2D6" type="RayCast2D" parent="GameBoard/Enemy/Unit4/SensorJarak"]
+target_position = Vector2(65, -117)
+
+[node name="RayCast2D7" type="RayCast2D" parent="GameBoard/Enemy/Unit4/SensorJarak"]
+target_position = Vector2(-62, -117)
+
+[node name="RayCast2D8" type="RayCast2D" parent="GameBoard/Enemy/Unit4/SensorJarak"]
+target_position = Vector2(-202, -108)
+
+[node name="RayCast2D9" type="RayCast2D" parent="GameBoard/Enemy/Unit4/SensorJarak"]
+target_position = Vector2(-219, -37)
+
+[node name="RayCast2D10" type="RayCast2D" parent="GameBoard/Enemy/Unit4/SensorJarak"]
+target_position = Vector2(-215, 26)
+
+[node name="RayCast2D11" type="RayCast2D" parent="GameBoard/Enemy/Unit4/SensorJarak"]
+target_position = Vector2(-205, 97)
+
+[node name="RayCast2D12" type="RayCast2D" parent="GameBoard/Enemy/Unit4/SensorJarak"]
+target_position = Vector2(-64, 101)
+
+[node name="RayCast2D13" type="RayCast2D" parent="GameBoard/Enemy/Unit4/SensorJarak"]
+target_position = Vector2(170, -7)
+
+[node name="RayCast2D14" type="RayCast2D" parent="GameBoard/Enemy/Unit4/SensorJarak"]
+target_position = Vector2(0, -88)
+
+[node name="RayCast2D15" type="RayCast2D" parent="GameBoard/Enemy/Unit4/SensorJarak"]
+target_position = Vector2(-158, -8)
+
+[node name="RayCast2D16" type="RayCast2D" parent="GameBoard/Enemy/Unit4/SensorJarak"]
+target_position = Vector2(1, 72)
+
+[node name="Unit5" parent="GameBoard/Enemy" instance=ExtResource("27_w4smp")]
+position = Vector2(838, 95)
+player_id = 6
+_animation_resource = ExtResource("28_sdajn")
+_animation_state_machine = ExtResource("29_jbyoq")
+hframe = 12
+vframe = 8
+last_direction = Vector2(-1, 1)
+
+[node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit5"]
+script = ExtResource("31_t2rdm")
+
+[node name="approach" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent"]
+script = ExtResource("32_20iat")
+_action_id = "approach"
+
+[node name="UtilityAiAggregation2" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/approach"]
+script = ExtResource("33_myvtt")
+
+[node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../..")
+property_name = "innate_done"
+curve = SubResource("Curve_f4f8w")
+
+[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../..")
+property_name = "is_within_range"
+curve = SubResource("Curve_1kur1")
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/approach/UtilityAiAggregation2"]
+script = ExtResource("33_myvtt")
+
+[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/approach/UtilityAiAggregation2/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../../..")
+property_name = "is_empty_ammo"
+curve = SubResource("Curve_th8ef")
+
+[node name="reload" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent"]
+script = ExtResource("32_20iat")
+_action_id = "reload"
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/reload"]
+script = ExtResource("33_myvtt")
+
+[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../..")
+property_name = "is_empty_ammo"
+max_value = 1.5
+curve = SubResource("Curve_wln8g")
+
+[node name="health" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../..")
+property_name = "curr_health"
+max_value = 12.0
+curve = SubResource("Curve_ipvhf")
+
+[node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../..")
+property_name = "innate_done"
+curve = SubResource("Curve_ymwmf")
+
+[node name="shoot" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent"]
+script = ExtResource("32_20iat")
+_action_id = "shoot"
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/shoot"]
+script = ExtResource("33_myvtt")
+
+[node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/shoot/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../..")
+property_name = "modular_done"
+curve = SubResource("Curve_gjwa0")
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/shoot/UtilityAiAggregation"]
+script = ExtResource("33_myvtt")
+
+[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../../..")
+property_name = "is_within_range"
+curve = SubResource("Curve_8laea")
+
+[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../../..")
+property_name = "is_empty_ammo"
+curve = SubResource("Curve_ucavg")
+
+[node name="rest" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent"]
+script = ExtResource("32_20iat")
+_action_id = "rest"
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/rest"]
+script = ExtResource("33_myvtt")
+
+[node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/rest/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../..")
+property_name = "modular_done"
+curve = SubResource("Curve_5von7")
+
+[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/rest/UtilityAiAggregation"]
+script = ExtResource("33_myvtt")
+aggregation_type = 2
+
+[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../../..")
+property_name = "is_within_range"
+curve = SubResource("Curve_3eyec")
+
+[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit5/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("34_bvv5r")
+node = NodePath("../../../../..")
+property_name = "is_empty_ammo"
+curve = SubResource("Curve_740e6")
+
+[node name="SensorJarak" type="Node2D" parent="GameBoard/Enemy/Unit5"]
+
+[node name="RayCast2D" type="RayCast2D" parent="GameBoard/Enemy/Unit5/SensorJarak"]
+target_position = Vector2(210, 100)
+
+[node name="RayCast2D2" type="RayCast2D" parent="GameBoard/Enemy/Unit5/SensorJarak"]
+target_position = Vector2(228, 26)
+
+[node name="RayCast2D3" type="RayCast2D" parent="GameBoard/Enemy/Unit5/SensorJarak"]
+target_position = Vector2(70, 102)
+
+[node name="RayCast2D4" type="RayCast2D" parent="GameBoard/Enemy/Unit5/SensorJarak"]
+target_position = Vector2(227, -40)
+
+[node name="RayCast2D5" type="RayCast2D" parent="GameBoard/Enemy/Unit5/SensorJarak"]
+target_position = Vector2(208, -109)
+
+[node name="RayCast2D6" type="RayCast2D" parent="GameBoard/Enemy/Unit5/SensorJarak"]
+target_position = Vector2(65, -117)
+
+[node name="RayCast2D7" type="RayCast2D" parent="GameBoard/Enemy/Unit5/SensorJarak"]
+target_position = Vector2(-62, -117)
+
+[node name="RayCast2D8" type="RayCast2D" parent="GameBoard/Enemy/Unit5/SensorJarak"]
+target_position = Vector2(-202, -108)
+
+[node name="RayCast2D9" type="RayCast2D" parent="GameBoard/Enemy/Unit5/SensorJarak"]
+target_position = Vector2(-219, -37)
+
+[node name="RayCast2D10" type="RayCast2D" parent="GameBoard/Enemy/Unit5/SensorJarak"]
+target_position = Vector2(-215, 26)
+
+[node name="RayCast2D11" type="RayCast2D" parent="GameBoard/Enemy/Unit5/SensorJarak"]
+target_position = Vector2(-205, 97)
+
+[node name="RayCast2D12" type="RayCast2D" parent="GameBoard/Enemy/Unit5/SensorJarak"]
+target_position = Vector2(-64, 101)
+
+[node name="RayCast2D13" type="RayCast2D" parent="GameBoard/Enemy/Unit5/SensorJarak"]
+target_position = Vector2(170, -7)
+
+[node name="RayCast2D14" type="RayCast2D" parent="GameBoard/Enemy/Unit5/SensorJarak"]
+target_position = Vector2(0, -88)
+
+[node name="RayCast2D15" type="RayCast2D" parent="GameBoard/Enemy/Unit5/SensorJarak"]
+target_position = Vector2(-158, -8)
+
+[node name="RayCast2D16" type="RayCast2D" parent="GameBoard/Enemy/Unit5/SensorJarak"]
+target_position = Vector2(1, 72)
+
 [node name="Props" type="Node2D" parent="GameBoard"]
 
-[node name="TableChair" type="StaticBody2D" parent="GameBoard/Props"]
-position = Vector2(-640, 406)
-script = ExtResource("35_dg0a8")
-cell = Vector2i(2, 12)
-
-[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair"]
-texture = ExtResource("33_240rj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair"]
-shape = SubResource("RectangleShape2D_t1t3p")
-
-[node name="TableChair2" type="StaticBody2D" parent="GameBoard/Props"]
-position = Vector2(-320, 566)
-script = ExtResource("35_dg0a8")
-cell = Vector2i(7, 12)
-
-[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair2"]
-texture = ExtResource("33_240rj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair2"]
-shape = SubResource("RectangleShape2D_t1t3p")
-
-[node name="TableChair3" type="StaticBody2D" parent="GameBoard/Props"]
-position = Vector2(0, 726)
-script = ExtResource("35_dg0a8")
-cell = Vector2i(12, 12)
-
-[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair3"]
-texture = ExtResource("33_240rj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair3"]
-shape = SubResource("RectangleShape2D_t1t3p")
-
-[node name="TableChair4" type="StaticBody2D" parent="GameBoard/Props"]
-position = Vector2(322, 420)
-scale = Vector2(-1, 1)
+[node name="Willys1" type="StaticBody2D" parent="GameBoard/Props"]
+position = Vector2(673, 462)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("35_dg0a8")
+script = ExtResource("36_5nhef")
+cell = Vector2i(13, 3)
 
-[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair4"]
+[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/Willys1"]
 position = Vector2(2, -44)
-texture = ExtResource("33_240rj")
+texture = ExtResource("36_ip2bn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/Willys1"]
 position = Vector2(3.8147e-06, -3.69549e-06)
 rotation = 0.475294
 scale = Vector2(1.52103, 0.218512)
 shape = SubResource("CircleShape2D_54ujx")
 
-[node name="TableChair5" type="StaticBody2D" parent="GameBoard/Props"]
-position = Vector2(322, 225)
-scale = Vector2(-1, 1)
+[node name="Willys2" type="StaticBody2D" parent="GameBoard/Props"]
+position = Vector2(922, 336)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("35_dg0a8")
-cell = Vector2i(5, -2)
+script = ExtResource("36_5nhef")
+cell = Vector2i(13, -1)
 
-[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair5"]
+[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/Willys2"]
 position = Vector2(2, -44)
-texture = ExtResource("33_240rj")
+texture = ExtResource("36_ip2bn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/Willys2"]
 position = Vector2(3.8147e-06, -3.69549e-06)
 rotation = 0.475294
 scale = Vector2(1.52103, 0.218512)
 shape = SubResource("CircleShape2D_54ujx")
 
-[node name="TableChair6" type="StaticBody2D" parent="GameBoard/Props"]
-position = Vector2(706, 226)
-scale = Vector2(-1, 1)
+[node name="TopGrasses" type="StaticBody2D" parent="GameBoard/Props"]
+position = Vector2(-130, 210)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("35_dg0a8")
-cell = Vector2i(8, -1)
+script = ExtResource("36_5nhef")
+cell = Vector2i(-2, 4)
 
-[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair6"]
+[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TopGrasses"]
 position = Vector2(2, -44)
-texture = ExtResource("33_240rj")
+texture = ExtResource("37_axx1l")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TopGrasses"]
+position = Vector2(3.8147e-06, -3.69549e-06)
+rotation = 0.475294
+scale = Vector2(1.52103, 0.218512)
+shape = SubResource("CircleShape2D_54ujx")
+
+[node name="BottomGrasses" type="StaticBody2D" parent="GameBoard/Props"]
+position = Vector2(446, 498)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("36_5nhef")
+cell = Vector2i(7, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/BottomGrasses"]
+position = Vector2(2, -44)
+texture = ExtResource("37_axx1l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/BottomGrasses"]
 position = Vector2(3.8147e-06, -3.69549e-06)
 rotation = 0.475294
 scale = Vector2(1.52103, 0.218512)
@@ -1176,12 +1519,12 @@ shape = SubResource("CircleShape2D_54ujx")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="TacticsCamera" parent="." instance=ExtResource("2_pxgfw")]
+[node name="TacticsCamera" parent="." instance=ExtResource("37_w7uuv")]
 position = Vector2(168, 124)
 collision_mask = 4
 
 [node name="Cursor" type="Area2D" parent="."]
-script = ExtResource("35_84v7m")
+script = ExtResource("38_unt22")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
 shape = SubResource("RectangleShape2D_2175y")
@@ -1195,7 +1538,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("37_2eyfr")
+script = ExtResource("39_r8lgb")
+array_text = ["Mereka telah melanggar kesepakatan bersama", "Ayo rebut kembali persenjataan TKR", "TeTetap waspada terhadap sergapan lawan!"]
 
 [node name="Panel" type="Panel" parent="Interacts/Interactables"]
 layout_mode = 1
@@ -1233,7 +1577,7 @@ offset_left = 42.0
 offset_top = -183.0
 offset_right = 1002.0
 offset_bottom = 245.0
-texture = ExtResource("37_wjlli")
+texture = ExtResource("40_a1o76")
 expand_mode = 2
 stretch_mode = 4
 
@@ -1244,7 +1588,7 @@ offset_left = 688.0
 offset_top = 136.0
 offset_right = 924.0
 offset_bottom = 196.0
-texture = ExtResource("38_nsmwq")
+texture = ExtResource("41_15dct")
 expand_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Interacts/Interactables/MarginContainer/Dialoguebox"]
@@ -1258,7 +1602,7 @@ offset_left = -856.0
 offset_top = -56.0
 offset_right = 768.0
 offset_bottom = 82.0
-theme_override_fonts/normal_font = ExtResource("41_r0bv2")
+theme_override_fonts/normal_font = ExtResource("43_odlnh")
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "Kita sudah berhasil masuk,
@@ -1272,7 +1616,7 @@ offset_left = 726.0
 offset_top = 145.0
 offset_right = 895.0
 offset_bottom = 198.0
-theme_override_fonts/normal_font = ExtResource("40_25nho")
+theme_override_fonts/normal_font = ExtResource("44_oo024")
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "SOERJO"
@@ -1319,10 +1663,10 @@ offset_right = 4.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("40_25nho")
+theme_override_fonts/font = ExtResource("44_oo024")
 theme_override_font_sizes/font_size = 40
 text = "LANJUT KE BAB 2"
-script = ExtResource("43_465j5")
+script = ExtResource("45_lra5v")
 
 [node name="Label" type="Label" parent="GameOver/Winning/Panel"]
 layout_mode = 1
@@ -1334,7 +1678,7 @@ offset_top = 45.0
 offset_right = 452.0
 offset_bottom = 108.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("40_25nho")
+theme_override_fonts/font = ExtResource("44_oo024")
 theme_override_font_sizes/font_size = 50
 text = "\"KEMENANGAN TELAH DIRAIH!\""
 

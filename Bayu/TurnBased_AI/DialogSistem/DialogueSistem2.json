@@ -38,7 +38,7 @@
 	"Keterangan": "Normal", "PosNama" : "kiri", "tokoh" : ["SOERJO", ""], "BG" : 2},
 {"name" : "[center]TKR 1[/center]", "id": 19, "text": " *ikut melihat ke arah laut*", "Color": "white", 
 	"Keterangan": "Normal", "PosNama" : "kiri", "tokoh" : ["TKR 1", ""], "BG" : 2},
-{"name" : "[center]TKR 1[/center]", "id": 20, "text": "Oh iya, aaku melihatnya. Ada kapal bergerak menuju ke pelabuhan.", "Color": "white", 
+{"name" : "[center]TKR 1[/center]", "id": 20, "text": "Oh iya, aku melihatnya. Ada kapal bergerak menuju ke pelabuhan.", "Color": "white", 
 	"Keterangan": "Normal", "PosNama" : "kiri", "tokoh" : ["TKR 1", ""], "BG" : 2},
 {"name" : "[center]TKR 2[/center]", "id": 21, "text": "Kalian ada yang punya teropong? Akan lebih baik kalau kita bisa menentukan itu kapal dari mana.", "Color": "white", 
 	"Keterangan": "Normal", "PosNama" : "kiri", "tokoh" : ["TKR 2", ""], "BG" : 2},

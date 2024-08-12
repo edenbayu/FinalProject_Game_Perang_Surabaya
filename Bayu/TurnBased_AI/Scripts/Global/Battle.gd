@@ -3,10 +3,31 @@ extends Node2D
 var active_unit : Unit
 var target_attack : Unit
 var dmg_type : String
+var display_text_z_order : int
+
+## Randomize damage_type ##
+func random_damage_type(target: Unit) -> String:
+	var damage_type = ""
+	if target.curr_armor > 0:
+		var random = randi() % 2
+		if random == 0:
+			damage_type = "hp_damage"
+		else:
+			damage_type = "armor_damage"
+	else:
+		damage_type = "hp_damage"
+	return damage_type
+	
+## Reload Code ##
+func reload(unit: Unit) -> void:
+	unit.ammo += 3
+	unit.actions_anim.play("Reload")
+###
 
 #Attack Code ##
 func do_shoot(damage_type: String) -> void:
 	dmg_type = damage_type
+	active_unit.ammo -= 1
 	attack(active_unit, target_attack)
 
 func set_attack_direction(active_unit: Unit, target: Unit) -> void:
@@ -74,7 +95,7 @@ func display_number(value: int, position: Vector2, damage_type: String):
 	var number = Label.new()
 	number.global_position = position
 	number.text = str(value)
-	number.z_index = 5
+	number.z_index = display_text_z_order
 	number.label_settings = LabelSettings.new()
 	
 	var color = "#FFF"
@@ -83,11 +104,51 @@ func display_number(value: int, position: Vector2, damage_type: String):
 			color = "#E63B60"
 		"armor_damage":
 			color = "#4895EF"
-	
+			
+	var font = load("res://font/I-pixel-u.ttf")
 	number.label_settings.font_color = color
 	number.label_settings.font_size = 40
 	number.label_settings.outline_color = "#000"
 	number.label_settings.outline_size = 12
+	number.label_settings.font = font
+	
+	call_deferred("add_child", number)
+	
+	await number.resized
+	number.pivot_offset = Vector2(number.size / 2)
+	
+	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(
+		number, "position:y", number.position.y - 24, 0.25
+	).set_ease(Tween.EASE_OUT)
+	tween.tween_property(
+		number, "position:y", number.position.y, 0.5
+	).set_ease(Tween.EASE_IN).set_delay(0.25)
+	tween.tween_property(
+		number, "scale", Vector2.ZERO, 0.25
+	).set_ease(Tween.EASE_IN).set_delay(0.5)
+	
+	await tween.finished
+	number.queue_free()
+
+
+func display_invalid_tile(position: Vector2):
+	print("damage should be displayed here!")
+	var number = Label.new()
+	number.global_position = position
+	number.text = "DILUAR JANGKUAN!"
+	number.z_index = display_text_z_order
+	number.label_settings = LabelSettings.new()
+	
+	var color = "#E63B60"
+			
+	var font = load("res://font/I-pixel-u.ttf")
+	number.label_settings.font_color = color
+	number.label_settings.font_size = 40
+	number.label_settings.outline_color = "#000"
+	number.label_settings.outline_size = 12
+	number.label_settings.font = font
 	
 	call_deferred("add_child", number)
 	

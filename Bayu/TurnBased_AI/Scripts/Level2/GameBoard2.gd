@@ -1,19 +1,17 @@
-class_name GameBoard
+class_name GameBoard2
 extends Node2D
 
 const DIRECTIONS = [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
-@export var property_cells : Array[Vector2] = [Vector2(8,5), Vector2(8,4), Vector2(8,3), 
+const property_cells = [Vector2(8,5), Vector2(8,4), Vector2(8,3), 
 						Vector2(8,-1), Vector2(8,-2), Vector2(8,-3), 
 						Vector2(5,2), Vector2(5,1), Vector2(5,0)]
 signal action_done
 
-@export var orientation: String
 @export var grid: Grid
 @onready var unitPath: UnitPath = $UnitPath
 @onready var cursor = $Cursor
 @onready var player = $Player
 @onready var enemy = $Enemy
-@onready var props = $Props
 @onready var deck : Deck = $"../CanvasLayer/UI/HBoxContainer/HBoxContainer/Hands"
 @onready var status_ui : StatusUI = $"../CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI"
 var audio = preload("res://Scenes/SoundManager.tscn")
@@ -46,10 +44,12 @@ func _ready() -> void:
 	for p in player.get_children():
 		var unit = p as Unit
 		unit.damage_enter.connect(Battle.apply_damage)
+		unit.last_direction = Vector2(1, -1)
 	for e in enemy.get_children():
 		var unit = e as Unit
 		unit.damage_enter.connect(Battle.apply_damage)
-	Battle.display_text_z_order = 20
+		unit.last_direction = Vector2(-1, 1)
+	Battle.display_text_z_order = 10
 
 func _process(_delta):
 	_update()
@@ -285,34 +285,19 @@ func _update() -> void:
 			continue
 		ordering.append(unit)
 	##Hardcodeed bisa lebih dirapihin kalau ada waktu
-	for child in props.get_children():
-		ordering.append(child)
-	#ordering.append($Props/TableChair4)
-	#ordering.append($Props/TableChair5)
-	#ordering.append($Props/TableChair6)
+	ordering.append($Props/TableChair4)
+	ordering.append($Props/TableChair5)
+	ordering.append($Props/TableChair6)
 
 	# Sort units based on their cell values
-	isometric_orientation(ordering)
+	ordering.sort_custom(_sort_index)
 	# Iterate through sorted units and assign Z indices
 	for i in range(ordering.size()):
 		var unit = ordering[i]
 		# Assign Z index based on the index in the sorted list
 		unit.z_index = i
 
-func isometric_orientation(ordering: Array):
-	match orientation:
-		"landscape":
-			ordering.sort_custom(_sort_index)
-		"portrait":
-			ordering.sort_custom(_sort_index_2)
-		
 func _sort_index(a, b) -> bool:
-	if a.cell.y != b.cell.y:
-		return a.cell.y < b.cell.y
-	else:
-		return a.cell.x < b.cell.x
-
-func _sort_index_2(a, b) -> bool:
 	if a.cell.x != b.cell.x:
 		return a.cell.x < b.cell.x
 	else:
@@ -333,20 +318,11 @@ func get_weakest_unit() -> Unit:
 			weakest = player
 	return weakest
 
-func randomize_target_unit() -> Unit:
-	var children = player.get_children()
-	if children.size() == 0:
-		return
-	var random_index = randi() % children.size()
-	var random: Unit = children[random_index] as Unit
-	return random
-
 func get_path_to_weakest_unit() -> PackedVector2Array:
-	var weakest_unit = randomize_target_unit()
-	#var weakest_unit = get_weakest_unit()
+	var weakest_unit = get_weakest_unit()
 	if weakest_unit == null:
 		return []
-	var pathfinder = Pathfinder.new(grid, get_grid_data(grid), property_cells)
+	var pathfinder = Pathfinder.new(grid, get_grid_data(grid))
 	var paths = pathfinder.calculate_point_paths(LevelManager.active_unit.cell, weakest_unit.cell)
 	paths.remove_at(0)
 	return paths
@@ -413,8 +389,12 @@ func attack(active_unit: Unit, target: Unit):
 	set_attack_direction(active_unit, target)
 	damage_type = "hp_damage"
 	active_unit.attack()
+	#var final_damage = clamp(apply_reduction(active_unit.damage, target.curr_armor), 0, active_unit.damage)
+	#target.curr_health -= active_unit.damage
 
 func apply_damage():
+	#audio.nambu_shoot()
+	#audio.unit_hurt()
 	var attacked_dir = check_direction(LevelManager.active_unit, target_attack)
 	target_attack.last_direction = attacked_dir
 	var tween : Tween
@@ -490,7 +470,7 @@ func approach(active_unit: Unit) -> void:
 	await _move_active_AI(ai_walk_paths, ai_final_target)
 
 func get_path_to_flee() -> void:
-	var _pathfinder = Pathfinder.new(grid, get_grid_data(grid), property_cells)
+	var _pathfinder = Pathfinder.new(grid, get_grid_data(grid))
 	var unit_player_locations = []
 	for player_unit in player.get_children():
 		var unit = player_unit as Unit

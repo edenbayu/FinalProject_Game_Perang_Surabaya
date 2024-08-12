@@ -138,6 +138,8 @@ func advance_dialogue():
 				check_for_potrait_kiri()
 				check_for_potrait_kanan()
 				check_for_color()
+			elif index >= dialogue.size():
+				get_tree().change_scene_to_file("res://Scenes/level_2.tscn")
 			#If we are at the last line of dialogue, the scene deletes itself and we end.
 			#else : 
 				#queue_free()

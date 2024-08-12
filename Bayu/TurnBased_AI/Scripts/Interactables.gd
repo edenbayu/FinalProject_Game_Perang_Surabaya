@@ -2,7 +2,7 @@ extends Control
 
 @onready var text : RichTextLabel = $MarginContainer/Dialoguebox/AnimatedSprite2D/RichTextLabel
 signal enter_gameplay
-var array_text = [
+@export var array_text = [
 	"Kita sudah berhasil masuk,
 Ayo serbuuu!!",
 	"Jangan biarkan bendera Belanda tetap berkibar di tanah air",

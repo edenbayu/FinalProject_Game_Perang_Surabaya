@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://20i4en7e2fm7"]
+[gd_scene load_steps=46 format=3 uid="uid://20i4en7e2fm7"]
 
 [ext_resource type="Script" path="res://Scripts/Unit.gd" id="1_u70hk"]
 [ext_resource type="Texture2D" uid="uid://c766m3iwx0tik" path="res://Sprites/Suryo.png" id="2_4l34f"]
@@ -16,11 +16,13 @@
 [ext_resource type="AudioStream" uid="uid://dl85j5bq1s7ng" path="res://audio/nambu_shoot.mp3" id="12_jay8r"]
 [ext_resource type="AudioStream" uid="uid://nprlxnrhvoum" path="res://audio/walk.mp3" id="14_3f15n"]
 [ext_resource type="Texture2D" uid="uid://cx04mxaffvq8l" path="res://UI/hp_damage.png" id="15_fkd81"]
+[ext_resource type="AudioStream" uid="uid://bhm0lrfqh7vhc" path="res://audio/relod.mp3" id="16_47b77"]
 [ext_resource type="Texture2D" uid="uid://b2kk8dspv25cm" path="res://UI/hp_damage_active.png" id="16_gnftb"]
 [ext_resource type="Texture2D" uid="uid://b3y66i4wviyx3" path="res://UI/hp_damage_clicked.png" id="17_fyhlj"]
 [ext_resource type="Texture2D" uid="uid://bexcv3r84cy2v" path="res://UI/armor_damage.png" id="18_37gpy"]
 [ext_resource type="Texture2D" uid="uid://csh76vc2sxyu1" path="res://UI/armor_damage_active.png" id="19_22yqn"]
 [ext_resource type="Texture2D" uid="uid://4w14rqlv4ct2" path="res://UI/armor_damage_clicked.png" id="20_awenf"]
+[ext_resource type="Texture2D" uid="uid://cjnahan7yi5na" path="res://Sprites/ammo_reload.png" id="22_a86do"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vph2h"]
 resource_local_to_scene = true
@@ -160,6 +162,94 @@ texture = ExtResource("20_awenf")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j1qn2"]
 
+[sub_resource type="Animation" id="Animation_x5uk2"]
+resource_name = "Reload"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Reload:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Reload:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reload_done"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UnitSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_reload"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_rafu5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Reload:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Reload:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hlrrm"]
+_data = {
+"RESET": SubResource("Animation_rafu5"),
+"Reload": SubResource("Animation_x5uk2")
+}
+
 [node name="Unit" type="CharacterBody2D"]
 script = ExtResource("1_u70hk")
 
@@ -183,7 +273,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-active = false
 libraries = {
 "": SubResource("AnimationLibrary_cyab2"),
 "Jepang_animation": SubResource("AnimationLibrary_0eh6d"),
@@ -197,7 +286,7 @@ parameters/conditions/is_hurt = false
 parameters/conditions/is_idle = true
 parameters/conditions/is_walking = false
 parameters/Attack/blend_position = Vector2(0, 1)
-parameters/Idle/blend_position = Vector2(1, 1)
+parameters/Idle/blend_position = Vector2(-1.00091, 1.06878)
 parameters/Walk/blend_position = Vector2(0.641262, 0.76652)
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
@@ -262,6 +351,11 @@ bus = &"SFX"
 
 [node name="Bamboo" type="AudioStreamPlayer2D" parent="UnitSound"]
 stream = ExtResource("12_3lds6")
+bus = &"SFX"
+
+[node name="Reload" type="AudioStreamPlayer2D" parent="UnitSound"]
+stream = ExtResource("16_47b77")
+bus = &"SFX"
 
 [node name="AttackIcons" type="HBoxContainer" parent="."]
 visible = false
@@ -289,6 +383,17 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_ra7uc")
 theme_override_styles/hover = SubResource("StyleBoxTexture_arl0p")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7tvgv")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_j1qn2")
+
+[node name="Reload" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -231)
+texture = ExtResource("22_a86do")
+hframes = 9
+
+[node name="ActionAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hlrrm")
+}
 
 [connection signal="data_configured" from="." to="FiniteStateMachine" method="initiate_fsm"]
 [connection signal="pressed" from="AttackIcons/Button" to="." method="_on_taking_hp_damage"]

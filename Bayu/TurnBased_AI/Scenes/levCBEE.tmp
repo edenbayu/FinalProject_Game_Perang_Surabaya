@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://patekpdib63w"]
+[gd_scene load_steps=96 format=3 uid="uid://patekpdib63w"]
 
 [ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="1_54tt6"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_hgg8q"]
@@ -12,7 +12,6 @@
 [ext_resource type="Shader" path="res://Resources/outline.gdshader" id="4_eoqsm"]
 [ext_resource type="Script" path="res://Scenes/Deck.gd" id="4_n4ffv"]
 [ext_resource type="Texture2D" uid="uid://t6fvglavpu4g" path="res://UI/EndTurn.png" id="4_qw0um"]
-[ext_resource type="Texture2D" uid="uid://bs0k6mt3ogla7" path="res://UI/StatusUI_Tomo.png" id="4_sypab"]
 [ext_resource type="Texture2D" uid="uid://dvju22472hmbe" path="res://UI/empty_hp_status.png" id="5_0fg6s"]
 [ext_resource type="Texture2D" uid="uid://2n71oiuyrq6f" path="res://UI/StatusUI_soerjo.png" id="5_yayhc"]
 [ext_resource type="Texture2D" uid="uid://cso0au1maoatp" path="res://UI/half_health_bar_filledt.png" id="6_0e031"]
@@ -406,7 +405,7 @@ animations = [{
 process_mode = 1
 texture_filter = 1
 script = ExtResource("1_hgg8q")
-statusUItexture = Array[Texture2D]([ExtResource("5_yayhc"), ExtResource("3_7qpu3"), ExtResource("4_sypab")])
+statusUItexture = Array[Texture2D]([ExtResource("5_yayhc"), ExtResource("3_7qpu3")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -692,7 +691,6 @@ texture = ExtResource("19_nxtcr")
 
 [node name="GameBoard" type="Node2D" parent="."]
 script = ExtResource("1_54tt6")
-orientation = "portrait"
 grid = ExtResource("2_0r2mq")
 
 [node name="UnitPath" type="TileMap" parent="GameBoard"]
@@ -703,7 +701,6 @@ layer_0/y_sort_enabled = true
 layer_0/tile_data = PackedInt32Array(-262145, 0, 0)
 script = ExtResource("2_w1kn0")
 grid = ExtResource("2_0r2mq")
-solid_cells = Array[Vector2]([Vector2(8, 3), Vector2(8, 4), Vector2(8, 5), Vector2(8, -1), Vector2(8, -2), Vector2(8, -3), Vector2(5, 2), Vector2(5, 1), Vector2(5, 0)])
 
 [node name="Cursor" parent="GameBoard" instance=ExtResource("8_4uheh")]
 z_index = 1
@@ -727,14 +724,6 @@ _animation_state_machine = ExtResource("12_e2jf1")
 hframe = 12
 vframe = 8
 
-[node name="Tomo2" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
-position = Vector2(-318, 227)
-player_id = 3
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
-hframe = 12
-vframe = 8
-
 [node name="Enemy" type="Node2D" parent="GameBoard"]
 script = ExtResource("12_bpvfk")
 
@@ -745,7 +734,6 @@ _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
 hframe = 12
 vframe = 8
-last_direction = Vector2(-1, -1)
 
 [node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit"]
 script = ExtResource("27_yvtgi")
@@ -919,7 +907,6 @@ _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
 hframe = 12
 vframe = 8
-last_direction = Vector2(-1, -1)
 
 [node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit2"]
 script = ExtResource("27_yvtgi")
@@ -1090,8 +1077,6 @@ target_position = Vector2(1, 72)
 
 [node name="TableChair" type="StaticBody2D" parent="GameBoard/Props"]
 position = Vector2(-640, 406)
-script = ExtResource("35_dg0a8")
-cell = Vector2i(2, 12)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair"]
 texture = ExtResource("33_240rj")
@@ -1101,8 +1086,6 @@ shape = SubResource("RectangleShape2D_t1t3p")
 
 [node name="TableChair2" type="StaticBody2D" parent="GameBoard/Props"]
 position = Vector2(-320, 566)
-script = ExtResource("35_dg0a8")
-cell = Vector2i(7, 12)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair2"]
 texture = ExtResource("33_240rj")
@@ -1112,8 +1095,6 @@ shape = SubResource("RectangleShape2D_t1t3p")
 
 [node name="TableChair3" type="StaticBody2D" parent="GameBoard/Props"]
 position = Vector2(0, 726)
-script = ExtResource("35_dg0a8")
-cell = Vector2i(12, 12)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair3"]
 texture = ExtResource("33_240rj")

@@ -23,7 +23,7 @@ func _on_body_entered(body) -> void:
 	var show = body as Unit
 	if not show:
 		return
-	if show.unit_role == "enemy":
+	if show.unit_role == "enemy" or show.unit_role == "ally":
 		hp_bar.value = show.curr_health
 		hp_bar.max_value = show.max_health
 		armor_bar.value = show.curr_armor
@@ -37,6 +37,6 @@ func _on_body_exited(body):
 	var show = body as Unit
 	if not show:
 		return
-	if show.unit_role == "enemy":
+	if show.unit_role == "enemy" or show.unit_role == "ally":
 		unit_status.visible = false
 		show.is_hovered = false

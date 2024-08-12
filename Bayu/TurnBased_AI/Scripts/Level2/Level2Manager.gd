@@ -1,5 +1,5 @@
 extends Node2D
-class_name LevelManager
+class_name Level2Manager
 
 #Singleton variable for active units
 static var active_unit: Unit
@@ -256,10 +256,10 @@ func _get_card_informations() -> void:
 ##Camera configurations
 func _on_zoom_in_pressed() -> void:
 	#get_tree().paused = false
-	tactics_camera.zoom_in()
+	#tactics_camera.zoom_in()
 	#await get_tree().create_timer(0.5).timeout
 	#get_tree().paused = true
-	#$GameOver.show()
+	$GameOver.show()
 
 func _on_exit_button_pressed() -> void:
 	#get_tree().paused = true

@@ -8,6 +8,7 @@ signal damage_enter
 signal enter_attack
 signal unit_die(unit)
 signal attack_chosen(damage_type)
+signal reloaded
 
 @export var player_id := 1
 
@@ -16,6 +17,7 @@ signal attack_chosen(damage_type)
 @onready var path = $"../../UnitPath"
 @export var _animation_state_machine: AnimationNodeStateMachine
 @onready var _animation : AnimationPlayer = $AnimationPlayer
+@onready var actions_anim = $ActionAnimations
 @onready var _animationTree := $AnimationTree
 @onready var fsm : FiniteStateMachine = $FiniteStateMachine
 @onready var idle_state : IdleState = $FiniteStateMachine/IdleState
@@ -42,7 +44,7 @@ signal attack_chosen(damage_type)
 
 var database : SQLite
 var attack_range : int
-var last_direction := Vector2.ZERO
+@export var last_direction := Vector2.ZERO
 
 var _is_idle := false
 #Flag that indicates wheter card has been used or not
@@ -133,7 +135,7 @@ var is_selected := false:
 			hp_status.visible = true
 			armor_status.visible = true
 		else:
-			_sprite.modulate = Color(0.65, 0.65, 0.65)
+			_sprite.modulate = Color(0.5, 0.5, 0.5)
 			_sprite.material["shader_parameter/width"] = 0.0
 			hp_status.visible = false
 			armor_status.visible = false
@@ -143,7 +145,6 @@ var is_hovered := false:
 		is_hovered = value
 		if is_hovered:
 			_sprite.material["shader_parameter/width"] = 3.0
-			_sprite.material["shader_parameter/color"] = Color8(224, 79, 83)
 			_sprite.modulate = Color(1, 1, 1)
 			hp_status.visible = true
 			armor_status.visible = true
@@ -193,7 +194,10 @@ func _configure() -> void:
 		inactive_icon = inactive_icon_data
 		skin = texture
 		unit_role = data.role
-	#emit_signal("data_configured")
+	if unit_role == "enemy":
+		_sprite.material["shader_parameter/color"] = Color8(224, 79, 83)
+	else:
+		_sprite.material["shader_parameter/color"] = Color8(255, 255, 255)
 
 func _ready():
 	is_selected = false
@@ -234,6 +238,10 @@ func on_walk_finished():
 
 func on_attack_finished() -> void:
 	modular_done = true
+
+func reload_done() -> void:
+	innate_done = true
+	reloaded.emit()
 
 func on_damage_entered():
 	emit_signal("damage_enter")

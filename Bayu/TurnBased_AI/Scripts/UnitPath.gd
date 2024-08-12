@@ -4,9 +4,10 @@ extends TileMap
 @export var grid: Grid
 var current_path := PackedVector2Array()
 var _pathfinder: Pathfinder
+@export var solid_cells: Array[Vector2]
 
 func initialize(walkable_cells: Array) -> void:
-	_pathfinder = Pathfinder.new(grid, walkable_cells)
+	_pathfinder = Pathfinder.new(grid, walkable_cells, solid_cells)
 
 func draw(cells: Array) -> void:
 	clear()
