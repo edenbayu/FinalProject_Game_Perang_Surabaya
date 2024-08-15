@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://patekpdib63w"]
+[gd_scene load_steps=97 format=3 uid="uid://patekpdib63w"]
 
 [ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="1_54tt6"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_hgg8q"]
@@ -32,11 +32,9 @@
 [ext_resource type="Texture2D" uid="uid://d333a8tuighwt" path="res://UI/armor_bar_empty.png" id="14_ud0ee"]
 [ext_resource type="Texture2D" uid="uid://sqoccmhkk5ea" path="res://Sprites/lvl1.png" id="19_nxtcr"]
 [ext_resource type="Script" path="res://addons/utility_ai/agent/agent.gd" id="27_yvtgi"]
-[ext_resource type="Script" path="res://Scripts/RangedUnit.gd" id="28_djlxy"]
 [ext_resource type="Script" path="res://addons/utility_ai/actions/action.gd" id="28_lvhxf"]
 [ext_resource type="Script" path="res://addons/utility_ai/considerations/aggregation.gd" id="29_6jobp"]
 [ext_resource type="Script" path="res://addons/utility_ai/considerations/consideration_from_node.gd" id="29_w7j6f"]
-[ext_resource type="Script" path="res://Scripts/MeleeUnit.gd" id="30_85501"]
 [ext_resource type="Texture2D" uid="uid://v5elhraurb2y" path="res://Sprites/static_table.png" id="33_240rj"]
 [ext_resource type="Script" path="res://Scenes/CursorSelection.gd" id="35_84v7m"]
 [ext_resource type="Script" path="res://Scenes/Property.gd" id="35_dg0a8"]
@@ -437,32 +435,12 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2"]
+visible = false
 material = SubResource("ShaderMaterial_furj2")
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 8
 texture = ExtResource("4_8igjc")
-
-[node name="Damage" type="Label" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2/TextureRect"]
-layout_mode = 0
-offset_left = 175.0
-offset_top = 18.0
-offset_right = 223.0
-offset_bottom = 80.0
-theme_override_fonts/font = ExtResource("41_r0bv2")
-theme_override_font_sizes/font_size = 60
-text = "3"
-
-[node name="Agility" type="Label" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2/TextureRect"]
-layout_mode = 0
-offset_left = 108.0
-offset_top = 282.0
-offset_right = 148.0
-offset_bottom = 332.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("11_jjinn")
-theme_override_font_sizes/font_size = 40
-text = "3"
 
 [node name="HP_Bar" type="ProgressBar" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2/TextureRect"]
 custom_minimum_size = Vector2(128, 26)
@@ -473,9 +451,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -64.0
-offset_top = -38.0
+offset_top = 45.0
 offset_right = 64.0
-offset_bottom = -12.0
+offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxTexture_ncjxh")
@@ -505,9 +483,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(128, 26)
 layout_mode = 0
 offset_left = 61.0
-offset_top = 222.0
+offset_top = 271.0
 offset_right = 189.0
-offset_bottom = 249.0
+offset_bottom = 298.0
 theme_override_styles/background = SubResource("StyleBoxTexture_cyrrq")
 theme_override_styles/fill = SubResource("StyleBoxTexture_t2h2j")
 step = 1.0
@@ -714,6 +692,7 @@ texture = ExtResource("19_nxtcr")
 
 [node name="GameBoard" type="Node2D" parent="."]
 script = ExtResource("1_54tt6")
+property_cells = null
 orientation = "portrait"
 grid = ExtResource("2_0r2mq")
 
@@ -736,33 +715,37 @@ position = Vector2(400, 33)
 [node name="Soerjo" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
 use_parent_material = true
 position = Vector2(-259, 130)
-script = ExtResource("28_djlxy")
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
+hframe = 12
+vframe = 8
 
 [node name="Tomo" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
 position = Vector2(-60, 100)
-script = ExtResource("30_85501")
-player_id = 2
+player_id = 3
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
+hframe = 12
+vframe = 8
 
 [node name="Tomo2" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
 position = Vector2(-318, 227)
-script = ExtResource("30_85501")
-player_id = 2
+player_id = 3
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
+hframe = 12
+vframe = 8
 
 [node name="Enemy" type="Node2D" parent="GameBoard"]
 script = ExtResource("12_bpvfk")
 
 [node name="Unit" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
 position = Vector2(579, 484)
-script = ExtResource("28_djlxy")
-player_id = 4
+player_id = 6
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
+hframe = 12
+vframe = 8
 last_direction = Vector2(-1, -1)
 
 [node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit"]
@@ -932,10 +915,11 @@ target_position = Vector2(1, 72)
 
 [node name="Unit2" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
 position = Vector2(193, 672)
-script = ExtResource("28_djlxy")
-player_id = 4
+player_id = 6
 _animation_resource = ExtResource("11_601eb")
 _animation_state_machine = ExtResource("12_e2jf1")
+hframe = 12
+vframe = 8
 last_direction = Vector2(-1, -1)
 
 [node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit2"]
@@ -1296,7 +1280,6 @@ text = "SOERJO"
 fit_content = true
 
 [node name="Pause" type="CanvasLayer" parent="."]
-process_mode = 2
 visible = false
 
 [node name="Control" type="Control" parent="Pause"]
@@ -1325,7 +1308,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" type="Button" parent="GameOver/Winning/Panel"]
-process_mode = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

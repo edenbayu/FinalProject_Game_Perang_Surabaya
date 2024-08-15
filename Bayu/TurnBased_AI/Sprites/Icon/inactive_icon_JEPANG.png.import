@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2gq3saxhs33h"
-path="res://.godot/imported/tomo_inactive_icon.png-7e0092ee98c7c453755453eb7b5a90a5.ctex"
+uid="uid://di55aualvyqij"
+path="res://.godot/imported/inactive_icon_JEPANG.png-5019941a57f58270d8d94d214dc52742.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/tomo_inactive_icon.png"
-dest_files=["res://.godot/imported/tomo_inactive_icon.png-7e0092ee98c7c453755453eb7b5a90a5.ctex"]
+source_file="res://Sprites/Icon/inactive_icon_JEPANG.png"
+dest_files=["res://.godot/imported/inactive_icon_JEPANG.png-5019941a57f58270d8d94d214dc52742.ctex"]
 
 [params]
 

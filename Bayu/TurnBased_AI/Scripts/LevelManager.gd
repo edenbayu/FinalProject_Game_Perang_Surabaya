@@ -35,7 +35,6 @@ var wait_time_test := 1.5
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_reinitialize()
-	#_get_card_informations()
 	
 	#Change this code later into a more proper way
 	turn_based.size.x += (len(ui_container.get_children()) - 1) * ui_container.size.x
@@ -120,14 +119,16 @@ func _reinitialize_icon() -> void:
 		child.queue_free()
 
 func _sort_turn(a: Unit, b: Unit) -> bool:
-	return a.move_speed > b.move_speed
+	return a.agility > b.agility
 
 # Signal handler for ally turn started
 func _on_ally_turn_started(unit: Unit) -> void:
 	deck.clear_hands()
 	active_unit = unit
-	active_unit.innate_card = true
 	active_unit.modular_card = true
+	active_unit.innate_card = true
+	active_unit.innate_done = false
+	active_unit.modular_done = false
 	active_unit.is_selected = true
 	_get_card_informations()
 	print(active_unit.nama)
@@ -135,6 +136,8 @@ func _on_ally_turn_started(unit: Unit) -> void:
 	player_ui.visible = true
 	deck.reset_card()
 	deck.show_card()
+	if active_unit.is_empty_ammo:
+		deck.disable_modular_card()
 	status_ui.reset_card_status()
 	await status_ui.status_bar_has_exit
 	status_ui.transition_enter()
@@ -182,8 +185,7 @@ func execute_matched_actions(action: String, target: Unit) -> void:
 			var damage_type = Battle.random_damage_type(target)
 			Battle.do_shoot(damage_type)
 			await active_unit.attack_state.attack_finished
-			target.attack_options.hide()
-			active_unit.modular_done = true
+			active_unit.attack_options.hide()
 		"rest":
 			await gameboard.rest(active_unit)
 
@@ -238,28 +240,17 @@ func _active_icon() -> void:
 		active_icon.texture = active_unit.icon
 
 func _get_card_informations() -> void:
-	#1. Open database connection
-	database = SQLite.new()
-	database.path = "res://database.db"
-	database.open_db()
-	
-	#2. query the card datas
-	database.query("select card.id_card, card_name, texture, back_texture, description, card_ability, card_type 
-					from unit_data
-					join card on unit_data.id_card = card.id_card
-					where unit_data.nama = " + "'" + str(active_unit.nama).to_lower() + "'") 
-	
-	#3. instantiate card based on query result
-	deck.spawn_new_card(database.query_result)
+	var card_data = GameData.load_card_data(active_unit.player_id)
+	deck.spawn_new_card(card_data)
 	deck.match_card_functionalities()
 
 ##Camera configurations
 func _on_zoom_in_pressed() -> void:
 	#get_tree().paused = false
-	tactics_camera.zoom_in()
+	#tactics_camera.zoom_in()
 	#await get_tree().create_timer(0.5).timeout
-	#get_tree().paused = true
-	#$GameOver.show()
+	get_tree().paused = true
+	$GameOver.show()
 
 func _on_exit_button_pressed() -> void:
 	#get_tree().paused = true
@@ -274,6 +265,8 @@ func _on_interactables_enter_gameplay():
 	$CanvasLayer.visible = true
 	status_ui.transition_enter()
 	_get_card_informations()
+	if active_unit.is_empty_ammo:
+		deck.disable_modular_card()
 	$GameBoard/UnitPath.visible = true
 	
 func on_unit_die(unit) -> void:

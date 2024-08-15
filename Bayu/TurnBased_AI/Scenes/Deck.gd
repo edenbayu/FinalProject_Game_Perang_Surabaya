@@ -15,12 +15,7 @@ func _ready():
 			continue
 		kartu.card_chose.connect(on_card_chosen)
 
-func initialize_card() -> void:
-	database = SQLite.new()
-	database.path = "res://data.db"
-	database.open_db()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Called every frame. 'delta' is the elapsed time since the previous frame.na
 func _process(delta):
 	pass
 
@@ -42,19 +37,12 @@ func spawn_new_card(result):
 		var instance = scene.instantiate()
 		
 		#Konfigurasi attrribut kartu sesuai dengan hasil query
-		var card_image = Image.new()
-		card_image.load_png_from_buffer(i.texture)
-		var texture = ImageTexture.create_from_image(card_image)
-		instance.card_texture = texture
-		var back_card_image = Image.new()
-		back_card_image.load_png_from_buffer(i.back_texture)
-		var back_texture = ImageTexture.create_from_image(back_card_image)
-		instance.back_texture = back_texture
+		instance.card_texture = load(i.texture)
+		instance.back_texture = load(i.back_texture)
 		instance.card_description = i.description
 		instance.card_type = i.card_ability
 		instance.card_attribute = i.card_type
 		self.add_child(instance)
-	#match_card_functionalities()
 
 func clear_hands():
 	for card in self.get_children():
@@ -106,6 +94,14 @@ func disable_modular_card() -> void:
 			card._back_texture.material["shader_parameter/y_rot"] = 0
 			card._back_texture.use_parent_material = true
 			card._back_texture.modulate = Color(0.50, 0.5, 0.5)
+
+func enable_modular_card() -> void:
+	for card in self.get_children():
+		if card.card_attribute == "modular":
+			card.disabled = false
+			card._back_texture.use_parent_material = false
+			card._back_texture.material["shader_parameter/y_rot"] = 90
+			card._back_texture.modulate = Color(1, 1, 1)
 
 func reset_card() -> void:
 	for card in self.get_children():

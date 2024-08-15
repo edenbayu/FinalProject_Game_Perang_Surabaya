@@ -13,6 +13,8 @@ script = ExtResource("1_d61jt")
 
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
 zoom = Vector2(0.667, 0.667)
+limit_left = -2000
+limit_top = -2000
 limit_right = 2000
 limit_bottom = 2000
 

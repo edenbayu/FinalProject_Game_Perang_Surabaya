@@ -6,6 +6,8 @@ extends Node2D
 @onready var walk = $Walk
 @onready var bamboo = $Bamboo
 @onready var reload = $Reload
+@onready var hurt_2 = $Hurt2
+@onready var hurt_3 = $Hurt3
 
 func play_shoot() -> void:
 	var parent = get_parent() as Unit
@@ -17,7 +19,14 @@ func play_shoot() -> void:
 		shoot.play()
 
 func play_hurt() -> void:
-	hurt.play()
+	var random = randi() % 3
+	match random:
+		0:
+			hurt.play()
+		1:
+			hurt_2.play()
+		2:
+			hurt_3.play()
 
 func play_walk() -> void:
 	walk.playing = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://20i4en7e2fm7"]
+[gd_scene load_steps=48 format=3 uid="uid://20i4en7e2fm7"]
 
 [ext_resource type="Script" path="res://Scripts/Unit.gd" id="1_u70hk"]
 [ext_resource type="Texture2D" uid="uid://c766m3iwx0tik" path="res://Sprites/Suryo.png" id="2_4l34f"]
@@ -19,7 +19,9 @@
 [ext_resource type="AudioStream" uid="uid://bhm0lrfqh7vhc" path="res://audio/relod.mp3" id="16_47b77"]
 [ext_resource type="Texture2D" uid="uid://b2kk8dspv25cm" path="res://UI/hp_damage_active.png" id="16_gnftb"]
 [ext_resource type="Texture2D" uid="uid://b3y66i4wviyx3" path="res://UI/hp_damage_clicked.png" id="17_fyhlj"]
+[ext_resource type="AudioStream" uid="uid://miprvy35d1hp" path="res://audio/male_hurt2.mp3" id="17_vjwfa"]
 [ext_resource type="Texture2D" uid="uid://bexcv3r84cy2v" path="res://UI/armor_damage.png" id="18_37gpy"]
+[ext_resource type="AudioStream" uid="uid://d4lydelnriesk" path="res://audio/male_hurt3.mp3" id="18_ged3e"]
 [ext_resource type="Texture2D" uid="uid://csh76vc2sxyu1" path="res://UI/armor_damage_active.png" id="19_22yqn"]
 [ext_resource type="Texture2D" uid="uid://4w14rqlv4ct2" path="res://UI/armor_damage_clicked.png" id="20_awenf"]
 [ext_resource type="Texture2D" uid="uid://cjnahan7yi5na" path="res://Sprites/ammo_reload.png" id="22_a86do"]
@@ -162,6 +164,33 @@ texture = ExtResource("20_awenf")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j1qn2"]
 
+[sub_resource type="Animation" id="Animation_rafu5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Reload:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Reload:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_x5uk2"]
 resource_name = "Reload"
 tracks/0/type = "value"
@@ -217,33 +246,6 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_rafu5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Reload:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Reload:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hlrrm"]
 _data = {
 "RESET": SubResource("Animation_rafu5"),
@@ -258,7 +260,7 @@ material = SubResource("ShaderMaterial_vph2h")
 position = Vector2(2, -40)
 texture = ExtResource("2_4l34f")
 hframes = 12
-vframes = 8
+vframes = 12
 frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -273,6 +275,7 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 libraries = {
 "": SubResource("AnimationLibrary_cyab2"),
 "Jepang_animation": SubResource("AnimationLibrary_0eh6d"),
@@ -287,7 +290,7 @@ parameters/conditions/is_idle = true
 parameters/conditions/is_walking = false
 parameters/Attack/blend_position = Vector2(0, 1)
 parameters/Idle/blend_position = Vector2(-1.00091, 1.06878)
-parameters/Walk/blend_position = Vector2(0.641262, 0.76652)
+parameters/Walk/blend_position = Vector2(-0.997275, 1.07143)
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("5_w7fm6")
@@ -355,6 +358,14 @@ bus = &"SFX"
 
 [node name="Reload" type="AudioStreamPlayer2D" parent="UnitSound"]
 stream = ExtResource("16_47b77")
+bus = &"SFX"
+
+[node name="Hurt2" type="AudioStreamPlayer2D" parent="UnitSound"]
+stream = ExtResource("17_vjwfa")
+bus = &"SFX"
+
+[node name="Hurt3" type="AudioStreamPlayer2D" parent="UnitSound"]
+stream = ExtResource("18_ged3e")
 bus = &"SFX"
 
 [node name="AttackIcons" type="HBoxContainer" parent="."]

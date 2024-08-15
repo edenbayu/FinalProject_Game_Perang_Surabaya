@@ -107,6 +107,7 @@ func _check_hoverable_tiles(cell: Vector2) -> void:
 	#_is_clickable = cursor.visible 
 
 func _on_Cursor_accept_pressed(cell: Vector2) -> void:
+	print("HGAHAHA", selected_type)
 	if selected_ability == null:
 		return
 	match selected_ability:
@@ -117,10 +118,11 @@ func _on_Cursor_accept_pressed(cell: Vector2) -> void:
 			_deselect_active_unit()
 			Battle.reload(LevelManager.active_unit)
 			await LevelManager.active_unit.reloaded
+			if not LevelManager.active_unit.modular_done:
+				deck.enable_modular_card()
 		"Attack":
 			choose_attack_action(LevelManager.active_unit, target_attack)
 			await LevelManager.active_unit.attack_state.attack_finished
-			#attack(LevelManager.active_unit, target_attack)
 	match selected_type:
 		'innate':
 			status_ui.burn_innate_card()
@@ -150,7 +152,7 @@ func choose_attack_action(active_unit: Unit, target: Unit) -> void:
 	Battle.target_attack = target
 	_deselect_active_unit()
 	cursor.is_visible = false
-	target.attack_options.show()
+	active_unit.attack_options.show()
 
 func on_card_clicked(card_type, card_ability) -> void:
 	selected_ability = card_ability
@@ -334,12 +336,15 @@ func get_weakest_unit() -> Unit:
 	return weakest
 
 func randomize_target_unit() -> Unit:
-	var children = player.get_children()
-	if children.size() == 0:
+	var valid_units = []
+	
+	for child in player.get_children():
+		if child is Unit and child.curr_health > 0:
+			valid_units.append(child)
+	if valid_units.size() == 0:
 		return
-	var random_index = randi() % children.size()
-	var random: Unit = children[random_index] as Unit
-	return random
+	var random_index = randi() % valid_units.size()
+	return valid_units[random_index]
 
 func get_path_to_weakest_unit() -> PackedVector2Array:
 	var weakest_unit = randomize_target_unit()
@@ -480,10 +485,10 @@ func approach(active_unit: Unit) -> void:
 	if active_unit == null:
 		return
 	var path1 = get_path_to_weakest_unit()
-	print(path1)
 	var path2 = get_walkable_cells(active_unit)
-	print(path2)
+	var path3 = get_attack_range_cells(active_unit)
 	var ai_walk_paths = array_intersection(path1, path2)
+	#print("intersection: ", ai_walk_paths, "destination:", ai_walk_paths.back())
 	if ai_walk_paths.is_empty():
 		return
 	var ai_final_target = ai_walk_paths.back()

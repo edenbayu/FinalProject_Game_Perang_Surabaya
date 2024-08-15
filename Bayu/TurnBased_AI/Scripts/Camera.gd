@@ -8,7 +8,7 @@ const ROT_SPEED = 10
 var tween : Tween
 var target = null
 var direction = Vector2.ZERO
-const speed := 300
+const speed := 600
 var moveable := false
 var zoomed_in := false
 
@@ -47,8 +47,8 @@ func _physics_process(delta):
 	else:
 		target = null
 	follow()
-	#if moveable:
-		#_move_cam()
+	if moveable:
+		_move_cam()
 
 func _move_cam() -> void:
 	direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()

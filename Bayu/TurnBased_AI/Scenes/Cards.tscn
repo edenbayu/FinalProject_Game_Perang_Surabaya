@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://buy1bcvgkg2p4"]
+[gd_scene load_steps=13 format=3 uid="uid://buy1bcvgkg2p4"]
 
 [ext_resource type="Script" path="res://Scripts/Card.gd" id="1_1aaj4"]
 [ext_resource type="Shader" path="res://Resources/fake3D.gdshader" id="2_2epsc"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c25jxjr2sp87t" path="res://UI/CardDescription.png" id="4_lcvjh"]
 [ext_resource type="Texture2D" uid="uid://b2iv24q76rkvt" path="res://UI/Cards/back.png" id="4_nnsi5"]
 [ext_resource type="FontFile" uid="uid://ckcjaglh8r12d" path="res://UI/DePixelBreit.ttf" id="5_yvg24"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6wr0n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5e6xj"]
 resource_local_to_scene = true
@@ -96,6 +98,8 @@ offset_right = -1696.0
 offset_bottom = -800.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_force_pass_scroll_events = false
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6wr0n")
 flat = true
 script = ExtResource("1_1aaj4")
 

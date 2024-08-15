@@ -697,6 +697,7 @@ orientation = "landscape"
 grid = ExtResource("23_pkg1r")
 
 [node name="UnitPath" type="TileMap" parent="GameBoard"]
+visible = false
 y_sort_enabled = true
 tile_set = SubResource("TileSet_5x5x1")
 format = 2
@@ -714,38 +715,30 @@ position = Vector2(400, 33)
 
 [node name="Soerjo" parent="GameBoard/Player" instance=ExtResource("27_w4smp")]
 use_parent_material = true
-position = Vector2(-133, 580)
+position = Vector2(638, 195)
 _animation_resource = ExtResource("28_sdajn")
 _animation_state_machine = ExtResource("29_jbyoq")
-hframe = 12
-vframe = 8
 last_direction = Vector2(1, -1)
 
 [node name="Tomo" parent="GameBoard/Player" instance=ExtResource("27_w4smp")]
 position = Vector2(-205, 489)
-player_id = 3
+player_id = 2
 _animation_resource = ExtResource("28_sdajn")
 _animation_state_machine = ExtResource("29_jbyoq")
-hframe = 12
-vframe = 8
 last_direction = Vector2(1, -1)
 
 [node name="Tomo2" parent="GameBoard/Player" instance=ExtResource("27_w4smp")]
 position = Vector2(-6, 580)
-player_id = 3
+player_id = 2
 _animation_resource = ExtResource("28_sdajn")
 _animation_state_machine = ExtResource("29_jbyoq")
-hframe = 12
-vframe = 8
 last_direction = Vector2(1, -1)
 
 [node name="Tomo3" parent="GameBoard/Player" instance=ExtResource("27_w4smp")]
 position = Vector2(122, 645)
-player_id = 3
+player_id = 2
 _animation_resource = ExtResource("28_sdajn")
 _animation_state_machine = ExtResource("29_jbyoq")
-hframe = 12
-vframe = 8
 last_direction = Vector2(1, -1)
 
 [node name="Enemy" type="Node2D" parent="GameBoard"]
@@ -753,11 +746,9 @@ script = ExtResource("30_g5c6a")
 
 [node name="Unit" parent="GameBoard/Enemy" instance=ExtResource("27_w4smp")]
 position = Vector2(961, 224)
-player_id = 6
+player_id = 4
 _animation_resource = ExtResource("28_sdajn")
 _animation_state_machine = ExtResource("29_jbyoq")
-hframe = 12
-vframe = 8
 last_direction = Vector2(-1, 1)
 
 [node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit"]
@@ -927,11 +918,9 @@ target_position = Vector2(1, 72)
 
 [node name="Unit2" parent="GameBoard/Enemy" instance=ExtResource("27_w4smp")]
 position = Vector2(386, -64)
-player_id = 6
+player_id = 4
 _animation_resource = ExtResource("28_sdajn")
 _animation_state_machine = ExtResource("29_jbyoq")
-hframe = 12
-vframe = 8
 last_direction = Vector2(-1, 1)
 
 [node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit2"]
@@ -1101,11 +1090,9 @@ target_position = Vector2(1, 72)
 
 [node name="Unit4" parent="GameBoard/Enemy" instance=ExtResource("27_w4smp")]
 position = Vector2(638, 0)
-player_id = 6
+player_id = 4
 _animation_resource = ExtResource("28_sdajn")
 _animation_state_machine = ExtResource("29_jbyoq")
-hframe = 12
-vframe = 8
 last_direction = Vector2(-1, 1)
 
 [node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit4"]
@@ -1275,11 +1262,9 @@ target_position = Vector2(1, 72)
 
 [node name="Unit5" parent="GameBoard/Enemy" instance=ExtResource("27_w4smp")]
 position = Vector2(838, 95)
-player_id = 6
+player_id = 4
 _animation_resource = ExtResource("28_sdajn")
 _animation_state_machine = ExtResource("29_jbyoq")
-hframe = 12
-vframe = 8
 last_direction = Vector2(-1, 1)
 
 [node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit5"]
@@ -1466,22 +1451,35 @@ rotation = 0.475294
 scale = Vector2(1.52103, 0.218512)
 shape = SubResource("CircleShape2D_54ujx")
 
+[node name="Area2D" type="Area2D" parent="GameBoard/Props/Willys1"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GameBoard/Props/Willys1/Area2D"]
+build_mode = 1
+polygon = PackedVector2Array(33, 45, 181, -46, -96, -187, -185, -142, -159, -66)
+
 [node name="Willys2" type="StaticBody2D" parent="GameBoard/Props"]
+modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(922, 336)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("36_5nhef")
 cell = Vector2i(13, -1)
 
-[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/Willys2"]
-position = Vector2(2, -44)
-texture = ExtResource("36_ip2bn")
+[node name="Area2D" type="Area2D" parent="GameBoard/Props/Willys2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GameBoard/Props/Willys2/Area2D"]
+build_mode = 1
+polygon = PackedVector2Array(33, 45, 181, -46, -96, -187, -185, -142, -159, -66)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/Willys2"]
 position = Vector2(3.8147e-06, -3.69549e-06)
 rotation = 0.475294
 scale = Vector2(1.52103, 0.218512)
 shape = SubResource("CircleShape2D_54ujx")
+
+[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/Willys2"]
+position = Vector2(2, -44)
+texture = ExtResource("36_ip2bn")
 
 [node name="TopGrasses" type="StaticBody2D" parent="GameBoard/Props"]
 position = Vector2(-130, 210)
@@ -1530,6 +1528,7 @@ script = ExtResource("38_unt22")
 shape = SubResource("RectangleShape2D_2175y")
 
 [node name="Interacts" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Interactables" type="Control" parent="Interacts"]
 layout_mode = 3
@@ -1695,6 +1694,10 @@ offset_bottom = 40.0
 [connection signal="pressed" from="CanvasLayer/UI/ZoomIn" to="." method="_on_zoom_in_pressed"]
 [connection signal="accept_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_accept_pressed"]
 [connection signal="moved" from="GameBoard/Cursor" to="GameBoard" method="_check_hoverable_tiles"]
+[connection signal="body_entered" from="GameBoard/Props/Willys1/Area2D" to="GameBoard/Props/Willys1" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="GameBoard/Props/Willys1/Area2D" to="GameBoard/Props/Willys1" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="GameBoard/Props/Willys2/Area2D" to="GameBoard/Props/Willys2" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="GameBoard/Props/Willys2/Area2D" to="GameBoard/Props/Willys2" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Cursor" to="GameBoard" method="set_target_attack"]
 [connection signal="body_entered" from="Cursor" to="Cursor" method="_on_body_entered"]

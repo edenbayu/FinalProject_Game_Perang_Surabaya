@@ -20,11 +20,19 @@ func random_damage_type(target: Unit) -> String:
 	
 ## Reload Code ##
 func reload(unit: Unit) -> void:
-	unit.ammo += 3
+	unit.ammo += unit.max_ammo
+	print(unit.ammo)
 	unit.actions_anim.play("Reload")
 ###
 
-#Attack Code ##
+## Melee Attack Code ##
+func do_melee(damage_type: String) -> void:
+	print("melee dmg")
+	dmg_type = damage_type
+	target_attack.agility -= 1
+	attack(active_unit, target_attack)
+
+## Ranged Attack Code ##
 func do_shoot(damage_type: String) -> void:
 	dmg_type = damage_type
 	active_unit.ammo -= 1

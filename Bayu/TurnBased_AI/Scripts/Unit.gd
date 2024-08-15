@@ -10,6 +10,7 @@ signal unit_die(unit)
 signal attack_chosen(damage_type)
 signal reloaded
 
+const move_speed = 250
 @export var player_id := 1
 
 @onready var _sprite = $Sprite2D
@@ -26,21 +27,23 @@ signal reloaded
 @onready var hp_status = $Status/HP
 @onready var armor_status = $Status/Armor
 @onready var attack_options = $AttackIcons
+@onready var hp_button = $AttackIcons/Button
+@onready var armor_button = $AttackIcons/Button2
 
-## Cuma untuk debugging sementara, nanti benerin njih ##
-@export var hframe: int:
-	set(value):
-		hframe = value
-		if not _sprite:
-			await ready
-		_sprite.hframes = value
-
-@export var vframe: int:
-	set(value):
-		vframe = value
-		if not _sprite:
-			await ready
-		_sprite.vframes = value
+### Cuma untuk debugging sementara, nanti benerin njih ##
+#@export var hframe: int:
+	#set(value):
+		#hframe = value
+		#if not _sprite:
+			#await ready
+		#_sprite.hframes = value
+#
+#@export var vframe: int:
+	#set(value):
+		#vframe = value
+		#if not _sprite:
+			#await ready
+		#_sprite.vframes = value
 
 var database : SQLite
 var attack_range : int
@@ -115,16 +118,16 @@ var inactive_icon: Texture2D:
 	set(value):
 		inactive_icon = value
 
-var ammo: int:
-	set(value):
-		ammo = value
-		if ammo <= 0:
-			is_empty_ammo = true
-		else:
-			is_empty_ammo = false
+#var ammo: int:
+	#set(value):
+		#ammo = value
+		#if ammo <= 0:
+			#is_empty_ammo = true
+		#else:
+			#is_empty_ammo = false
 
 var move_range :int
-var move_speed :int
+var agility : int
 
 var is_selected := false:
 	set(value):
@@ -165,39 +168,7 @@ var unit_role: String:
 		unit_role = value
 
 func _configure() -> void:
-	database = SQLite.new()
-	database.path = "res://data.db"
-	database.open_db()
-	database.query("select nama, health, armor, move_speed, move_range, damage, attack_range, icon, inactive_icon, skin, role from Player where player_id = "+ str(player_id))
-	for data in database.query_result:
-		pass
-		nama = data.nama
-		max_health = data.health
-		curr_health = max_health
-		max_armor = data.armor
-		curr_armor = max_armor
-		move_speed = data.move_speed
-		move_range = data.move_range
-		attack_range = data.attack_range
-		damage = data.damage
-		ammo = 3
-		var skin_image = Image.new()
-		skin_image.load_png_from_buffer(data.skin)
-		var texture = ImageTexture.create_from_image(skin_image)
-		var icon_image = Image.new()
-		icon_image.load_png_from_buffer(data.icon)
-		var icon_data = ImageTexture.create_from_image(icon_image)
-		var inactive_icon_image = Image.new()
-		inactive_icon_image.load_png_from_buffer(data.inactive_icon)
-		var inactive_icon_data = ImageTexture.create_from_image(inactive_icon_image)
-		icon = icon_data
-		inactive_icon = inactive_icon_data
-		skin = texture
-		unit_role = data.role
-	if unit_role == "enemy":
-		_sprite.material["shader_parameter/color"] = Color8(224, 79, 83)
-	else:
-		_sprite.material["shader_parameter/color"] = Color8(255, 255, 255)
+	pass
 
 func _ready():
 	is_selected = false
@@ -267,9 +238,7 @@ func death() -> void:
 	#queue_free()
 
 func _on_taking_hp_damage():
-	attack_options.hide()
-	Battle.do_shoot("hp_damage")
+	print("working just fine")
 
 func _attack_armor_pressed():
-	attack_options.hide()
-	Battle.do_shoot("armor_damage")
+	print("me either")
