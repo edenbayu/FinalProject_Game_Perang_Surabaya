@@ -1,8 +1,8 @@
-class_name Dialog2
+class_name Dialog3
 extends Control
 #READ JSON FILE
 @export_category("PATH TO JSON DIALOGUE")
-@export var json_path = "res://DialogSistem/DialogueSistem2.json"
+@export var json_path = "res://DialogSistem/DialogueSistem3.json"
 @export_category("PORTRAITS")
 @export var character_portraits : Array[Texture2D]
 @export var scene_background : Array[Texture2D]
@@ -41,7 +41,7 @@ func _ready():
 	start_dialogue(json_path)
 	sound = sound.instantiate()
 	add_child(sound)
-	sound.sound_level2()
+	sound.sound_level3()
  
 func _process(delta):
 	#print(is_faded_black)
@@ -138,8 +138,6 @@ func advance_dialogue():
 				check_for_potrait_kiri()
 				check_for_potrait_kanan()
 				check_for_color()
-			elif index >= dialogue.size():
-				get_tree().change_scene_to_file("res://Scenes/level_2.tscn")
 			#If we are at the last line of dialogue, the scene deletes itself and we end.
 			#else : 
 				#queue_free()
@@ -147,27 +145,37 @@ func advance_dialogue():
 func check_for_potrait_kiri():
 	match nama_portrait_kiri:
 		"SOERJO": portrait_kiri.texture = character_portraits[0]
-		"SOEHARTINI": portrait_kiri.texture = character_portraits[1]
-		"TKR 1" : portrait_kiri.texture = character_portraits [2]
-		"TKR 2" : portrait_kiri.texture = character_portraits [3]
+		"TKR 1": portrait_kiri.texture = character_portraits[1]
+		"TENTARA INDIA 1" : portrait_kiri.texture = character_portraits [2]
+		"TENTARA INGGRIS 1": portrait_kiri.texture = character_portraits [3]
 		"" : portrait_kiri.texture = character_portraits [4]
-		"TKR 3" : portrait_kiri.texture = character_portraits [5]
-		"MOESTOPO" : portrait_kiri.texture = character_portraits [6]
+		"SOEDIRMAN" : portrait_kiri.texture = character_portraits [5]
+		"PEMUDA 1" : portrait_kiri.texture = character_portraits [6]
 		"MALLABY" : portrait_kiri.texture = character_portraits [7]
-		"WARGA 1" : portrait_kiri.texture = character_portraits [8]
-		"WARGA 2" : portrait_kiri.texture = character_portraits [9]
+		"CAPT SHAW" : portrait_kiri.texture = character_portraits [8]
+		"BUNG TOMO" : portrait_kiri.texture = character_portraits [9]
+		"LING" : portrait_kiri.texture = character_portraits [10]
+		"MANSERGH" : portrait_kiri.texture = character_portraits [11]
+		"GUBERNUR SURYO" :portrait_kiri.texture = character_portraits [12]
+		"MANGOENDIPRODJO": portrait_kiri.texture = character_portraits [13]
+		"T.D. KUNDAN" : portrait_kiri.texture = character_portraits [14]
 func check_for_potrait_kanan():
 	match nama_portrait_kanan:
 		"SOERJO": portrait_kanan.texture = character_portraits[0]
-		"SOEHARTINI": portrait_kanan.texture = character_portraits[1]
-		"TKR 1" : portrait_kanan.texture = character_portraits [2]
-		"TKR 2" : portrait_kanan.texture = character_portraits [3]
+		"TKR 1": portrait_kanan.texture = character_portraits[1]
+		"TENTARA INDIA 1" : portrait_kanan.texture = character_portraits [2]
+		"TENTARA INGGRIS 1": portrait_kanan.texture = character_portraits [3]
 		"" : portrait_kanan.texture = character_portraits [4]
-		"TKR 3" : portrait_kanan.texture = character_portraits [5]
-		"MOESTOPO" : portrait_kanan.texture = character_portraits [6]
+		"SOEDIRMAN" : portrait_kanan.texture = character_portraits [5]
+		"PEMUDA 1" : portrait_kanan.texture = character_portraits [6]
 		"MALLABY" : portrait_kanan.texture = character_portraits [7]
-		"WARGA 1" : portrait_kanan.texture = character_portraits [8]
-		"WARGA 2" : portrait_kanan.texture = character_portraits [9]
+		"CAPT SHAW" : portrait_kanan.texture = character_portraits [8]
+		"BUNG TOMO" : portrait_kanan.texture = character_portraits [9]
+		"LING" : portrait_kanan.texture = character_portraits [10]
+		"MANSERGH" : portrait_kanan.texture = character_portraits [11]
+		"GUBERNUR SURYO" : portrait_kanan.texture = character_portraits[12]
+		"MANGOENDIPRODJO": portrait_kanan.texture = character_portraits [13]
+		"T.D. KUNDAN" : portrait_kanan.texture = character_portraits [14]
 
 #WE CHECK THE COLOR GIVEN IN OUR JSON, AND CHANGE THE TEXT BASED ON THE STRING PROVIDED
 func check_for_color():
@@ -213,17 +221,6 @@ func _setup_background():
 			background.texture = scene_background[2]
 		3: 	
 			background.texture = scene_background[3]
-
+			
 func _transition():
 	pass
-	#match id:
-		#10:
-			#is_faded_black = false
-			#animation_player.play("transition")
-			#show_transition_text()
-#func _transition1():
-	#match id:
-		#33:
-			#is_faded_black = false
-			#animation_player.play("transition")
-			#show_transition_text()

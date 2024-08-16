@@ -17,6 +17,7 @@ signal action_done
 @onready var deck : Deck = $"../CanvasLayer/UI/HBoxContainer/HBoxContainer/Hands"
 @onready var status_ui : StatusUI = $"../CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI"
 var audio = preload("res://Scenes/SoundManager.tscn")
+@export var level = 2
 
 var is_within_map: bool
 var _walkable_cells := []
@@ -38,7 +39,7 @@ var _is_clickable := false:
 func _ready() -> void:
 	audio = audio.instantiate()
 	add_child(audio)
-	audio.level1_bgm()
+	audio.level1_bgm(level)
 	_initiallize_unit_pos()
 	_reinitialize()
 	unitPath.clear_cells(grid)

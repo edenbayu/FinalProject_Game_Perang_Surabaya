@@ -81,6 +81,7 @@ func _entered_button_level_2():
 	
 func _hover_button_level_3():
 	sound_button.click_sound()
+	LoadManager.load_scene("res://DialogSistem/dialog_sistem_3.tscn")
 
 func _entered_button_level_3():
 	sound_button.button_sound()

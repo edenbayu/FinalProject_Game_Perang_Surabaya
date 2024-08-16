@@ -151,19 +151,12 @@ func _on_enemy_turn_started(unit: Unit) -> void:
 	_detect_ally_units()
 	active_unit.is_selected = true
 	player_ui.visible = false
-	#await _detect_ally_units()
 	await get_tree().create_timer(0.25).timeout
 	await run_action()
 	await _detect_ally_units()
 	await get_tree().create_timer(0.5).timeout
-	#print("innate ", active_unit.innate_done)
-	#print("modular ", active_unit.modular_done)
-	#print("ammo ", active_unit.is_empty_ammo)
-	#print("range ", active_unit.is_within_range)
 	await run_action()
 	_end_turn()
-	#timer.wait_time = wait_time_test
-	#timer.start()
 
 func run_action() -> void:
 	var target = set_attack_target(detected)

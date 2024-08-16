@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ps3xfj65fowm"
+path="res://.godot/imported/gameplay2 (mp3cut.net).mp3-dc5d4281c838eb66ff5e7cf4a00e81e5.mp3str"
+
+[deps]
+
+source_file="res://audio/gameplay2 (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/gameplay2 (mp3cut.net).mp3-dc5d4281c838eb66ff5e7cf4a00e81e5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

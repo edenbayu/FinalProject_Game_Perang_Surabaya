@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://t26k51jt5okr"
+path="res://.godot/imported/buat level 3 (mp3cut.net).mp3-dcbc3180f7aff7b463e9079d7d1bf149.mp3str"
+
+[deps]
+
+source_file="res://audio/buat level 3 (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/buat level 3 (mp3cut.net).mp3-dcbc3180f7aff7b463e9079d7d1bf149.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

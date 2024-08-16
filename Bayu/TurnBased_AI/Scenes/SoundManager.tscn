@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcbw2rovi2ge"]
+[gd_scene load_steps=11 format=3 uid="uid://bcbw2rovi2ge"]
 
 [ext_resource type="Script" path="res://Scenes/SoundManager.gd" id="1_pov6s"]
 [ext_resource type="AudioStream" uid="uid://bjufam7tlenqp" path="res://audio/mouse-click-117076 (mp3cut.net).mp3" id="2_sxfdy"]
@@ -7,6 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://dl85j5bq1s7ng" path="res://audio/nambu_shoot.mp3" id="5_rv6it"]
 [ext_resource type="AudioStream" uid="uid://6o3wte6kyaxf" path="res://audio/level1_gameplay_bgm.mp3" id="6_dqin5"]
 [ext_resource type="AudioStream" uid="uid://bixxke534njau" path="res://audio/young-man-being-hurt-95628.mp3" id="7_y7yjj"]
+[ext_resource type="AudioStream" uid="uid://bmnx0pdsdjts5" path="res://audio/audio level 2.mp3" id="8_jsr8j"]
+[ext_resource type="AudioStream" uid="uid://t26k51jt5okr" path="res://audio/buat level 3 (mp3cut.net).mp3" id="9_1oocw"]
+[ext_resource type="AudioStream" uid="uid://ps3xfj65fowm" path="res://audio/gameplay2 (mp3cut.net).mp3" id="10_y6dkl"]
 
 [node name="SoundManager" type="Node2D"]
 script = ExtResource("1_pov6s")
@@ -34,3 +37,12 @@ volume_db = 5.0
 [node name="hurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_y7yjj")
 pitch_scale = 0.81
+
+[node name="sound_dialog2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_jsr8j")
+
+[node name="sound_dialog3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_1oocw")
+
+[node name="lvl2_bgm" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_y6dkl")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bkaywuqjww1le"]
+[gd_scene load_steps=19 format=3 uid="uid://b5hfn7ojrm336"]
 
 [ext_resource type="Script" path="res://Scripts/level_menu.gd" id="1_uaim2"]
 [ext_resource type="Texture2D" uid="uid://by7rtcjcnso8f" path="res://aset aseprite/bg_kayu.png" id="1_w46a5"]
@@ -10,7 +10,7 @@
 [ext_resource type="FontFile" uid="uid://cnrpw086ndg2n" path="res://font/DePixelBreit.ttf" id="6_kiygy"]
 [ext_resource type="Texture2D" uid="uid://cgryg6mutfhok" path="res://aset aseprite/SELECT.png" id="7_p1508"]
 [ext_resource type="Texture2D" uid="uid://b0e0d5ckrmo4b" path="res://aset aseprite/SELECT1-export.png" id="8_61omh"]
-[ext_resource type="FontFile" uid="uid://be1488wacuvuy" path="res://I-pixel-u.ttf" id="9_bk4ee"]
+[ext_resource type="FontFile" uid="uid://wmlstjc1wp0p" path="res://I-pixel-u.ttf" id="9_bk4ee"]
 [ext_resource type="Texture2D" uid="uid://b8ldmbhsqvvhp" path="res://aset aseprite/foto2.png" id="11_to84r"]
 [ext_resource type="Texture2D" uid="uid://mmm4n40d6pks" path="res://aset aseprite/foto3.png" id="12_imt0k"]
 

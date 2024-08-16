@@ -173,9 +173,9 @@ grow_vertical = 2
 
 [node name="Char1" type="TextureRect" parent="Control"]
 layout_mode = 0
-offset_left = -707.0
+offset_left = -820.0
 offset_top = -303.0
-offset_right = -107.0
+offset_right = -220.0
 offset_bottom = 297.0
 texture = ExtResource("2_yamdx")
 

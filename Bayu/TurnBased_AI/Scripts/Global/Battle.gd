@@ -1,5 +1,6 @@
 extends Node2D
 
+signal attack_done
 var active_unit : Unit
 var target_attack : Unit
 var dmg_type : String

@@ -1,8 +1,7 @@
-[gd_scene load_steps=97 format=3 uid="uid://tx8xep5r6v38"]
+[gd_scene load_steps=98 format=3 uid="uid://tx8xep5r6v38"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_g8q1o"]
 [ext_resource type="Texture2D" uid="uid://2n71oiuyrq6f" path="res://UI/StatusUI_soerjo.png" id="2_g4i3q"]
-[ext_resource type="Texture2D" uid="uid://cksudcxp4vmyu" path="res://UI/StatusUI_Ling.png" id="3_pp0v4"]
 [ext_resource type="Texture2D" uid="uid://bs0k6mt3ogla7" path="res://UI/StatusUI_Tomo.png" id="4_6y356"]
 [ext_resource type="Shader" path="res://Resources/outline.gdshader" id="5_36esu"]
 [ext_resource type="Texture2D" uid="uid://bs7kqfql1ysto" path="res://Sprites/enemy_status_card.png" id="6_y0nbv"]
@@ -29,6 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://20i4en7e2fm7" path="res://Scenes/Unit.tscn" id="27_w4smp"]
 [ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="28_sdajn"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="29_jbyoq"]
+[ext_resource type="Script" path="res://Scripts/RangedUnit.gd" id="29_w7di6"]
+[ext_resource type="Script" path="res://Scripts/MeleeUnit.gd" id="30_fq53n"]
 [ext_resource type="Script" path="res://Scenes/EnemyController.gd" id="30_g5c6a"]
 [ext_resource type="Script" path="res://addons/utility_ai/agent/agent.gd" id="31_t2rdm"]
 [ext_resource type="Script" path="res://addons/utility_ai/actions/action.gd" id="32_20iat"]
@@ -45,7 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://o8d6hmqppsju" path="res://DialogSistem/aset aseprite/TextBox.png" id="42_bk2ym"]
 [ext_resource type="FontFile" uid="uid://cnrpw086ndg2n" path="res://font/DePixelBreit.ttf" id="43_odlnh"]
 [ext_resource type="FontFile" uid="uid://c583mm1xbwni5" path="res://font/I-pixel-u.ttf" id="44_oo024"]
-[ext_resource type="Script" path="res://Scenes/WinningButtonLevel1.gd" id="45_lra5v"]
+[ext_resource type="Script" path="res://Scenes/WinningTwoButton.gd" id="47_6yj7m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_furj2"]
 shader = ExtResource("5_36esu")
@@ -405,11 +406,10 @@ animations = [{
 process_mode = 1
 texture_filter = 1
 script = ExtResource("1_g8q1o")
-statusUItexture = Array[Texture2D]([ExtResource("2_g4i3q"), ExtResource("3_pp0v4"), ExtResource("4_6y356")])
+statusUItexture = Array[Texture2D]([ExtResource("2_g4i3q"), ExtResource("4_6y356"), ExtResource("4_6y356")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
-visible = false
 
 [node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -435,12 +435,32 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2"]
-visible = false
 material = SubResource("ShaderMaterial_furj2")
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 8
 texture = ExtResource("6_y0nbv")
+
+[node name="Damage" type="Label" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2/TextureRect"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 18.0
+offset_right = 223.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("43_odlnh")
+theme_override_font_sizes/font_size = 60
+text = "3"
+
+[node name="Agility" type="Label" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2/TextureRect"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 282.0
+offset_right = 152.0
+offset_bottom = 332.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_ebpv6")
+theme_override_font_sizes/font_size = 40
+text = "3"
 
 [node name="HP_Bar" type="ProgressBar" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2/TextureRect"]
 custom_minimum_size = Vector2(128, 26)
@@ -451,9 +471,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -64.0
-offset_top = 45.0
+offset_top = -37.0
 offset_right = 64.0
-offset_bottom = 71.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxTexture_ncjxh")
@@ -483,9 +503,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(128, 26)
 layout_mode = 0
 offset_left = 61.0
-offset_top = 271.0
+offset_top = 221.0
 offset_right = 189.0
-offset_bottom = 298.0
+offset_bottom = 248.0
 theme_override_styles/background = SubResource("StyleBoxTexture_cyrrq")
 theme_override_styles/fill = SubResource("StyleBoxTexture_t2h2j")
 step = 1.0
@@ -715,13 +735,15 @@ position = Vector2(400, 33)
 
 [node name="Soerjo" parent="GameBoard/Player" instance=ExtResource("27_w4smp")]
 use_parent_material = true
-position = Vector2(638, 195)
+position = Vector2(-133, 580)
+script = ExtResource("29_w7di6")
 _animation_resource = ExtResource("28_sdajn")
 _animation_state_machine = ExtResource("29_jbyoq")
 last_direction = Vector2(1, -1)
 
 [node name="Tomo" parent="GameBoard/Player" instance=ExtResource("27_w4smp")]
 position = Vector2(-205, 489)
+script = ExtResource("30_fq53n")
 player_id = 2
 _animation_resource = ExtResource("28_sdajn")
 _animation_state_machine = ExtResource("29_jbyoq")
@@ -729,6 +751,7 @@ last_direction = Vector2(1, -1)
 
 [node name="Tomo2" parent="GameBoard/Player" instance=ExtResource("27_w4smp")]
 position = Vector2(-6, 580)
+script = ExtResource("30_fq53n")
 player_id = 2
 _animation_resource = ExtResource("28_sdajn")
 _animation_state_machine = ExtResource("29_jbyoq")
@@ -736,6 +759,7 @@ last_direction = Vector2(1, -1)
 
 [node name="Tomo3" parent="GameBoard/Player" instance=ExtResource("27_w4smp")]
 position = Vector2(122, 645)
+script = ExtResource("30_fq53n")
 player_id = 2
 _animation_resource = ExtResource("28_sdajn")
 _animation_state_machine = ExtResource("29_jbyoq")
@@ -746,6 +770,7 @@ script = ExtResource("30_g5c6a")
 
 [node name="Unit" parent="GameBoard/Enemy" instance=ExtResource("27_w4smp")]
 position = Vector2(961, 224)
+script = ExtResource("29_w7di6")
 player_id = 4
 _animation_resource = ExtResource("28_sdajn")
 _animation_state_machine = ExtResource("29_jbyoq")
@@ -918,6 +943,7 @@ target_position = Vector2(1, 72)
 
 [node name="Unit2" parent="GameBoard/Enemy" instance=ExtResource("27_w4smp")]
 position = Vector2(386, -64)
+script = ExtResource("29_w7di6")
 player_id = 4
 _animation_resource = ExtResource("28_sdajn")
 _animation_state_machine = ExtResource("29_jbyoq")
@@ -1090,6 +1116,7 @@ target_position = Vector2(1, 72)
 
 [node name="Unit4" parent="GameBoard/Enemy" instance=ExtResource("27_w4smp")]
 position = Vector2(638, 0)
+script = ExtResource("29_w7di6")
 player_id = 4
 _animation_resource = ExtResource("28_sdajn")
 _animation_state_machine = ExtResource("29_jbyoq")
@@ -1262,6 +1289,7 @@ target_position = Vector2(1, 72)
 
 [node name="Unit5" parent="GameBoard/Enemy" instance=ExtResource("27_w4smp")]
 position = Vector2(838, 95)
+script = ExtResource("29_w7di6")
 player_id = 4
 _animation_resource = ExtResource("28_sdajn")
 _animation_state_machine = ExtResource("29_jbyoq")
@@ -1528,7 +1556,6 @@ script = ExtResource("38_unt22")
 shape = SubResource("RectangleShape2D_2175y")
 
 [node name="Interacts" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Interactables" type="Control" parent="Interacts"]
 layout_mode = 3
@@ -1664,8 +1691,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("44_oo024")
 theme_override_font_sizes/font_size = 40
-text = "LANJUT KE BAB 2"
-script = ExtResource("45_lra5v")
+text = "LANJUT KE BAB 3"
+script = ExtResource("47_6yj7m")
 
 [node name="Label" type="Label" parent="GameOver/Winning/Panel"]
 layout_mode = 1

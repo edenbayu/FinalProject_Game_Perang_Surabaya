@@ -318,10 +318,12 @@ offset_top = -190.0
 offset_right = 50.0
 offset_bottom = 27.0
 grow_horizontal = 2
+mouse_filter = 2
 
 [node name="HP" type="ProgressBar" parent="Status"]
 custom_minimum_size = Vector2(80, 12)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_3j2r0")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8wphm")
 value = 80.0
@@ -330,6 +332,7 @@ show_percentage = false
 [node name="Armor" type="ProgressBar" parent="Status"]
 custom_minimum_size = Vector2(80, 12)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_uq5h6")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0qyll")
 step = 1.0
@@ -382,6 +385,7 @@ grow_horizontal = 2
 [node name="Button" type="Button" parent="AttackIcons"]
 custom_minimum_size = Vector2(68, 68)
 layout_mode = 2
+mouse_force_pass_scroll_events = false
 theme_override_styles/normal = SubResource("StyleBoxTexture_7c0cy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_52v17")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_lvtyb")
@@ -390,6 +394,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_i6g1m")
 [node name="Button2" type="Button" parent="AttackIcons"]
 custom_minimum_size = Vector2(68, 68)
 layout_mode = 2
+mouse_force_pass_scroll_events = false
 theme_override_styles/normal = SubResource("StyleBoxTexture_ra7uc")
 theme_override_styles/hover = SubResource("StyleBoxTexture_arl0p")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7tvgv")
