@@ -1,53 +1,53 @@
-[gd_scene load_steps=96 format=3 uid="uid://patekpdib63w"]
+[gd_scene load_steps=96 format=3 uid="uid://baiggpujhqrfx"]
 
-[ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="1_54tt6"]
-[ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_hgg8q"]
-[ext_resource type="Resource" uid="uid://d32f7w6gvavmm" path="res://Resources/Grid.tres" id="2_0r2mq"]
-[ext_resource type="Texture2D" uid="uid://wrgk0ah3wagm" path="res://UI/TurnBar.png" id="2_c3kva"]
-[ext_resource type="PackedScene" uid="uid://bb1s8fhbukv66" path="res://Scenes/Camera.tscn" id="2_pxgfw"]
-[ext_resource type="Script" path="res://Scripts/UnitPath.gd" id="2_w1kn0"]
-[ext_resource type="PackedScene" uid="uid://20i4en7e2fm7" path="res://Scenes/Unit.tscn" id="3_7kb1e"]
-[ext_resource type="Texture2D" uid="uid://bs7kqfql1ysto" path="res://Sprites/enemy_status_card.png" id="4_8igjc"]
-[ext_resource type="Shader" path="res://Resources/outline.gdshader" id="4_eoqsm"]
-[ext_resource type="Script" path="res://Scenes/Deck.gd" id="4_n4ffv"]
-[ext_resource type="Texture2D" uid="uid://t6fvglavpu4g" path="res://UI/EndTurn.png" id="4_qw0um"]
-[ext_resource type="Texture2D" uid="uid://bs0k6mt3ogla7" path="res://UI/StatusUI_Tomo.png" id="4_sypab"]
-[ext_resource type="Texture2D" uid="uid://dvju22472hmbe" path="res://UI/empty_hp_status.png" id="5_0fg6s"]
-[ext_resource type="Texture2D" uid="uid://2n71oiuyrq6f" path="res://UI/StatusUI_soerjo.png" id="5_yayhc"]
-[ext_resource type="Texture2D" uid="uid://cso0au1maoatp" path="res://UI/half_health_bar_filledt.png" id="6_0e031"]
-[ext_resource type="Script" path="res://Scenes/StatusUI.gd" id="6_4eeb0"]
-[ext_resource type="Shader" path="res://Scenes/burn.gdshader" id="7_4j1oy"]
-[ext_resource type="Shader" path="res://Scenes/dissolve.gdshader" id="7_wckpu"]
-[ext_resource type="Texture2D" uid="uid://cvta2lgj4lfww" path="res://UI/dissolve.png" id="8_3yyag"]
-[ext_resource type="PackedScene" uid="uid://b1t8iyisfbe0v" path="res://Scenes/Cursor.tscn" id="8_4uheh"]
-[ext_resource type="Texture2D" uid="uid://nunbe0hanbsd" path="res://UI/innate_status_ui.png" id="8_r03ek"]
-[ext_resource type="Texture2D" uid="uid://bq07uefqpafdi" path="res://UI/modular_status_ui.png" id="9_6n57g"]
-[ext_resource type="Texture2D" uid="uid://dj8nyg33cpjqh" path="res://UI/half_armor_bar_filled.png" id="9_lscm0"]
-[ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="11_601eb"]
-[ext_resource type="FontFile" uid="uid://bs41epct36unk" path="res://UI/I-pixel-u.ttf" id="11_jjinn"]
-[ext_resource type="Script" path="res://Scenes/EnemyController.gd" id="12_bpvfk"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="12_e2jf1"]
-[ext_resource type="Texture2D" uid="uid://d333a8tuighwt" path="res://UI/armor_bar_empty.png" id="14_ud0ee"]
-[ext_resource type="Texture2D" uid="uid://sqoccmhkk5ea" path="res://Sprites/lvl1.png" id="19_nxtcr"]
-[ext_resource type="Script" path="res://addons/utility_ai/agent/agent.gd" id="27_yvtgi"]
-[ext_resource type="Script" path="res://Scripts/RangedUnit.gd" id="28_djlxy"]
-[ext_resource type="Script" path="res://addons/utility_ai/actions/action.gd" id="28_lvhxf"]
-[ext_resource type="Script" path="res://addons/utility_ai/considerations/aggregation.gd" id="29_6jobp"]
-[ext_resource type="Script" path="res://addons/utility_ai/considerations/consideration_from_node.gd" id="29_w7j6f"]
-[ext_resource type="Script" path="res://Scripts/MeleeUnit.gd" id="30_85501"]
-[ext_resource type="Texture2D" uid="uid://v5elhraurb2y" path="res://Sprites/static_table.png" id="33_240rj"]
-[ext_resource type="Script" path="res://Scenes/CursorSelection.gd" id="35_84v7m"]
-[ext_resource type="Script" path="res://Scenes/Property.gd" id="35_dg0a8"]
-[ext_resource type="Script" path="res://Scripts/Interactables.gd" id="37_2eyfr"]
-[ext_resource type="Texture2D" uid="uid://0y7pc61c1ovt" path="res://DialogSistem/aset aseprite/Soerjott.png" id="37_wjlli"]
-[ext_resource type="Texture2D" uid="uid://d18cpml72xrda" path="res://DialogSistem/aset aseprite/namebox.png" id="38_nsmwq"]
-[ext_resource type="Texture2D" uid="uid://o8d6hmqppsju" path="res://DialogSistem/aset aseprite/TextBox.png" id="39_uvxks"]
-[ext_resource type="FontFile" uid="uid://c583mm1xbwni5" path="res://font/I-pixel-u.ttf" id="40_25nho"]
-[ext_resource type="FontFile" uid="uid://cnrpw086ndg2n" path="res://font/DePixelBreit.ttf" id="41_r0bv2"]
-[ext_resource type="Script" path="res://Scenes/WinningButtonLevel1.gd" id="43_465j5"]
+[ext_resource type="Shader" path="res://Resources/outline.gdshader" id="1_mrtod"]
+[ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_xtp1r"]
+[ext_resource type="Texture2D" uid="uid://bs7kqfql1ysto" path="res://Sprites/enemy_status_card.png" id="2_66rq3"]
+[ext_resource type="FontFile" uid="uid://cnrpw086ndg2n" path="res://font/DePixelBreit.ttf" id="3_b0ki7"]
+[ext_resource type="Texture2D" uid="uid://bs0k6mt3ogla7" path="res://UI/StatusUI_Tomo.png" id="3_io76x"]
+[ext_resource type="FontFile" uid="uid://bs41epct36unk" path="res://UI/I-pixel-u.ttf" id="4_cvcth"]
+[ext_resource type="Texture2D" uid="uid://dvju22472hmbe" path="res://UI/empty_hp_status.png" id="5_pwtur"]
+[ext_resource type="Texture2D" uid="uid://cso0au1maoatp" path="res://UI/half_health_bar_filledt.png" id="6_aoqsw"]
+[ext_resource type="Texture2D" uid="uid://dj8nyg33cpjqh" path="res://UI/half_armor_bar_filled.png" id="7_vd1ii"]
+[ext_resource type="Texture2D" uid="uid://2n71oiuyrq6f" path="res://UI/StatusUI_soerjo.png" id="8_2c4ir"]
+[ext_resource type="Script" path="res://Scenes/StatusUI.gd" id="9_rudnw"]
+[ext_resource type="Shader" path="res://Scenes/burn.gdshader" id="10_lkdvt"]
+[ext_resource type="Texture2D" uid="uid://cvta2lgj4lfww" path="res://UI/dissolve.png" id="11_8nl6r"]
+[ext_resource type="Texture2D" uid="uid://nunbe0hanbsd" path="res://UI/innate_status_ui.png" id="12_ieq3n"]
+[ext_resource type="Shader" path="res://Scenes/dissolve.gdshader" id="13_uech8"]
+[ext_resource type="Texture2D" uid="uid://bq07uefqpafdi" path="res://UI/modular_status_ui.png" id="14_4ofei"]
+[ext_resource type="Texture2D" uid="uid://d333a8tuighwt" path="res://UI/armor_bar_empty.png" id="15_3me0w"]
+[ext_resource type="Texture2D" uid="uid://t6fvglavpu4g" path="res://UI/EndTurn.png" id="16_tbt7v"]
+[ext_resource type="Script" path="res://Scenes/Deck.gd" id="17_tx36x"]
+[ext_resource type="Texture2D" uid="uid://wrgk0ah3wagm" path="res://UI/TurnBar.png" id="18_gbura"]
+[ext_resource type="Texture2D" uid="uid://sqoccmhkk5ea" path="res://Sprites/lvl1.png" id="19_quvbh"]
+[ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="20_8wnuy"]
+[ext_resource type="Resource" uid="uid://d32f7w6gvavmm" path="res://Resources/Grid.tres" id="21_x3qdl"]
+[ext_resource type="Script" path="res://Scripts/UnitPath.gd" id="23_68t1w"]
+[ext_resource type="PackedScene" uid="uid://b1t8iyisfbe0v" path="res://Scenes/Cursor.tscn" id="24_id3id"]
+[ext_resource type="PackedScene" uid="uid://20i4en7e2fm7" path="res://Scenes/Unit.tscn" id="25_84lxc"]
+[ext_resource type="Script" path="res://Scripts/RangedUnit.gd" id="26_awbdw"]
+[ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="27_mjdrc"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="28_82y8k"]
+[ext_resource type="Script" path="res://Scripts/MeleeUnit.gd" id="29_2klyj"]
+[ext_resource type="Script" path="res://Scenes/EnemyController.gd" id="30_ryy5h"]
+[ext_resource type="Script" path="res://addons/utility_ai/agent/agent.gd" id="31_dfyph"]
+[ext_resource type="Script" path="res://addons/utility_ai/actions/action.gd" id="32_4mrhh"]
+[ext_resource type="Script" path="res://addons/utility_ai/considerations/aggregation.gd" id="33_poyxq"]
+[ext_resource type="Script" path="res://addons/utility_ai/considerations/consideration_from_node.gd" id="34_i04xg"]
+[ext_resource type="Script" path="res://Scenes/Property.gd" id="35_wgp1h"]
+[ext_resource type="Texture2D" uid="uid://v5elhraurb2y" path="res://Sprites/static_table.png" id="36_bt6dg"]
+[ext_resource type="PackedScene" uid="uid://bb1s8fhbukv66" path="res://Scenes/Camera.tscn" id="37_jo5p8"]
+[ext_resource type="Script" path="res://Scenes/CursorSelection.gd" id="38_2dvtk"]
+[ext_resource type="Script" path="res://Scripts/Interactables.gd" id="39_pp7eu"]
+[ext_resource type="Texture2D" uid="uid://0y7pc61c1ovt" path="res://DialogSistem/aset aseprite/Soerjott.png" id="40_ylte0"]
+[ext_resource type="Texture2D" uid="uid://d18cpml72xrda" path="res://DialogSistem/aset aseprite/namebox.png" id="41_4nby8"]
+[ext_resource type="Texture2D" uid="uid://o8d6hmqppsju" path="res://DialogSistem/aset aseprite/TextBox.png" id="42_61lcs"]
+[ext_resource type="FontFile" uid="uid://c583mm1xbwni5" path="res://font/I-pixel-u.ttf" id="43_ctk18"]
+[ext_resource type="Script" path="res://Scenes/WinningButtonLevel1.gd" id="44_ayaab"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_furj2"]
-shader = ExtResource("4_eoqsm")
+shader = ExtResource("1_mrtod")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 1.0
 shader_parameter/pattern = 0
@@ -56,17 +56,17 @@ shader_parameter/add_margins = true
 shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ncjxh"]
-texture = ExtResource("5_0fg6s")
+texture = ExtResource("5_pwtur")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_05tuo"]
-texture = ExtResource("6_0e031")
+texture = ExtResource("6_aoqsw")
 axis_stretch_horizontal = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cyrrq"]
-texture = ExtResource("5_0fg6s")
+texture = ExtResource("5_pwtur")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t2h2j"]
-texture = ExtResource("9_lscm0")
+texture = ExtResource("7_vd1ii")
 
 [sub_resource type="Animation" id="Animation_pfk2h"]
 length = 0.001
@@ -162,25 +162,25 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5un84"]
 resource_local_to_scene = true
-shader = ExtResource("7_4j1oy")
+shader = ExtResource("10_lkdvt")
 shader_parameter/dissolve_value = 1.0
-shader_parameter/dissolve_texture = ExtResource("8_3yyag")
+shader_parameter/dissolve_texture = ExtResource("11_8nl6r")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jewqy"]
 resource_local_to_scene = true
-shader = ExtResource("7_wckpu")
+shader = ExtResource("13_uech8")
 shader_parameter/dissolve_value = 1.0
-shader_parameter/dissolve_texture = ExtResource("8_3yyag")
+shader_parameter/dissolve_texture = ExtResource("11_8nl6r")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7sm4h"]
 resource_local_to_scene = true
 content_margin_left = 128.0
 content_margin_top = 26.0
-texture = ExtResource("5_0fg6s")
+texture = ExtResource("5_pwtur")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wxmda"]
 resource_local_to_scene = true
-texture = ExtResource("6_0e031")
+texture = ExtResource("6_aoqsw")
 texture_margin_left = 12.0
 texture_margin_right = 12.0
 axis_stretch_horizontal = 1
@@ -188,16 +188,16 @@ axis_stretch_horizontal = 1
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wvygj"]
 content_margin_left = 128.0
 content_margin_top = 26.0
-texture = ExtResource("14_ud0ee")
+texture = ExtResource("15_3me0w")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lsig2"]
 resource_local_to_scene = true
-texture = ExtResource("9_lscm0")
+texture = ExtResource("7_vd1ii")
 axis_stretch_horizontal = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t2hkw"]
 content_margin_bottom = 10.0
-texture = ExtResource("4_qw0um")
+texture = ExtResource("16_tbt7v")
 
 [sub_resource type="TileSet" id="TileSet_5x5x1"]
 tile_shape = 1
@@ -272,67 +272,67 @@ size = Vector2(32, 32)
 bg_color = Color(0, 0, 0, 0.313726)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5a11"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_61lcs")
 region = Rect2(0, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dt72n"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_61lcs")
 region = Rect2(1816, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4sg5"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_61lcs")
 region = Rect2(3632, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_swimk"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_61lcs")
 region = Rect2(5448, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3h22"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_61lcs")
 region = Rect2(7264, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h8xhe"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_61lcs")
 region = Rect2(9080, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4s5ny"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_61lcs")
 region = Rect2(10896, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_61105"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_61lcs")
 region = Rect2(12712, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hfi32"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_61lcs")
 region = Rect2(14528, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n04p2"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_61lcs")
 region = Rect2(16344, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajw37"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_61lcs")
 region = Rect2(18160, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_keyeu"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_61lcs")
 region = Rect2(19976, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6yh0f"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_61lcs")
 region = Rect2(21792, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bfjry"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_61lcs")
 region = Rect2(23608, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlphv"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_61lcs")
 region = Rect2(25424, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_26he5"]
-atlas = ExtResource("39_uvxks")
+atlas = ExtResource("42_61lcs")
 region = Rect2(27240, 0, 1816, 232)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vjwr7"]
@@ -394,8 +394,8 @@ animations = [{
 [node name="Level" type="Node2D"]
 process_mode = 1
 texture_filter = 1
-script = ExtResource("1_hgg8q")
-statusUItexture = Array[Texture2D]([ExtResource("5_yayhc"), ExtResource("4_sypab"), ExtResource("4_sypab")])
+script = ExtResource("1_xtp1r")
+statusUItexture = Array[Texture2D]([ExtResource("8_2c4ir"), ExtResource("3_io76x"), ExtResource("3_io76x")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -432,7 +432,7 @@ use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 2
-texture = ExtResource("4_8igjc")
+texture = ExtResource("2_66rq3")
 
 [node name="Damage" type="Label" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2/TextureRect"]
 layout_mode = 0
@@ -440,7 +440,7 @@ offset_left = 175.0
 offset_top = 18.0
 offset_right = 223.0
 offset_bottom = 80.0
-theme_override_fonts/font = ExtResource("41_r0bv2")
+theme_override_fonts/font = ExtResource("3_b0ki7")
 theme_override_font_sizes/font_size = 60
 text = "3"
 
@@ -451,7 +451,7 @@ offset_top = 282.0
 offset_right = 148.0
 offset_bottom = 332.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("11_jjinn")
+theme_override_fonts/font = ExtResource("4_cvcth")
 theme_override_font_sizes/font_size = 40
 text = "3"
 
@@ -487,7 +487,7 @@ offset_right = 30.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_jjinn")
+theme_override_fonts/font = ExtResource("4_cvcth")
 text = "35/35"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -518,7 +518,7 @@ offset_right = 30.0
 offset_bottom = 9.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_jjinn")
+theme_override_fonts/font = ExtResource("4_cvcth")
 text = "35/35"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -540,9 +540,9 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(288, 160)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("5_yayhc")
+texture = ExtResource("8_2c4ir")
 expand_mode = 3
-script = ExtResource("6_4eeb0")
+script = ExtResource("9_rudnw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI"]
 root_node = NodePath("../Ability/Innate")
@@ -561,12 +561,12 @@ theme_override_constants/separation = 15
 [node name="Innate" type="TextureRect" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI/Ability"]
 material = SubResource("ShaderMaterial_5un84")
 layout_mode = 2
-texture = ExtResource("8_r03ek")
+texture = ExtResource("12_ieq3n")
 
 [node name="Modular" type="TextureRect" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI/Ability"]
 material = SubResource("ShaderMaterial_jewqy")
 layout_mode = 2
-texture = ExtResource("9_6n57g")
+texture = ExtResource("14_4ofei")
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI"]
 layout_mode = 0
@@ -594,7 +594,7 @@ offset_right = 56.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_jjinn")
+theme_override_fonts/font = ExtResource("4_cvcth")
 theme_override_font_sizes/font_size = 16
 text = "3/5"
 
@@ -624,7 +624,7 @@ offset_right = 54.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_jjinn")
+theme_override_fonts/font = ExtResource("4_cvcth")
 theme_override_font_sizes/font_size = 16
 text = "3/3"
 
@@ -638,7 +638,7 @@ custom_minimum_size = Vector2(328, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("11_jjinn")
+theme_override_fonts/font = ExtResource("4_cvcth")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxTexture_t2hkw")
 text = "END TURN
@@ -651,7 +651,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 8
 mouse_filter = 2
 alignment = 2
-script = ExtResource("4_n4ffv")
+script = ExtResource("17_tx36x")
 
 [node name="ZoomOut" type="Button" parent="CanvasLayer/UI"]
 custom_minimum_size = Vector2(50, 50)
@@ -688,7 +688,7 @@ offset_top = 20.0
 offset_right = 48.0
 offset_bottom = 124.0
 grow_horizontal = 2
-texture = ExtResource("2_c3kva")
+texture = ExtResource("18_gbura")
 patch_margin_left = 40
 patch_margin_right = 40
 
@@ -701,12 +701,12 @@ offset_bottom = 96.0
 
 [node name="Bg" type="Sprite2D" parent="."]
 position = Vector2(168, 124)
-texture = ExtResource("19_nxtcr")
+texture = ExtResource("19_quvbh")
 
 [node name="GameBoard" type="Node2D" parent="."]
-script = ExtResource("1_54tt6")
+script = ExtResource("20_8wnuy")
 orientation = "portrait"
-grid = ExtResource("2_0r2mq")
+grid = ExtResource("21_x3qdl")
 level = 1
 
 [node name="UnitPath" type="TileMap" parent="GameBoard"]
@@ -715,160 +715,160 @@ tile_set = SubResource("TileSet_5x5x1")
 format = 2
 layer_0/y_sort_enabled = true
 layer_0/tile_data = PackedInt32Array(-262145, 0, 0)
-script = ExtResource("2_w1kn0")
-grid = ExtResource("2_0r2mq")
+script = ExtResource("23_68t1w")
+grid = ExtResource("21_x3qdl")
 solid_cells = Array[Vector2]([Vector2(8, 3), Vector2(8, 4), Vector2(8, 5), Vector2(8, -1), Vector2(8, -2), Vector2(8, -3), Vector2(5, 2), Vector2(5, 1), Vector2(5, 0)])
 
-[node name="Cursor" parent="GameBoard" instance=ExtResource("8_4uheh")]
+[node name="Cursor" parent="GameBoard" instance=ExtResource("24_id3id")]
 z_index = 1
 position = Vector2(400, 33)
 
 [node name="Player" type="Node2D" parent="GameBoard"]
 
-[node name="Soerjo" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
+[node name="Soerjo" parent="GameBoard/Player" instance=ExtResource("25_84lxc")]
 use_parent_material = true
 position = Vector2(-259, 130)
-script = ExtResource("28_djlxy")
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
+script = ExtResource("26_awbdw")
+_animation_resource = ExtResource("27_mjdrc")
+_animation_state_machine = ExtResource("28_82y8k")
 
-[node name="Tomo" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
+[node name="Tomo" parent="GameBoard/Player" instance=ExtResource("25_84lxc")]
 position = Vector2(-60, 100)
-script = ExtResource("30_85501")
+script = ExtResource("29_2klyj")
 player_id = 2
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
+_animation_resource = ExtResource("27_mjdrc")
+_animation_state_machine = ExtResource("28_82y8k")
 
-[node name="Tomo2" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
+[node name="Tomo2" parent="GameBoard/Player" instance=ExtResource("25_84lxc")]
 position = Vector2(-318, 227)
-script = ExtResource("30_85501")
+script = ExtResource("29_2klyj")
 player_id = 2
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
+_animation_resource = ExtResource("27_mjdrc")
+_animation_state_machine = ExtResource("28_82y8k")
 
 [node name="Enemy" type="Node2D" parent="GameBoard"]
-script = ExtResource("12_bpvfk")
+script = ExtResource("30_ryy5h")
 
-[node name="Unit" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
+[node name="Unit" parent="GameBoard/Enemy" instance=ExtResource("25_84lxc")]
 position = Vector2(579, 484)
-script = ExtResource("28_djlxy")
+script = ExtResource("26_awbdw")
 player_id = 4
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
+_animation_resource = ExtResource("27_mjdrc")
+_animation_state_machine = ExtResource("28_82y8k")
 last_direction = Vector2(-1, -1)
 
 [node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit"]
-script = ExtResource("27_yvtgi")
+script = ExtResource("31_dfyph")
 
 [node name="approach" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
+script = ExtResource("32_4mrhh")
 _action_id = "approach"
 
 [node name="UtilityAiAggregation2" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_poyxq")
 
 [node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "innate_done"
 curve = SubResource("Curve_f4f8w")
 
 [node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "is_within_range"
 curve = SubResource("Curve_1kur1")
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach/UtilityAiAggregation2"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_poyxq")
 
 [node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach/UtilityAiAggregation2/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "is_empty_ammo"
 curve = SubResource("Curve_th8ef")
 
 [node name="reload" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
+script = ExtResource("32_4mrhh")
 _action_id = "reload"
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/reload"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_poyxq")
 
 [node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "is_empty_ammo"
 max_value = 1.5
 curve = SubResource("Curve_wln8g")
 
 [node name="health" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "curr_health"
 max_value = 12.0
 curve = SubResource("Curve_ipvhf")
 
 [node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "innate_done"
 curve = SubResource("Curve_ymwmf")
 
 [node name="shoot" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
+script = ExtResource("32_4mrhh")
 _action_id = "shoot"
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/shoot"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_poyxq")
 
 [node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/shoot/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "modular_done"
 curve = SubResource("Curve_gjwa0")
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/shoot/UtilityAiAggregation"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_poyxq")
 
 [node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "is_within_range"
 curve = SubResource("Curve_8laea")
 
 [node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "is_empty_ammo"
 curve = SubResource("Curve_ucavg")
 
 [node name="rest" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
+script = ExtResource("32_4mrhh")
 _action_id = "rest"
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_poyxq")
 
 [node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "modular_done"
 curve = SubResource("Curve_5von7")
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest/UtilityAiAggregation"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_poyxq")
 aggregation_type = 2
 
 [node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "is_within_range"
 curve = SubResource("Curve_3eyec")
 
 [node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "is_empty_ammo"
 curve = SubResource("Curve_740e6")
 
@@ -922,126 +922,126 @@ target_position = Vector2(-158, -8)
 [node name="RayCast2D16" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
 target_position = Vector2(1, 72)
 
-[node name="Unit2" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
+[node name="Unit2" parent="GameBoard/Enemy" instance=ExtResource("25_84lxc")]
 position = Vector2(193, 672)
-script = ExtResource("28_djlxy")
+script = ExtResource("26_awbdw")
 player_id = 4
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
+_animation_resource = ExtResource("27_mjdrc")
+_animation_state_machine = ExtResource("28_82y8k")
 last_direction = Vector2(-1, -1)
 
 [node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit2"]
-script = ExtResource("27_yvtgi")
+script = ExtResource("31_dfyph")
 
 [node name="approach" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
+script = ExtResource("32_4mrhh")
 _action_id = "approach"
 
 [node name="UtilityAiAggregation2" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_poyxq")
 
 [node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "innate_done"
 curve = SubResource("Curve_f4f8w")
 
 [node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "is_within_range"
 curve = SubResource("Curve_1kur1")
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach/UtilityAiAggregation2"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_poyxq")
 
 [node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach/UtilityAiAggregation2/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "is_empty_ammo"
 curve = SubResource("Curve_th8ef")
 
 [node name="reload" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
+script = ExtResource("32_4mrhh")
 _action_id = "reload"
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/reload"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_poyxq")
 
 [node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "is_empty_ammo"
 max_value = 1.5
 curve = SubResource("Curve_wln8g")
 
 [node name="health" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "curr_health"
 max_value = 12.0
 curve = SubResource("Curve_ipvhf")
 
 [node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "innate_done"
 curve = SubResource("Curve_ymwmf")
 
 [node name="shoot" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
+script = ExtResource("32_4mrhh")
 _action_id = "shoot"
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_poyxq")
 
 [node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "modular_done"
 curve = SubResource("Curve_gjwa0")
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot/UtilityAiAggregation"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_poyxq")
 
 [node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "is_within_range"
 curve = SubResource("Curve_8laea")
 
 [node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "is_empty_ammo"
 curve = SubResource("Curve_ucavg")
 
 [node name="rest" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
+script = ExtResource("32_4mrhh")
 _action_id = "rest"
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_poyxq")
 
 [node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "modular_done"
 curve = SubResource("Curve_5von7")
 
 [node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest/UtilityAiAggregation"]
-script = ExtResource("29_6jobp")
+script = ExtResource("33_poyxq")
 aggregation_type = 2
 
 [node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "is_within_range"
 curve = SubResource("Curve_3eyec")
 
 [node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
+script = ExtResource("34_i04xg")
+node = NodePath("")
 property_name = "is_empty_ammo"
 curve = SubResource("Curve_740e6")
 
@@ -1099,33 +1099,33 @@ target_position = Vector2(1, 72)
 
 [node name="TableChair" type="StaticBody2D" parent="GameBoard/Props"]
 position = Vector2(-640, 406)
-script = ExtResource("35_dg0a8")
+script = ExtResource("35_wgp1h")
 cell = Vector2i(2, 12)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair"]
-texture = ExtResource("33_240rj")
+texture = ExtResource("36_bt6dg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair"]
 shape = SubResource("RectangleShape2D_t1t3p")
 
 [node name="TableChair2" type="StaticBody2D" parent="GameBoard/Props"]
 position = Vector2(-320, 566)
-script = ExtResource("35_dg0a8")
+script = ExtResource("35_wgp1h")
 cell = Vector2i(7, 12)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair2"]
-texture = ExtResource("33_240rj")
+texture = ExtResource("36_bt6dg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair2"]
 shape = SubResource("RectangleShape2D_t1t3p")
 
 [node name="TableChair3" type="StaticBody2D" parent="GameBoard/Props"]
 position = Vector2(0, 726)
-script = ExtResource("35_dg0a8")
+script = ExtResource("35_wgp1h")
 cell = Vector2i(12, 12)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair3"]
-texture = ExtResource("33_240rj")
+texture = ExtResource("36_bt6dg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair3"]
 shape = SubResource("RectangleShape2D_t1t3p")
@@ -1135,11 +1135,11 @@ position = Vector2(322, 420)
 scale = Vector2(-1, 1)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("35_dg0a8")
+script = ExtResource("35_wgp1h")
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair4"]
 position = Vector2(2, -44)
-texture = ExtResource("33_240rj")
+texture = ExtResource("36_bt6dg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair4"]
 position = Vector2(3.8147e-06, -3.69549e-06)
@@ -1152,12 +1152,12 @@ position = Vector2(322, 225)
 scale = Vector2(-1, 1)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("35_dg0a8")
+script = ExtResource("35_wgp1h")
 cell = Vector2i(5, -2)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair5"]
 position = Vector2(2, -44)
-texture = ExtResource("33_240rj")
+texture = ExtResource("36_bt6dg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair5"]
 position = Vector2(3.8147e-06, -3.69549e-06)
@@ -1170,12 +1170,12 @@ position = Vector2(706, 226)
 scale = Vector2(-1, 1)
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("35_dg0a8")
+script = ExtResource("35_wgp1h")
 cell = Vector2i(8, -1)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair6"]
 position = Vector2(2, -44)
-texture = ExtResource("33_240rj")
+texture = ExtResource("36_bt6dg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair6"]
 position = Vector2(3.8147e-06, -3.69549e-06)
@@ -1185,12 +1185,12 @@ shape = SubResource("CircleShape2D_54ujx")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="TacticsCamera" parent="." instance=ExtResource("2_pxgfw")]
+[node name="TacticsCamera" parent="." instance=ExtResource("37_jo5p8")]
 position = Vector2(168, 124)
 collision_mask = 4
 
 [node name="Cursor" type="Area2D" parent="."]
-script = ExtResource("35_84v7m")
+script = ExtResource("38_2dvtk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
 shape = SubResource("RectangleShape2D_2175y")
@@ -1204,7 +1204,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("37_2eyfr")
+script = ExtResource("39_pp7eu")
 
 [node name="Panel" type="Panel" parent="Interacts/Interactables"]
 layout_mode = 1
@@ -1242,7 +1242,7 @@ offset_left = 42.0
 offset_top = -183.0
 offset_right = 1002.0
 offset_bottom = 245.0
-texture = ExtResource("37_wjlli")
+texture = ExtResource("40_ylte0")
 expand_mode = 2
 stretch_mode = 4
 
@@ -1253,7 +1253,7 @@ offset_left = 688.0
 offset_top = 136.0
 offset_right = 924.0
 offset_bottom = 196.0
-texture = ExtResource("38_nsmwq")
+texture = ExtResource("41_4nby8")
 expand_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Interacts/Interactables/MarginContainer/Dialoguebox"]
@@ -1267,7 +1267,7 @@ offset_left = -856.0
 offset_top = -56.0
 offset_right = 768.0
 offset_bottom = 82.0
-theme_override_fonts/normal_font = ExtResource("41_r0bv2")
+theme_override_fonts/normal_font = ExtResource("3_b0ki7")
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "Kita sudah berhasil masuk,
@@ -1281,7 +1281,7 @@ offset_left = 726.0
 offset_top = 145.0
 offset_right = 895.0
 offset_bottom = 198.0
-theme_override_fonts/normal_font = ExtResource("40_25nho")
+theme_override_fonts/normal_font = ExtResource("43_ctk18")
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "SOERJO"
@@ -1329,10 +1329,10 @@ offset_right = 199.0
 offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("40_25nho")
+theme_override_fonts/font = ExtResource("43_ctk18")
 theme_override_font_sizes/font_size = 40
 text = "LAJUT KE BAB 2"
-script = ExtResource("43_465j5")
+script = ExtResource("44_ayaab")
 
 [node name="Label" type="Label" parent="GameOver/Winning/Panel"]
 layout_mode = 1
@@ -1344,7 +1344,7 @@ offset_top = 45.0
 offset_right = 452.0
 offset_bottom = 108.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("40_25nho")
+theme_override_fonts/font = ExtResource("43_ctk18")
 theme_override_font_sizes/font_size = 50
 text = "\"KEMENANGAN TELAH DIRAIH!\""
 

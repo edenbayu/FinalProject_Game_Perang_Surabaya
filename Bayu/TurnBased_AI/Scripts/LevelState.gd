@@ -1,5 +1,7 @@
 extends Node
 
+const savedata = "res://savings/saving.json"
+
 var current_saving_id : int
 var current_level : int
 var level_status : int

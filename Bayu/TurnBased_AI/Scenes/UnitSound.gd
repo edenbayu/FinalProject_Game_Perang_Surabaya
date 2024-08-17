@@ -11,9 +11,9 @@ extends Node2D
 
 func play_shoot() -> void:
 	var parent = get_parent() as Unit
-	if parent.nama == "Soerjo":
+	if parent.player_id == 1:
 		shoot.play()
-	elif parent.nama == "Arief":
+	elif parent.player_id == 2:
 		bamboo.play()
 	else:
 		shoot.play()

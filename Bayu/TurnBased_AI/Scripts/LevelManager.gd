@@ -48,11 +48,11 @@ func _ready():
 	for e in enemy.get_children():
 		var unit = e as Unit
 		unit.unit_die.connect(on_unit_die)
-	#active_unit.hp_status.visible = false
-	#active_unit.armor_status.visible = false
 
 func _process(delta):
-	pass
+	## Kodingan menampilkan fps game
+	var fps = Engine.get_frames_per_second()
+	print(fps)
 
 func set_turn():
 	check_game_over(player, enemy)
