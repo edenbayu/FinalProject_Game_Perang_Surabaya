@@ -1,0 +1,27 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=6 format=3 uid="uid://73o88ckqvmdy"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hpp83"]
+animation = &"mallaby/attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b7btx"]
+animation = &"mallaby/idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lh27f"]
+advance_mode = 2
+advance_condition = &"is_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qlvo1"]
+advance_mode = 2
+advance_condition = &"is_attacking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_25sk0"]
+advance_mode = 2
+advance_condition = &"is_idle"
+
+[resource]
+states/Start/position = Vector2(275, 100)
+states/mallaby_attack/node = SubResource("AnimationNodeAnimation_hpp83")
+states/mallaby_attack/position = Vector2(639, 100)
+states/mallaby_idle/node = SubResource("AnimationNodeAnimation_b7btx")
+states/mallaby_idle/position = Vector2(464, 100)
+transitions = ["Start", "mallaby_idle", SubResource("AnimationNodeStateMachineTransition_lh27f"), "mallaby_idle", "mallaby_attack", SubResource("AnimationNodeStateMachineTransition_qlvo1"), "mallaby_attack", "mallaby_idle", SubResource("AnimationNodeStateMachineTransition_25sk0")]

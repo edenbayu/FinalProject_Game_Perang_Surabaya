@@ -19,8 +19,8 @@ signal next_action
 @onready var player_ui : HBoxContainer = $CanvasLayer/UI/HBoxContainer/HBoxContainer
 @onready var path : UnitPath = $GameBoard/UnitPath
 
-signal enemy_turn_started(icon: TextureRect)
-signal ally_turn_started
+signal enemy_turn_started(unit: Unit)
+signal ally_turn_started(unit: Unit)
 
 var database : SQLite
 var _units := []
@@ -51,8 +51,9 @@ func _ready():
 
 func _process(delta):
 	## Kodingan menampilkan fps game
-	var fps = Engine.get_frames_per_second()
-	print(fps)
+	pass
+	#var fps = Engine.get_frames_per_second()
+	#print(fps)
 
 func set_turn():
 	check_game_over(player, enemy)

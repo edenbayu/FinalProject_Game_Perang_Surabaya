@@ -1,6 +1,6 @@
 extends Node2D
 
-signal attack_done
+signal skill_done
 var active_unit : Unit
 var target_attack : Unit
 var dmg_type : String
@@ -28,7 +28,6 @@ func reload(unit: Unit) -> void:
 
 ## Melee Attack Code ##
 func do_melee(damage_type: String) -> void:
-	print("melee dmg")
 	dmg_type = damage_type
 	target_attack.agility -= 1
 	attack(active_unit, target_attack)
@@ -100,7 +99,6 @@ func apply_reduction(base_damage: int, current_armor: int) -> int:
 
 ## DISPLAY ATTACK DAMAGE ##
 func display_number(value: int, position: Vector2, damage_type: String):
-	print("damage should be displayed here!")
 	var number = Label.new()
 	number.global_position = position
 	number.text = str(value)
@@ -141,6 +139,40 @@ func display_number(value: int, position: Vector2, damage_type: String):
 	await tween.finished
 	number.queue_free()
 
+func display_ability_text(message: String, position: Vector2) -> void:
+	var number = Label.new()
+	number.global_position = position
+	number.text = str(message)
+	number.z_index = display_text_z_order
+	number.label_settings = LabelSettings.new()
+	
+	var color = "#FFF"
+	var font = load("res://font/I-pixel-u.ttf")
+	number.label_settings.font_color = color
+	number.label_settings.font_size = 40
+	number.label_settings.outline_color = "#000"
+	number.label_settings.outline_size = 12
+	number.label_settings.font = font
+	
+	call_deferred("add_child", number)
+	
+	await number.resized
+	number.pivot_offset = Vector2(number.size / 2)
+	
+	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(
+		number, "position:y", number.position.y - 24, 0.25
+	).set_ease(Tween.EASE_OUT)
+	tween.tween_property(
+		number, "position:y", number.position.y, 0.5
+	).set_ease(Tween.EASE_IN).set_delay(0.25)
+	tween.tween_property(
+		number, "scale", Vector2.ZERO, 0.25
+	).set_ease(Tween.EASE_IN).set_delay(0.5)
+	
+	await tween.finished
+	number.queue_free()
 
 func display_invalid_tile(position: Vector2):
 	print("damage should be displayed here!")

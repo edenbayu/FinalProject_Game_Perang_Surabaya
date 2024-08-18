@@ -362,7 +362,7 @@ func get_nearest_neighbor_unit():
 	var min_distance: int = 100
 	for unit in player.get_children():
 		var player = unit as Unit
-		if not player:
+		if not player or player.is_dead:
 			pass
 		unitPath.initialize(_walkable_cells)
 		var  distance: int = unitPath.calculate_distance(LevelManager.active_unit.cell, player.cell)

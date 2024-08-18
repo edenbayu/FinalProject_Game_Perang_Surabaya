@@ -45,7 +45,6 @@ const move_speed = 250
 			#await ready
 		#_sprite.vframes = value
 
-var database : SQLite
 var attack_range : int
 @export var last_direction := Vector2.ZERO
 

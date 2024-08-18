@@ -42,10 +42,10 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
-	if zoomed_in:
-		target = LevelManager.active_unit
-	else:
-		target = null
+	#if zoomed_in:
+		#target = LevelManager.active_unit
+	#else:
+		#target = null
 	follow()
 	if moveable:
 		_move_cam()
