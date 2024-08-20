@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Grid" load_steps=2 format=3 uid="uid://dg6ms3kbhdqrw"]
+
+[ext_resource type="Script" path="res://Scripts/Grid.gd" id="1_gg01e"]
+
+[resource]
+script = ExtResource("1_gg01e")
+start_rect = Vector2(-2, -16)
+tilemap_size = Vector2(15, 38)
+cell_size = Vector2(160, 80)

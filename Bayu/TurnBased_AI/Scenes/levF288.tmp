@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://baiggpujhqrfx"]
+[gd_scene load_steps=101 format=3 uid="uid://baiggpujhqrfx"]
 
 [ext_resource type="Script" path="res://Scripts/BossLevel.gd" id="1_8o4xw"]
 [ext_resource type="Shader" path="res://Resources/outline.gdshader" id="1_mrtod"]
@@ -36,7 +36,9 @@
 [ext_resource type="Script" path="res://addons/utility_ai/actions/action.gd" id="32_4mrhh"]
 [ext_resource type="Script" path="res://addons/utility_ai/considerations/aggregation.gd" id="33_poyxq"]
 [ext_resource type="Script" path="res://addons/utility_ai/considerations/consideration_from_node.gd" id="34_i04xg"]
+[ext_resource type="Script" path="res://Scenes/Property.gd" id="35_wgp1h"]
 [ext_resource type="PackedScene" uid="uid://dupx88uxm5vgj" path="res://Scenes/Mallaby.tscn" id="36_0bqkn"]
+[ext_resource type="Texture2D" uid="uid://v5elhraurb2y" path="res://Sprites/static_table.png" id="36_bt6dg"]
 [ext_resource type="PackedScene" uid="uid://bb1s8fhbukv66" path="res://Scenes/Camera.tscn" id="37_jo5p8"]
 [ext_resource type="Script" path="res://Scenes/CursorSelection.gd" id="38_2dvtk"]
 [ext_resource type="AnimationLibrary" uid="uid://c0idojl1tfxxv" path="res://Resources/Animation_Resources/mallaby.res" id="38_bx6hq"]
@@ -272,6 +274,11 @@ point_count = 2
 max_value = 0.5
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.502181), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1t3p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_54ujx"]
+radius = 63.0553
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2175y"]
 size = Vector2(32, 32)
@@ -937,6 +944,93 @@ _animation_resource = ExtResource("38_bx6hq")
 _animation_state_machine = ExtResource("39_p762m")
 
 [node name="Props" type="Node2D" parent="GameBoard"]
+visible = false
+
+[node name="TableChair" type="StaticBody2D" parent="GameBoard/Props"]
+position = Vector2(-640, 406)
+script = ExtResource("35_wgp1h")
+cell = Vector2i(2, 12)
+
+[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair"]
+texture = ExtResource("36_bt6dg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair"]
+shape = SubResource("RectangleShape2D_t1t3p")
+
+[node name="TableChair2" type="StaticBody2D" parent="GameBoard/Props"]
+position = Vector2(-320, 566)
+script = ExtResource("35_wgp1h")
+cell = Vector2i(7, 12)
+
+[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair2"]
+texture = ExtResource("36_bt6dg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair2"]
+shape = SubResource("RectangleShape2D_t1t3p")
+
+[node name="TableChair3" type="StaticBody2D" parent="GameBoard/Props"]
+position = Vector2(0, 726)
+script = ExtResource("35_wgp1h")
+cell = Vector2i(12, 12)
+
+[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair3"]
+texture = ExtResource("36_bt6dg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair3"]
+shape = SubResource("RectangleShape2D_t1t3p")
+
+[node name="TableChair4" type="StaticBody2D" parent="GameBoard/Props"]
+position = Vector2(322, 420)
+scale = Vector2(-1, 1)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("35_wgp1h")
+
+[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair4"]
+position = Vector2(2, -44)
+texture = ExtResource("36_bt6dg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair4"]
+position = Vector2(3.8147e-06, -3.69549e-06)
+rotation = 0.475294
+scale = Vector2(1.52103, 0.218512)
+shape = SubResource("CircleShape2D_54ujx")
+
+[node name="TableChair5" type="StaticBody2D" parent="GameBoard/Props"]
+position = Vector2(322, 225)
+scale = Vector2(-1, 1)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("35_wgp1h")
+cell = Vector2i(5, -2)
+
+[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair5"]
+position = Vector2(2, -44)
+texture = ExtResource("36_bt6dg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair5"]
+position = Vector2(3.8147e-06, -3.69549e-06)
+rotation = 0.475294
+scale = Vector2(1.52103, 0.218512)
+shape = SubResource("CircleShape2D_54ujx")
+
+[node name="TableChair6" type="StaticBody2D" parent="GameBoard/Props"]
+position = Vector2(706, 226)
+scale = Vector2(-1, 1)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("35_wgp1h")
+cell = Vector2i(8, -1)
+
+[node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair6"]
+position = Vector2(2, -44)
+texture = ExtResource("36_bt6dg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/TableChair6"]
+position = Vector2(3.8147e-06, -3.69549e-06)
+rotation = 0.475294
+scale = Vector2(1.52103, 0.218512)
+shape = SubResource("CircleShape2D_54ujx")
 
 [node name="Timer" type="Timer" parent="."]
 

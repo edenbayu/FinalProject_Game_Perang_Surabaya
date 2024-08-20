@@ -164,11 +164,23 @@ func run_action() -> void:
 	var action = gameboard.get_first_act(active_unit)
 	await execute_matched_actions(action, target)
 
+func randomize_target_unit() -> Unit:
+	var valid_units = []
+	
+	for child in player.get_children():
+		if child is Unit and child.curr_health > 0:
+			valid_units.append(child)
+	if valid_units.size() == 0:
+		return
+	var random_index = randi() % valid_units.size()
+	return valid_units[random_index]
+
 func execute_matched_actions(action: String, target: Unit) -> void:
+	var target_approach = randomize_target_unit()
 	#await next_action
 	match action:
 		"approach":
-			await gameboard.approach(active_unit)
+			await gameboard.approach(active_unit, target_approach)
 		"flee":
 			await gameboard.flee()
 		"reload":

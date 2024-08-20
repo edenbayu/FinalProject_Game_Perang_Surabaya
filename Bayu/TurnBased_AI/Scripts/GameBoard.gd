@@ -336,19 +336,19 @@ func get_weakest_unit() -> Unit:
 			weakest = player
 	return weakest
 
-func randomize_target_unit() -> Unit:
-	var valid_units = []
-	
-	for child in player.get_children():
-		if child is Unit and child.curr_health > 0:
-			valid_units.append(child)
-	if valid_units.size() == 0:
-		return
-	var random_index = randi() % valid_units.size()
-	return valid_units[random_index]
+#func randomize_target_unit() -> Unit:
+	#var valid_units = []
+	#
+	#for child in player.get_children():
+		#if child is Unit and child.curr_health > 0:
+			#valid_units.append(child)
+	#if valid_units.size() == 0:
+		#return
+	#var random_index = randi() % valid_units.size()
+	#return valid_units[random_index]
 
-func get_path_to_weakest_unit() -> PackedVector2Array:
-	var weakest_unit = randomize_target_unit()
+func get_path_to_weakest_unit(unit) -> PackedVector2Array:
+	var weakest_unit = unit
 	#var weakest_unit = get_weakest_unit()
 	if weakest_unit == null:
 		return []
@@ -482,10 +482,10 @@ func _move_active_AI(walk_paths: Array, new_cell) -> void:
 	_clear_active_unit()
 
 #AI actions
-func approach(active_unit: Unit) -> void:
+func approach(active_unit: Unit, target: Unit) -> void:
 	if active_unit == null:
 		return
-	var path1 = get_path_to_weakest_unit()
+	var path1 = get_path_to_weakest_unit(target)
 	var path2 = get_walkable_cells(active_unit)
 	var path3 = get_attack_range_cells(active_unit)
 	var ai_walk_paths = array_intersection(path1, path2)

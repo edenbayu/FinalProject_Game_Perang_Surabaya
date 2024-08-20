@@ -236,6 +236,11 @@ func death() -> void:
 	unit_die.emit(self)
 	#queue_free()
 
+func spawn() -> void:
+	var tween : Tween
+	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(self, "modulate", Color8(255, 255, 255, 255), 1)
+
 func _on_taking_hp_damage():
 	print("working just fine")
 
