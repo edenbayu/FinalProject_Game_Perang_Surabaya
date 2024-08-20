@@ -20,6 +20,11 @@ func _exit_state() -> void:
 	actor._is_idle = true
 
 func _physics_process(delta) -> void:
+	if actor.walk_coordinates.is_empty() or actor.is_within_range:
+		audio.stop_walk()
+		var last_resort = actor.path.map_to_local(actor.cell)
+		actor.position = last_resort
+		emit_signal("walk_finished")
 	if actor._is_walking:
 		var target_pos = actor.walk_coordinates.front()
 		actor.cell = actor.path.local_to_map(target_pos)
@@ -27,6 +32,3 @@ func _physics_process(delta) -> void:
 		actor.position = actor.position.move_toward(target_pos, actor.move_speed*delta)
 		if actor.position == target_pos:
 			actor.walk_coordinates.pop_front()
-	if actor.walk_coordinates.is_empty():
-		audio.stop_walk()
-		emit_signal("walk_finished")

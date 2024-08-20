@@ -10,6 +10,7 @@ extends Node2D
 @onready var sound_dialog2 = $sound_dialog2
 @onready var sound_dialog3 = $sound_dialog3
 @onready var lvl_2_bgm = $lvl2_bgm
+@onready var victory = $victory
 
 func button_sound() -> void:
 	hover_audio.play()
@@ -28,6 +29,12 @@ func sound_level2() -> void:
 func sound_level3() -> void:
 	sound_dialog3.stream.loop = true
 	sound_dialog3.play()
+
+func victory_sound() -> void:
+	lvl_1_bgm.stop()
+	lvl_2_bgm.stop()
+	victory.play()
+	
 
 func nambu_shoot() -> void:
 	nambu.play()

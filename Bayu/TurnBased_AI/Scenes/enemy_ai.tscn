@@ -1,0 +1,635 @@
+[gd_scene load_steps=64 format=3 uid="uid://2edo7wirbynk"]
+
+[ext_resource type="Script" path="res://EnemyAI.gd" id="1_m3e5c"]
+[ext_resource type="Shader" path="res://Resources/outline.gdshader" id="2_m10al"]
+[ext_resource type="Texture2D" uid="uid://c766m3iwx0tik" path="res://Sprites/Suryo.png" id="3_hpsuf"]
+[ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="4_0ql7s"]
+[ext_resource type="AnimationLibrary" uid="uid://ddhwuyhuucjlv" path="res://Resources/Animation_Resources/Tomo_animation.res" id="5_urxwc"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="6_trnfy"]
+[ext_resource type="Script" path="res://Scenes/FiniteStateMachine.gd" id="7_0o5q6"]
+[ext_resource type="Script" path="res://Scripts/IdleState.gd" id="8_na7fy"]
+[ext_resource type="Script" path="res://Scripts/WalkState.gd" id="9_1tabu"]
+[ext_resource type="Script" path="res://Scripts/AttackState.gd" id="10_wm0mt"]
+[ext_resource type="Script" path="res://Scenes/UnitSound.gd" id="11_ac7tm"]
+[ext_resource type="AudioStream" uid="uid://dl85j5bq1s7ng" path="res://audio/nambu_shoot.mp3" id="12_boryb"]
+[ext_resource type="AudioStream" uid="uid://45c1blgvsnrb" path="res://audio/male_hurt7-48124.mp3" id="13_lp6ui"]
+[ext_resource type="AudioStream" uid="uid://nprlxnrhvoum" path="res://audio/walk.mp3" id="14_oj18w"]
+[ext_resource type="AudioStream" uid="uid://csyh7tvwhtt3m" path="res://audio/bamboo_hit.mp3" id="15_hsbw3"]
+[ext_resource type="AudioStream" uid="uid://bhm0lrfqh7vhc" path="res://audio/relod.mp3" id="16_di5vf"]
+[ext_resource type="AudioStream" uid="uid://miprvy35d1hp" path="res://audio/male_hurt2.mp3" id="17_hni5d"]
+[ext_resource type="AudioStream" uid="uid://d4lydelnriesk" path="res://audio/male_hurt3.mp3" id="18_fcvap"]
+[ext_resource type="Texture2D" uid="uid://cx04mxaffvq8l" path="res://UI/hp_damage.png" id="19_e2p3f"]
+[ext_resource type="Texture2D" uid="uid://b2kk8dspv25cm" path="res://UI/hp_damage_active.png" id="20_ra0tq"]
+[ext_resource type="Texture2D" uid="uid://b3y66i4wviyx3" path="res://UI/hp_damage_clicked.png" id="21_56ru1"]
+[ext_resource type="Texture2D" uid="uid://bexcv3r84cy2v" path="res://UI/armor_damage.png" id="22_3y17u"]
+[ext_resource type="Texture2D" uid="uid://csh76vc2sxyu1" path="res://UI/armor_damage_active.png" id="23_ycun4"]
+[ext_resource type="Texture2D" uid="uid://4w14rqlv4ct2" path="res://UI/armor_damage_clicked.png" id="24_qf65u"]
+[ext_resource type="Texture2D" uid="uid://cjnahan7yi5na" path="res://Sprites/ammo_reload.png" id="25_ocpwm"]
+[ext_resource type="Script" path="res://addons/utility_ai/agent/agent.gd" id="26_ke522"]
+[ext_resource type="Script" path="res://addons/utility_ai/actions/action.gd" id="27_d2j26"]
+[ext_resource type="Script" path="res://addons/utility_ai/considerations/aggregation.gd" id="28_mrnly"]
+[ext_resource type="Script" path="res://addons/utility_ai/considerations/consideration_from_node.gd" id="29_klsh2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gjkbx"]
+resource_local_to_scene = true
+shader = ExtResource("2_m10al")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 3.0
+shader_parameter/pattern = 2
+shader_parameter/inside = false
+shader_parameter/add_margins = false
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1mlj"]
+size = Vector2(20, 26)
+
+[sub_resource type="Animation" id="Animation_gm7wa"]
+resource_name = "Hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.878431, 0.309804, 0.32549, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ji6qf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cyab2"]
+_data = {
+"Hurt": SubResource("Animation_gm7wa"),
+"RESET": SubResource("Animation_ji6qf")
+}
+
+[sub_resource type="Animation" id="Animation_m3qby"]
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 0, 0, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0eh6d"]
+_data = {
+"Idle": SubResource("Animation_m3qby")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_osbfi"]
+bg_color = Color(0.760784, 0.760784, 0.819608, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.152941, 0.152941, 0.211765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8i0bm"]
+bg_color = Color(0.588235, 0.258824, 0.32549, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.152941, 0.152941, 0.211765, 1)
+expand_margin_right = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qoiui"]
+bg_color = Color(0.760784, 0.760784, 0.819608, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.152941, 0.152941, 0.211765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chwqk"]
+bg_color = Color(0.25716, 0.314377, 0.609664, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.145098, 0.168627, 0.203922, 1)
+expand_margin_right = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6o52s"]
+texture = ExtResource("19_e2p3f")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rhe7f"]
+texture = ExtResource("20_ra0tq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_enall"]
+texture = ExtResource("21_56ru1")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0yaiw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q4x76"]
+texture = ExtResource("22_3y17u")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_06jqk"]
+texture = ExtResource("23_ycun4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kxecu"]
+texture = ExtResource("24_qf65u")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_75w7q"]
+
+[sub_resource type="Animation" id="Animation_rafu5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Reload:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Reload:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_x5uk2"]
+resource_name = "Reload"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Reload:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Reload:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reload_done"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UnitSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_reload"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hlrrm"]
+_data = {
+"RESET": SubResource("Animation_rafu5"),
+"Reload": SubResource("Animation_x5uk2")
+}
+
+[sub_resource type="Curve" id="Curve_nq4gv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_lcic5"]
+max_value = 1.6
+_data = [Vector2(0, 1.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_mfj1u"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_igvx5"]
+max_value = 1.5
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_6eplf"]
+resource_local_to_scene = true
+max_value = 1.5
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.198675, 0.101064), 0.0, 0.0, 0, 0, Vector2(0.496689, 1), 0.0, 0.0, 0, 0, Vector2(1, 1.00275), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_raxf2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_06146"]
+max_value = 1.5
+_data = [Vector2(0, 1.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_crefb"]
+max_value = 1.5
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_dyd2d"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_y2wcm"]
+max_value = 1.5
+_data = [Vector2(0, 1.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_uditu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_61s8p"]
+max_value = 0.5
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.502181), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="EnemyAI" type="CharacterBody2D"]
+script = ExtResource("1_m3e5c")
+player_id = 4
+last_direction = Vector2(-1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_gjkbx")
+position = Vector2(2, -40)
+texture = ExtResource("3_hpsuf")
+hframes = 12
+vframes = 12
+frame = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_t1mlj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+active = false
+libraries = {
+"": SubResource("AnimationLibrary_cyab2"),
+"Jepang_animation": SubResource("AnimationLibrary_0eh6d"),
+"Soerjo_animation": ExtResource("4_0ql7s"),
+"tomo_animation": ExtResource("5_urxwc")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = ExtResource("6_trnfy")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/is_attacking = false
+parameters/conditions/is_hurt = false
+parameters/conditions/is_idle = false
+parameters/conditions/is_walking = false
+parameters/Attack/blend_position = Vector2(0, 1)
+parameters/Idle/blend_position = Vector2(-1.00091, 1.06878)
+parameters/Walk/blend_position = Vector2(-0.997275, 1.07143)
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("7_0o5q6")
+state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("8_na7fy")
+actor = NodePath("../..")
+
+[node name="WalkState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("9_1tabu")
+actor = NodePath("../..")
+
+[node name="AttackState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("10_wm0mt")
+actor = NodePath("../..")
+
+[node name="Status" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(80, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = -190.0
+offset_right = 50.0
+offset_bottom = 27.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="HP" type="ProgressBar" parent="Status"]
+custom_minimum_size = Vector2(80, 12)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_osbfi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8i0bm")
+value = 80.0
+show_percentage = false
+
+[node name="Armor" type="ProgressBar" parent="Status"]
+custom_minimum_size = Vector2(80, 12)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_qoiui")
+theme_override_styles/fill = SubResource("StyleBoxFlat_chwqk")
+step = 1.0
+value = 80.0
+show_percentage = false
+
+[node name="UnitSound" type="Node2D" parent="."]
+script = ExtResource("11_ac7tm")
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="UnitSound"]
+stream = ExtResource("12_boryb")
+bus = &"SFX"
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="UnitSound"]
+stream = ExtResource("13_lp6ui")
+pitch_scale = 0.8
+bus = &"SFX"
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="UnitSound"]
+stream = ExtResource("14_oj18w")
+bus = &"SFX"
+
+[node name="Bamboo" type="AudioStreamPlayer2D" parent="UnitSound"]
+stream = ExtResource("15_hsbw3")
+bus = &"SFX"
+
+[node name="Reload" type="AudioStreamPlayer2D" parent="UnitSound"]
+stream = ExtResource("16_di5vf")
+bus = &"SFX"
+
+[node name="Hurt2" type="AudioStreamPlayer2D" parent="UnitSound"]
+stream = ExtResource("17_hni5d")
+bus = &"SFX"
+
+[node name="Hurt3" type="AudioStreamPlayer2D" parent="UnitSound"]
+stream = ExtResource("18_fcvap")
+bus = &"SFX"
+
+[node name="AttackIcons" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_top = -263.0
+offset_right = 45.0
+offset_bottom = -195.0
+grow_horizontal = 2
+
+[node name="Button" type="Button" parent="AttackIcons"]
+custom_minimum_size = Vector2(68, 68)
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+theme_override_styles/normal = SubResource("StyleBoxTexture_6o52s")
+theme_override_styles/hover = SubResource("StyleBoxTexture_rhe7f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_enall")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0yaiw")
+
+[node name="Button2" type="Button" parent="AttackIcons"]
+custom_minimum_size = Vector2(68, 68)
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+theme_override_styles/normal = SubResource("StyleBoxTexture_q4x76")
+theme_override_styles/hover = SubResource("StyleBoxTexture_06jqk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kxecu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_75w7q")
+
+[node name="Reload" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -231)
+texture = ExtResource("25_ocpwm")
+hframes = 9
+
+[node name="ActionAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hlrrm")
+}
+
+[node name="UtilityAiAgent" type="Node" parent="."]
+script = ExtResource("26_ke522")
+
+[node name="approach" type="Node" parent="UtilityAiAgent"]
+script = ExtResource("27_d2j26")
+_action_id = "approach"
+
+[node name="UtilityAiAggregation2" type="Node" parent="UtilityAiAgent/approach"]
+script = ExtResource("28_mrnly")
+
+[node name="innate_done" type="Node" parent="UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
+script = ExtResource("29_klsh2")
+node = NodePath("../../../..")
+property_name = "innate_done"
+curve = SubResource("Curve_nq4gv")
+
+[node name="is_within_range" type="Node" parent="UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
+script = ExtResource("29_klsh2")
+node = NodePath("../../../..")
+property_name = "is_within_range"
+curve = SubResource("Curve_lcic5")
+
+[node name="UtilityAiAggregation" type="Node" parent="UtilityAiAgent/approach/UtilityAiAggregation2"]
+script = ExtResource("28_mrnly")
+
+[node name="empty_ammo" type="Node" parent="UtilityAiAgent/approach/UtilityAiAggregation2/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_klsh2")
+node = NodePath("../../../../..")
+property_name = "is_empty_ammo"
+curve = SubResource("Curve_mfj1u")
+
+[node name="reload" type="Node" parent="UtilityAiAgent"]
+script = ExtResource("27_d2j26")
+_action_id = "reload"
+
+[node name="UtilityAiAggregation" type="Node" parent="UtilityAiAgent/reload"]
+script = ExtResource("28_mrnly")
+
+[node name="empty_ammo" type="Node" parent="UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_klsh2")
+node = NodePath("../../../..")
+property_name = "is_empty_ammo"
+max_value = 1.5
+curve = SubResource("Curve_igvx5")
+
+[node name="health" type="Node" parent="UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_klsh2")
+node = NodePath("../../../..")
+property_name = "curr_health"
+max_value = 12.0
+curve = SubResource("Curve_6eplf")
+
+[node name="innate_done" type="Node" parent="UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_klsh2")
+node = NodePath("../../../..")
+property_name = "innate_done"
+curve = SubResource("Curve_raxf2")
+
+[node name="shoot" type="Node" parent="UtilityAiAgent"]
+script = ExtResource("27_d2j26")
+_action_id = "shoot"
+
+[node name="UtilityAiAggregation" type="Node" parent="UtilityAiAgent/shoot"]
+script = ExtResource("28_mrnly")
+
+[node name="modular_done" type="Node" parent="UtilityAiAgent/shoot/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_klsh2")
+node = NodePath("../../../..")
+property_name = "modular_done"
+curve = SubResource("Curve_06146")
+
+[node name="UtilityAiAggregation" type="Node" parent="UtilityAiAgent/shoot/UtilityAiAggregation"]
+script = ExtResource("28_mrnly")
+
+[node name="is_within_range" type="Node" parent="UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_klsh2")
+node = NodePath("../../../../..")
+property_name = "is_within_range"
+curve = SubResource("Curve_crefb")
+
+[node name="empty_ammo" type="Node" parent="UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_klsh2")
+node = NodePath("../../../../..")
+property_name = "is_empty_ammo"
+curve = SubResource("Curve_dyd2d")
+
+[node name="rest" type="Node" parent="UtilityAiAgent"]
+script = ExtResource("27_d2j26")
+_action_id = "rest"
+
+[node name="UtilityAiAggregation" type="Node" parent="UtilityAiAgent/rest"]
+script = ExtResource("28_mrnly")
+
+[node name="modular_done" type="Node" parent="UtilityAiAgent/rest/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_klsh2")
+node = NodePath("../../../..")
+property_name = "modular_done"
+curve = SubResource("Curve_y2wcm")
+
+[node name="UtilityAiAggregation" type="Node" parent="UtilityAiAgent/rest/UtilityAiAggregation"]
+script = ExtResource("28_mrnly")
+aggregation_type = 2
+
+[node name="is_within_range" type="Node" parent="UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_klsh2")
+node = NodePath("../../../../..")
+property_name = "is_within_range"
+curve = SubResource("Curve_uditu")
+
+[node name="empty_ammo" type="Node" parent="UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("29_klsh2")
+node = NodePath("../../../../..")
+property_name = "is_empty_ammo"
+curve = SubResource("Curve_61s8p")
+
+[node name="SensorJarak" type="Node2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="SensorJarak"]
+target_position = Vector2(210, 100)
+
+[node name="RayCast2D2" type="RayCast2D" parent="SensorJarak"]
+target_position = Vector2(228, 26)
+
+[node name="RayCast2D3" type="RayCast2D" parent="SensorJarak"]
+target_position = Vector2(70, 102)
+
+[node name="RayCast2D4" type="RayCast2D" parent="SensorJarak"]
+target_position = Vector2(227, -40)
+
+[node name="RayCast2D5" type="RayCast2D" parent="SensorJarak"]
+target_position = Vector2(208, -109)
+
+[node name="RayCast2D6" type="RayCast2D" parent="SensorJarak"]
+target_position = Vector2(65, -117)
+
+[node name="RayCast2D7" type="RayCast2D" parent="SensorJarak"]
+target_position = Vector2(-62, -117)
+
+[node name="RayCast2D8" type="RayCast2D" parent="SensorJarak"]
+target_position = Vector2(-202, -108)
+
+[node name="RayCast2D9" type="RayCast2D" parent="SensorJarak"]
+target_position = Vector2(-219, -37)
+
+[node name="RayCast2D10" type="RayCast2D" parent="SensorJarak"]
+target_position = Vector2(-215, 26)
+
+[node name="RayCast2D11" type="RayCast2D" parent="SensorJarak"]
+target_position = Vector2(-205, 97)
+
+[node name="RayCast2D12" type="RayCast2D" parent="SensorJarak"]
+target_position = Vector2(-64, 101)
+
+[node name="RayCast2D13" type="RayCast2D" parent="SensorJarak"]
+target_position = Vector2(170, -7)
+
+[node name="RayCast2D14" type="RayCast2D" parent="SensorJarak"]
+target_position = Vector2(0, -88)
+
+[node name="RayCast2D15" type="RayCast2D" parent="SensorJarak"]
+target_position = Vector2(-158, -8)
+
+[node name="RayCast2D16" type="RayCast2D" parent="SensorJarak"]
+target_position = Vector2(1, 72)

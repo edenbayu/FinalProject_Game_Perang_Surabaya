@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://patekpdib63w"]
+[gd_scene load_steps=81 format=3 uid="uid://patekpdib63w"]
 
 [ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="1_54tt6"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_hgg8q"]
@@ -23,20 +23,15 @@
 [ext_resource type="Texture2D" uid="uid://nunbe0hanbsd" path="res://UI/innate_status_ui.png" id="8_r03ek"]
 [ext_resource type="Texture2D" uid="uid://bq07uefqpafdi" path="res://UI/modular_status_ui.png" id="9_6n57g"]
 [ext_resource type="Texture2D" uid="uid://dj8nyg33cpjqh" path="res://UI/half_armor_bar_filled.png" id="9_lscm0"]
-[ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="11_601eb"]
 [ext_resource type="FontFile" uid="uid://bs41epct36unk" path="res://UI/I-pixel-u.ttf" id="11_jjinn"]
 [ext_resource type="Script" path="res://Scenes/EnemyController.gd" id="12_bpvfk"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="12_e2jf1"]
 [ext_resource type="Texture2D" uid="uid://d333a8tuighwt" path="res://UI/armor_bar_empty.png" id="14_ud0ee"]
 [ext_resource type="Texture2D" uid="uid://sqoccmhkk5ea" path="res://Sprites/lvl1.png" id="19_nxtcr"]
 [ext_resource type="Texture2D" uid="uid://cd6opk1unbx3b" path="res://Sprites/Path-export.png" id="24_l3ms4"]
-[ext_resource type="Script" path="res://addons/utility_ai/agent/agent.gd" id="27_yvtgi"]
 [ext_resource type="Script" path="res://Scripts/RangedUnit.gd" id="28_djlxy"]
-[ext_resource type="Script" path="res://addons/utility_ai/actions/action.gd" id="28_lvhxf"]
-[ext_resource type="Script" path="res://addons/utility_ai/considerations/aggregation.gd" id="29_6jobp"]
-[ext_resource type="Script" path="res://addons/utility_ai/considerations/consideration_from_node.gd" id="29_w7j6f"]
 [ext_resource type="Script" path="res://Scripts/MeleeUnit.gd" id="30_85501"]
 [ext_resource type="Texture2D" uid="uid://v5elhraurb2y" path="res://Sprites/static_table.png" id="33_240rj"]
+[ext_resource type="PackedScene" uid="uid://2edo7wirbynk" path="res://Scenes/enemy_ai.tscn" id="33_ocjry"]
 [ext_resource type="Script" path="res://Scenes/CursorSelection.gd" id="35_84v7m"]
 [ext_resource type="Script" path="res://Scenes/Property.gd" id="35_dg0a8"]
 [ext_resource type="Script" path="res://Scripts/Interactables.gd" id="37_2eyfr"]
@@ -215,62 +210,6 @@ tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(128, 64)
 sources/0 = SubResource("TileSetAtlasSource_gcp1y")
-
-[sub_resource type="Curve" id="Curve_f4f8w"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_1kur1"]
-max_value = 1.6
-_data = [Vector2(0, 1.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_th8ef"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_wln8g"]
-max_value = 1.5
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1.5), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_ipvhf"]
-resource_local_to_scene = true
-max_value = 1.5
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.198675, 0.101064), 0.0, 0.0, 0, 0, Vector2(0.496689, 1), 0.0, 0.0, 0, 0, Vector2(1, 1.00275), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="Curve" id="Curve_ymwmf"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_gjwa0"]
-max_value = 1.5
-_data = [Vector2(0, 1.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_8laea"]
-max_value = 1.5
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1.5), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_ucavg"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_5von7"]
-max_value = 1.5
-_data = [Vector2(0, 1.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_3eyec"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_740e6"]
-max_value = 0.5
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.502181), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t1t3p"]
 
@@ -741,371 +680,25 @@ position = Vector2(400, 33)
 use_parent_material = true
 position = Vector2(-259, 130)
 script = ExtResource("28_djlxy")
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
 
 [node name="Tomo" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
 position = Vector2(-60, 100)
 script = ExtResource("30_85501")
 player_id = 2
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
 
 [node name="Tomo2" parent="GameBoard/Player" instance=ExtResource("3_7kb1e")]
 position = Vector2(-318, 227)
 script = ExtResource("30_85501")
 player_id = 2
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
 
 [node name="Enemy" type="Node2D" parent="GameBoard"]
 script = ExtResource("12_bpvfk")
 
-[node name="Unit" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
-position = Vector2(579, 484)
-script = ExtResource("28_djlxy")
-player_id = 4
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
-last_direction = Vector2(-1, -1)
-
-[node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit"]
-script = ExtResource("27_yvtgi")
-
-[node name="approach" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
-_action_id = "approach"
-
-[node name="UtilityAiAggregation2" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach"]
-script = ExtResource("29_6jobp")
-
-[node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "innate_done"
-curve = SubResource("Curve_f4f8w")
-
-[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "is_within_range"
-curve = SubResource("Curve_1kur1")
-
-[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach/UtilityAiAggregation2"]
-script = ExtResource("29_6jobp")
-
-[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/approach/UtilityAiAggregation2/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
-property_name = "is_empty_ammo"
-curve = SubResource("Curve_th8ef")
-
-[node name="reload" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
-_action_id = "reload"
-
-[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/reload"]
-script = ExtResource("29_6jobp")
-
-[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "is_empty_ammo"
-max_value = 1.5
-curve = SubResource("Curve_wln8g")
-
-[node name="health" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "curr_health"
-max_value = 12.0
-curve = SubResource("Curve_ipvhf")
-
-[node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "innate_done"
-curve = SubResource("Curve_ymwmf")
-
-[node name="shoot" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
-_action_id = "shoot"
-
-[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/shoot"]
-script = ExtResource("29_6jobp")
-
-[node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/shoot/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "modular_done"
-curve = SubResource("Curve_gjwa0")
-
-[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/shoot/UtilityAiAggregation"]
-script = ExtResource("29_6jobp")
-
-[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
-property_name = "is_within_range"
-curve = SubResource("Curve_8laea")
-
-[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
-property_name = "is_empty_ammo"
-curve = SubResource("Curve_ucavg")
-
-[node name="rest" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
-_action_id = "rest"
-
-[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest"]
-script = ExtResource("29_6jobp")
-
-[node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "modular_done"
-curve = SubResource("Curve_5von7")
-
-[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest/UtilityAiAggregation"]
-script = ExtResource("29_6jobp")
-aggregation_type = 2
-
-[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
-property_name = "is_within_range"
-curve = SubResource("Curve_3eyec")
-
-[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
-property_name = "is_empty_ammo"
-curve = SubResource("Curve_740e6")
-
-[node name="SensorJarak" type="Node2D" parent="GameBoard/Enemy/Unit"]
-
-[node name="RayCast2D" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
-target_position = Vector2(210, 100)
-
-[node name="RayCast2D2" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
-target_position = Vector2(228, 26)
-
-[node name="RayCast2D3" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
-target_position = Vector2(70, 102)
-
-[node name="RayCast2D4" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
-target_position = Vector2(227, -40)
-
-[node name="RayCast2D5" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
-target_position = Vector2(208, -109)
-
-[node name="RayCast2D6" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
-target_position = Vector2(65, -117)
-
-[node name="RayCast2D7" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
-target_position = Vector2(-62, -117)
-
-[node name="RayCast2D8" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
-target_position = Vector2(-202, -108)
-
-[node name="RayCast2D9" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
-target_position = Vector2(-219, -37)
-
-[node name="RayCast2D10" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
-target_position = Vector2(-215, 26)
-
-[node name="RayCast2D11" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
-target_position = Vector2(-205, 97)
-
-[node name="RayCast2D12" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
-target_position = Vector2(-64, 101)
-
-[node name="RayCast2D13" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
-target_position = Vector2(170, -7)
-
-[node name="RayCast2D14" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
-target_position = Vector2(0, -88)
-
-[node name="RayCast2D15" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
-target_position = Vector2(-158, -8)
-
-[node name="RayCast2D16" type="RayCast2D" parent="GameBoard/Enemy/Unit/SensorJarak"]
-target_position = Vector2(1, 72)
-
-[node name="Unit2" parent="GameBoard/Enemy" instance=ExtResource("3_7kb1e")]
-position = Vector2(193, 672)
-script = ExtResource("28_djlxy")
-player_id = 4
-_animation_resource = ExtResource("11_601eb")
-_animation_state_machine = ExtResource("12_e2jf1")
-last_direction = Vector2(-1, -1)
-
-[node name="UtilityAiAgent" type="Node" parent="GameBoard/Enemy/Unit2"]
-script = ExtResource("27_yvtgi")
-
-[node name="approach" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
-_action_id = "approach"
-
-[node name="UtilityAiAggregation2" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach"]
-script = ExtResource("29_6jobp")
-
-[node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "innate_done"
-curve = SubResource("Curve_f4f8w")
-
-[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach/UtilityAiAggregation2" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "is_within_range"
-curve = SubResource("Curve_1kur1")
-
-[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach/UtilityAiAggregation2"]
-script = ExtResource("29_6jobp")
-
-[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/approach/UtilityAiAggregation2/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
-property_name = "is_empty_ammo"
-curve = SubResource("Curve_th8ef")
-
-[node name="reload" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
-_action_id = "reload"
-
-[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/reload"]
-script = ExtResource("29_6jobp")
-
-[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "is_empty_ammo"
-max_value = 1.5
-curve = SubResource("Curve_wln8g")
-
-[node name="health" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "curr_health"
-max_value = 12.0
-curve = SubResource("Curve_ipvhf")
-
-[node name="innate_done" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/reload/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "innate_done"
-curve = SubResource("Curve_ymwmf")
-
-[node name="shoot" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
-_action_id = "shoot"
-
-[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot"]
-script = ExtResource("29_6jobp")
-
-[node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "modular_done"
-curve = SubResource("Curve_gjwa0")
-
-[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot/UtilityAiAggregation"]
-script = ExtResource("29_6jobp")
-
-[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
-property_name = "is_within_range"
-curve = SubResource("Curve_8laea")
-
-[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/shoot/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
-property_name = "is_empty_ammo"
-curve = SubResource("Curve_ucavg")
-
-[node name="rest" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent"]
-script = ExtResource("28_lvhxf")
-_action_id = "rest"
-
-[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest"]
-script = ExtResource("29_6jobp")
-
-[node name="modular_done" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../..")
-property_name = "modular_done"
-curve = SubResource("Curve_5von7")
-
-[node name="UtilityAiAggregation" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest/UtilityAiAggregation"]
-script = ExtResource("29_6jobp")
-aggregation_type = 2
-
-[node name="is_within_range" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
-property_name = "is_within_range"
-curve = SubResource("Curve_3eyec")
-
-[node name="empty_ammo" type="Node" parent="GameBoard/Enemy/Unit2/UtilityAiAgent/rest/UtilityAiAggregation/UtilityAiAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("29_w7j6f")
-node = NodePath("../../../../..")
-property_name = "is_empty_ammo"
-curve = SubResource("Curve_740e6")
-
-[node name="SensorJarak" type="Node2D" parent="GameBoard/Enemy/Unit2"]
-
-[node name="RayCast2D" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
-target_position = Vector2(210, 100)
-
-[node name="RayCast2D2" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
-target_position = Vector2(228, 26)
-
-[node name="RayCast2D3" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
-target_position = Vector2(70, 102)
-
-[node name="RayCast2D4" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
-target_position = Vector2(227, -40)
-
-[node name="RayCast2D5" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
-target_position = Vector2(208, -109)
-
-[node name="RayCast2D6" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
-target_position = Vector2(65, -117)
-
-[node name="RayCast2D7" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
-target_position = Vector2(-62, -117)
-
-[node name="RayCast2D8" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
-target_position = Vector2(-202, -108)
-
-[node name="RayCast2D9" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
-target_position = Vector2(-219, -37)
-
-[node name="RayCast2D10" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
-target_position = Vector2(-215, 26)
-
-[node name="RayCast2D11" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
-target_position = Vector2(-205, 97)
-
-[node name="RayCast2D12" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
-target_position = Vector2(-64, 101)
-
-[node name="RayCast2D13" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
-target_position = Vector2(170, -7)
-
-[node name="RayCast2D14" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
-target_position = Vector2(0, -88)
-
-[node name="RayCast2D15" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
-target_position = Vector2(-158, -8)
-
-[node name="RayCast2D16" type="RayCast2D" parent="GameBoard/Enemy/Unit2/SensorJarak"]
-target_position = Vector2(1, 72)
+[node name="EnemyAI" parent="GameBoard/Enemy" instance=ExtResource("33_ocjry")]
+position = Vector2(257, 574)
+
+[node name="EnemyAI2" parent="GameBoard/Enemy" instance=ExtResource("33_ocjry")]
+position = Vector2(572, 359)
 
 [node name="Props" type="Node2D" parent="GameBoard"]
 
@@ -1165,7 +758,7 @@ scale = Vector2(-1, 1)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("35_dg0a8")
-cell = Vector2i(5, -2)
+cell = Vector2i(5, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/TableChair5"]
 position = Vector2(2, -44)

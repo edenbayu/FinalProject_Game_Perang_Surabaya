@@ -234,7 +234,6 @@ func death() -> void:
 	tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween.tween_property(self, "modulate", Color8(255, 255, 255, 0), 1)
 	unit_die.emit(self)
-	#queue_free()
 
 func spawn() -> void:
 	var tween : Tween

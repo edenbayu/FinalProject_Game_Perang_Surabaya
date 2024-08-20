@@ -55,6 +55,10 @@ func _process(delta):
 	#var fps = Engine.get_frames_per_second()
 	#print(fps)
 
+func _physics_process(delta):
+	if active_unit.unit_role == "enemy" and active_unit.player_id != 5:
+		_detect_ally_units()
+
 func set_turn():
 	check_game_over(player, enemy)
 	var unit_status = _units[turn_index].unit_role
@@ -149,7 +153,7 @@ func _on_enemy_turn_started(unit: Unit) -> void:
 	active_unit.innate_done = false
 	detected.clear()
 	active_unit = unit
-	_detect_ally_units()
+	#_detect_ally_units()
 	active_unit.is_selected = true
 	player_ui.visible = false
 	await get_tree().create_timer(0.25).timeout
@@ -201,7 +205,9 @@ func _detect_ally_units() -> void:
 	for ray in raycast.get_children():
 		if ray.is_colliding():
 			var detected_unit = ray.get_collider() as Unit
-			if detected_unit.unit_role == "ally" and detected_unit.curr_health > 0 and not detected_unit.is_dead:
+			if detected_unit == null:
+				continue
+			elif detected_unit.unit_role == "ally" and detected_unit.curr_health > 0 and not detected_unit.is_dead:
 				detected.append(detected_unit)
 	if detected.is_empty():
 		active_unit.is_within_range = false
@@ -315,11 +321,9 @@ func check_game_over(player, enemy) -> void:
 		win_game()
 
 func lose_game():
-	#await get_tree().create_timer(0.5).timeout
-	#get_tree().paused = true
+	gameboard.audio.victory_sound()
 	$GameOver.show()
 
 func win_game():
-	#await get_tree().create_timer(0.5).timeout
-	#get_tree().paused = true
+	gameboard.audio.victory_sound()
 	$GameOver.show()

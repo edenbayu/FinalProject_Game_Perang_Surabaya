@@ -362,8 +362,10 @@ func get_nearest_neighbor_unit():
 	var min_distance: int = 100
 	for unit in player.get_children():
 		var player = unit as Unit
-		if not player or player.is_dead:
+		if not player:
 			pass
+		if player.curr_health <= 0:
+			continue
 		unitPath.initialize(_walkable_cells)
 		var  distance: int = unitPath.calculate_distance(LevelManager.active_unit.cell, player.cell)
 		if distance < min_distance:
@@ -473,10 +475,10 @@ func _move_active_AI(walk_paths: Array, new_cell) -> void:
 	LevelManager.active_unit.walk_coordinates = new_path 
 	##Menghapus active unit setelah selesai bergerak
 	_units.erase(LevelManager.active_unit.cell)
-	_units[new_cell] = LevelManager.active_unit
 	_deselect_active_unit()
 	LevelManager.active_unit.walk()
 	await LevelManager.active_unit.walk_state.walk_finished
+	_units[LevelManager.active_unit.cell] = LevelManager.active_unit
 	LevelManager.active_unit.innate_done = true
 	emit_signal("action_done")
 	_clear_active_unit()
@@ -485,15 +487,18 @@ func _move_active_AI(walk_paths: Array, new_cell) -> void:
 func approach(active_unit: Unit, target: Unit) -> void:
 	if active_unit == null:
 		return
-	var path1 = get_path_to_weakest_unit(target)
-	var path2 = get_walkable_cells(active_unit)
-	var path3 = get_attack_range_cells(active_unit)
-	var ai_walk_paths = array_intersection(path1, path2)
-	#print("intersection: ", ai_walk_paths, "destination:", ai_walk_paths.back())
-	if ai_walk_paths.is_empty():
-		return
-	var ai_final_target = ai_walk_paths.back()
-	await _move_active_AI(ai_walk_paths, ai_final_target)
+	if not active_unit.is_within_range:
+		var path1 = get_path_to_weakest_unit(target)
+		var path2 = get_walkable_cells(active_unit)
+		var path3 = get_attack_range_cells(active_unit)
+		var ai_walk_paths = array_intersection(path1, path2)
+		#print("intersection: ", ai_walk_paths, "destination:", ai_walk_paths.back())
+		if ai_walk_paths.is_empty():
+			return
+		var ai_final_target = ai_walk_paths.back()
+		await _move_active_AI(ai_walk_paths, ai_final_target)
+	elif active_unit.is_within_range:
+		await _move_active_AI([], Vector2.ZERO)
 
 func get_path_to_flee() -> void:
 	var _pathfinder = Pathfinder.new(grid, get_grid_data(grid), property_cells)
@@ -517,13 +522,8 @@ func rest(active_unit: Unit) -> void:
 	action_done.emit()
 	print("guess i'd do nothin")
 
-#func get_ai_actions():
-	#var action = ai_agent.get_top
-
 func get_first_act(active_unit: Unit) -> String:
-	var ai_agent = active_unit.get_node("UtilityAiAgent")
-	#print("HASHAHA", ai_agent.name)
-	return ai_agent._current_top_action
+	return active_unit.utility_agent._current_top_action
 
 func apply_reduction(base_damage: int, current_armor: int) -> int:
 	var final_damage = base_damage

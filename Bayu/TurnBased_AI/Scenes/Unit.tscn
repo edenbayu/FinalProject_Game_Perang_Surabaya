@@ -37,7 +37,7 @@ shader_parameter/add_margins = false
 shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwmta"]
-size = Vector2(20, 130)
+size = Vector2(20, 29)
 
 [sub_resource type="Animation" id="Animation_gm7wa"]
 resource_name = "Hurt"
@@ -255,6 +255,8 @@ _data = {
 
 [node name="Unit" type="CharacterBody2D"]
 script = ExtResource("1_u70hk")
+_animation_resource = ExtResource("3_ox0gf")
+_animation_state_machine = ExtResource("4_6vypo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_vph2h")
@@ -265,7 +267,7 @@ vframes = 12
 frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -55)
+position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_qwmta")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
