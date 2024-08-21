@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp5owcpdffn22"
-path="res://.godot/imported/cursor.png-97af3808e5ea1d52e364c821589a41df.ctex"
+uid="uid://5arhayieh3ph"
+path="res://.godot/imported/raj1.png-088a369c3a79bd876ace7c4beceafdb4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/cursor.png"
-dest_files=["res://.godot/imported/cursor.png-97af3808e5ea1d52e364c821589a41df.ctex"]
+source_file="res://DialogSistem/aset aseprite/raj1.png"
+dest_files=["res://.godot/imported/raj1.png-088a369c3a79bd876ace7c4beceafdb4.ctex"]
 
 [params]
 

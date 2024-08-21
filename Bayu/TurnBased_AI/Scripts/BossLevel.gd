@@ -5,6 +5,7 @@ var new_target: Unit = null
 @export var spawn: PackedScene
 
 func _on_enemy_turn_started(unit: Unit) -> void:
+	
 	active_unit = unit
 	if active_unit.player_id == 5:
 		player_ui.visible = false
@@ -24,6 +25,8 @@ func _on_enemy_turn_started(unit: Unit) -> void:
 		_end_turn()
 
 func boss_act() -> void:
+	print(active_unit.nama, active_unit.cell)
+	print(gameboard._units)
 	active_unit.fsm.change_state(active_unit.mallaby_attack_state)
 	await active_unit.lock_unit
 	new_target = set_mallaby_target()
@@ -39,7 +42,7 @@ func boss_act() -> void:
 		Battle.display_ability_text("AGILITY +2", Vector2(u.position.x - 110, u.position.y - 160))
 		await get_tree().create_timer(1.5).timeout
 	_end_turn()
-
+	
 func spawn_unit() -> void:
 	var e = spawn.instantiate()
 	enemy.add_child(e)

@@ -31,10 +31,13 @@ var target = null
 var targets = []
 var detected := []
 var wait_time_test := 1.5
+var start_time : float
+var end_time : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_reinitialize()
+	start_time = Time.get_ticks_msec()
 	
 	#Change this code later into a more proper way
 	turn_based.size.x += (len(ui_container.get_children()) - 1) * ui_container.size.x
@@ -50,10 +53,8 @@ func _ready():
 		unit.unit_die.connect(on_unit_die)
 
 func _process(delta):
-	## Kodingan menampilkan fps game
-	pass
-	#var fps = Engine.get_frames_per_second()
-	#print(fps)
+	var fps = Engine.get_frames_per_second()
+	$CanvasLayer/UI/FPS.text = "FPS : " + str(fps)
 
 func _physics_process(delta):
 	if active_unit.unit_role == "enemy" and active_unit.player_id != 5:
@@ -325,5 +326,15 @@ func lose_game():
 	$GameOver.show()
 
 func win_game():
+	end_time = Time.get_ticks_msec()
+	var finish_time = end_time - start_time
+	$GameOver/Winning/Label.text = "WAKTU PENYELESAIAN: " + convert_time(finish_time)
 	gameboard.audio.victory_sound()
 	$GameOver.show()
+
+func convert_time(milliseconds: int) -> String:
+	var total_seconds = milliseconds / 1000
+	var minutes = total_seconds / 60
+	var seconds = total_seconds % 60
+	
+	return str(minutes) + ":" + str(seconds)

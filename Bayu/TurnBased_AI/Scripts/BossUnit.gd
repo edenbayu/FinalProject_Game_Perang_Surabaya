@@ -1,6 +1,17 @@
 class_name BossUnit
 extends Unit
 
+var hitbox = [
+	Vector2(3,-10),
+	Vector2(4,-10),
+	Vector2(5,-10),
+	Vector2(3,-11),
+	Vector2(4,-11),
+	Vector2(5,-11),
+	Vector2(3,-12),
+	Vector2(4,-12),
+	Vector2(5,-12)
+]
 signal lock_unit
 @onready var mallaby_attack_state = $FiniteStateMachine/MallabyAttackState
 func _ready():
@@ -50,3 +61,12 @@ func _update_blend_position() -> void:
 func _update_animation_condition() -> void:
 	_animationTree["parameters/conditions/is_idle"] = _is_idle
 	_animationTree["parameters/conditions/is_attacking"] = _is_attacking
+
+func _process(delta: float):
+	hp_status.max_value = max_health
+	hp_status.value = curr_health
+	armor_status.max_value = max_armor
+	armor_status.value = curr_armor
+	_update_animation_condition()
+	_update_blend_position()
+	cell = Vector2(5,-10)

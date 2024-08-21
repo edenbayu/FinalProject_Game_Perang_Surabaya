@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://tx8xep5r6v38"]
+[gd_scene load_steps=115 format=3 uid="uid://tx8xep5r6v38"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_g8q1o"]
 [ext_resource type="Texture2D" uid="uid://2n71oiuyrq6f" path="res://UI/StatusUI_soerjo.png" id="2_g4i3q"]
@@ -26,12 +26,11 @@
 [ext_resource type="Script" path="res://Scripts/UnitPath.gd" id="25_kkcr1"]
 [ext_resource type="PackedScene" uid="uid://b1t8iyisfbe0v" path="res://Scenes/Cursor.tscn" id="26_b6jms"]
 [ext_resource type="PackedScene" uid="uid://20i4en7e2fm7" path="res://Scenes/Unit.tscn" id="27_w4smp"]
-[ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="28_sdajn"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="29_jbyoq"]
 [ext_resource type="Script" path="res://Scripts/RangedUnit.gd" id="29_w7di6"]
 [ext_resource type="Script" path="res://Scripts/MeleeUnit.gd" id="30_fq53n"]
 [ext_resource type="Script" path="res://Scenes/EnemyController.gd" id="30_g5c6a"]
 [ext_resource type="PackedScene" uid="uid://2edo7wirbynk" path="res://Scenes/enemy_ai.tscn" id="33_nx1us"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="33_xvv8j"]
 [ext_resource type="Script" path="res://Scenes/Property.gd" id="36_5nhef"]
 [ext_resource type="Texture2D" uid="uid://d38rp8dm2eep1" path="res://Sprites/willys.png" id="36_ip2bn"]
 [ext_resource type="Texture2D" uid="uid://sbi4ldrgwe6a" path="res://Sprites/bushes.png" id="37_axx1l"]
@@ -43,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://o8d6hmqppsju" path="res://DialogSistem/aset aseprite/TextBox.png" id="42_bk2ym"]
 [ext_resource type="FontFile" uid="uid://cnrpw086ndg2n" path="res://font/DePixelBreit.ttf" id="43_odlnh"]
 [ext_resource type="FontFile" uid="uid://c583mm1xbwni5" path="res://font/I-pixel-u.ttf" id="44_oo024"]
+[ext_resource type="Texture2D" uid="uid://dpksx32t6usr" path="res://Sprites/Icon/star.png" id="44_ueroa"]
 [ext_resource type="Script" path="res://Scenes/WinningTwoButton.gd" id="47_6yj7m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_furj2"]
@@ -214,6 +214,814 @@ tile_layout = 5
 tile_size = Vector2i(128, 64)
 sources/0 = SubResource("TileSetAtlasSource_vlgfa")
 
+[sub_resource type="Animation" id="Animation_6jhwv"]
+resource_name = "Idle_BL"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../EnemyAI/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17, 18]
+}
+
+[sub_resource type="Animation" id="Animation_lgfsd"]
+resource_name = "Idle_BR"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../EnemyAI/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28, 29, 30]
+}
+
+[sub_resource type="Animation" id="Animation_aiglu"]
+resource_name = "Idle_FL"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../EnemyAI/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_4im2s"]
+resource_name = "Idle"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../EnemyAI/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40, 41, 42]
+}
+
+[sub_resource type="Animation" id="Animation_62btc"]
+resource_name = "Shoot_BL"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../EnemyAI/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../EnemyAI/UnitSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_shoot"
+}, {
+"args": [],
+"method": &"play_hurt"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../EnemyAI/FiniteStateMachine/AttackState")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_on_damage_entered"
+}, {
+"args": [],
+"method": &"_on_attack_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0pqwo"]
+resource_name = "Shoot_BR"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../EnemyAI/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../EnemyAI/UnitSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_shoot"
+}, {
+"args": [],
+"method": &"play_hurt"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../EnemyAI/FiniteStateMachine/AttackState")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_on_damage_entered"
+}, {
+"args": [],
+"method": &"_on_attack_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_30y1b"]
+resource_name = "Shoot_FL"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../EnemyAI/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../EnemyAI/UnitSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_shoot"
+}, {
+"args": [],
+"method": &"play_hurt"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../EnemyAI/FiniteStateMachine/AttackState")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_on_damage_entered"
+}, {
+"args": [],
+"method": &"_on_attack_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_rypgl"]
+resource_name = "Shoot_FR"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../EnemyAI/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../EnemyAI/UnitSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_shoot"
+}, {
+"args": [],
+"method": &"play_hurt"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../EnemyAI/FiniteStateMachine/AttackState")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_on_damage_entered"
+}, {
+"args": [],
+"method": &"_on_attack_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xle1l"]
+resource_name = "Walk_BL"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../EnemyAI/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [108, 109, 110, 111, 112, 113, 114]
+}
+
+[sub_resource type="Animation" id="Animation_5a73i"]
+resource_name = "Walk_BR"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../EnemyAI/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [120, 121, 122, 123, 124, 125, 126]
+}
+
+[sub_resource type="Animation" id="Animation_8f18j"]
+resource_name = "Walk_FL"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../EnemyAI/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [96, 97, 98, 99, 100, 101, 102]
+}
+
+[sub_resource type="Animation" id="Animation_73r42"]
+resource_name = "Walk_FR"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../EnemyAI/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [132, 133, 134, 135, 136, 137, 138]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i5bmd"]
+resource_local_to_scene = true
+_data = {
+"Idle_BL": SubResource("Animation_6jhwv"),
+"Idle_BR": SubResource("Animation_lgfsd"),
+"Idle_FL": SubResource("Animation_aiglu"),
+"Idle_FR": SubResource("Animation_4im2s"),
+"Shoot_BL": SubResource("Animation_62btc"),
+"Shoot_BR": SubResource("Animation_0pqwo"),
+"Shoot_FL": SubResource("Animation_30y1b"),
+"Shoot_FR": SubResource("Animation_rypgl"),
+"Walk_BL": SubResource("Animation_xle1l"),
+"Walk_BR": SubResource("Animation_5a73i"),
+"Walk_FL": SubResource("Animation_8f18j"),
+"Walk_FR": SubResource("Animation_73r42")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_km30l"]
+resource_local_to_scene = true
+_data = {
+"Idle_BL": SubResource("Animation_6jhwv"),
+"Idle_BR": SubResource("Animation_lgfsd"),
+"Idle_FL": SubResource("Animation_aiglu"),
+"Idle_FR": SubResource("Animation_4im2s"),
+"Shoot_BL": SubResource("Animation_62btc"),
+"Shoot_BR": SubResource("Animation_0pqwo"),
+"Shoot_FL": SubResource("Animation_30y1b"),
+"Shoot_FR": SubResource("Animation_rypgl"),
+"Walk_BL": SubResource("Animation_xle1l"),
+"Walk_BR": SubResource("Animation_5a73i"),
+"Walk_FL": SubResource("Animation_8f18j"),
+"Walk_FR": SubResource("Animation_73r42")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ryepg"]
+resource_local_to_scene = true
+_data = {
+"Idle_BL": SubResource("Animation_6jhwv"),
+"Idle_BR": SubResource("Animation_lgfsd"),
+"Idle_FL": SubResource("Animation_aiglu"),
+"Idle_FR": SubResource("Animation_4im2s"),
+"Shoot_BL": SubResource("Animation_62btc"),
+"Shoot_BR": SubResource("Animation_0pqwo"),
+"Shoot_FL": SubResource("Animation_30y1b"),
+"Shoot_FR": SubResource("Animation_rypgl"),
+"Walk_BL": SubResource("Animation_xle1l"),
+"Walk_BR": SubResource("Animation_5a73i"),
+"Walk_FL": SubResource("Animation_8f18j"),
+"Walk_FR": SubResource("Animation_73r42")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dlxs3"]
+resource_local_to_scene = true
+_data = {
+"Idle_BL": SubResource("Animation_6jhwv"),
+"Idle_BR": SubResource("Animation_lgfsd"),
+"Idle_FL": SubResource("Animation_aiglu"),
+"Idle_FR": SubResource("Animation_4im2s"),
+"Shoot_BL": SubResource("Animation_62btc"),
+"Shoot_BR": SubResource("Animation_0pqwo"),
+"Shoot_FL": SubResource("Animation_30y1b"),
+"Shoot_FR": SubResource("Animation_rypgl"),
+"Walk_BL": SubResource("Animation_xle1l"),
+"Walk_BR": SubResource("Animation_5a73i"),
+"Walk_FL": SubResource("Animation_8f18j"),
+"Walk_FR": SubResource("Animation_73r42")
+}
+
+[sub_resource type="Animation" id="Animation_6piu7"]
+resource_name = "Idle_BL"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17, 18]
+}
+
+[sub_resource type="Animation" id="Animation_0adxt"]
+resource_name = "Idle_BR"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28, 29, 30]
+}
+
+[sub_resource type="Animation" id="Animation_istuk"]
+resource_name = "Idle_FL"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_kchtn"]
+resource_name = "Idle"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40, 41, 42]
+}
+
+[sub_resource type="Animation" id="Animation_nk2tv"]
+resource_name = "Walk_BL"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [108, 109, 110, 111, 112, 113, 114]
+}
+
+[sub_resource type="Animation" id="Animation_s4x7u"]
+resource_name = "Walk_BR"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [120, 121, 122, 123, 124, 125, 126]
+}
+
+[sub_resource type="Animation" id="Animation_ljbr6"]
+resource_name = "Walk_FL"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [96, 97, 98, 99, 100, 101, 102]
+}
+
+[sub_resource type="Animation" id="Animation_nfqhq"]
+resource_name = "Walk_FR"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [132, 133, 134, 135, 136, 137, 138]
+}
+
+[sub_resource type="Animation" id="Animation_7yyxt"]
+resource_name = "Shoot_FL"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UnitSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_shoot"
+}, {
+"args": [],
+"method": &"play_hurt"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FiniteStateMachine/AttackState")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_on_damage_entered"
+}, {
+"args": [],
+"method": &"_on_attack_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_f4fcu"]
+resource_name = "Shoot_BL"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UnitSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_shoot"
+}, {
+"args": [],
+"method": &"play_hurt"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FiniteStateMachine/AttackState")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_on_damage_entered"
+}, {
+"args": [],
+"method": &"_on_attack_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_48g68"]
+resource_name = "Shoot_BR"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UnitSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_shoot"
+}, {
+"args": [],
+"method": &"play_hurt"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FiniteStateMachine/AttackState")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_on_damage_entered"
+}, {
+"args": [],
+"method": &"_on_attack_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_1pebp"]
+resource_name = "Shoot_FR"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UnitSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_shoot"
+}, {
+"args": [],
+"method": &"play_hurt"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FiniteStateMachine/AttackState")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_on_damage_entered"
+}, {
+"args": [],
+"method": &"_on_attack_finished"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hebn2"]
+resource_local_to_scene = true
+_data = {
+"Idle_BL": SubResource("Animation_6piu7"),
+"Idle_BR": SubResource("Animation_0adxt"),
+"Idle_FL": SubResource("Animation_istuk"),
+"Idle_FR": SubResource("Animation_kchtn"),
+"Shoot_BL": SubResource("Animation_f4fcu"),
+"Shoot_BR": SubResource("Animation_48g68"),
+"Shoot_FL": SubResource("Animation_7yyxt"),
+"Shoot_FR": SubResource("Animation_1pebp"),
+"Walk_BL": SubResource("Animation_nk2tv"),
+"Walk_BR": SubResource("Animation_s4x7u"),
+"Walk_FL": SubResource("Animation_ljbr6"),
+"Walk_FR": SubResource("Animation_nfqhq")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x0wiv"]
+resource_local_to_scene = true
+_data = {
+"Idle_BL": SubResource("Animation_6piu7"),
+"Idle_BR": SubResource("Animation_0adxt"),
+"Idle_FL": SubResource("Animation_istuk"),
+"Idle_FR": SubResource("Animation_kchtn"),
+"Shoot_BL": SubResource("Animation_f4fcu"),
+"Shoot_BR": SubResource("Animation_48g68"),
+"Shoot_FL": SubResource("Animation_7yyxt"),
+"Shoot_FR": SubResource("Animation_1pebp"),
+"Walk_BL": SubResource("Animation_nk2tv"),
+"Walk_BR": SubResource("Animation_s4x7u"),
+"Walk_FL": SubResource("Animation_ljbr6"),
+"Walk_FR": SubResource("Animation_nfqhq")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3w0ea"]
+resource_local_to_scene = true
+_data = {
+"Idle_BL": SubResource("Animation_6piu7"),
+"Idle_BR": SubResource("Animation_0adxt"),
+"Idle_FL": SubResource("Animation_istuk"),
+"Idle_FR": SubResource("Animation_kchtn"),
+"Shoot_BL": SubResource("Animation_f4fcu"),
+"Shoot_BR": SubResource("Animation_48g68"),
+"Shoot_FL": SubResource("Animation_7yyxt"),
+"Shoot_FR": SubResource("Animation_1pebp"),
+"Walk_BL": SubResource("Animation_nk2tv"),
+"Walk_BR": SubResource("Animation_s4x7u"),
+"Walk_FL": SubResource("Animation_ljbr6"),
+"Walk_FR": SubResource("Animation_nfqhq")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s83fh"]
+resource_local_to_scene = true
+_data = {
+"Idle_BL": SubResource("Animation_6piu7"),
+"Idle_BR": SubResource("Animation_0adxt"),
+"Idle_FL": SubResource("Animation_istuk"),
+"Idle_FR": SubResource("Animation_kchtn"),
+"Shoot_BL": SubResource("Animation_f4fcu"),
+"Shoot_BR": SubResource("Animation_48g68"),
+"Shoot_FL": SubResource("Animation_7yyxt"),
+"Shoot_FR": SubResource("Animation_1pebp"),
+"Walk_BL": SubResource("Animation_nk2tv"),
+"Walk_BR": SubResource("Animation_s4x7u"),
+"Walk_FL": SubResource("Animation_ljbr6"),
+"Walk_FR": SubResource("Animation_nfqhq")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_54ujx"]
 radius = 63.0553
 
@@ -376,6 +1184,7 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2"]
+visible = false
 material = SubResource("ShaderMaterial_furj2")
 use_parent_material = true
 layout_mode = 2
@@ -647,6 +1456,17 @@ offset_top = 4.0
 offset_right = 100.0
 offset_bottom = 96.0
 
+[node name="FPS" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 233.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("43_odlnh")
+theme_override_font_sizes/font_size = 38
+text = "FPS : 140"
+
 [node name="Bg" type="Sprite2D" parent="."]
 position = Vector2(168, 124)
 texture = ExtResource("21_8ulkf")
@@ -678,48 +1498,52 @@ position = Vector2(400, 33)
 use_parent_material = true
 position = Vector2(-133, 580)
 script = ExtResource("29_w7di6")
-_animation_resource = ExtResource("28_sdajn")
-_animation_state_machine = ExtResource("29_jbyoq")
+_animation_resource = SubResource("AnimationLibrary_i5bmd")
 last_direction = Vector2(1, -1)
 
 [node name="Tomo" parent="GameBoard/Player" instance=ExtResource("27_w4smp")]
 position = Vector2(-205, 489)
 script = ExtResource("30_fq53n")
 player_id = 2
-_animation_resource = ExtResource("28_sdajn")
-_animation_state_machine = ExtResource("29_jbyoq")
+_animation_resource = SubResource("AnimationLibrary_km30l")
 last_direction = Vector2(1, -1)
 
 [node name="Tomo2" parent="GameBoard/Player" instance=ExtResource("27_w4smp")]
 position = Vector2(-6, 580)
 script = ExtResource("30_fq53n")
 player_id = 2
-_animation_resource = ExtResource("28_sdajn")
-_animation_state_machine = ExtResource("29_jbyoq")
+_animation_resource = SubResource("AnimationLibrary_ryepg")
 last_direction = Vector2(1, -1)
 
 [node name="Tomo3" parent="GameBoard/Player" instance=ExtResource("27_w4smp")]
 position = Vector2(122, 645)
 script = ExtResource("30_fq53n")
 player_id = 2
-_animation_resource = ExtResource("28_sdajn")
-_animation_state_machine = ExtResource("29_jbyoq")
+_animation_resource = SubResource("AnimationLibrary_dlxs3")
 last_direction = Vector2(1, -1)
 
 [node name="Enemy" type="Node2D" parent="GameBoard"]
 script = ExtResource("30_g5c6a")
 
-[node name="EnemyAI" parent="GameBoard/Enemy" instance=ExtResource("33_nx1us")]
-position = Vector2(961, 224)
-
 [node name="EnemyAI2" parent="GameBoard/Enemy" instance=ExtResource("33_nx1us")]
 position = Vector2(386, -64)
+_animation_resource = SubResource("AnimationLibrary_hebn2")
+_animation_state_machine = ExtResource("33_xvv8j")
 
 [node name="EnemyAI3" parent="GameBoard/Enemy" instance=ExtResource("33_nx1us")]
 position = Vector2(638, 0)
+_animation_resource = SubResource("AnimationLibrary_x0wiv")
+_animation_state_machine = ExtResource("33_xvv8j")
 
 [node name="EnemyAI4" parent="GameBoard/Enemy" instance=ExtResource("33_nx1us")]
 position = Vector2(838, 95)
+_animation_resource = SubResource("AnimationLibrary_3w0ea")
+_animation_state_machine = ExtResource("33_xvv8j")
+
+[node name="EnemyAI5" parent="GameBoard/Enemy" instance=ExtResource("33_nx1us")]
+position = Vector2(961, 224)
+_animation_resource = SubResource("AnimationLibrary_s83fh")
+_animation_state_machine = ExtResource("33_xvv8j")
 
 [node name="Props" type="Node2D" parent="GameBoard"]
 
@@ -944,10 +1768,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -214.0
+offset_top = 74.0
+offset_right = 214.0
+offset_bottom = 132.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("44_oo024")
@@ -968,6 +1792,49 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("44_oo024")
 theme_override_font_sizes/font_size = 50
 text = "\"KEMENANGAN TELAH DIRAIH!\""
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOver/Winning"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -48.0
+offset_right = 142.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="GameOver/Winning/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("44_ueroa")
+
+[node name="TextureRect2" type="TextureRect" parent="GameOver/Winning/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("44_ueroa")
+
+[node name="TextureRect3" type="TextureRect" parent="GameOver/Winning/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("44_ueroa")
+
+[node name="Label" type="Label" parent="GameOver/Winning"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -158.0
+offset_right = 256.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("44_oo024")
+theme_override_font_sizes/font_size = 50
+text = "WAKTU PENYELESAIAN: "
 
 [node name="Losing" type="Control" parent="GameOver"]
 layout_mode = 3

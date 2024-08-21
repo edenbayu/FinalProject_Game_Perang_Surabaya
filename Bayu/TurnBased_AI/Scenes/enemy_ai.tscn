@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://EnemyAI.gd" id="1_m3e5c"]
 [ext_resource type="Shader" path="res://Resources/outline.gdshader" id="2_m10al"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="3_bs2b0"]
 [ext_resource type="Texture2D" uid="uid://c766m3iwx0tik" path="res://Sprites/Suryo.png" id="3_hpsuf"]
 [ext_resource type="AnimationLibrary" uid="uid://dv6a1fuvgvs7f" path="res://Resources/Animation_Resources/Soerjo_animation.res" id="4_0ql7s"]
 [ext_resource type="AnimationLibrary" uid="uid://ddhwuyhuucjlv" path="res://Resources/Animation_Resources/Tomo_animation.res" id="5_urxwc"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://cxhfosr80gxwx" path="res://Resources/Animation_Resources/Soerjo_animation_tree.tres" id="6_trnfy"]
 [ext_resource type="Script" path="res://Scenes/FiniteStateMachine.gd" id="7_0o5q6"]
 [ext_resource type="Script" path="res://Scripts/IdleState.gd" id="8_na7fy"]
 [ext_resource type="Script" path="res://Scripts/WalkState.gd" id="9_1tabu"]
@@ -263,8 +263,8 @@ point_count = 2
 
 [sub_resource type="Curve" id="Curve_lcic5"]
 max_value = 1.6
-_data = [Vector2(0, 1.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 1.6), 0.0, 0.0, 0, 0, Vector2(0.502222, 1.6), 0.0, 0.0, 0, 0, Vector2(0.506667, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Curve" id="Curve_mfj1u"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -331,7 +331,6 @@ position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_t1mlj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-active = false
 libraries = {
 "": SubResource("AnimationLibrary_cyab2"),
 "Jepang_animation": SubResource("AnimationLibrary_0eh6d"),
@@ -340,15 +339,22 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = ExtResource("6_trnfy")
+active = false
+libraries = {
+"": SubResource("AnimationLibrary_cyab2"),
+"Jepang_animation": SubResource("AnimationLibrary_0eh6d"),
+"Soerjo_animation": ExtResource("4_0ql7s"),
+"tomo_animation": ExtResource("5_urxwc")
+}
+tree_root = ExtResource("3_bs2b0")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_attacking = false
 parameters/conditions/is_hurt = false
 parameters/conditions/is_idle = false
 parameters/conditions/is_walking = false
-parameters/Attack/blend_position = Vector2(0, 1)
-parameters/Idle/blend_position = Vector2(-1.00091, 1.06878)
-parameters/Walk/blend_position = Vector2(-0.997275, 1.07143)
+parameters/Attack/blend_position = Vector2(0, 0)
+parameters/Idle/blend_position = Vector2(0, 0)
+parameters/Walk/blend_position = Vector2(0, 0)
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("7_0o5q6")

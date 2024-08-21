@@ -275,6 +275,13 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
+libraries = {
+"": SubResource("AnimationLibrary_cyab2"),
+"Jepang_animation": SubResource("AnimationLibrary_0eh6d"),
+"Soerjo_animation": ExtResource("3_ohtm0"),
+"mallaby": ExtResource("5_lkkno"),
+"tomo_animation": ExtResource("4_0sj0r")
+}
 tree_root = ExtResource("7_thbp3")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_attacking = false
@@ -414,3 +421,5 @@ libraries = {
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 build_mode = 1
 polygon = PackedVector2Array(-48, 135, 186, 8, 188, -101, 105, -134, -157, -4, -167, 74)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

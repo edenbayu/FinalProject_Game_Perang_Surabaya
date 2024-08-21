@@ -26,6 +26,3 @@ func _on_attack_finished() -> void:
 
 func _on_damage_entered() -> void:
 	damage_enter.emit()
-#
-#func _physics_process(delta):
-	#actor.last_direction = actor.check_direction(target_attack.position)

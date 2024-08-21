@@ -410,6 +410,10 @@ func set_target_attack(target) -> void:
 		return
 	if _attack_cells.has(t.cell) and t.unit_role == "enemy":
 		target_attack = t
+	elif t.player_id == 5:
+		for p in t.hitbox:
+			if _attack_cells.has(p):
+				target_attack = t
 
 func on_target_exited(body):
 	target_attack = null

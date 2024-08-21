@@ -1,0 +1,250 @@
+[gd_scene load_steps=39 format=3 uid="uid://bmcto16v40pwe"]
+
+[ext_resource type="Script" path="res://DialogSistem/DialogueSistem3.2.gd" id="1_4lx2j"]
+[ext_resource type="Texture2D" uid="uid://o8d6hmqppsju" path="res://DialogSistem/aset aseprite/TextBox.png" id="2_dvk3i"]
+[ext_resource type="Texture2D" uid="uid://b6pqull5m2lbs" path="res://DialogSistem/aset aseprite/bung-tomo.png" id="2_uhdbf"]
+[ext_resource type="Texture2D" uid="uid://do57esfye700d" path="res://DialogSistem/aset aseprite/LuarHotel.png" id="2_xfetx"]
+[ext_resource type="Texture2D" uid="uid://dy5w5gbiu3ivf" path="res://DialogSistem/aset aseprite/Sudirman.png" id="3_uqauv"]
+[ext_resource type="Texture2D" uid="uid://cq7ba25rk2v7a" path="res://DialogSistem/aset aseprite/mansergh.png" id="4_65e6c"]
+[ext_resource type="Texture2D" uid="uid://bl2t4vdp1myv1" path="res://DialogSistem/aset aseprite/Ling.png" id="4_wttrr"]
+[ext_resource type="Texture2D" uid="uid://psh4crd1ck3l" path="res://DialogSistem/aset aseprite/knil.png" id="5_2boxq"]
+[ext_resource type="Texture2D" uid="uid://dbrh8ebadlvtr" path="res://DialogSistem/aset aseprite/knil2.png" id="6_hfhpf"]
+[ext_resource type="Texture2D" uid="uid://d18cpml72xrda" path="res://DialogSistem/aset aseprite/namebox.png" id="6_hlfth"]
+[ext_resource type="Texture2D" uid="uid://xj820cecho3x" path="res://DialogSistem/aset aseprite/soehartini.png" id="7_f25k0"]
+[ext_resource type="Texture2D" uid="uid://0y7pc61c1ovt" path="res://DialogSistem/aset aseprite/Soerjott.png" id="8_jdh5h"]
+[ext_resource type="Texture2D" uid="uid://b84ciemgnmjgs" path="res://DialogSistem/aset aseprite/Sidik.png" id="9_2qsg2"]
+[ext_resource type="Texture2D" uid="uid://dredvunyphwbj" path="res://DialogSistem/aset aseprite/gub-suryo.png" id="10_3hob1"]
+[ext_resource type="Texture2D" uid="uid://cm2pv441tk2o0" path="res://DialogSistem/aset aseprite/background.png" id="11_7eiio"]
+[ext_resource type="Texture2D" uid="uid://dkxw7vgx2ysgw" path="res://DialogSistem/aset aseprite/downtown-soerabaja.png" id="12_h0m8l"]
+[ext_resource type="Texture2D" uid="uid://bve5y02t7ogte" path="res://DialogSistem/aset aseprite/tandjoeng-perak-export.png" id="13_mhryu"]
+[ext_resource type="Texture2D" uid="uid://1lsl4xux0t6w" path="res://DialogSistem/aset aseprite/tkr-hq.png" id="14_pordx"]
+[ext_resource type="Texture2D" uid="uid://bviima5k0rhac" path="res://DialogSistem/aset aseprite/soerjo-house.png" id="15_1rpsx"]
+[ext_resource type="FontFile" uid="uid://wmlstjc1wp0p" path="res://I-pixel-u.ttf" id="20_g7epb"]
+[ext_resource type="FontFile" uid="uid://cnrpw086ndg2n" path="res://font/DePixelBreit.ttf" id="21_of4jk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl0re"]
+atlas = ExtResource("2_dvk3i")
+region = Rect2(0, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yo727"]
+atlas = ExtResource("2_dvk3i")
+region = Rect2(1816, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlc8g"]
+atlas = ExtResource("2_dvk3i")
+region = Rect2(3632, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivl1l"]
+atlas = ExtResource("2_dvk3i")
+region = Rect2(5448, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0pjr"]
+atlas = ExtResource("2_dvk3i")
+region = Rect2(7264, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kks8w"]
+atlas = ExtResource("2_dvk3i")
+region = Rect2(9080, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndat1"]
+atlas = ExtResource("2_dvk3i")
+region = Rect2(10896, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qupqr"]
+atlas = ExtResource("2_dvk3i")
+region = Rect2(12712, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lv0u"]
+atlas = ExtResource("2_dvk3i")
+region = Rect2(14528, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tse45"]
+atlas = ExtResource("2_dvk3i")
+region = Rect2(16344, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrpxp"]
+atlas = ExtResource("2_dvk3i")
+region = Rect2(18160, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8lhc"]
+atlas = ExtResource("2_dvk3i")
+region = Rect2(19976, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vhwj"]
+atlas = ExtResource("2_dvk3i")
+region = Rect2(21792, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usstb"]
+atlas = ExtResource("2_dvk3i")
+region = Rect2(23608, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20ws0"]
+atlas = ExtResource("2_dvk3i")
+region = Rect2(25424, 0, 1816, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf6bu"]
+atlas = ExtResource("2_dvk3i")
+region = Rect2(27240, 0, 1816, 232)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jxuov"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl0re")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yo727")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlc8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivl1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0pjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kks8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndat1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qupqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lv0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tse45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrpxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8lhc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vhwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usstb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20ws0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lf6bu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Dialog_Sistem_3_2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4lx2j")
+character_portraits = Array[Texture2D]([ExtResource("2_uhdbf"), ExtResource("4_wttrr"), ExtResource("4_65e6c"), ExtResource("5_2boxq"), null, ExtResource("6_hfhpf"), ExtResource("7_f25k0"), ExtResource("8_jdh5h"), ExtResource("9_2qsg2"), ExtResource("10_3hob1")])
+scene_background = Array[Texture2D]([ExtResource("11_7eiio"), ExtResource("12_h0m8l"), ExtResource("13_mhryu"), ExtResource("14_pordx"), ExtResource("15_1rpsx")])
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+texture = ExtResource("2_xfetx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Char1" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = -707.0
+offset_top = -323.0
+offset_right = -107.0
+offset_bottom = 277.0
+texture = ExtResource("3_uqauv")
+
+[node name="Char2" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 212.0
+offset_top = -334.0
+offset_right = 812.0
+offset_bottom = 266.0
+texture = ExtResource("4_wttrr")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_left = -992.0
+offset_top = 204.0
+offset_right = 928.0
+offset_bottom = 480.0
+
+[node name="DialogueBox" type="TextureRect" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/MarginContainer/DialogueBox"]
+position = Vector2(958, 149)
+sprite_frames = SubResource("SpriteFrames_jxuov")
+
+[node name="Namebox" type="TextureRect" parent="Control/MarginContainer/DialogueBox"]
+layout_mode = 0
+offset_left = 1394.0
+offset_top = -15.0
+offset_right = 1866.0
+offset_bottom = 105.0
+texture = ExtResource("6_hlfth")
+
+[node name="Nametextbox" type="RichTextLabel" parent="Control/MarginContainer/DialogueBox"]
+z_index = 3
+layout_mode = 0
+offset_left = 1439.0
+offset_top = 26.0
+offset_right = 1840.0
+offset_bottom = 79.0
+theme_override_fonts/normal_font = ExtResource("20_g7epb")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "MANSERG"
+
+[node name="Textbox" type="RichTextLabel" parent="Control/MarginContainer/DialogueBox"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 107.0
+offset_right = 1808.0
+offset_bottom = 240.0
+theme_override_fonts/normal_font = ExtResource("21_of4jk")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Transition" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TransitionText" type="RichTextLabel" parent="Transition"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

@@ -280,14 +280,20 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
+libraries = {
+"": SubResource("AnimationLibrary_cyab2"),
+"Jepang_animation": SubResource("AnimationLibrary_0eh6d"),
+"Soerjo_animation": ExtResource("3_ox0gf"),
+"tomo_animation": ExtResource("5_tqc2j")
+}
 tree_root = ExtResource("4_6vypo")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_attacking = false
 parameters/conditions/is_hurt = false
-parameters/conditions/is_idle = true
+parameters/conditions/is_idle = false
 parameters/conditions/is_walking = false
 parameters/Attack/blend_position = Vector2(0, 1)
-parameters/Idle/blend_position = Vector2(-1.00091, 1.06878)
+parameters/Idle/blend_position = Vector2(-1.01043, 1.04762)
 parameters/Walk/blend_position = Vector2(-0.997275, 1.07143)
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
