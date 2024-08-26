@@ -87,23 +87,3 @@ func execute_matched_actions(action: String, target: Unit) -> void:
 			active_unit.attack_options.hide()
 		"rest":
 			await gameboard.rest(active_unit)
-
-#func on_unit_die(unit) -> void:
-	#_units.erase(unit)
-	#_icons.clear()
-	#var icon = ui_container.get_children()
-	#_reinitialize_icon()
-	#for u in _units:
-		#if u.is_dead:
-			#continue
-		#var unit_texture = TurnBasedIcon.new()
-		#ui_container.add_child(unit_texture)
-		#_icons.append(unit_texture)
-		#unit_texture.texture = u.inactive_icon
-	#if turn_index >= _units.size() - 1:
-		#turn_index -= 1
-		#_active_icon()
-	#else:
-		#_active_icon()
-	#gameboard._units.erase(unit.cell)
-	#check_game_over(player, enemy)

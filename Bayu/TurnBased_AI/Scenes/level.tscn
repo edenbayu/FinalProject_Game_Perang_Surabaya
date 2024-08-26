@@ -211,7 +211,7 @@ texture_region_size = Vector2i(128, 128)
 tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(128, 64)
-sources/1 = SubResource("TileSetAtlasSource_rhtw3")
+sources/0 = SubResource("TileSetAtlasSource_rhtw3")
 
 [sub_resource type="Animation" id="Animation_6jhwv"]
 resource_name = "Idle_BL"
@@ -924,7 +924,7 @@ tracks/0/keys = {
 "values": [132, 133, 134, 135, 136, 137, 138]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_c3h8i"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4e0fv"]
 resource_local_to_scene = true
 _data = {
 "Idle_BL": SubResource("Animation_6piu7"),
@@ -941,7 +941,7 @@ _data = {
 "Walk_FR": SubResource("Animation_nfqhq")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_c68fa"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fqr8k"]
 resource_local_to_scene = true
 _data = {
 "Idle_BL": SubResource("Animation_6piu7"),
@@ -1457,12 +1457,12 @@ script = ExtResource("12_bpvfk")
 
 [node name="EnemyAI" parent="GameBoard/Enemy" instance=ExtResource("33_ocjry")]
 position = Vector2(257, 574)
-_animation_resource = SubResource("AnimationLibrary_c3h8i")
+_animation_resource = SubResource("AnimationLibrary_4e0fv")
 _animation_state_machine = ExtResource("33_c8rcp")
 
 [node name="EnemyAI2" parent="GameBoard/Enemy" instance=ExtResource("33_ocjry")]
 position = Vector2(572, 359)
-_animation_resource = SubResource("AnimationLibrary_c68fa")
+_animation_resource = SubResource("AnimationLibrary_fqr8k")
 _animation_state_machine = ExtResource("33_c8rcp")
 
 [node name="Props" type="Node2D" parent="GameBoard"]

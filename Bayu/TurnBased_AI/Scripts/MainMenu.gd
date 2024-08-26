@@ -10,6 +10,7 @@ var created_new_save_data := false
 @onready var press_button = $pressbutton
 @onready var load = $LoadGame
 
+const save_path = "res://savings/saving.json"
 var sound_button = preload("res://Scenes/SoundManager.tscn")
 
 # Called when the node enters the scene tree for the first time.
@@ -19,7 +20,7 @@ func _ready():
 	menu.visible = true
 	setting.visible = false
 	load.visible = false
-	_check_new_date()
+	get_new_date()
 	created_new_save_data = false
 	_open_database()
 	_get_savings_data()
@@ -46,37 +47,44 @@ func _process(delta):
 	pass
 	#backsound_low_to_high(delta)
 
-func _on_new_game_pressed():
+func _on_new_game_pressed() -> void:
 	press_button.play()
 	sound_button.click_sound()
 	
-	save_data.query("Select id, id_level, last_saved_time, level_status from level")
-	var result_1 = save_data.query_result
-	for result in result_1:
-		if result['id_level'] == null:
-			save_data.update_rows('Level', 'id = '+ str(result['id']), {'id_level' = 1})
-			save_data.update_rows('Level', 'id = '+ str(result['id']), {'level_status' = 1})
-			save_data.update_rows('Level', 'id = '+ str(result['id']), {'last_saved_time' = _check_new_date()})
-			created_new_save_data = true
-			LevelState.set_current_saving_id(1)
-			LevelState.set_current_level(1)
+	var update_made = false
+	var file = FileAccess.open(save_path, FileAccess.READ)
+	var content = file.get_as_text()
+	var json = JSON.parse_string(content)
+	file.close()
+	
+	for item in json:
+		if item.id_level == 0:
+			item.id_level = 1
+			item.last_saved_time = get_new_date()
+			item.level_status = 1
+			update_made = true
+			LevelState.set_current_saving_id(item.id)
 			LevelState.set_level_status(1)
+			LevelState.set_current_level(1)
 			get_tree().change_scene_to_file("res://Scenes/level_menu.tscn")
-			created_new_save_data = true
 			break
-
-	for result in result_1:
-		if result['id_level'] != null and not created_new_save_data:
-			save_data.update_rows('Level', 'id = 1', {'id_level' = 1})
-			save_data.update_rows('Level', 'id = 1', {'level_status' = 1})
-			save_data.update_rows('Level', 'id = 1', {'last_saved_time' = _check_new_date()})
-			save_data.query("Select id, id_level, level_status from level where id = 1")
-			var hasil = save_data.query_result
-			LevelState.set_current_saving_id(hasil[0].id)
-			LevelState.set_current_level(hasil[0].id_level)
-			LevelState.set_level_status(hasil[0].level_status)
-			created_new_save_data = false
-			get_tree().change_scene_to_file.bind("res://Scenes/level_menu.tscn").call_deferred()
+	if not update_made:
+		for item in json:
+			if item.id == 1:
+				item.id_level = 1
+				item.last_saved_time = get_new_date()
+				item.level_status = 1
+				LevelState.set_current_saving_id(1)
+				LevelState.set_level_status(1)
+				LevelState.set_current_level(1)
+				get_tree().change_scene_to_file("res://Scenes/level_menu.tscn")
+				break
+	file = FileAccess.open(save_path, FileAccess.WRITE)
+	if file == null:
+		print("Failed to write data!")
+		return
+	file.store_line(JSON.stringify(json))
+	file.close()
 
 func _on_continue_game_pressed():
 	save_data.query("SELECT id, id_level, level_status, last_saved_time
@@ -118,8 +126,9 @@ func _on_credit_pressed():
 func _on_exit_pressed():
 	get_tree().quit()
 	
-func _check_new_date() -> String:
+func get_new_date() -> String:
 	var time = Time.get_datetime_dict_from_system()
+	print(time)
 	return str("%02d-%02d-%04d" % [time.day, time.month, time.year]) + " " + str("%02d:%02d:%02d" % [time.hour, time.minute, time.second])
 
 func _match_loaded_save(chapter: String):

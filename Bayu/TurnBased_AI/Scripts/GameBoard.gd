@@ -336,17 +336,6 @@ func get_weakest_unit() -> Unit:
 			weakest = player
 	return weakest
 
-#func randomize_target_unit() -> Unit:
-	#var valid_units = []
-	#
-	#for child in player.get_children():
-		#if child is Unit and child.curr_health > 0:
-			#valid_units.append(child)
-	#if valid_units.size() == 0:
-		#return
-	#var random_index = randi() % valid_units.size()
-	#return valid_units[random_index]
-
 func get_path_to_weakest_unit(unit) -> PackedVector2Array:
 	var weakest_unit = unit
 	#var weakest_unit = get_weakest_unit()

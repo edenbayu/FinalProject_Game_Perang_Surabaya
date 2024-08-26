@@ -38,3 +38,5 @@ func load_card_data(unit_id) -> Array:
 					result.append(card)
 		return result
 	return []
+	
+

@@ -329,8 +329,31 @@ func win_game():
 	end_time = Time.get_ticks_msec()
 	var finish_time = end_time - start_time
 	$GameOver/Winning/Label.text = "WAKTU PENYELESAIAN: " + convert_time(finish_time)
+	reward_star(finish_time)
 	gameboard.audio.victory_sound()
 	$GameOver.show()
+
+func reward_star(finish_time: int) -> void:
+	var reward :int
+	if finish_time <= 300000:
+		reward = 3
+	elif finish_time <= 360000:
+		reward = 2
+	else:
+		reward = 1
+	match reward:
+		3:
+			$GameOver/Winning/HBoxContainer.get_node("TextureRect").visible = true
+			$GameOver/Winning/HBoxContainer.get_node("TextureRect2").visible = true
+			$GameOver/Winning/HBoxContainer.get_node("TextureRect3").visible = true
+		2:
+			$GameOver/Winning/HBoxContainer.get_node("TextureRect").visible = true
+			$GameOver/Winning/HBoxContainer.get_node("TextureRect2").visible = true
+			$GameOver/Winning/HBoxContainer.get_node("TextureRect3").visible = false
+		1:
+			$GameOver/Winning/HBoxContainer.get_node("TextureRect").visible = true
+			$GameOver/Winning/HBoxContainer.get_node("TextureRect2").visible = false
+			$GameOver/Winning/HBoxContainer.get_node("TextureRect3").visible = false
 
 func convert_time(milliseconds: int) -> String:
 	var total_seconds = milliseconds / 1000

@@ -1,0 +1,40 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=9 format=3 uid="uid://k4xmwcd5quf"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q82jv"]
+animation = &"tank/right_attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2oqui"]
+animation = &"tank/front_attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d145j"]
+animation = &"tank/left_attack"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_otqsi"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_q82jv")
+blend_point_0/pos = Vector2(1, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_2oqui")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_d145j")
+blend_point_2/pos = Vector2(-1, -1)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g3dmj"]
+animation = &"tank/idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_atn1e"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ncqcl"]
+advance_mode = 2
+advance_condition = &"is_attacking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0y5ki"]
+advance_mode = 2
+advance_condition = &"is_idle"
+
+[resource]
+states/Start/position = Vector2(297, 90)
+states/attack/node = SubResource("AnimationNodeBlendSpace2D_otqsi")
+states/attack/position = Vector2(610, 90)
+states/tank_idle/node = SubResource("AnimationNodeAnimation_g3dmj")
+states/tank_idle/position = Vector2(462, 90)
+transitions = ["Start", "tank_idle", SubResource("AnimationNodeStateMachineTransition_atn1e"), "tank_idle", "attack", SubResource("AnimationNodeStateMachineTransition_ncqcl"), "attack", "tank_idle", SubResource("AnimationNodeStateMachineTransition_0y5ki")]
