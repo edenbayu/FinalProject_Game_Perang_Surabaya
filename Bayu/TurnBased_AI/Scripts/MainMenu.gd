@@ -100,6 +100,7 @@ func _on_continue_game_pressed():
 			latest_time = i.last_saved_time
 	if latest_save_data != null:
 		match_load_data(latest_save_data)
+		LevelState.set_current_saving_id(latest_save_data.id)
 	else:
 		print("No save data found!")
 
@@ -190,21 +191,25 @@ func _on_load3_game_mouse_entered():
 func _on_load_game_mouse_pressed():
 	sound_button.click_sound()
 	var data = LevelState.load_data(1)
+	LevelState.set_current_saving_id(1)
 	match_load_data(data)
 
 func _on_load1_game_mouse_pressed():
 	sound_button.click_sound()
 	var data = LevelState.load_data(2)
+	LevelState.set_current_saving_id(2)
 	match_load_data(data)
 
 func _on_load2_game_mouse_pressed():
 	sound_button.click_sound()
 	var data = LevelState.load_data(3)
+	LevelState.set_current_saving_id(3)
 	match_load_data(data)
 
 func _on_load3_game_mouse_pressed():
 	sound_button.click_sound()
 	var data = LevelState.load_data(4)
+	LevelState.set_current_saving_id(4)
 	match_load_data(data)
 
 func match_load_data(data: Dictionary) -> void:

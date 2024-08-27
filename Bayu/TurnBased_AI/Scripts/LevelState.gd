@@ -16,14 +16,22 @@ func set_current_level(new_current_level: int) -> void:
 func set_level_status(new_level_status : int) -> void:
 	level_status = new_level_status
 
-func save_game() -> void:
-	if current_saving_id == null:
-		return
-	saving_database = SQLite.new()
-	saving_database.path = "res://save.db"
-	saving_database.open_db()
+func save_data(new_id_level: int, new_level_status: int) -> void:
+	var file = FileAccess.open(savedata, FileAccess.READ)
+	var data = file.get_as_text()
+	var json_data = JSON.parse_string(data)
+	file.close()
 	
-	var save = saving_database.update_rows("Level", "id = " + str(current_saving_id), {"id_level" = current_level, "level_status" = level_status})
+	for item in json_data:
+		if item.id == current_saving_id:
+			item.id_level = new_id_level
+			item.last_saved_time = get_new_date()
+			item.level_status = new_level_status
+			break
+	file = FileAccess.open(savedata, FileAccess.WRITE)
+	file.store_line(JSON.stringify(json_data))
+	file.close
+	print("data berhasil disimpan! na")
 
 func load_data(saving_id: int) -> Dictionary:
 	var file = FileAccess.open(savedata, FileAccess.READ)
@@ -37,5 +45,9 @@ func load_data(saving_id: int) -> Dictionary:
 				"id_level" : data.id_level,
 				"level_status": data.level_status
 			}
-	print(json)
 	return {}
+
+func get_new_date() -> String:
+	var time = Time.get_datetime_dict_from_system()
+	print(time)
+	return str("%04d-%02d-%02d" % [time.year, time.month, time.day]) + " " + str("%02d:%02d:%02d" % [time.hour, time.minute, time.second])

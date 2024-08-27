@@ -141,6 +141,7 @@ func advance_dialogue():
 				check_for_color()
 			#If we are at the last line of dialogue, the scene gonna change to the level 1.
 			elif index >= dialogue.size():
+				LevelState.save_data(1,2)
 				animation_player.play("change_scene")
  
 func check_for_potrait_kiri():
