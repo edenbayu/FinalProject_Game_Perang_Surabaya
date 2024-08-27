@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bcbw2rovi2ge"]
+[gd_scene load_steps=13 format=3 uid="uid://bcbw2rovi2ge"]
 
 [ext_resource type="Script" path="res://Scenes/SoundManager.gd" id="1_pov6s"]
 [ext_resource type="AudioStream" uid="uid://bjufam7tlenqp" path="res://audio/mouse-click-117076 (mp3cut.net).mp3" id="2_sxfdy"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://t26k51jt5okr" path="res://audio/buat level 3 (mp3cut.net).mp3" id="9_1oocw"]
 [ext_resource type="AudioStream" uid="uid://ps3xfj65fowm" path="res://audio/gameplay2 (mp3cut.net).mp3" id="10_y6dkl"]
 [ext_resource type="AudioStream" uid="uid://b1xbv08ifwvmo" path="res://audio/winning-218995.mp3" id="11_mh08a"]
+[ext_resource type="AudioStream" uid="uid://d2rxvbyj7f8hm" path="res://audio/GUGUR BUNGA - Cover by Fakhri Violin.mp3" id="12_fbkre"]
 
 [node name="SoundManager" type="Node2D"]
 script = ExtResource("1_pov6s")
@@ -50,3 +51,6 @@ stream = ExtResource("10_y6dkl")
 
 [node name="victory" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_mh08a")
+
+[node name="gugur_bunga" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_fbkre")

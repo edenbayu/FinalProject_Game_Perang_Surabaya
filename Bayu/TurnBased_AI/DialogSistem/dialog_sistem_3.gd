@@ -148,8 +148,8 @@ func check_for_potrait_kiri():
 	match nama_portrait_kiri:
 		"SOERJO": portrait_kiri.texture = character_portraits[0]
 		"TKR 1": portrait_kiri.texture = character_portraits[1]
-		"TENTARA INDIA 1" : portrait_kiri.texture = character_portraits [2]
-		"TENTARA INGGRIS 1": portrait_kiri.texture = character_portraits [3]
+		"T INDIA 1" : portrait_kiri.texture = character_portraits [2]
+		"T INGGRIS 1": portrait_kiri.texture = character_portraits [3]
 		"" : portrait_kiri.texture = character_portraits [4]
 		"SOEDIRMAN" : portrait_kiri.texture = character_portraits [5]
 		"PEMUDA 1" : portrait_kiri.texture = character_portraits [6]
@@ -159,14 +159,14 @@ func check_for_potrait_kiri():
 		"LING" : portrait_kiri.texture = character_portraits [10]
 		"MANSERGH" : portrait_kiri.texture = character_portraits [11]
 		"GUBERNUR SURYO" :portrait_kiri.texture = character_portraits [12]
-		"MANGOENDIPRODJO": portrait_kiri.texture = character_portraits [13]
+		"MANGOEN": portrait_kiri.texture = character_portraits [13]
 		"T.D. KUNDAN" : portrait_kiri.texture = character_portraits [14]
 func check_for_potrait_kanan():
 	match nama_portrait_kanan:
 		"SOERJO": portrait_kanan.texture = character_portraits[0]
 		"TKR 1": portrait_kanan.texture = character_portraits[1]
-		"TENTARA INDIA 1" : portrait_kanan.texture = character_portraits [2]
-		"TENTARA INGGRIS 1": portrait_kanan.texture = character_portraits [3]
+		"T INDIA 1" : portrait_kanan.texture = character_portraits [2]
+		"T INGGRIS 1": portrait_kanan.texture = character_portraits [3]
 		"" : portrait_kanan.texture = character_portraits [4]
 		"SOEDIRMAN" : portrait_kanan.texture = character_portraits [5]
 		"PEMUDA 1" : portrait_kanan.texture = character_portraits [6]
@@ -176,7 +176,7 @@ func check_for_potrait_kanan():
 		"LING" : portrait_kanan.texture = character_portraits [10]
 		"MANSERGH" : portrait_kanan.texture = character_portraits [11]
 		"GUBERNUR SURYO" : portrait_kanan.texture = character_portraits[12]
-		"MANGOENDIPRODJO": portrait_kanan.texture = character_portraits [13]
+		"MANGOEN": portrait_kanan.texture = character_portraits [13]
 		"T.D. KUNDAN" : portrait_kanan.texture = character_portraits [14]
 
 #WE CHECK THE COLOR GIVEN IN OUR JSON, AND CHANGE THE TEXT BASED ON THE STRING PROVIDED

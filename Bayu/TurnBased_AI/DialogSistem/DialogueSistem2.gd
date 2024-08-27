@@ -154,8 +154,8 @@ func check_for_potrait_kiri():
 		"TKR 3" : portrait_kiri.texture = character_portraits [5]
 		"MOESTOPO" : portrait_kiri.texture = character_portraits [6]
 		"MALLABY" : portrait_kiri.texture = character_portraits [7]
-		"WARGA 1" : portrait_kiri.texture = character_portraits [8]
-		"WARGA 2" : portrait_kiri.texture = character_portraits [9]
+		"PEMUDA 1" : portrait_kiri.texture = character_portraits [8]
+		"PEMUDA 2" : portrait_kiri.texture = character_portraits [9]
 func check_for_potrait_kanan():
 	match nama_portrait_kanan:
 		"SOERJO": portrait_kanan.texture = character_portraits[0]
@@ -166,8 +166,8 @@ func check_for_potrait_kanan():
 		"TKR 3" : portrait_kanan.texture = character_portraits [5]
 		"MOESTOPO" : portrait_kanan.texture = character_portraits [6]
 		"MALLABY" : portrait_kanan.texture = character_portraits [7]
-		"WARGA 1" : portrait_kanan.texture = character_portraits [8]
-		"WARGA 2" : portrait_kanan.texture = character_portraits [9]
+		"PEMUDA 1" : portrait_kanan.texture = character_portraits [8]
+		"PEMUDA 2" : portrait_kanan.texture = character_portraits [9]
 
 #WE CHECK THE COLOR GIVEN IN OUR JSON, AND CHANGE THE TEXT BASED ON THE STRING PROVIDED
 func check_for_color():

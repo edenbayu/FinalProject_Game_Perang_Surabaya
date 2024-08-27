@@ -954,7 +954,7 @@ tracks/0/keys = {
 "values": [132, 133, 134, 135, 136, 137, 138]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tmmn8"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_opyfx"]
 resource_local_to_scene = true
 _data = {
 "Idle_BL": SubResource("Animation_6piu7"),
@@ -971,7 +971,7 @@ _data = {
 "Walk_FR": SubResource("Animation_nfqhq")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_v0h6j"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s4lub"]
 resource_local_to_scene = true
 _data = {
 "Idle_BL": SubResource("Animation_6piu7"),
@@ -988,7 +988,7 @@ _data = {
 "Walk_FR": SubResource("Animation_nfqhq")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_u17n3"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qmba"]
 resource_local_to_scene = true
 _data = {
 "Idle_BL": SubResource("Animation_6piu7"),
@@ -1005,7 +1005,7 @@ _data = {
 "Walk_FR": SubResource("Animation_nfqhq")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fq51m"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fnctv"]
 resource_local_to_scene = true
 _data = {
 "Idle_BL": SubResource("Animation_6piu7"),
@@ -1527,22 +1527,22 @@ script = ExtResource("30_g5c6a")
 
 [node name="EnemyAI2" parent="GameBoard/Enemy" instance=ExtResource("33_nx1us")]
 position = Vector2(386, -64)
-_animation_resource = SubResource("AnimationLibrary_tmmn8")
+_animation_resource = SubResource("AnimationLibrary_opyfx")
 _animation_state_machine = ExtResource("33_xvv8j")
 
 [node name="EnemyAI3" parent="GameBoard/Enemy" instance=ExtResource("33_nx1us")]
 position = Vector2(638, 0)
-_animation_resource = SubResource("AnimationLibrary_v0h6j")
+_animation_resource = SubResource("AnimationLibrary_s4lub")
 _animation_state_machine = ExtResource("33_xvv8j")
 
 [node name="EnemyAI4" parent="GameBoard/Enemy" instance=ExtResource("33_nx1us")]
 position = Vector2(838, 95)
-_animation_resource = SubResource("AnimationLibrary_u17n3")
+_animation_resource = SubResource("AnimationLibrary_1qmba")
 _animation_state_machine = ExtResource("33_xvv8j")
 
 [node name="EnemyAI5" parent="GameBoard/Enemy" instance=ExtResource("33_nx1us")]
 position = Vector2(961, 224)
-_animation_resource = SubResource("AnimationLibrary_fq51m")
+_animation_resource = SubResource("AnimationLibrary_fnctv")
 _animation_state_machine = ExtResource("33_xvv8j")
 
 [node name="Props" type="Node2D" parent="GameBoard"]
@@ -1568,7 +1568,7 @@ shape = SubResource("CircleShape2D_54ujx")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GameBoard/Props/Willys1/Area2D"]
 build_mode = 1
-polygon = PackedVector2Array(33, 45, 181, -46, -96, -187, -185, -142, -159, -66)
+polygon = PackedVector2Array(33, 45, 181, -46, -96, -194, -189, -146, -159, -66)
 
 [node name="Willys2" type="StaticBody2D" parent="GameBoard/Props"]
 modulate = Color(1, 1, 1, 0.588235)

@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://psh4crd1ck3l" path="res://DialogSistem/aset aseprite/knil.png" id="5_2boxq"]
 [ext_resource type="Texture2D" uid="uid://dbrh8ebadlvtr" path="res://DialogSistem/aset aseprite/knil2.png" id="6_hfhpf"]
 [ext_resource type="Texture2D" uid="uid://d18cpml72xrda" path="res://DialogSistem/aset aseprite/namebox.png" id="6_hlfth"]
-[ext_resource type="Texture2D" uid="uid://xj820cecho3x" path="res://DialogSistem/aset aseprite/soehartini.png" id="7_f25k0"]
+[ext_resource type="Texture2D" uid="uid://dgdgs5todqn5t" path="res://DialogSistem/aset aseprite/P{emuda 2.png" id="7_mm7vg"]
 [ext_resource type="Texture2D" uid="uid://0y7pc61c1ovt" path="res://DialogSistem/aset aseprite/Soerjott.png" id="8_jdh5h"]
-[ext_resource type="Texture2D" uid="uid://b84ciemgnmjgs" path="res://DialogSistem/aset aseprite/Sidik.png" id="9_2qsg2"]
+[ext_resource type="Texture2D" uid="uid://b7p8atmkuxq0u" path="res://DialogSistem/aset aseprite/pemuda1 .png" id="9_7eyi0"]
 [ext_resource type="Texture2D" uid="uid://dredvunyphwbj" path="res://DialogSistem/aset aseprite/gub-suryo.png" id="10_3hob1"]
 [ext_resource type="Texture2D" uid="uid://cm2pv441tk2o0" path="res://DialogSistem/aset aseprite/background.png" id="11_7eiio"]
 [ext_resource type="Texture2D" uid="uid://dkxw7vgx2ysgw" path="res://DialogSistem/aset aseprite/downtown-soerabaja.png" id="12_h0m8l"]
@@ -151,7 +151,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4lx2j")
-character_portraits = Array[Texture2D]([ExtResource("2_uhdbf"), ExtResource("4_wttrr"), ExtResource("4_65e6c"), ExtResource("5_2boxq"), null, ExtResource("6_hfhpf"), ExtResource("7_f25k0"), ExtResource("8_jdh5h"), ExtResource("9_2qsg2"), ExtResource("10_3hob1")])
+character_portraits = Array[Texture2D]([ExtResource("2_uhdbf"), ExtResource("4_wttrr"), ExtResource("4_65e6c"), ExtResource("5_2boxq"), null, ExtResource("6_hfhpf"), ExtResource("9_7eyi0"), ExtResource("8_jdh5h"), ExtResource("7_mm7vg"), ExtResource("10_3hob1")])
 scene_background = Array[Texture2D]([ExtResource("11_7eiio"), ExtResource("12_h0m8l"), ExtResource("13_mhryu"), ExtResource("14_pordx"), ExtResource("15_1rpsx")])
 
 [node name="Background" type="TextureRect" parent="."]

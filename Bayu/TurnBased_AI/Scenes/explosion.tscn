@@ -1,6 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfkhp1h4rhn0i"]
+[gd_scene load_steps=6 format=3 uid="uid://dfkhp1h4rhn0i"]
 
 [ext_resource type="Texture2D" uid="uid://ba7003fywidv3" path="res://Sprites/explosion.png" id="1_6yuf7"]
+[ext_resource type="AudioStream" uid="uid://dhpv4n3k11fdt" path="res://audio/explosion.mp3" id="2_6pyal"]
+
+[sub_resource type="Animation" id="Animation_e58po"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_c8hci"]
 resource_name = "explode"
@@ -31,20 +47,17 @@ tracks/1/keys = {
 "method": &"queue_free"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_e58po"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wor7u"]
@@ -72,3 +85,8 @@ hframes = 9
 position = Vector2(0, -69)
 build_mode = 1
 polygon = PackedVector2Array(24, 99, 116, 31, 72, -28, -74, -28, -119, 29, -69, 84)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_6pyal")
+volume_db = 20.0
+bus = &"SFX"

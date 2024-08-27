@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://baiggpujhqrfx"]
+[gd_scene load_steps=111 format=3 uid="uid://baiggpujhqrfx"]
 
 [ext_resource type="Script" path="res://Scripts/BossLevel.gd" id="1_8o4xw"]
 [ext_resource type="Shader" path="res://Resources/outline.gdshader" id="1_mrtod"]
@@ -24,8 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://c3dka55au7ydf" path="res://Sprites/lvl3.png" id="21_2r5w6"]
 [ext_resource type="Script" path="res://Scripts/UnitPath.gd" id="23_68t1w"]
 [ext_resource type="Resource" uid="uid://dg6ms3kbhdqrw" path="res://Resources/Grid3.tres" id="23_qblmb"]
+[ext_resource type="Texture2D" uid="uid://w4aoynqc2ux5" path="res://Sprites/Path_new.png" id="24_6d2hk"]
 [ext_resource type="PackedScene" uid="uid://b1t8iyisfbe0v" path="res://Scenes/Cursor.tscn" id="24_id3id"]
-[ext_resource type="Texture2D" uid="uid://cd6opk1unbx3b" path="res://Sprites/Path-export.png" id="24_we8ft"]
 [ext_resource type="PackedScene" uid="uid://20i4en7e2fm7" path="res://Scenes/Unit.tscn" id="25_84lxc"]
 [ext_resource type="Script" path="res://Scripts/RangedUnit.gd" id="26_awbdw"]
 [ext_resource type="Script" path="res://Scripts/MeleeUnit.gd" id="29_2klyj"]
@@ -198,8 +198,8 @@ axis_stretch_horizontal = 1
 content_margin_bottom = 10.0
 texture = ExtResource("16_tbt7v")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8pi88"]
-texture = ExtResource("24_we8ft")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xj3i3"]
+texture = ExtResource("24_6d2hk")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 32)
@@ -212,7 +212,7 @@ texture_region_size = Vector2i(128, 128)
 tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(128, 64)
-sources/0 = SubResource("TileSetAtlasSource_8pi88")
+sources/0 = SubResource("TileSetAtlasSource_xj3i3")
 
 [sub_resource type="Animation" id="Animation_6jhwv"]
 resource_name = "Idle_BL"
@@ -584,24 +584,7 @@ _data = {
 "Walk_FR": SubResource("Animation_73r42")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_l5pab"]
-resource_local_to_scene = true
-_data = {
-"Idle_BL": SubResource("Animation_6jhwv"),
-"Idle_BR": SubResource("Animation_lgfsd"),
-"Idle_FL": SubResource("Animation_aiglu"),
-"Idle_FR": SubResource("Animation_4im2s"),
-"Shoot_BL": SubResource("Animation_62btc"),
-"Shoot_BR": SubResource("Animation_0pqwo"),
-"Shoot_FL": SubResource("Animation_30y1b"),
-"Shoot_FR": SubResource("Animation_rypgl"),
-"Walk_BL": SubResource("Animation_xle1l"),
-"Walk_BR": SubResource("Animation_5a73i"),
-"Walk_FL": SubResource("Animation_8f18j"),
-"Walk_FR": SubResource("Animation_73r42")
-}
-
-[sub_resource type="Animation" id="Animation_6piu7"]
+[sub_resource type="Animation" id="Animation_a2loj"]
 resource_name = "Idle_BL"
 length = 0.75
 loop_mode = 1
@@ -618,7 +601,7 @@ tracks/0/keys = {
 "values": [12, 13, 14, 15, 16, 17, 18]
 }
 
-[sub_resource type="Animation" id="Animation_0adxt"]
+[sub_resource type="Animation" id="Animation_5xjjf"]
 resource_name = "Idle_BR"
 length = 0.75
 loop_mode = 1
@@ -635,7 +618,7 @@ tracks/0/keys = {
 "values": [24, 25, 26, 27, 28, 29, 30]
 }
 
-[sub_resource type="Animation" id="Animation_istuk"]
+[sub_resource type="Animation" id="Animation_dsajw"]
 resource_name = "Idle_FL"
 length = 0.75
 loop_mode = 1
@@ -652,7 +635,7 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
-[sub_resource type="Animation" id="Animation_kchtn"]
+[sub_resource type="Animation" id="Animation_d0d8p"]
 resource_name = "Idle"
 length = 0.75
 loop_mode = 1
@@ -669,7 +652,7 @@ tracks/0/keys = {
 "values": [36, 37, 38, 39, 40, 41, 42]
 }
 
-[sub_resource type="Animation" id="Animation_f4fcu"]
+[sub_resource type="Animation" id="Animation_75dbc"]
 resource_name = "Shoot_BL"
 length = 1.2
 tracks/0/type = "value"
@@ -716,7 +699,7 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_48g68"]
+[sub_resource type="Animation" id="Animation_di4dv"]
 resource_name = "Shoot_BR"
 length = 1.2
 tracks/0/type = "value"
@@ -763,7 +746,7 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_7yyxt"]
+[sub_resource type="Animation" id="Animation_mmuxi"]
 resource_name = "Shoot_FL"
 length = 1.2
 tracks/0/type = "value"
@@ -810,7 +793,7 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_1pebp"]
+[sub_resource type="Animation" id="Animation_mgr47"]
 resource_name = "Shoot_FR"
 length = 1.2
 tracks/0/type = "value"
@@ -857,7 +840,7 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_nk2tv"]
+[sub_resource type="Animation" id="Animation_rwe47"]
 resource_name = "Walk_BL"
 length = 0.7
 loop_mode = 1
@@ -874,7 +857,7 @@ tracks/0/keys = {
 "values": [108, 109, 110, 111, 112, 113, 114]
 }
 
-[sub_resource type="Animation" id="Animation_s4x7u"]
+[sub_resource type="Animation" id="Animation_wbdpl"]
 resource_name = "Walk_BR"
 length = 0.75
 loop_mode = 1
@@ -891,7 +874,7 @@ tracks/0/keys = {
 "values": [120, 121, 122, 123, 124, 125, 126]
 }
 
-[sub_resource type="Animation" id="Animation_ljbr6"]
+[sub_resource type="Animation" id="Animation_ica6q"]
 resource_name = "Walk_FL"
 length = 0.7
 loop_mode = 1
@@ -908,7 +891,7 @@ tracks/0/keys = {
 "values": [96, 97, 98, 99, 100, 101, 102]
 }
 
-[sub_resource type="Animation" id="Animation_nfqhq"]
+[sub_resource type="Animation" id="Animation_g2k5c"]
 resource_name = "Walk_FR"
 length = 0.7
 loop_mode = 1
@@ -925,55 +908,55 @@ tracks/0/keys = {
 "values": [132, 133, 134, 135, 136, 137, 138]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lmre2"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v2nef"]
 resource_local_to_scene = true
 _data = {
-"Idle_BL": SubResource("Animation_6piu7"),
-"Idle_BR": SubResource("Animation_0adxt"),
-"Idle_FL": SubResource("Animation_istuk"),
-"Idle_FR": SubResource("Animation_kchtn"),
-"Shoot_BL": SubResource("Animation_f4fcu"),
-"Shoot_BR": SubResource("Animation_48g68"),
-"Shoot_FL": SubResource("Animation_7yyxt"),
-"Shoot_FR": SubResource("Animation_1pebp"),
-"Walk_BL": SubResource("Animation_nk2tv"),
-"Walk_BR": SubResource("Animation_s4x7u"),
-"Walk_FL": SubResource("Animation_ljbr6"),
-"Walk_FR": SubResource("Animation_nfqhq")
+"Idle_BL": SubResource("Animation_a2loj"),
+"Idle_BR": SubResource("Animation_5xjjf"),
+"Idle_FL": SubResource("Animation_dsajw"),
+"Idle_FR": SubResource("Animation_d0d8p"),
+"Shoot_BL": SubResource("Animation_75dbc"),
+"Shoot_BR": SubResource("Animation_di4dv"),
+"Shoot_FL": SubResource("Animation_mmuxi"),
+"Shoot_FR": SubResource("Animation_mgr47"),
+"Walk_BL": SubResource("Animation_rwe47"),
+"Walk_BR": SubResource("Animation_wbdpl"),
+"Walk_FL": SubResource("Animation_ica6q"),
+"Walk_FR": SubResource("Animation_g2k5c")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_20yxt"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qfsqu"]
 resource_local_to_scene = true
 _data = {
-"Idle_BL": SubResource("Animation_6piu7"),
-"Idle_BR": SubResource("Animation_0adxt"),
-"Idle_FL": SubResource("Animation_istuk"),
-"Idle_FR": SubResource("Animation_kchtn"),
-"Shoot_BL": SubResource("Animation_f4fcu"),
-"Shoot_BR": SubResource("Animation_48g68"),
-"Shoot_FL": SubResource("Animation_7yyxt"),
-"Shoot_FR": SubResource("Animation_1pebp"),
-"Walk_BL": SubResource("Animation_nk2tv"),
-"Walk_BR": SubResource("Animation_s4x7u"),
-"Walk_FL": SubResource("Animation_ljbr6"),
-"Walk_FR": SubResource("Animation_nfqhq")
+"Idle_BL": SubResource("Animation_a2loj"),
+"Idle_BR": SubResource("Animation_5xjjf"),
+"Idle_FL": SubResource("Animation_dsajw"),
+"Idle_FR": SubResource("Animation_d0d8p"),
+"Shoot_BL": SubResource("Animation_75dbc"),
+"Shoot_BR": SubResource("Animation_di4dv"),
+"Shoot_FL": SubResource("Animation_mmuxi"),
+"Shoot_FR": SubResource("Animation_mgr47"),
+"Walk_BL": SubResource("Animation_rwe47"),
+"Walk_BR": SubResource("Animation_wbdpl"),
+"Walk_FL": SubResource("Animation_ica6q"),
+"Walk_FR": SubResource("Animation_g2k5c")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_a5v1u"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_50lkr"]
 resource_local_to_scene = true
 _data = {
-"Idle_BL": SubResource("Animation_6piu7"),
-"Idle_BR": SubResource("Animation_0adxt"),
-"Idle_FL": SubResource("Animation_istuk"),
-"Idle_FR": SubResource("Animation_kchtn"),
-"Shoot_BL": SubResource("Animation_f4fcu"),
-"Shoot_BR": SubResource("Animation_48g68"),
-"Shoot_FL": SubResource("Animation_7yyxt"),
-"Shoot_FR": SubResource("Animation_1pebp"),
-"Walk_BL": SubResource("Animation_nk2tv"),
-"Walk_BR": SubResource("Animation_s4x7u"),
-"Walk_FL": SubResource("Animation_ljbr6"),
-"Walk_FR": SubResource("Animation_nfqhq")
+"Idle_BL": SubResource("Animation_a2loj"),
+"Idle_BR": SubResource("Animation_5xjjf"),
+"Idle_FL": SubResource("Animation_dsajw"),
+"Idle_FR": SubResource("Animation_d0d8p"),
+"Shoot_BL": SubResource("Animation_75dbc"),
+"Shoot_BR": SubResource("Animation_di4dv"),
+"Shoot_FL": SubResource("Animation_mmuxi"),
+"Shoot_FR": SubResource("Animation_mgr47"),
+"Walk_BL": SubResource("Animation_rwe47"),
+"Walk_BR": SubResource("Animation_wbdpl"),
+"Walk_FL": SubResource("Animation_ica6q"),
+"Walk_FR": SubResource("Animation_g2k5c")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2175y"]
@@ -1106,7 +1089,6 @@ animations = [{
 process_mode = 1
 texture_filter = 1
 script = ExtResource("1_8o4xw")
-spawn = ExtResource("40_p2prd")
 statusUItexture = Array[Texture2D]([ExtResource("8_2c4ir"), ExtResource("4_151xs")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -1464,11 +1446,10 @@ script = ExtResource("29_2klyj")
 player_id = 2
 _animation_resource = SubResource("AnimationLibrary_rtsdq")
 
-[node name="Tomo2" parent="GameBoard/Player" instance=ExtResource("25_84lxc")]
-position = Vector2(-1086, 741)
+[node name="Unit" parent="GameBoard/Player" instance=ExtResource("25_84lxc")]
+position = Vector2(-646, 900)
 script = ExtResource("29_2klyj")
 player_id = 2
-_animation_resource = SubResource("AnimationLibrary_l5pab")
 
 [node name="Enemy" type="Node2D" parent="GameBoard"]
 script = ExtResource("30_ryy5h")
@@ -1480,17 +1461,17 @@ _animation_resource = ExtResource("38_bx6hq")
 _animation_state_machine = ExtResource("39_p762m")
 
 [node name="EnemyAI" parent="GameBoard/Enemy" instance=ExtResource("40_p2prd")]
-_animation_resource = SubResource("AnimationLibrary_lmre2")
+_animation_resource = SubResource("AnimationLibrary_v2nef")
 _animation_state_machine = ExtResource("36_lph13")
 
 [node name="EnemyAI2" parent="GameBoard/Enemy" instance=ExtResource("40_p2prd")]
 position = Vector2(742, 326)
-_animation_resource = SubResource("AnimationLibrary_20yxt")
+_animation_resource = SubResource("AnimationLibrary_qfsqu")
 _animation_state_machine = ExtResource("36_lph13")
 
 [node name="EnemyAI3" parent="GameBoard/Enemy" instance=ExtResource("40_p2prd")]
 position = Vector2(337, 30)
-_animation_resource = SubResource("AnimationLibrary_a5v1u")
+_animation_resource = SubResource("AnimationLibrary_50lkr")
 _animation_state_machine = ExtResource("36_lph13")
 
 [node name="Props" type="Node2D" parent="GameBoard"]

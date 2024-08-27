@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://d0475qb00qc3a"]
+[gd_scene load_steps=122 format=3 uid="uid://d0475qb00qc3a"]
 
 [ext_resource type="Shader" path="res://Resources/outline.gdshader" id="1_smlbx"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_u7kpx"]
@@ -44,7 +44,9 @@
 [ext_resource type="Texture2D" uid="uid://d18cpml72xrda" path="res://DialogSistem/aset aseprite/namebox.png" id="37_lhh2h"]
 [ext_resource type="Texture2D" uid="uid://o8d6hmqppsju" path="res://DialogSistem/aset aseprite/TextBox.png" id="38_qe433"]
 [ext_resource type="FontFile" uid="uid://c583mm1xbwni5" path="res://font/I-pixel-u.ttf" id="39_we5r0"]
-[ext_resource type="Script" path="res://Scenes/WinningButtonLevel1.gd" id="40_s7g7o"]
+[ext_resource type="Texture2D" uid="uid://cgdsst0wa3s7e" path="res://Sprites/victory-screen[1].png" id="45_73rkh"]
+[ext_resource type="Script" path="res://Scripts/WinningToLastLevel.gd" id="45_o4sxd"]
+[ext_resource type="Texture2D" uid="uid://dpksx32t6usr" path="res://Sprites/Icon/star.png" id="46_ojelk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_furj2"]
 shader = ExtResource("1_smlbx")
@@ -213,7 +215,7 @@ texture_region_size = Vector2i(128, 128)
 tile_shape = 1
 tile_layout = 5
 tile_size = Vector2i(128, 64)
-sources/1 = SubResource("TileSetAtlasSource_rhtw3")
+sources/0 = SubResource("TileSetAtlasSource_rhtw3")
 
 [sub_resource type="Animation" id="Animation_6jhwv"]
 resource_name = "Idle_BL"
@@ -926,7 +928,7 @@ tracks/0/keys = {
 "values": [132, 133, 134, 135, 136, 137, 138]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_h3pbq"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m71ec"]
 resource_local_to_scene = true
 _data = {
 "Idle_BL": SubResource("Animation_6piu7"),
@@ -943,7 +945,7 @@ _data = {
 "Walk_FR": SubResource("Animation_nfqhq")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_61xwl"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rwwnj"]
 resource_local_to_scene = true
 _data = {
 "Idle_BL": SubResource("Animation_6piu7"),
@@ -1487,10 +1489,10 @@ script = ExtResource("27_v1046")
 player_id = 2
 _animation_resource = SubResource("AnimationLibrary_yva6w")
 
-[node name="Tomo2" parent="GameBoard/Player" instance=ExtResource("25_g2bpk")]
+[node name="Ling" parent="GameBoard/Player" instance=ExtResource("25_g2bpk")]
 position = Vector2(-318, 227)
 script = ExtResource("27_v1046")
-player_id = 2
+player_id = 3
 _animation_resource = SubResource("AnimationLibrary_ydbi1")
 
 [node name="Enemy" type="Node2D" parent="GameBoard"]
@@ -1498,12 +1500,12 @@ script = ExtResource("28_jj2lq")
 
 [node name="EnemyAI" parent="GameBoard/Enemy" instance=ExtResource("29_o3uk4")]
 position = Vector2(257, 574)
-_animation_resource = SubResource("AnimationLibrary_h3pbq")
+_animation_resource = SubResource("AnimationLibrary_m71ec")
 _animation_state_machine = ExtResource("30_rk6m1")
 
 [node name="EnemyAI2" parent="GameBoard/Enemy" instance=ExtResource("29_o3uk4")]
 position = Vector2(572, 359)
-_animation_resource = SubResource("AnimationLibrary_61xwl")
+_animation_resource = SubResource("AnimationLibrary_rwwnj")
 _animation_state_machine = ExtResource("30_rk6m1")
 
 [node name="Props" type="Node2D" parent="GameBoard"]
@@ -1778,13 +1780,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="GameOver/Winning"]
+[node name="Panel" type="TextureRect" parent="GameOver/Winning"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("45_73rkh")
 
 [node name="Button" type="Button" parent="GameOver/Winning/Panel"]
 layout_mode = 1
@@ -1794,29 +1797,75 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -199.0
-offset_top = -29.0
+offset_top = 73.0
 offset_right = 199.0
-offset_bottom = 29.0
+offset_bottom = 131.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("39_we5r0")
 theme_override_font_sizes/font_size = 40
-text = "LAJUT KE BAB 2"
-script = ExtResource("40_s7g7o")
+text = "LANJUT KE CERITA AKHIR"
+script = ExtResource("45_o4sxd")
 
 [node name="Label" type="Label" parent="GameOver/Winning/Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -459.0
-offset_top = 45.0
-offset_right = 452.0
-offset_bottom = 108.0
+offset_left = -382.0
+offset_top = 192.0
+offset_right = 529.0
+offset_bottom = 255.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0.411765, 0.411765, 0.364706, 1)
 theme_override_fonts/font = ExtResource("39_we5r0")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 42
 text = "\"KEMENANGAN TELAH DIRAIH!\""
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOver/Winning"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -61.0
+offset_right = 142.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="GameOver/Winning/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("46_ojelk")
+
+[node name="TextureRect2" type="TextureRect" parent="GameOver/Winning/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("46_ojelk")
+
+[node name="TextureRect3" type="TextureRect" parent="GameOver/Winning/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("46_ojelk")
+
+[node name="Label" type="Label" parent="GameOver/Winning"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -271.0
+offset_right = 275.0
+offset_bottom = -211.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.411765, 0.411765, 0.364706, 1)
+theme_override_fonts/font = ExtResource("39_we5r0")
+theme_override_font_sizes/font_size = 45
+text = "WAKTU PENYELESAIAN: "
 
 [node name="Losing" type="Control" parent="GameOver"]
 layout_mode = 3

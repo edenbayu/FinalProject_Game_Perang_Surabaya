@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://evh4yvmny038"]
+[gd_scene load_steps=43 format=3 uid="uid://evh4yvmny038"]
 
 [ext_resource type="Script" path="res://DialogSistem/dialog_sistem_3.gd" id="1_yj5sw"]
 [ext_resource type="Texture2D" uid="uid://0y7pc61c1ovt" path="res://DialogSistem/aset aseprite/Soerjott.png" id="2_2trhu"]
@@ -6,15 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://cq7ba25rk2v7a" path="res://DialogSistem/aset aseprite/mansergh.png" id="2_f48kt"]
 [ext_resource type="Texture2D" uid="uid://b84ciemgnmjgs" path="res://DialogSistem/aset aseprite/Sidik.png" id="2_wx2ky"]
 [ext_resource type="Texture2D" uid="uid://myjhjym4wilm" path="res://DialogSistem/aset aseprite/Jepangt.png" id="3_ixa74"]
-[ext_resource type="Texture2D" uid="uid://psh4crd1ck3l" path="res://DialogSistem/aset aseprite/knil.png" id="5_anbvs"]
 [ext_resource type="Texture2D" uid="uid://o8d6hmqppsju" path="res://DialogSistem/aset aseprite/TextBox.png" id="5_fvaom"]
 [ext_resource type="Texture2D" uid="uid://dbrh8ebadlvtr" path="res://DialogSistem/aset aseprite/knil2.png" id="5_ljljx"]
+[ext_resource type="Texture2D" uid="uid://cfuj53fx5ifh" path="res://DialogSistem/aset aseprite/british1.png" id="5_y20ja"]
 [ext_resource type="Texture2D" uid="uid://d18cpml72xrda" path="res://DialogSistem/aset aseprite/namebox.png" id="6_461q0"]
 [ext_resource type="Texture2D" uid="uid://dy5w5gbiu3ivf" path="res://DialogSistem/aset aseprite/Sudirman.png" id="6_vuujs"]
 [ext_resource type="FontFile" uid="uid://wmlstjc1wp0p" path="res://I-pixel-u.ttf" id="7_gjqoh"]
+[ext_resource type="Texture2D" uid="uid://b7p8atmkuxq0u" path="res://DialogSistem/aset aseprite/pemuda1 .png" id="7_y8q2x"]
 [ext_resource type="FontFile" uid="uid://cnrpw086ndg2n" path="res://font/DePixelBreit.ttf" id="8_iq3h0"]
 [ext_resource type="Texture2D" uid="uid://bgse5ubiqvlny" path="res://DialogSistem/aset aseprite/mallaby.png" id="8_vi06t"]
-[ext_resource type="Texture2D" uid="uid://xj820cecho3x" path="res://DialogSistem/aset aseprite/soehartini.png" id="9_l7sap"]
+[ext_resource type="Texture2D" uid="uid://dikxlfnv7wqbo" path="res://DialogSistem/aset aseprite/capt-shaw.png" id="9_oj4da"]
 [ext_resource type="Texture2D" uid="uid://b6pqull5m2lbs" path="res://DialogSistem/aset aseprite/bung-tomo.png" id="10_3nmcb"]
 [ext_resource type="Texture2D" uid="uid://bl2t4vdp1myv1" path="res://DialogSistem/aset aseprite/Ling.png" id="11_po4nh"]
 [ext_resource type="Texture2D" uid="uid://dredvunyphwbj" path="res://DialogSistem/aset aseprite/gub-suryo.png" id="13_0nclv"]
@@ -154,7 +155,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yj5sw")
-character_portraits = Array[Texture2D]([ExtResource("2_2trhu"), ExtResource("3_ixa74"), ExtResource("5_ljljx"), ExtResource("5_anbvs"), null, ExtResource("6_vuujs"), ExtResource("2_wx2ky"), ExtResource("8_vi06t"), ExtResource("9_l7sap"), ExtResource("10_3nmcb"), ExtResource("11_po4nh"), ExtResource("2_f48kt"), ExtResource("13_0nclv"), ExtResource("14_marxu"), ExtResource("15_0g7tu")])
+character_portraits = Array[Texture2D]([ExtResource("2_2trhu"), ExtResource("3_ixa74"), ExtResource("5_ljljx"), ExtResource("5_y20ja"), null, ExtResource("6_vuujs"), ExtResource("7_y8q2x"), ExtResource("8_vi06t"), ExtResource("9_oj4da"), ExtResource("10_3nmcb"), ExtResource("11_po4nh"), ExtResource("2_f48kt"), ExtResource("13_0nclv"), ExtResource("14_marxu"), ExtResource("15_0g7tu")])
 scene_background = Array[Texture2D]([ExtResource("13_1tuyv"), ExtResource("14_ejwwk"), ExtResource("2_6hi61"), ExtResource("16_jup0g"), ExtResource("17_7l8u6")])
 
 [node name="Background" type="TextureRect" parent="."]

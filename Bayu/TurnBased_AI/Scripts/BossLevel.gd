@@ -2,7 +2,6 @@ class_name BossLevel
 extends LevelManager
 
 var new_target: Unit = null
-@export var spawn: PackedScene
 
 func _on_enemy_turn_started(unit: Unit) -> void:
 	
@@ -25,8 +24,6 @@ func _on_enemy_turn_started(unit: Unit) -> void:
 		_end_turn()
 
 func boss_act() -> void:
-	print(active_unit.nama, active_unit.cell)
-	print(gameboard._units)
 	active_unit.fsm.change_state(active_unit.mallaby_attack_state)
 	await active_unit.lock_unit
 	new_target = set_mallaby_target()
@@ -42,11 +39,6 @@ func boss_act() -> void:
 		Battle.display_ability_text("AGILITY +2", Vector2(u.position.x - 110, u.position.y - 160))
 		await get_tree().create_timer(1.5).timeout
 	_end_turn()
-	
-func spawn_unit() -> void:
-	var e = spawn.instantiate()
-	enemy.add_child(e)
-	turn_based.size.x += 96
 
 func set_mallaby_target() -> Unit:
 	return gameboard.get_nearest_neighbor_unit()
@@ -87,3 +79,25 @@ func execute_matched_actions(action: String, target: Unit) -> void:
 			active_unit.attack_options.hide()
 		"rest":
 			await gameboard.rest(active_unit)
+
+func on_unit_die(unit) -> void:
+	_units.erase(unit)
+	_icons.clear()
+	var icon = ui_container.get_children()
+	_reinitialize_icon()
+	for u in _units:
+		if u.is_dead:
+			continue
+		var unit_texture = TurnBasedIcon.new()
+		ui_container.add_child(unit_texture)
+		_icons.append(unit_texture)
+		unit_texture.texture = u.inactive_icon
+	if turn_index >= _units.size() - 1:
+		turn_index -= 1
+		_active_icon()
+	else:
+		turn_index -= 1
+		_active_icon()
+	turn_based.size.x -= 96
+	gameboard._units.erase(unit.cell)
+	check_game_over(player, enemy)

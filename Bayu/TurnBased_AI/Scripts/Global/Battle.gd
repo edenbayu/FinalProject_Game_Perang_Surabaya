@@ -29,7 +29,7 @@ func reload(unit: Unit) -> void:
 ## Melee Attack Code ##
 func do_melee(damage_type: String) -> void:
 	dmg_type = damage_type
-	target_attack.agility -= 1
+	#target_attack.agility -= 1
 	attack(active_unit, target_attack)
 
 ## Ranged Attack Code ##

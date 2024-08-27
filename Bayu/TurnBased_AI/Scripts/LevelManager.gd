@@ -69,6 +69,7 @@ func set_turn():
 			emit_signal("ally_turn_started", active_unit)
 		"enemy":
 			emit_signal("enemy_turn_started", active_unit)
+	print("INDEX SEKARANG: ", active_unit)
 
 func _reinitialize() -> void:
 	_units.clear()
@@ -245,6 +246,7 @@ func _end_turn()-> void:
 
 func _active_icon() -> void:
 	active_unit = _units[turn_index]
+	print("TESTING :", active_unit)
 	tactics_camera.target = active_unit
 	_units[turn_index].is_selected = true
 	active_icon = _icons[turn_index]

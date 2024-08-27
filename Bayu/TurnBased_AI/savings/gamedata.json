@@ -33,16 +33,18 @@
 		},
 		{
 			"id_unit" : 3,
-			"nama" : "Arief",
+			"nama" : "Ling",
 			"move_range" : 5,
 			"attack_range"    : 2,
 			"armor" : 12,
 			"health" : 12,
 			"agility" : 6,
 			"unit_role" : "ally",
-			"icon" : "res://Sprites/Icon/active_icon_soerjo-export-export.png",
-			"inactive_icon" : "res://Sprites/Icon/tomo_inactive_icon.png",
-			"id_cards" : [1, 5]
+			"damage" : 4,
+			"skin" : "res://Sprites/Ling.png",
+			"icon" : "res://Sprites/Icon/active_icon_ling.png",
+			"inactive_icon" : "res://Sprites/Icon/nonactive_icon_ling.png",
+			"id_cards" : [1, 2, 4]
 		},
 		{
 			"id_unit" : 4,

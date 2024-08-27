@@ -65,4 +65,4 @@ func lose_game():
 	$GameOver/AnimationPlayer.play("ending_scene")
 
 func go_to_ending():
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Ending.tscn")

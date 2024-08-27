@@ -1,56 +1,52 @@
-[gd_scene load_steps=106 format=3 uid="uid://d281vh0d27mk6"]
+[gd_scene load_steps=99 format=3 uid="uid://w60mxbqkbw57"]
 
-[ext_resource type="Script" path="res://Scripts/FinalLevel.gd" id="1_a2xul"]
-[ext_resource type="Texture2D" uid="uid://2n71oiuyrq6f" path="res://UI/StatusUI_soerjo.png" id="2_bcnuf"]
-[ext_resource type="PackedScene" uid="uid://dfkhp1h4rhn0i" path="res://Scenes/explosion.tscn" id="2_opf1f"]
-[ext_resource type="Texture2D" uid="uid://bs0k6mt3ogla7" path="res://UI/StatusUI_Tomo.png" id="3_anfus"]
-[ext_resource type="Shader" path="res://Resources/outline.gdshader" id="4_ep2ej"]
-[ext_resource type="Texture2D" uid="uid://cksudcxp4vmyu" path="res://UI/StatusUI_Ling.png" id="5_g7cu6"]
-[ext_resource type="Texture2D" uid="uid://bs7kqfql1ysto" path="res://Sprites/enemy_status_card.png" id="5_kw45f"]
-[ext_resource type="FontFile" uid="uid://cnrpw086ndg2n" path="res://font/DePixelBreit.ttf" id="6_2idca"]
-[ext_resource type="FontFile" uid="uid://bs41epct36unk" path="res://UI/I-pixel-u.ttf" id="7_jj2wh"]
-[ext_resource type="Texture2D" uid="uid://dvju22472hmbe" path="res://UI/empty_hp_status.png" id="8_42nyv"]
-[ext_resource type="Texture2D" uid="uid://cso0au1maoatp" path="res://UI/half_health_bar_filledt.png" id="9_rpxtw"]
-[ext_resource type="Texture2D" uid="uid://dj8nyg33cpjqh" path="res://UI/half_armor_bar_filled.png" id="10_yqdbd"]
-[ext_resource type="Script" path="res://Scenes/StatusUI.gd" id="11_emryd"]
-[ext_resource type="Shader" path="res://Scenes/burn.gdshader" id="12_xvbxs"]
-[ext_resource type="Texture2D" uid="uid://cvta2lgj4lfww" path="res://UI/dissolve.png" id="13_6ii1m"]
-[ext_resource type="Texture2D" uid="uid://nunbe0hanbsd" path="res://UI/innate_status_ui.png" id="14_1s4aa"]
-[ext_resource type="Shader" path="res://Scenes/dissolve.gdshader" id="15_eq4bv"]
-[ext_resource type="Texture2D" uid="uid://bq07uefqpafdi" path="res://UI/modular_status_ui.png" id="16_gmar3"]
-[ext_resource type="Texture2D" uid="uid://d333a8tuighwt" path="res://UI/armor_bar_empty.png" id="17_mr5hf"]
-[ext_resource type="Texture2D" uid="uid://t6fvglavpu4g" path="res://UI/EndTurn.png" id="18_yohqr"]
-[ext_resource type="Script" path="res://Scenes/Deck.gd" id="19_bmrrx"]
-[ext_resource type="Texture2D" uid="uid://wrgk0ah3wagm" path="res://UI/TurnBar.png" id="20_xxgr5"]
-[ext_resource type="Texture2D" uid="uid://b00g3atwumvmg" path="res://Sprites/lv3-c.png" id="21_k0414"]
-[ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="22_1lktb"]
-[ext_resource type="Texture2D" uid="uid://cd6opk1unbx3b" path="res://Sprites/Path-export.png" id="24_jngmy"]
-[ext_resource type="Resource" uid="uid://dvt6xggl5086k" path="res://Resources/GridFinal.tres" id="24_xsnwl"]
-[ext_resource type="Script" path="res://Scripts/UnitPath.gd" id="25_dvndr"]
-[ext_resource type="PackedScene" uid="uid://b1t8iyisfbe0v" path="res://Scenes/Cursor.tscn" id="26_xus3j"]
-[ext_resource type="PackedScene" uid="uid://20i4en7e2fm7" path="res://Scenes/Unit.tscn" id="27_5oblx"]
-[ext_resource type="Script" path="res://Scripts/RangedUnit.gd" id="28_ayk4d"]
-[ext_resource type="Script" path="res://Scripts/MeleeUnit.gd" id="29_8g6br"]
-[ext_resource type="Script" path="res://Scenes/EnemyController.gd" id="30_68shu"]
-[ext_resource type="AnimationLibrary" uid="uid://cnnbqaw6ijqvk" path="res://Resources/Animation_Resources/tank.res" id="33_xuc6r"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://k4xmwcd5quf" path="res://Resources/Animation_Resources/Tank.tres" id="34_ybrjm"]
-[ext_resource type="PackedScene" uid="uid://bb1s8fhbukv66" path="res://Scenes/Camera.tscn" id="35_8voj2"]
-[ext_resource type="Script" path="res://Scenes/Property.gd" id="35_lrvg0"]
-[ext_resource type="Texture2D" uid="uid://curyo8kpp8asf" path="res://Sprites/wall-3c.png" id="36_u0v2u"]
-[ext_resource type="Script" path="res://Scenes/CursorSelection.gd" id="36_yoy55"]
-[ext_resource type="Texture2D" uid="uid://cookrpnh1kv6b" path="res://Sprites/car_asset.png" id="37_n8ypw"]
-[ext_resource type="Script" path="res://Scripts/Interactables.gd" id="37_rkivh"]
-[ext_resource type="Texture2D" uid="uid://d2s85kg118ac5" path="res://Sprites/desk.png" id="38_cy56v"]
-[ext_resource type="Texture2D" uid="uid://0y7pc61c1ovt" path="res://DialogSistem/aset aseprite/Soerjott.png" id="38_rwfx1"]
-[ext_resource type="Texture2D" uid="uid://d18cpml72xrda" path="res://DialogSistem/aset aseprite/namebox.png" id="39_h6yyj"]
-[ext_resource type="Texture2D" uid="uid://o8d6hmqppsju" path="res://DialogSistem/aset aseprite/TextBox.png" id="40_eatti"]
-[ext_resource type="Texture2D" uid="uid://cc822l7rn6b70" path="res://Sprites/sandbag.png" id="40_hi10y"]
-[ext_resource type="FontFile" uid="uid://c583mm1xbwni5" path="res://font/I-pixel-u.ttf" id="41_r3ngk"]
-[ext_resource type="PackedScene" uid="uid://c4fmf0ea13qpn" path="res://Scenes/Tank.tscn" id="42_ppkdk"]
-[ext_resource type="Texture2D" uid="uid://cpyxiy0jmybap" path="res://DialogSistem/aset aseprite/Transition.png" id="46_nelju"]
+[ext_resource type="Script" path="res://Scripts/Ending.gd" id="1_g88b8"]
+[ext_resource type="PackedScene" uid="uid://dfkhp1h4rhn0i" path="res://Scenes/explosion.tscn" id="2_lamf3"]
+[ext_resource type="Texture2D" uid="uid://2n71oiuyrq6f" path="res://UI/StatusUI_soerjo.png" id="3_0tjos"]
+[ext_resource type="Shader" path="res://Resources/outline.gdshader" id="6_ygu78"]
+[ext_resource type="Texture2D" uid="uid://bs7kqfql1ysto" path="res://Sprites/enemy_status_card.png" id="7_dmwqp"]
+[ext_resource type="FontFile" uid="uid://cnrpw086ndg2n" path="res://font/DePixelBreit.ttf" id="8_3a84c"]
+[ext_resource type="FontFile" uid="uid://bs41epct36unk" path="res://UI/I-pixel-u.ttf" id="9_g4p8r"]
+[ext_resource type="Texture2D" uid="uid://dvju22472hmbe" path="res://UI/empty_hp_status.png" id="10_jdnmk"]
+[ext_resource type="Texture2D" uid="uid://cso0au1maoatp" path="res://UI/half_health_bar_filledt.png" id="11_mntao"]
+[ext_resource type="Texture2D" uid="uid://dj8nyg33cpjqh" path="res://UI/half_armor_bar_filled.png" id="12_tir3k"]
+[ext_resource type="Script" path="res://Scenes/StatusUI.gd" id="13_130bn"]
+[ext_resource type="Shader" path="res://Scenes/burn.gdshader" id="14_1b0fq"]
+[ext_resource type="Texture2D" uid="uid://cvta2lgj4lfww" path="res://UI/dissolve.png" id="15_btqpi"]
+[ext_resource type="Texture2D" uid="uid://nunbe0hanbsd" path="res://UI/innate_status_ui.png" id="16_2gkw3"]
+[ext_resource type="Shader" path="res://Scenes/dissolve.gdshader" id="17_5ehgw"]
+[ext_resource type="Texture2D" uid="uid://bq07uefqpafdi" path="res://UI/modular_status_ui.png" id="18_q65ks"]
+[ext_resource type="Texture2D" uid="uid://d333a8tuighwt" path="res://UI/armor_bar_empty.png" id="19_4h7ye"]
+[ext_resource type="Texture2D" uid="uid://t6fvglavpu4g" path="res://UI/EndTurn.png" id="20_rj6xk"]
+[ext_resource type="Script" path="res://Scenes/Deck.gd" id="21_vh54n"]
+[ext_resource type="Texture2D" uid="uid://wrgk0ah3wagm" path="res://UI/TurnBar.png" id="22_a1w4o"]
+[ext_resource type="Texture2D" uid="uid://b00g3atwumvmg" path="res://Sprites/lv3-c.png" id="23_e7hjt"]
+[ext_resource type="Script" path="res://Scripts/GameBoard.gd" id="24_62unt"]
+[ext_resource type="Resource" uid="uid://dvt6xggl5086k" path="res://Resources/GridFinal.tres" id="25_nyoi6"]
+[ext_resource type="Texture2D" uid="uid://cd6opk1unbx3b" path="res://Sprites/Path-export.png" id="26_hlpf2"]
+[ext_resource type="Script" path="res://Scripts/UnitPath.gd" id="27_saxwf"]
+[ext_resource type="PackedScene" uid="uid://b1t8iyisfbe0v" path="res://Scenes/Cursor.tscn" id="28_p1dah"]
+[ext_resource type="PackedScene" uid="uid://20i4en7e2fm7" path="res://Scenes/Unit.tscn" id="29_2k70x"]
+[ext_resource type="Script" path="res://Scripts/RangedUnit.gd" id="30_h1cxu"]
+[ext_resource type="Script" path="res://Scenes/EnemyController.gd" id="31_vwqjl"]
+[ext_resource type="PackedScene" uid="uid://c4fmf0ea13qpn" path="res://Scenes/Tank.tscn" id="32_e2gx1"]
+[ext_resource type="AnimationLibrary" uid="uid://cnnbqaw6ijqvk" path="res://Resources/Animation_Resources/tank.res" id="33_hau66"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://k4xmwcd5quf" path="res://Resources/Animation_Resources/Tank.tres" id="34_pn605"]
+[ext_resource type="Script" path="res://Scenes/Property.gd" id="35_i387m"]
+[ext_resource type="Texture2D" uid="uid://curyo8kpp8asf" path="res://Sprites/wall-3c.png" id="36_kb1tx"]
+[ext_resource type="Texture2D" uid="uid://cookrpnh1kv6b" path="res://Sprites/car_asset.png" id="37_x2rpb"]
+[ext_resource type="Texture2D" uid="uid://d2s85kg118ac5" path="res://Sprites/desk.png" id="38_gfy67"]
+[ext_resource type="Texture2D" uid="uid://cc822l7rn6b70" path="res://Sprites/sandbag.png" id="39_jo70r"]
+[ext_resource type="PackedScene" uid="uid://bb1s8fhbukv66" path="res://Scenes/Camera.tscn" id="40_vsvf6"]
+[ext_resource type="Script" path="res://Scripts/Interactables.gd" id="41_45irm"]
+[ext_resource type="Texture2D" uid="uid://0y7pc61c1ovt" path="res://DialogSistem/aset aseprite/Soerjott.png" id="42_e7n48"]
+[ext_resource type="Texture2D" uid="uid://d18cpml72xrda" path="res://DialogSistem/aset aseprite/namebox.png" id="43_v3iln"]
+[ext_resource type="Texture2D" uid="uid://o8d6hmqppsju" path="res://DialogSistem/aset aseprite/TextBox.png" id="44_x2g0t"]
+[ext_resource type="FontFile" uid="uid://c583mm1xbwni5" path="res://font/I-pixel-u.ttf" id="45_p6nka"]
+[ext_resource type="Texture2D" uid="uid://cpyxiy0jmybap" path="res://DialogSistem/aset aseprite/Transition.png" id="46_ii0j0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_furj2"]
-shader = ExtResource("4_ep2ej")
+shader = ExtResource("6_ygu78")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/width = 1.0
 shader_parameter/pattern = 0
@@ -59,17 +55,17 @@ shader_parameter/add_margins = true
 shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ncjxh"]
-texture = ExtResource("8_42nyv")
+texture = ExtResource("10_jdnmk")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_05tuo"]
-texture = ExtResource("9_rpxtw")
+texture = ExtResource("11_mntao")
 axis_stretch_horizontal = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cyrrq"]
-texture = ExtResource("8_42nyv")
+texture = ExtResource("10_jdnmk")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t2h2j"]
-texture = ExtResource("10_yqdbd")
+texture = ExtResource("12_tir3k")
 
 [sub_resource type="Animation" id="Animation_pfk2h"]
 length = 0.001
@@ -165,25 +161,25 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5un84"]
 resource_local_to_scene = true
-shader = ExtResource("12_xvbxs")
+shader = ExtResource("14_1b0fq")
 shader_parameter/dissolve_value = 1.0
-shader_parameter/dissolve_texture = ExtResource("13_6ii1m")
+shader_parameter/dissolve_texture = ExtResource("15_btqpi")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jewqy"]
 resource_local_to_scene = true
-shader = ExtResource("15_eq4bv")
+shader = ExtResource("17_5ehgw")
 shader_parameter/dissolve_value = 1.0
-shader_parameter/dissolve_texture = ExtResource("13_6ii1m")
+shader_parameter/dissolve_texture = ExtResource("15_btqpi")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7sm4h"]
 resource_local_to_scene = true
 content_margin_left = 128.0
 content_margin_top = 26.0
-texture = ExtResource("8_42nyv")
+texture = ExtResource("10_jdnmk")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wxmda"]
 resource_local_to_scene = true
-texture = ExtResource("9_rpxtw")
+texture = ExtResource("11_mntao")
 texture_margin_left = 12.0
 texture_margin_right = 12.0
 axis_stretch_horizontal = 1
@@ -191,19 +187,19 @@ axis_stretch_horizontal = 1
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wvygj"]
 content_margin_left = 128.0
 content_margin_top = 26.0
-texture = ExtResource("17_mr5hf")
+texture = ExtResource("19_4h7ye")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lsig2"]
 resource_local_to_scene = true
-texture = ExtResource("10_yqdbd")
+texture = ExtResource("12_tir3k")
 axis_stretch_horizontal = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t2hkw"]
 content_margin_bottom = 10.0
-texture = ExtResource("18_yohqr")
+texture = ExtResource("20_rj6xk")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rhtw3"]
-texture = ExtResource("24_jngmy")
+texture = ExtResource("26_hlpf2")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 32)
@@ -554,41 +550,7 @@ tracks/0/keys = {
 "values": [132, 133, 134, 135, 136, 137, 138]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_a15a1"]
-resource_local_to_scene = true
-_data = {
-"Idle_BL": SubResource("Animation_6jhwv"),
-"Idle_BR": SubResource("Animation_lgfsd"),
-"Idle_FL": SubResource("Animation_aiglu"),
-"Idle_FR": SubResource("Animation_4im2s"),
-"Shoot_BL": SubResource("Animation_62btc"),
-"Shoot_BR": SubResource("Animation_0pqwo"),
-"Shoot_FL": SubResource("Animation_30y1b"),
-"Shoot_FR": SubResource("Animation_rypgl"),
-"Walk_BL": SubResource("Animation_xle1l"),
-"Walk_BR": SubResource("Animation_5a73i"),
-"Walk_FL": SubResource("Animation_8f18j"),
-"Walk_FR": SubResource("Animation_73r42")
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5veq"]
-resource_local_to_scene = true
-_data = {
-"Idle_BL": SubResource("Animation_6jhwv"),
-"Idle_BR": SubResource("Animation_lgfsd"),
-"Idle_FL": SubResource("Animation_aiglu"),
-"Idle_FR": SubResource("Animation_4im2s"),
-"Shoot_BL": SubResource("Animation_62btc"),
-"Shoot_BR": SubResource("Animation_0pqwo"),
-"Shoot_FL": SubResource("Animation_30y1b"),
-"Shoot_FR": SubResource("Animation_rypgl"),
-"Walk_BL": SubResource("Animation_xle1l"),
-"Walk_BR": SubResource("Animation_5a73i"),
-"Walk_FL": SubResource("Animation_8f18j"),
-"Walk_FR": SubResource("Animation_73r42")
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3uhp3"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_71dq3"]
 resource_local_to_scene = true
 _data = {
 "Idle_BL": SubResource("Animation_6jhwv"),
@@ -607,74 +569,71 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e0yfo"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2175y"]
-size = Vector2(32, 32)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnclj"]
 bg_color = Color(0, 0, 0, 0.313726)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5a11"]
-atlas = ExtResource("40_eatti")
+atlas = ExtResource("44_x2g0t")
 region = Rect2(0, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dt72n"]
-atlas = ExtResource("40_eatti")
+atlas = ExtResource("44_x2g0t")
 region = Rect2(1816, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x4sg5"]
-atlas = ExtResource("40_eatti")
+atlas = ExtResource("44_x2g0t")
 region = Rect2(3632, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_swimk"]
-atlas = ExtResource("40_eatti")
+atlas = ExtResource("44_x2g0t")
 region = Rect2(5448, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3h22"]
-atlas = ExtResource("40_eatti")
+atlas = ExtResource("44_x2g0t")
 region = Rect2(7264, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h8xhe"]
-atlas = ExtResource("40_eatti")
+atlas = ExtResource("44_x2g0t")
 region = Rect2(9080, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4s5ny"]
-atlas = ExtResource("40_eatti")
+atlas = ExtResource("44_x2g0t")
 region = Rect2(10896, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_61105"]
-atlas = ExtResource("40_eatti")
+atlas = ExtResource("44_x2g0t")
 region = Rect2(12712, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hfi32"]
-atlas = ExtResource("40_eatti")
+atlas = ExtResource("44_x2g0t")
 region = Rect2(14528, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n04p2"]
-atlas = ExtResource("40_eatti")
+atlas = ExtResource("44_x2g0t")
 region = Rect2(16344, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajw37"]
-atlas = ExtResource("40_eatti")
+atlas = ExtResource("44_x2g0t")
 region = Rect2(18160, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_keyeu"]
-atlas = ExtResource("40_eatti")
+atlas = ExtResource("44_x2g0t")
 region = Rect2(19976, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6yh0f"]
-atlas = ExtResource("40_eatti")
+atlas = ExtResource("44_x2g0t")
 region = Rect2(21792, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bfjry"]
-atlas = ExtResource("40_eatti")
+atlas = ExtResource("44_x2g0t")
 region = Rect2(23608, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlphv"]
-atlas = ExtResource("40_eatti")
+atlas = ExtResource("44_x2g0t")
 region = Rect2(25424, 0, 1816, 232)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_26he5"]
-atlas = ExtResource("40_eatti")
+atlas = ExtResource("44_x2g0t")
 region = Rect2(27240, 0, 1816, 232)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vjwr7"]
@@ -947,9 +906,122 @@ _data = {
 [node name="Level" type="Node2D"]
 process_mode = 1
 texture_filter = 1
-script = ExtResource("1_a2xul")
-explosive = ExtResource("2_opf1f")
-statusUItexture = Array[Texture2D]([ExtResource("2_bcnuf"), ExtResource("3_anfus"), ExtResource("5_g7cu6")])
+script = ExtResource("1_g88b8")
+explosive = ExtResource("2_lamf3")
+statusUItexture = Array[Texture2D]([null, null, null])
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+offset_left = -356.0
+offset_top = -230.0
+offset_right = -356.0
+offset_bottom = 510.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2"]
+visible = false
+material = SubResource("ShaderMaterial_furj2")
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+texture = ExtResource("7_dmwqp")
+
+[node name="Damage" type="Label" parent="HBoxContainer2/TextureRect"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 18.0
+offset_right = 223.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("8_3a84c")
+theme_override_font_sizes/font_size = 60
+text = "3"
+
+[node name="Agility" type="Label" parent="HBoxContainer2/TextureRect"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 282.0
+offset_right = 148.0
+offset_bottom = 332.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_g4p8r")
+theme_override_font_sizes/font_size = 40
+text = "3"
+
+[node name="HP_Bar" type="ProgressBar" parent="HBoxContainer2/TextureRect"]
+custom_minimum_size = Vector2(128, 26)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -38.0
+offset_right = 64.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxTexture_ncjxh")
+theme_override_styles/fill = SubResource("StyleBoxTexture_05tuo")
+value = 35.0
+show_percentage = false
+
+[node name="HP_label" type="Label" parent="HBoxContainer2/TextureRect/HP_Bar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -12.0
+offset_right = 30.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_g4p8r")
+text = "35/35"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Armor_Bar" type="ProgressBar" parent="HBoxContainer2/TextureRect"]
+custom_minimum_size = Vector2(128, 26)
+layout_mode = 0
+offset_left = 61.0
+offset_top = 222.0
+offset_right = 189.0
+offset_bottom = 249.0
+theme_override_styles/background = SubResource("StyleBoxTexture_cyrrq")
+theme_override_styles/fill = SubResource("StyleBoxTexture_t2h2j")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="HBoxContainer2/TextureRect/Armor_Bar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -13.5
+offset_right = 30.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_g4p8r")
+text = "35/35"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="HBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 740)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -976,116 +1048,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/UI/HBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2"]
-visible = false
-material = SubResource("ShaderMaterial_furj2")
-use_parent_material = true
-layout_mode = 2
-size_flags_vertical = 8
-mouse_filter = 2
-texture = ExtResource("5_kw45f")
-
-[node name="Damage" type="Label" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2/TextureRect"]
-layout_mode = 0
-offset_left = 175.0
-offset_top = 18.0
-offset_right = 223.0
-offset_bottom = 80.0
-theme_override_fonts/font = ExtResource("6_2idca")
-theme_override_font_sizes/font_size = 60
-text = "3"
-
-[node name="Agility" type="Label" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2/TextureRect"]
-layout_mode = 0
-offset_left = 108.0
-offset_top = 282.0
-offset_right = 148.0
-offset_bottom = 332.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("7_jj2wh")
-theme_override_font_sizes/font_size = 40
-text = "3"
-
-[node name="HP_Bar" type="ProgressBar" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2/TextureRect"]
-custom_minimum_size = Vector2(128, 26)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -38.0
-offset_right = 64.0
-offset_bottom = -12.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxTexture_ncjxh")
-theme_override_styles/fill = SubResource("StyleBoxTexture_05tuo")
-value = 35.0
-show_percentage = false
-
-[node name="HP_label" type="Label" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2/TextureRect/HP_Bar"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -12.0
-offset_right = 30.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("7_jj2wh")
-text = "35/35"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Armor_Bar" type="ProgressBar" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2/TextureRect"]
-custom_minimum_size = Vector2(128, 26)
-layout_mode = 0
-offset_left = 61.0
-offset_top = 222.0
-offset_right = 189.0
-offset_bottom = 249.0
-theme_override_styles/background = SubResource("StyleBoxTexture_cyrrq")
-theme_override_styles/fill = SubResource("StyleBoxTexture_t2h2j")
-step = 1.0
-value = 50.0
-show_percentage = false
-
-[node name="Label" type="Label" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2/TextureRect/Armor_Bar"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -13.5
-offset_right = 30.0
-offset_bottom = 9.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("7_jj2wh")
-text = "35/35"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Panel" type="Panel" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer2"]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 740)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/HBoxContainer"]
 custom_minimum_size = Vector2(0, 296)
 layout_mode = 2
@@ -1095,9 +1057,9 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(288, 160)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("2_bcnuf")
+texture = ExtResource("3_0tjos")
 expand_mode = 3
-script = ExtResource("11_emryd")
+script = ExtResource("13_130bn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI"]
 root_node = NodePath("../Ability/Innate")
@@ -1116,12 +1078,12 @@ theme_override_constants/separation = 15
 [node name="Innate" type="TextureRect" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI/Ability"]
 material = SubResource("ShaderMaterial_5un84")
 layout_mode = 2
-texture = ExtResource("14_1s4aa")
+texture = ExtResource("16_2gkw3")
 
 [node name="Modular" type="TextureRect" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI/Ability"]
 material = SubResource("ShaderMaterial_jewqy")
 layout_mode = 2
-texture = ExtResource("16_gmar3")
+texture = ExtResource("18_q65ks")
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer/UI/HBoxContainer/HBoxContainer/StatusUI"]
 layout_mode = 0
@@ -1149,7 +1111,7 @@ offset_right = 56.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("7_jj2wh")
+theme_override_fonts/font = ExtResource("9_g4p8r")
 theme_override_font_sizes/font_size = 16
 text = "3/5"
 
@@ -1179,7 +1141,7 @@ offset_right = 54.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("7_jj2wh")
+theme_override_fonts/font = ExtResource("9_g4p8r")
 theme_override_font_sizes/font_size = 16
 text = "3/3"
 
@@ -1193,7 +1155,7 @@ custom_minimum_size = Vector2(328, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("7_jj2wh")
+theme_override_fonts/font = ExtResource("9_g4p8r")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxTexture_t2hkw")
 text = "END TURN
@@ -1206,7 +1168,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 8
 mouse_filter = 2
 alignment = 2
-script = ExtResource("19_bmrrx")
+script = ExtResource("21_vh54n")
 
 [node name="ZoomOut" type="Button" parent="CanvasLayer/UI"]
 custom_minimum_size = Vector2(50, 50)
@@ -1243,7 +1205,7 @@ offset_top = 20.0
 offset_right = 48.0
 offset_bottom = 124.0
 grow_horizontal = 2
-texture = ExtResource("20_xxgr5")
+texture = ExtResource("22_a1w4o")
 patch_margin_left = 40
 patch_margin_right = 40
 
@@ -1261,20 +1223,20 @@ offset_top = 5.0
 offset_right = 233.0
 offset_bottom = 45.0
 theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_fonts/font = ExtResource("6_2idca")
+theme_override_fonts/font = ExtResource("8_3a84c")
 theme_override_font_sizes/font_size = 38
 text = "FPS : 140"
 
 [node name="Bg" type="Sprite2D" parent="."]
 position = Vector2(200, 114)
-texture = ExtResource("21_k0414")
+texture = ExtResource("23_e7hjt")
 
 [node name="GameBoard" type="Node2D" parent="."]
-script = ExtResource("22_1lktb")
+script = ExtResource("24_62unt")
 property_cells = Array[Vector2]([])
 orientation = "landscape"
-grid = ExtResource("24_xsnwl")
-level = 1
+grid = ExtResource("25_nyoi6")
+level = 6
 
 [node name="UnitPath" type="TileMap" parent="GameBoard"]
 y_sort_enabled = true
@@ -1282,104 +1244,89 @@ tile_set = SubResource("TileSet_5x5x1")
 format = 2
 layer_0/y_sort_enabled = true
 layer_0/tile_data = PackedInt32Array(327683, 0, 0, 262147, 0, 0, 196611, 0, 0, 131075, 0, 0, 65539, 0, 0, 3, 0, 0, -65533, 0, 0, -131069, 0, 0, -131070, 0, 0, -131071, 0, 0, -131072, 0, 0, -65537, 0, 0, -65538, 0, 0, -65539, 0, 0, -65540, 0, 0, -65541, 0, 0, -65542, 0, 0, -65543, 0, 0, -65544, 0, 0, -65545, 0, 0, -9, 0, 0, 65527, 0, 0, 131063, 0, 0, 196599, 0, 0, 262135, 0, 0, 327671, 0, 0, 393207, 0, 0, 458743, 0, 0, 524279, 0, 0, 589815, 0, 0, 655351, 0, 0, 720887, 0, 0, 786423, 0, 0, 851959, 0, 0, 917495, 0, 0, 983031, 0, 0, 983032, 0, 0, 917496, 0, 0, 851960, 0, 0, 786424, 0, 0, 720888, 0, 0, 655352, 0, 0, 589816, 0, 0, 524280, 0, 0, 458744, 0, 0, 393208, 0, 0, 327672, 0, 0, 262136, 0, 0, 196600, 0, 0, 131064, 0, 0, 65528, 0, 0, -8, 0, 0, -7, 0, 0, 65529, 0, 0, 131065, 0, 0, 196601, 0, 0, 262137, 0, 0, 327673, 0, 0, 393209, 0, 0, 458745, 0, 0, 524281, 0, 0, 589817, 0, 0, 655353, 0, 0, 720889, 0, 0, 786425, 0, 0, 851961, 0, 0, 917497, 0, 0, 983033, 0, 0, 983034, 0, 0, 917498, 0, 0, 851962, 0, 0, 786426, 0, 0, 720890, 0, 0, 655354, 0, 0, 589818, 0, 0, 524282, 0, 0, 458746, 0, 0, 393210, 0, 0, 327674, 0, 0, 262138, 0, 0, 196602, 0, 0, 131066, 0, 0, 65530, 0, 0, -6, 0, 0, -5, 0, 0, 65531, 0, 0, 131067, 0, 0, 196603, 0, 0, 262139, 0, 0, 327675, 0, 0, 393211, 0, 0, 458747, 0, 0, 524283, 0, 0, 589819, 0, 0, 655355, 0, 0, 720891, 0, 0, 786427, 0, 0, 851963, 0, 0, 917499, 0, 0, 983035, 0, 0, 983036, 0, 0, 917500, 0, 0, 851964, 0, 0, 786428, 0, 0, 720892, 0, 0, 655356, 0, 0, 589820, 0, 0, 524284, 0, 0, 458748, 0, 0, 393212, 0, 0, 327676, 0, 0, 262140, 0, 0, 196604, 0, 0, 131068, 0, 0, 65532, 0, 0, -4, 0, 0, -3, 0, 0, 65533, 0, 0, 131069, 0, 0, 196605, 0, 0, 262141, 0, 0, 327677, 0, 0, 393213, 0, 0, 458749, 0, 0, 524285, 0, 0, 589821, 0, 0, 655357, 0, 0, 720893, 0, 0, 786429, 0, 0, 851965, 0, 0, 917501, 0, 0, 983037, 0, 0, 983038, 0, 0, 917502, 0, 0, 851966, 0, 0, 786430, 0, 0, 720894, 0, 0, 655358, 0, 0, 589822, 0, 0, 524286, 0, 0, 458750, 0, 0, 393214, 0, 0, 327678, 0, 0, 262142, 0, 0, 196606, 0, 0, 131070, 0, 0, 65534, 0, 0, -2, 0, 0, -1, 0, 0, 65535, 0, 0, 131071, 0, 0, 196607, 0, 0, 262143, 0, 0, 327679, 0, 0, 393215, 0, 0, 458751, 0, 0, 524287, 0, 0, 589823, 0, 0, 655359, 0, 0, 720895, 0, 0, 786431, 0, 0, 851967, 0, 0, 917503, 0, 0, 983039, 0, 0, 917504, 0, 0, 851968, 0, 0, 786432, 0, 0, 720896, 0, 0, 655360, 0, 0, 589824, 0, 0, 524288, 0, 0, 458752, 0, 0, 393216, 0, 0, 327680, 0, 0, 262144, 0, 0, 196608, 0, 0, 131072, 0, 0, 65536, 0, 0, 0, 0, 0, -65536, 0, 0, -65535, 0, 0, 1, 0, 0, 65537, 0, 0, 131073, 0, 0, 196609, 0, 0, 262145, 0, 0, 327681, 0, 0, 393217, 0, 0, 458753, 0, 0, 524289, 0, 0, 589825, 0, 0, 655361, 0, 0, 720897, 0, 0, 786433, 0, 0, 851969, 0, 0, 917505, 0, 0, 917506, 0, 0, 851970, 0, 0, 786434, 0, 0, 720898, 0, 0, 655362, 0, 0, 589826, 0, 0, 524290, 0, 0, 458754, 0, 0, 393218, 0, 0, 327682, 0, 0, 262146, 0, 0, 196610, 0, 0, 131074, 0, 0, 65538, 0, 0, 2, 0, 0, -65534, 0, 0, 393219, 0, 0, 458755, 0, 0, 524291, 0, 0, 589827, 0, 0, 655363, 0, 0, 720899, 0, 0, 786435, 0, 0, 851971, 0, 0, 917507, 0, 0, 917508, 0, 0, 851972, 0, 0, 786436, 0, 0, 720900, 0, 0, 655364, 0, 0, 589828, 0, 0, 524292, 0, 0, 458756, 0, 0, 393220, 0, 0, 327684, 0, 0, 262148, 0, 0, 196612, 0, 0, 131076, 0, 0, 65540, 0, 0, 4, 0, 0, -65532, 0, 0, -131068, 0, 0, -131067, 0, 0, -65531, 0, 0, 5, 0, 0, 65541, 0, 0, 131077, 0, 0, 196613, 0, 0, 262149, 0, 0, 327685, 0, 0, 393221, 0, 0, 458757, 0, 0, 524293, 0, 0, 589829, 0, 0, 655365, 0, 0, 720901, 0, 0, 786437, 0, 0, 851973, 0, 0, 917509, 0, 0, 917510, 0, 0, 851974, 0, 0, 786438, 0, 0, 720902, 0, 0, 655366, 0, 0, 589830, 0, 0, 524294, 0, 0, 458758, 0, 0, 393222, 0, 0, 327686, 0, 0, 262150, 0, 0, 196614, 0, 0, 131078, 0, 0, 65542, 0, 0, 6, 0, 0, -65530, 0, 0, -65529, 0, 0, 7, 0, 0, 65543, 0, 0, 131079, 0, 0, 196615, 0, 0, 262151, 0, 0, 327687, 0, 0, 393223, 0, 0, 458759, 0, 0, 524295, 0, 0, 589831, 0, 0, 655367, 0, 0, 720903, 0, 0, 786439, 0, 0, 851975, 0, 0, 917511, 0, 0, 917512, 0, 0, 851976, 0, 0, 786440, 0, 0, 720904, 0, 0, 655368, 0, 0, 589832, 0, 0, 524296, 0, 0, 458760, 0, 0, 393224, 0, 0, 327688, 0, 0, 262152, 0, 0, 196616, 0, 0, 131080, 0, 0, 65544, 0, 0, 8, 0, 0, -65528, 0, 0, -65527, 0, 0, 9, 0, 0, 65545, 0, 0, 131081, 0, 0, 196617, 0, 0, 262153, 0, 0, 327689, 0, 0, 393225, 0, 0, 458761, 0, 0, 524297, 0, 0, 589833, 0, 0, 655369, 0, 0, 720905, 0, 0, 786441, 0, 0, 851977, 0, 0, 917513, 0, 0, 917514, 0, 0, 851978, 0, 0, 786442, 0, 0, 720906, 0, 0, 655370, 0, 0, 589834, 0, 0, 524298, 0, 0, 458762, 0, 0, 393226, 0, 0, 327690, 0, 0, 262154, 0, 0, 196618, 0, 0, 131082, 0, 0, 65546, 0, 0, 10, 0, 0, -65526, 0, 0, -65525, 0, 0, 11, 0, 0, 65547, 0, 0, 131083, 0, 0, 196619, 0, 0, 262155, 0, 0, 327691, 0, 0, 393227, 0, 0, 458763, 0, 0, 524299, 0, 0, 589835, 0, 0, 655371, 0, 0, 720907, 0, 0, 786443, 0, 0, 851979, 0, 0, 917515, 0, 0, 917516, 0, 0, 851980, 0, 0, 786444, 0, 0, 720908, 0, 0, 655372, 0, 0, 589836, 0, 0, 524300, 0, 0, 458764, 0, 0, 393228, 0, 0, 327692, 0, 0, 262156, 0, 0, 196620, 0, 0, 131084, 0, 0, 65548, 0, 0, 12, 0, 0, -65524, 0, 0, -65523, 0, 0, 13, 0, 0, 65549, 0, 0, 131085, 0, 0, 196621, 0, 0, 262157, 0, 0, 327693, 0, 0, 393229, 0, 0, 458765, 0, 0, 524301, 0, 0, 589837, 0, 0, 655373, 0, 0, 720909, 0, 0, 786445, 0, 0, 851981, 0, 0, 917517, 0, 0, 917518, 0, 0, 851982, 0, 0, 786446, 0, 0, 720910, 0, 0, 655374, 0, 0, 589838, 0, 0, 524302, 0, 0, 458766, 0, 0, 393230, 0, 0, 327694, 0, 0, 262158, 0, 0, 196622, 0, 0, 131086, 0, 0, 65550, 0, 0, 14, 0, 0, -65522, 0, 0, -65521, 0, 0, 15, 0, 0, 65551, 0, 0, 131087, 0, 0, 196623, 0, 0, 262159, 0, 0, 327695, 0, 0, 393231, 0, 0, 458767, 0, 0, 524303, 0, 0, 589839, 0, 0, 655375, 0, 0, 720911, 0, 0, 786447, 0, 0, 851983, 0, 0, 917519, 0, 0, 917520, 0, 0, 851984, 0, 0, 786448, 0, 0, 720912, 0, 0, 655376, 0, 0, 589840, 0, 0, 524304, 0, 0, 458768, 0, 0, 393232, 0, 0, 327696, 0, 0, 262160, 0, 0, 196624, 0, 0, 131088, 0, 0, 65552, 0, 0, 16, 0, 0, -65520, 0, 0, -65519, 0, 0, 17, 0, 0, 65553, 0, 0, 131089, 0, 0, 196625, 0, 0, 262161, 0, 0, 327697, 0, 0, 393233, 0, 0, 458769, 0, 0, 524305, 0, 0, 589841, 0, 0, 655377, 0, 0, 720913, 0, 0, 786449, 0, 0, 851985, 0, 0, 917521, 0, 0, 917522, 0, 0, 851986, 0, 0, 786450, 0, 0, 720914, 0, 0, 655378, 0, 0, 589842, 0, 0, 524306, 0, 0, 458770, 0, 0, 393234, 0, 0, 327698, 0, 0, 262162, 0, 0, 196626, 0, 0, 131090, 0, 0, 65554, 0, 0, 18, 0, 0, -65518, 0, 0, -65517, 0, 0, 19, 0, 0, 65555, 0, 0, 131091, 0, 0, 196627, 0, 0, 262163, 0, 0, 327699, 0, 0, 393235, 0, 0, 458771, 0, 0, 524307, 0, 0, 589843, 0, 0, 655379, 0, 0, 720915, 0, 0, 786451, 0, 0, 851987, 0, 0, 917523, 0, 0, 917524, 0, 0, 851988, 0, 0, 786452, 0, 0, 720916, 0, 0, 655380, 0, 0, 589844, 0, 0, 524308, 0, 0, 458772, 0, 0, 393236, 0, 0, 327700, 0, 0, 262164, 0, 0, 196628, 0, 0, 131092, 0, 0, 65556, 0, 0, 20, 0, 0, -65516, 0, 0, -65515, 0, 0, 21, 0, 0, 65557, 0, 0, 131093, 0, 0, 196629, 0, 0, 262165, 0, 0, 327701, 0, 0, 393237, 0, 0, 458773, 0, 0, 524309, 0, 0, 589845, 0, 0, 655381, 0, 0, 720917, 0, 0, 786453, 0, 0, 851989, 0, 0, 917525, 0, 0, 917526, 0, 0, 851990, 0, 0, 786454, 0, 0, 720918, 0, 0, 655382, 0, 0, 589846, 0, 0, 524310, 0, 0, 458774, 0, 0, 393238, 0, 0, 327702, 0, 0, 262166, 0, 0, 196630, 0, 0, 131094, 0, 0, 65558, 0, 0, 22, 0, 0, -65514, 0, 0)
-script = ExtResource("25_dvndr")
-grid = ExtResource("24_xsnwl")
-solid_cells = Array[Vector2]([Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)])
+script = ExtResource("27_saxwf")
+grid = ExtResource("25_nyoi6")
 
-[node name="Cursor" parent="GameBoard" instance=ExtResource("26_xus3j")]
+[node name="Cursor" parent="GameBoard" instance=ExtResource("28_p1dah")]
 z_index = 1
 position = Vector2(400, 33)
 
 [node name="Player" type="Node2D" parent="GameBoard"]
 
-[node name="Soerjo" parent="GameBoard/Player" instance=ExtResource("27_5oblx")]
+[node name="Soerjo" parent="GameBoard/Player" instance=ExtResource("29_2k70x")]
 use_parent_material = true
-position = Vector2(-557, 403)
-script = ExtResource("28_ayk4d")
-_animation_resource = SubResource("AnimationLibrary_a15a1")
-last_direction = Vector2(1, -1)
-
-[node name="Tomo" parent="GameBoard/Player" instance=ExtResource("27_5oblx")]
-position = Vector2(61, 865)
-script = ExtResource("29_8g6br")
-player_id = 2
-_animation_resource = SubResource("AnimationLibrary_o5veq")
-last_direction = Vector2(1, -1)
-
-[node name="Ling" parent="GameBoard/Player" instance=ExtResource("27_5oblx")]
-position = Vector2(-318, 736)
-script = ExtResource("29_8g6br")
-player_id = 3
-_animation_resource = SubResource("AnimationLibrary_3uhp3")
+position = Vector2(195, 417)
+script = ExtResource("30_h1cxu")
+_animation_resource = SubResource("AnimationLibrary_71dq3")
 last_direction = Vector2(1, -1)
 
 [node name="Enemy" type="Node2D" parent="GameBoard"]
-script = ExtResource("30_68shu")
+script = ExtResource("31_vwqjl")
 
-[node name="Tank" parent="GameBoard/Enemy" instance=ExtResource("42_ppkdk")]
+[node name="Tank" parent="GameBoard/Enemy" instance=ExtResource("32_e2gx1")]
 position = Vector2(679, 153)
 player_id = 6
-_animation_resource = ExtResource("33_xuc6r")
-_animation_state_machine = ExtResource("34_ybrjm")
+_animation_resource = ExtResource("33_hau66")
+_animation_state_machine = ExtResource("34_pn605")
 
 [node name="Props" type="Node2D" parent="GameBoard"]
 
 [node name="Wall" type="StaticBody2D" parent="GameBoard/Props"]
 position = Vector2(-608, 396)
-script = ExtResource("35_lrvg0")
+script = ExtResource("35_i387m")
 cell = Vector2i(22, -4)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/Wall"]
 position = Vector2(1916, -312)
-texture = ExtResource("36_u0v2u")
+texture = ExtResource("36_kb1tx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/Wall"]
 shape = SubResource("RectangleShape2D_e0yfo")
 
 [node name="Car" type="StaticBody2D" parent="GameBoard/Props"]
 position = Vector2(1107, 698)
-script = ExtResource("35_lrvg0")
+script = ExtResource("35_i387m")
 cell = Vector2i(22, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/Car"]
 position = Vector2(-1, 1)
-texture = ExtResource("37_n8ypw")
+texture = ExtResource("37_x2rpb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/Car"]
 shape = SubResource("RectangleShape2D_e0yfo")
 
 [node name="Car2" type="StaticBody2D" parent="GameBoard/Props"]
 position = Vector2(-490, -98)
-script = ExtResource("35_lrvg0")
+script = ExtResource("35_i387m")
 cell = Vector2i(22, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/Car2"]
 position = Vector2(-1, 1)
-texture = ExtResource("37_n8ypw")
+texture = ExtResource("37_x2rpb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/Car2"]
 shape = SubResource("RectangleShape2D_e0yfo")
 
 [node name="Desk" type="StaticBody2D" parent="GameBoard/Props"]
 position = Vector2(961, 388)
-script = ExtResource("35_lrvg0")
+script = ExtResource("35_i387m")
 cell = Vector2i(22, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/Desk"]
 position = Vector2(-1, 1)
-texture = ExtResource("38_cy56v")
+texture = ExtResource("38_gfy67")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/Desk"]
 shape = SubResource("RectangleShape2D_e0yfo")
 
 [node name="Desk2" type="StaticBody2D" parent="GameBoard/Props"]
 position = Vector2(192, 8)
-script = ExtResource("35_lrvg0")
+script = ExtResource("35_i387m")
 cell = Vector2i(22, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/Desk2"]
 position = Vector2(-1, 1)
-texture = ExtResource("38_cy56v")
+texture = ExtResource("38_gfy67")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/Desk2"]
 shape = SubResource("RectangleShape2D_e0yfo")
@@ -1387,54 +1334,47 @@ shape = SubResource("RectangleShape2D_e0yfo")
 [node name="Sandbag" type="StaticBody2D" parent="GameBoard/Props"]
 position = Vector2(677, 548)
 constant_angular_velocity = 0.0174533
-script = ExtResource("35_lrvg0")
+script = ExtResource("35_i387m")
 cell = Vector2i(9, 11)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/Sandbag"]
 position = Vector2(-1, 1)
-texture = ExtResource("40_hi10y")
+texture = ExtResource("39_jo70r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/Sandbag"]
 shape = SubResource("RectangleShape2D_e0yfo")
 
 [node name="Sandbag2" type="StaticBody2D" parent="GameBoard/Props"]
 position = Vector2(-155, 133)
-script = ExtResource("35_lrvg0")
+script = ExtResource("35_i387m")
 cell = Vector2i(15, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/Sandbag2"]
 position = Vector2(-1, 1)
-texture = ExtResource("40_hi10y")
+texture = ExtResource("39_jo70r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/Sandbag2"]
 shape = SubResource("RectangleShape2D_e0yfo")
 
 [node name="Sandbag3" type="StaticBody2D" parent="GameBoard/Props"]
 position = Vector2(-155, 582)
-script = ExtResource("35_lrvg0")
+script = ExtResource("35_i387m")
 cell = Vector2i(2, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameBoard/Props/Sandbag3"]
 position = Vector2(-1, 1)
-texture = ExtResource("40_hi10y")
+texture = ExtResource("39_jo70r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameBoard/Props/Sandbag3"]
 shape = SubResource("RectangleShape2D_e0yfo")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="TacticsCamera" parent="." instance=ExtResource("35_8voj2")]
+[node name="TacticsCamera" parent="." instance=ExtResource("40_vsvf6")]
 position = Vector2(168, 124)
 collision_mask = 4
 
-[node name="Cursor" type="Area2D" parent="."]
-script = ExtResource("36_yoy55")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor"]
-shape = SubResource("RectangleShape2D_2175y")
-
 [node name="Interacts" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Interactables" type="Control" parent="Interacts"]
 layout_mode = 3
@@ -1443,7 +1383,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("37_rkivh")
+script = ExtResource("41_45irm")
+array_text = ["Cukup.. Hentikan semua kegilaan ini! kapan ini semua akan berakhir!?", "aku telah melihat ribuan pemuda gugur di tanah ini!", "Kekuasaan telah mengalahkan kemanusiaan itu sendiri!", "apakah kita akan benar\" menang pada akhirnya?", "satu yang aku tahu pasti, kemanusiaanlah yang akan kalah."]
 
 [node name="Panel" type="Panel" parent="Interacts/Interactables"]
 layout_mode = 1
@@ -1481,7 +1422,7 @@ offset_left = 42.0
 offset_top = -183.0
 offset_right = 1002.0
 offset_bottom = 245.0
-texture = ExtResource("38_rwfx1")
+texture = ExtResource("42_e7n48")
 expand_mode = 2
 stretch_mode = 4
 
@@ -1492,7 +1433,7 @@ offset_left = 688.0
 offset_top = 136.0
 offset_right = 924.0
 offset_bottom = 196.0
-texture = ExtResource("39_h6yyj")
+texture = ExtResource("43_v3iln")
 expand_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Interacts/Interactables/MarginContainer/Dialoguebox"]
@@ -1506,7 +1447,7 @@ offset_left = -856.0
 offset_top = -56.0
 offset_right = 768.0
 offset_bottom = 82.0
-theme_override_fonts/normal_font = ExtResource("6_2idca")
+theme_override_fonts/normal_font = ExtResource("8_3a84c")
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "Kita sudah berhasil masuk,
@@ -1520,7 +1461,7 @@ offset_left = 726.0
 offset_top = 145.0
 offset_right = 895.0
 offset_bottom = 198.0
-theme_override_fonts/normal_font = ExtResource("41_r3ngk")
+theme_override_fonts/normal_font = ExtResource("45_p6nka")
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "SOERJO"
@@ -1536,7 +1477,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="GameOver" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Winning" type="Control" parent="GameOver"]
 layout_mode = 3
@@ -1554,7 +1494,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("46_nelju")
+texture = ExtResource("46_ii0j0")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameOver/Winning/Panel"]
 visible = false
@@ -1570,7 +1510,7 @@ offset_right = 765.5
 offset_bottom = 121.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("6_2idca")
+theme_override_fonts/normal_font = ExtResource("8_3a84c")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]Pertempuran Surabaya menimbulkan korban sekitar 20.000 rakyat Surabaya yang sebagian besar adalah warga sipil[/center]"
@@ -1590,7 +1530,7 @@ offset_right = 873.5
 offset_bottom = 123.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("6_2idca")
+theme_override_fonts/normal_font = ExtResource("8_3a84c")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]Selain itu, sekitar 150.000 orang terpaksa meninggalkan kota Surabaya, sekitar 1600 orang prajurit Inggris tewas, hilang, dan luka-luka serta puluhan alat perang rusak dan hancur.[/center]
@@ -1599,7 +1539,6 @@ visible_characters = 0
 visible_ratio = 0.0
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="GameOver/Winning/Panel"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1612,7 +1551,7 @@ offset_right = 957.5
 offset_bottom = 257.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("6_2idca")
+theme_override_fonts/normal_font = ExtResource("8_3a84c")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]10 November 1945 menjadi pengingat bagi kita, kemerdekaan yang telah kita raih hari ini dibayar mahal dengan perjuangan leluhur kita.
@@ -1626,16 +1565,10 @@ libraries = {
 "": SubResource("AnimationLibrary_xnfe2")
 }
 
-[connection signal="ally_turn_started" from="." to="." method="_on_ally_turn_started"]
-[connection signal="enemy_turn_started" from="." to="." method="_on_enemy_turn_started"]
 [connection signal="pressed" from="CanvasLayer/UI/HBoxContainer/HBoxContainer/TurnChanger" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/ZoomOut" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/ZoomIn" to="." method="_on_zoom_in_pressed"]
 [connection signal="accept_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_Cursor_accept_pressed"]
 [connection signal="moved" from="GameBoard/Cursor" to="GameBoard" method="_check_hoverable_tiles"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="Cursor" to="GameBoard" method="set_target_attack"]
-[connection signal="body_entered" from="Cursor" to="Cursor" method="_on_body_entered"]
-[connection signal="body_exited" from="Cursor" to="GameBoard" method="on_target_exited"]
-[connection signal="body_exited" from="Cursor" to="Cursor" method="_on_body_exited"]
 [connection signal="enter_gameplay" from="Interacts/Interactables" to="." method="_on_interactables_enter_gameplay"]

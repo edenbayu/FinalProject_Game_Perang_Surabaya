@@ -11,6 +11,7 @@ extends Node2D
 @onready var sound_dialog3 = $sound_dialog3
 @onready var lvl_2_bgm = $lvl2_bgm
 @onready var victory = $victory
+@onready var gugur_bunga = $gugur_bunga
 
 func button_sound() -> void:
 	hover_audio.play()
@@ -34,7 +35,6 @@ func victory_sound() -> void:
 	lvl_1_bgm.stop()
 	lvl_2_bgm.stop()
 	victory.play()
-	
 
 func nambu_shoot() -> void:
 	nambu.play()
@@ -47,6 +47,9 @@ func level1_bgm(level) -> void:
 		2:
 			lvl_2_bgm.stream.loop = true
 			lvl_2_bgm.play()
+		6:
+			gugur_bunga.stream.loop = true
+			gugur_bunga.play()
 
 func unit_hurt() -> void:
 	hurt.play()

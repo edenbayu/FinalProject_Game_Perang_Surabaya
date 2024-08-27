@@ -1,13 +1,16 @@
-[gd_scene load_steps=34 format=3 uid="uid://bdkwxtnkngtl3"]
+[gd_scene load_steps=37 format=3 uid="uid://bdkwxtnkngtl3"]
 
 [ext_resource type="Script" path="res://DialogSistem/DialogueSistem2.gd" id="1_abhud"]
 [ext_resource type="Texture2D" uid="uid://0y7pc61c1ovt" path="res://DialogSistem/aset aseprite/Soerjott.png" id="2_yamdx"]
-[ext_resource type="Texture2D" uid="uid://bl2t4vdp1myv1" path="res://DialogSistem/aset aseprite/Ling.png" id="3_4dqwj"]
+[ext_resource type="Texture2D" uid="uid://xj820cecho3x" path="res://DialogSistem/aset aseprite/soehartini.png" id="3_cq1ua"]
 [ext_resource type="Texture2D" uid="uid://myjhjym4wilm" path="res://DialogSistem/aset aseprite/Jepangt.png" id="4_8gf6a"]
 [ext_resource type="Texture2D" uid="uid://bk8pr1pctcdmv" path="res://DialogSistem/aset aseprite/logmen_Portrait.png" id="5_d3ioq"]
-[ext_resource type="Texture2D" uid="uid://dy5w5gbiu3ivf" path="res://DialogSistem/aset aseprite/Sudirman.png" id="6_o2gby"]
-[ext_resource type="Texture2D" uid="uid://b84ciemgnmjgs" path="res://DialogSistem/aset aseprite/Sidik.png" id="7_xbc7v"]
+[ext_resource type="Texture2D" uid="uid://dxgjxwq4e30oe" path="res://DialogSistem/aset aseprite/TKR2.png" id="5_o046t"]
+[ext_resource type="Texture2D" uid="uid://bm08rsap03opp" path="res://DialogSistem/aset aseprite/TKR3.png" id="6_iwo4o"]
+[ext_resource type="Texture2D" uid="uid://bgse5ubiqvlny" path="res://DialogSistem/aset aseprite/mallaby.png" id="6_l1w5p"]
+[ext_resource type="Texture2D" uid="uid://cl8avlhx1sb85" path="res://DialogSistem/aset aseprite/pemuda 1.png" id="8_8sk8o"]
 [ext_resource type="Texture2D" uid="uid://dkxw7vgx2ysgw" path="res://DialogSistem/aset aseprite/downtown-soerabaja.png" id="8_xeotl"]
+[ext_resource type="Texture2D" uid="uid://b7p8atmkuxq0u" path="res://DialogSistem/aset aseprite/pemuda1 .png" id="9_1g58k"]
 [ext_resource type="Texture2D" uid="uid://cm2pv441tk2o0" path="res://DialogSistem/aset aseprite/background.png" id="9_utwqj"]
 [ext_resource type="Texture2D" uid="uid://bve5y02t7ogte" path="res://DialogSistem/aset aseprite/tandjoeng-perak-export.png" id="10_qip2i"]
 [ext_resource type="Texture2D" uid="uid://1lsl4xux0t6w" path="res://DialogSistem/aset aseprite/tkr-hq.png" id="11_ugjau"]
@@ -143,7 +146,7 @@ anchors_preset = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_abhud")
-character_portraits = Array[Texture2D]([ExtResource("2_yamdx"), ExtResource("3_4dqwj"), ExtResource("4_8gf6a"), ExtResource("4_8gf6a"), null, ExtResource("4_8gf6a"), ExtResource("5_d3ioq"), ExtResource("6_o2gby"), ExtResource("7_xbc7v"), ExtResource("3_4dqwj")])
+character_portraits = Array[Texture2D]([ExtResource("2_yamdx"), ExtResource("3_cq1ua"), ExtResource("4_8gf6a"), ExtResource("5_o046t"), null, ExtResource("6_iwo4o"), ExtResource("5_d3ioq"), ExtResource("6_l1w5p"), ExtResource("9_1g58k"), ExtResource("8_8sk8o")])
 scene_background = Array[Texture2D]([ExtResource("8_xeotl"), ExtResource("9_utwqj"), ExtResource("10_qip2i"), ExtResource("11_ugjau")])
 
 [node name="Background" type="TextureRect" parent="."]
