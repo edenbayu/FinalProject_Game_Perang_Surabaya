@@ -24,3 +24,18 @@ func save_game() -> void:
 	saving_database.open_db()
 	
 	var save = saving_database.update_rows("Level", "id = " + str(current_saving_id), {"id_level" = current_level, "level_status" = level_status})
+
+func load_data(saving_id: int) -> Dictionary:
+	var file = FileAccess.open(savedata, FileAccess.READ)
+	var content = file.get_as_text()
+	var json = JSON.parse_string(content)
+	
+	for data in json:
+		if data.id == saving_id:
+			return {
+				"id": data.id,
+				"id_level" : data.id_level,
+				"level_status": data.level_status
+			}
+	print(json)
+	return {}

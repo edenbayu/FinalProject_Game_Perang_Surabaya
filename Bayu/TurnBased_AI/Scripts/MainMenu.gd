@@ -87,38 +87,41 @@ func _on_new_game_pressed() -> void:
 	file.close()
 
 func _on_continue_game_pressed():
-	save_data.query("SELECT id, id_level, level_status, last_saved_time
-					FROM level
-					ORDER BY last_saved_time DESC
-					limit 1;")
-	var result = save_data.query_result
-	LevelState.set_current_saving_id(result[0].id)
-	LevelState.set_current_level(result[0].id_level)
-	LevelState.set_level_status(result[0].level_status)
-	get_tree().change_scene_to_file("res://Scenes/level_menu.tscn")
+	var file = FileAccess.open(save_path, FileAccess.READ)
+	var content = file.get_as_text()
+	var json = JSON.parse_string(content)
+	file.close()
 	
+	var latest_save_data = null
+	var latest_time = ""
+	for i in json:
+		if latest_save_data == null or Time.get_unix_time_from_datetime_string(i.last_saved_time) > Time.get_unix_time_from_datetime_string(latest_time):
+			latest_save_data = i
+			latest_time = i.last_saved_time
+	if latest_save_data != null:
+		match_load_data(latest_save_data)
+	else:
+		print("No save data found!")
 
 func _on_load_game_pressed():
-	save_data.query("SELECT id, id_level, level_status, last_saved_time from level ORDER BY id;")
-	var results = save_data.query_result
+	var file = FileAccess.open(save_path, FileAccess.READ)
+	var data = file.get_as_text()
+	var json = JSON.parse_string(data)
+	file.close()
+	
 	var i = 1
-	#for result in results:
-	var load_buttons = $LoadGame/MoetGame/VBoxContainer.get_children()
-	for button in load_buttons:
-		if results[(i-1)].last_saved_time == null:
-			continue
+	var load_button = $LoadGame/MoetGame/VBoxContainer.get_children()
+	for button in load_button:
 		button.get_child(0).text = "PENYIMPANAN " + str(i)
-		button.get_child(1).text = results[(i - 1)].last_saved_time
-		button.get_child(2).text = "BAB " + str(results[(i - 1)].id_level) + " " + "BAGIAN " + str(results[(i - 1)].level_status)
+		button.get_child(1).text = json[(i-1)].last_saved_time
+		button.get_child(2).text = "BAB" + str(json[(i - 1)].id_level) + " " + "BAGIAN " + str(json[(i - 1)].level_status)
 		i += 1
-		#get_node("Label").text = "PENYIMPANAN" + str(result)
 	sound_button.click_sound()
 	load.visible = true
 
 func _on_setting_game_pressed():
 	press_button.play()
 	setting.visible = true
-	#get_tree().change_scene_to_file("res://node_2d.tscn")
 
 func _on_credit_pressed():
 	sound_button.click_sound()
@@ -129,7 +132,7 @@ func _on_exit_pressed():
 func get_new_date() -> String:
 	var time = Time.get_datetime_dict_from_system()
 	print(time)
-	return str("%02d-%02d-%04d" % [time.day, time.month, time.year]) + " " + str("%02d:%02d:%02d" % [time.hour, time.minute, time.second])
+	return str("%04d-%02d-%02d" % [time.year, time.month, time.day]) + " " + str("%02d:%02d:%02d" % [time.hour, time.minute, time.second])
 
 func _match_loaded_save(chapter: String):
 	if LevelState.current_level == 2:
@@ -186,12 +189,44 @@ func _on_load3_game_mouse_entered():
 
 func _on_load_game_mouse_pressed():
 	sound_button.click_sound()
+	var data = LevelState.load_data(1)
+	match_load_data(data)
 
 func _on_load1_game_mouse_pressed():
 	sound_button.click_sound()
+	var data = LevelState.load_data(2)
+	match_load_data(data)
 
 func _on_load2_game_mouse_pressed():
 	sound_button.click_sound()
+	var data = LevelState.load_data(3)
+	match_load_data(data)
 
 func _on_load3_game_mouse_pressed():
 	sound_button.click_sound()
+	var data = LevelState.load_data(4)
+	match_load_data(data)
+
+func match_load_data(data: Dictionary) -> void:
+	match str(data.id_level):
+		"1":
+			if data.level_status == 1:
+				LoadManager.load_scene("res://DialogSistem/DialogueSistem.tscn")
+			elif data.level_status == 2:
+				LoadManager.load_scene("res://Scenes/level.tscn")
+		"2":
+			if data.level_status == 1:
+				LoadManager.load_scene("res://DialogSistem/dialogue_sistem_2.tscn")
+			elif data.level_status == 2:
+				LoadManager.load_scene("res://Scenes/level_2.tscn")
+		"3":
+			if data.level_status == 1:
+				LoadManager.load_scene("res://DialogSistem/dialog_sistem_3.tscn")
+			elif data.level_status == 2:
+				LoadManager.load_scene("res://Scenes/level3.tscn")
+			elif data.level_status == 3:
+				LoadManager.load_scene("res://DialogSistem/dialog_sistem_3.2tscn.tscn")
+			elif data.level_status == 4:
+				LoadManager.load_scene("res://Scenes/level_3_2.tscn")
+			elif data.level_status == 5:
+				LoadManager.load_scene("res://Scenes/FinalLevel.tscn")
