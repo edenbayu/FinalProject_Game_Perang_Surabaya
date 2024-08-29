@@ -293,7 +293,7 @@ parameters/conditions/is_hurt = false
 parameters/conditions/is_idle = false
 parameters/conditions/is_walking = false
 parameters/Attack/blend_position = Vector2(0, 1)
-parameters/Idle/blend_position = Vector2(-1.01043, 1.04762)
+parameters/Idle/blend_position = Vector2(1, 0.976191)
 parameters/Walk/blend_position = Vector2(-0.997275, 1.07143)
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]

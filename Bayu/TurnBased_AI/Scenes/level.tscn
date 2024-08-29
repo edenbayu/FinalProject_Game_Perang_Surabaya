@@ -924,7 +924,7 @@ tracks/0/keys = {
 "values": [132, 133, 134, 135, 136, 137, 138]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gphrd"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2xkjt"]
 resource_local_to_scene = true
 _data = {
 "Idle_BL": SubResource("Animation_6piu7"),
@@ -941,7 +941,7 @@ _data = {
 "Walk_FR": SubResource("Animation_nfqhq")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_40uyq"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ww06w"]
 resource_local_to_scene = true
 _data = {
 "Idle_BL": SubResource("Animation_6piu7"),
@@ -1398,6 +1398,7 @@ offset_right = 100.0
 offset_bottom = 96.0
 
 [node name="FPS" type="Label" parent="CanvasLayer/UI"]
+visible = false
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
@@ -1457,12 +1458,12 @@ script = ExtResource("12_bpvfk")
 
 [node name="EnemyAI" parent="GameBoard/Enemy" instance=ExtResource("33_ocjry")]
 position = Vector2(257, 574)
-_animation_resource = SubResource("AnimationLibrary_gphrd")
+_animation_resource = SubResource("AnimationLibrary_2xkjt")
 _animation_state_machine = ExtResource("33_c8rcp")
 
 [node name="EnemyAI2" parent="GameBoard/Enemy" instance=ExtResource("33_ocjry")]
 position = Vector2(572, 359)
-_animation_resource = SubResource("AnimationLibrary_40uyq")
+_animation_resource = SubResource("AnimationLibrary_ww06w")
 _animation_state_machine = ExtResource("33_c8rcp")
 
 [node name="Props" type="Node2D" parent="GameBoard"]
@@ -1566,7 +1567,6 @@ script = ExtResource("35_84v7m")
 shape = SubResource("RectangleShape2D_2175y")
 
 [node name="Interacts" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Interactables" type="Control" parent="Interacts"]
 layout_mode = 3

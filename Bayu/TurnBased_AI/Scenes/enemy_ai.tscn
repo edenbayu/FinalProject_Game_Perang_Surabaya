@@ -263,8 +263,8 @@ point_count = 2
 
 [sub_resource type="Curve" id="Curve_lcic5"]
 max_value = 1.6
-_data = [Vector2(0, 1.6), 0.0, 0.0, 0, 0, Vector2(0.502222, 1.6), 0.0, 0.0, 0, 0, Vector2(0.506667, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(0, 1.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Curve" id="Curve_mfj1u"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

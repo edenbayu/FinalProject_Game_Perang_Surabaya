@@ -108,7 +108,6 @@ func _check_hoverable_tiles(cell: Vector2) -> void:
 	#_is_clickable = cursor.visible 
 
 func _on_Cursor_accept_pressed(cell: Vector2) -> void:
-	print("HGAHAHA", selected_type)
 	if selected_ability == null:
 		return
 	match selected_ability:
@@ -143,6 +142,7 @@ func choose_walk_cell(new_cell: Vector2) -> void:
 	if is_occupied(mapped_cell) or not mapped_cell in _walkable_cells or object_cell(mapped_cell):
 		Battle.display_invalid_tile($"../TacticsCamera".position)
 		return
+	#unitPath.draw(unitPath.current_path)
 	_move_active_unit(mapped_cell)
 
 func choose_attack_action(active_unit: Unit, target: Unit) -> void:
@@ -260,7 +260,6 @@ func _move_active_unit(new_cell: Vector2) -> void:
 	##Menghapus active unit setelah selesai bergerak
 	_units.erase(LevelManager.active_unit.cell)
 	_units[new_cell] = LevelManager.active_unit
-	_deselect_active_unit()
 	LevelManager.active_unit.walk()
 	await LevelManager.active_unit.walk_state.walk_finished
 	_clear_active_unit()

@@ -5,7 +5,6 @@ const savedata = "res://savings/saving.json"
 var current_saving_id : int
 var current_level : int
 var level_status : int
-var saving_database : SQLite
 
 func set_current_saving_id(new_saving_id: int) -> void:
 	current_saving_id = new_saving_id

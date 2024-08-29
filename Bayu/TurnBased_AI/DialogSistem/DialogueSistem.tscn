@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dy5w5gbiu3ivf" path="res://DialogSistem/aset aseprite/Sudirman.png" id="3_dugn6"]
 [ext_resource type="Texture2D" uid="uid://b7p8atmkuxq0u" path="res://DialogSistem/aset aseprite/pemuda1 .png" id="3_ryl5r"]
 [ext_resource type="Texture2D" uid="uid://b84ciemgnmjgs" path="res://DialogSistem/aset aseprite/Sidik.png" id="4_viujw"]
-[ext_resource type="Texture2D" uid="uid://cnvky545rph8n" path="res://DialogSistem/aset aseprite/awarga 2.png" id="4_y8vco"]
+[ext_resource type="Texture2D" uid="uid://dgdgs5todqn5t" path="res://DialogSistem/aset aseprite/P{emuda 2.png" id="4_xqoko"]
 [ext_resource type="Texture2D" uid="uid://o8d6hmqppsju" path="res://DialogSistem/aset aseprite/TextBox.png" id="5_5pcuv"]
 [ext_resource type="Texture2D" uid="uid://myjhjym4wilm" path="res://DialogSistem/aset aseprite/Jepangt.png" id="5_u8y4o"]
 [ext_resource type="Texture2D" uid="uid://bk8pr1pctcdmv" path="res://DialogSistem/aset aseprite/logmen_Portrait.png" id="7_scggo"]
@@ -144,7 +144,7 @@ anchors_preset = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_da1nl")
-character_portraits = Array[Texture2D]([ExtResource("2_ogq4p"), ExtResource("3_ryl5r"), ExtResource("4_y8vco"), ExtResource("5_u8y4o"), null, ExtResource("3_dugn6"), ExtResource("7_scggo"), ExtResource("4_viujw"), ExtResource("2_ogq4p")])
+character_portraits = Array[Texture2D]([ExtResource("2_ogq4p"), ExtResource("3_ryl5r"), ExtResource("4_xqoko"), ExtResource("5_u8y4o"), null, ExtResource("3_dugn6"), ExtResource("7_scggo"), ExtResource("4_viujw"), ExtResource("2_ogq4p")])
 scene_background = Array[Texture2D]([ExtResource("8_ux70s"), ExtResource("9_lwd5o")])
 is_faded_black = false
 

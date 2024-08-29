@@ -954,7 +954,7 @@ tracks/0/keys = {
 "values": [132, 133, 134, 135, 136, 137, 138]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_opyfx"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_66vqo"]
 resource_local_to_scene = true
 _data = {
 "Idle_BL": SubResource("Animation_6piu7"),
@@ -971,7 +971,7 @@ _data = {
 "Walk_FR": SubResource("Animation_nfqhq")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_s4lub"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wc238"]
 resource_local_to_scene = true
 _data = {
 "Idle_BL": SubResource("Animation_6piu7"),
@@ -988,7 +988,7 @@ _data = {
 "Walk_FR": SubResource("Animation_nfqhq")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qmba"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jl3lm"]
 resource_local_to_scene = true
 _data = {
 "Idle_BL": SubResource("Animation_6piu7"),
@@ -1005,7 +1005,7 @@ _data = {
 "Walk_FR": SubResource("Animation_nfqhq")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fnctv"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yet6o"]
 resource_local_to_scene = true
 _data = {
 "Idle_BL": SubResource("Animation_6piu7"),
@@ -1527,22 +1527,22 @@ script = ExtResource("30_g5c6a")
 
 [node name="EnemyAI2" parent="GameBoard/Enemy" instance=ExtResource("33_nx1us")]
 position = Vector2(386, -64)
-_animation_resource = SubResource("AnimationLibrary_opyfx")
+_animation_resource = SubResource("AnimationLibrary_66vqo")
 _animation_state_machine = ExtResource("33_xvv8j")
 
 [node name="EnemyAI3" parent="GameBoard/Enemy" instance=ExtResource("33_nx1us")]
 position = Vector2(638, 0)
-_animation_resource = SubResource("AnimationLibrary_s4lub")
+_animation_resource = SubResource("AnimationLibrary_wc238")
 _animation_state_machine = ExtResource("33_xvv8j")
 
 [node name="EnemyAI4" parent="GameBoard/Enemy" instance=ExtResource("33_nx1us")]
 position = Vector2(838, 95)
-_animation_resource = SubResource("AnimationLibrary_1qmba")
+_animation_resource = SubResource("AnimationLibrary_jl3lm")
 _animation_state_machine = ExtResource("33_xvv8j")
 
 [node name="EnemyAI5" parent="GameBoard/Enemy" instance=ExtResource("33_nx1us")]
 position = Vector2(961, 224)
-_animation_resource = SubResource("AnimationLibrary_fnctv")
+_animation_resource = SubResource("AnimationLibrary_yet6o")
 _animation_state_machine = ExtResource("33_xvv8j")
 
 [node name="Props" type="Node2D" parent="GameBoard"]

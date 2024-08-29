@@ -69,7 +69,6 @@ func set_turn():
 			emit_signal("ally_turn_started", active_unit)
 		"enemy":
 			emit_signal("enemy_turn_started", active_unit)
-	print("INDEX SEKARANG: ", active_unit)
 
 func _reinitialize() -> void:
 	_units.clear()
@@ -158,10 +157,12 @@ func _on_enemy_turn_started(unit: Unit) -> void:
 	#_detect_ally_units()
 	active_unit.is_selected = true
 	player_ui.visible = false
+	print(active_unit.utility_agent._action_scores)
 	await get_tree().create_timer(0.25).timeout
 	await run_action()
 	await _detect_ally_units()
 	await get_tree().create_timer(0.5).timeout
+	print(active_unit.utility_agent._action_scores)
 	await run_action()
 	_end_turn()
 
